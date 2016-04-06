@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Main {
 	public static void main (String[] args) {
 		Model m = new Model();
-
+		
 		
 		// if using 'app' within the anonymous class generated below, must be marked final.
 		final Application app = new Application(m);
@@ -21,3 +21,5 @@ public class Main {
 
 		app.setVisible(true);
 	}
+	
+	// hi I am thomas
