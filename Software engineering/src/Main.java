@@ -3,13 +3,13 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
-import model.Kabasuji;
-import model.Player;
+import model.*;
 
 
 public class Main {
 	public static void main (String[] args) {
-		Player m = new Player("Linh", new Kabasuji());
+		Kabasuji kabasuji = new Kabasuji();
+		Player m = new Player("Linh", kabasuji);
 		
 		
 		// if using 'app' within the anonymous class generated below, must be marked final.

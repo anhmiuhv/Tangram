@@ -3,7 +3,9 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
-abstract class Level implements Serializable{
+import move.Move;
+
+public abstract class Level implements Serializable{
 	/**
 	 * 
 	 */
@@ -14,7 +16,7 @@ abstract class Level implements Serializable{
 	Bullpen p;
 	Move move;
 	boolean locked;
-	Achivement star;
+	Achievement star;
 	public Level(int LevelNumber, String LevelType, Board b, Bullpen p){
 		this.LevelNumber = LevelNumber;
 		this.LevelType = LevelType;

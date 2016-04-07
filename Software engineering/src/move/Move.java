@@ -1,4 +1,4 @@
-package model;
+package move;
 
 public class Move {
 
