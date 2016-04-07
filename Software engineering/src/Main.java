@@ -3,10 +3,13 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
+import model.Kabasuji;
+import model.Player;
+
 
 public class Main {
 	public static void main (String[] args) {
-		Model m = new Model();
+		Player m = new Player("Linh", new Kabasuji());
 		
 		
 		// if using 'app' within the anonymous class generated below, must be marked final.
@@ -22,4 +25,4 @@ public class Main {
 		app.setVisible(true);
 	}
 	
-	// hi I am thomas
+}	
