@@ -2,7 +2,7 @@ package model;
 
 import java.io.File;
 
-import move.Move;
+import move.*;
 
 public class ReleaseLevel extends Level{
 	int Sets;
@@ -23,7 +23,7 @@ public class ReleaseLevel extends Level{
 	}
 
 	@Override
-	public boolean doMove(Move m) {
+	public boolean doMove(IMove m) {
 		// TODO Auto-generated method stub
 		return false;
 	}

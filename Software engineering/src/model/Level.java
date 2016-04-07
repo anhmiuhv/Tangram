@@ -2,9 +2,7 @@ package model;
 
 import java.io.File;
 import java.io.Serializable;
-
-import move.Move;
-
+import move.*;
 public abstract class Level implements Serializable{
 	/**
 	 * 
@@ -14,7 +12,7 @@ public abstract class Level implements Serializable{
 	String LevelType;
 	Board b;
 	Bullpen p;
-	Move move;
+	IMove move;
 	boolean locked;
 	Achievement star;
 	public Level(int LevelNumber, String LevelType, Board b, Bullpen p){
@@ -24,6 +22,6 @@ public abstract class Level implements Serializable{
 		this.p = p;
 	}
 	abstract public boolean hasWon();
-	abstract public boolean doMove(Move m);
+	abstract public boolean doMove(IMove m);
 	abstract public void loadLevel(File f);
 }

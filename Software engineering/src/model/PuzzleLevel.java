@@ -2,7 +2,7 @@ package model;
 
 import java.io.File;
 
-import move.Move;
+import move.*;
 
 public class PuzzleLevel extends Level {
 	int allowedMove;
@@ -20,7 +20,7 @@ public class PuzzleLevel extends Level {
 	}
 
 	@Override
-	public boolean doMove(Move m) {
+	public boolean doMove(IMove m) {
 		// TODO Auto-generated method stub
 		return false;
 	}
