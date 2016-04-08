@@ -4,15 +4,12 @@ import java.io.File;
 import java.io.Serializable;
 import move.*;
 public abstract class Level implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
+	
 	int LevelNumber;
 	String LevelType;
 	Board b;
 	Bullpen p;
-	IMove move;
 	boolean locked;
 	Achievement star;
 	public Level(int LevelNumber, String LevelType, Board b, Bullpen p){

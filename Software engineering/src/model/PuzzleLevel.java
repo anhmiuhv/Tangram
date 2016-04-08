@@ -5,6 +5,10 @@ import java.io.File;
 import move.*;
 
 public class PuzzleLevel extends Level {
+	/**
+	 * Generated serialized
+	 */
+	private static final long serialVersionUID = -4071396056939768290L;
 	int allowedMove;
 	int usedMove = 0;
 	

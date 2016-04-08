@@ -5,4 +5,5 @@ public class Kabasuji {
 	public Kabasuji(){
 		
 	}
+	
 }
