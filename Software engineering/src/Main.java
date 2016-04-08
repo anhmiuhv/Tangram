@@ -16,13 +16,33 @@ import model.*;
 
 public class Main {
 	static final String gameInfo = "kabasuji.xml";
-	static void setNumlevel(int num){
-		
-	}
 	
 	
+	
+	/**
+	 * get the number of level from xml file
+	 * @return number of level
+	 */
 	static int getNumlevel(){
-		return 0;
+		int levelnum;
+		try{
+			File inputFile = new File(gameInfo);
+			DocumentBuilderFactory dbFactory 
+			= DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("levelnum");
+			Node nNode = nList.item(0);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+	               Element eElement = (Element) nNode;
+	               levelnum = Integer.parseInt(eElement.getAttribute("num"));
+	               return levelnum;
+			}
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	
 	public static void main (String[] args) {
@@ -30,9 +50,9 @@ public class Main {
 		Kabasuji kabasuji = new Kabasuji();
 		Player m = new Player("Linh", kabasuji);
 		
-		
+		/*
 		// if using 'app' within the anonymous class generated below, must be marked final.
-		final Application app = new Application(m);
+		//final Application app = new Application(m);
 
 		// state how to deal with leaving
 		app.addWindowListener(new WindowAdapter() {
@@ -42,6 +62,7 @@ public class Main {
 		});
 
 		app.setVisible(true);
+		*/
 	}
 	
 }	
