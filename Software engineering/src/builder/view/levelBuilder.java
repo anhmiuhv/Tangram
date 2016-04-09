@@ -20,8 +20,11 @@ import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Button;
+import javax.swing.ImageIcon;
 
 public class levelBuilder extends JFrame {
+	
+//	JButton[] levels;
 
 	private JPanel contentPane;
 
@@ -54,12 +57,14 @@ public class levelBuilder extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton button = new JButton("1");
+		
+	//	for(int i = 1;i<30;i++){
+		JButton button = new JButton();
 		button.setBackground(SystemColor.textHighlight);
 		button.setForeground(Color.BLACK);
 		button.setBounds(40, 118, 80, 80);
 		contentPane.add(button);
-		
+	
 		JButton button_1 = new JButton("2");
 		button_1.setBackground(SystemColor.textHighlight);
 		button_1.setForeground(Color.BLACK);
@@ -130,6 +135,7 @@ public class levelBuilder extends JFrame {
 		contentPane.add(lblKabasuji);
 		
 		JButton button_9 = new JButton("New Level");
+		button_9.setSelectedIcon(new ImageIcon("C:\\Users\\Bob\\Desktop\\add.png"));
 		button_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
