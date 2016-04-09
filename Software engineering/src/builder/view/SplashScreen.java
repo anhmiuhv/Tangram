@@ -33,7 +33,7 @@ public class SplashScreen extends JWindow {
 
     Color oraRed = new Color(156, 20, 20,  255);
     Color Blue = new Color(0,255,255);
-    content.setBorder(BorderFactory.createLineBorder(oraRed, 10));
+    content.setBorder(BorderFactory.createLineBorder(Blue, 10));
     
 
     SplashS Names = new SplashS();
