@@ -3,6 +3,8 @@ import java.awt.event.WindowEvent;
 
 import org.w3c.dom.*;
 
+import src.model.*;
+
 import javax.xml.parsers.*;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -10,8 +12,6 @@ import javax.xml.transform.TransformerFactory;
 import java.io.*;
 
 import javax.swing.*;
-
-import model.*;
 
 
 public class Main {
@@ -61,7 +61,7 @@ public class Main {
 			}      
 		});
 
-		app.setVisible(true);
+		app.setVisible(true)
 		*/
 	}
 	
