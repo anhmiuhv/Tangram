@@ -15,8 +15,11 @@ public class JSquareView {
 	}
 	
 	public void paint(Graphics g){
-		g.setColor(cl);
-		g.fillRect(square.getColumn()*50, square.getRow()*50, 50, 50);
+		
+		g.setColor(Color.BLACK);
+		g.drawRect(20,30, 50, 50);
+		g.fillRect(10,10, 50, 50);
+		System.out.println("fuck");
 	}
 	
 

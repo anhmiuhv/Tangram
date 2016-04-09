@@ -17,7 +17,7 @@ public class JPieceView extends JPanel{
 	
 	public void createPieceView(){
 		for(int i = 0;i<6;i++){
-			JSquareView(piece.squares[i],piece.color);
+			new JSquareView(piece.getSquares()[i],piece.getColor());
 			piecePanel.paint(null);
 		}
 	}
