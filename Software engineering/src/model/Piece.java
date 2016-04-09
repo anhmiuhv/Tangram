@@ -16,11 +16,17 @@ public class Piece {
 		this.squares = square;
 		this.head = head;
 		}
+	
 	public Square[] getSquares(){
 		return squares;
 	}
-
-
-
-
+	
+	public Color getColor(){
+		return cl;
+	}
+	
+	public void setColor(Color c){
+		cl = c;
+	}
 }
+
