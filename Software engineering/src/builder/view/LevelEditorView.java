@@ -7,21 +7,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSplitPane;
+
 import java.awt.FlowLayout;
 import java.awt.Component;
+
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
 import java.awt.SystemColor;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.Toolkit;
+
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+
+import view.LevelView;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 public class LevelEditorView extends JFrame {
 
@@ -43,6 +52,30 @@ public class LevelEditorView extends JFrame {
 		});
 	}
 
+	
+	
+	
+	
+	public static void LevelEditorStart() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LevelEditorView frame = new LevelEditorView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+		
+	
+	
+	
+
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -60,7 +93,7 @@ public class LevelEditorView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSave.setBounds(757, 13, 89, 25);
+		btnSave.setBounds(757, 13, 114, 25);
 		contentPane.add(btnSave);
 		
 		JButton btnRestart = new JButton("Restart");
@@ -96,7 +129,7 @@ public class LevelEditorView extends JFrame {
 		textField_1.setBounds(686, 123, 104, 24);
 		contentPane.add(textField_1);
 		
-		JRadioButton radioButton = new JRadioButton("1\r\n");
+		JRadioButton radioButton = new JRadioButton("1");
 		radioButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButton.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton.setBounds(665, 153, 38, 25);
@@ -108,7 +141,7 @@ public class LevelEditorView extends JFrame {
 		radioButton_1.setBounds(707, 153, 38, 25);
 		contentPane.add(radioButton_1);
 		
-		JRadioButton radioButton_2 = new JRadioButton("3\r\n");
+		JRadioButton radioButton_2 = new JRadioButton("3");
 		radioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButton_2.setBounds(749, 153, 38, 25);

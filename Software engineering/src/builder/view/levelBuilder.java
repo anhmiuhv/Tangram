@@ -9,18 +9,28 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToolBar;
 import javax.swing.JComboBox;
+
 import java.awt.Color;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+
 import javax.swing.SwingConstants;
+
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Button;
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
+
+import view.LevelView;
 
 public class levelBuilder extends JFrame {
 	
@@ -44,12 +54,25 @@ public class levelBuilder extends JFrame {
 		});
 	}
 
+	
+	
+
+	
+	
+	public void close(){
+		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+	}
+	
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
 	public levelBuilder() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 676, 551);
+		setBounds(100, 100, 871, 583);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.textInactiveText);
 		contentPane.setForeground(Color.BLACK);
@@ -58,74 +81,48 @@ public class levelBuilder extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-	//	for(int i = 1;i<30;i++){
-		JButton button = new JButton();
-		button.setBackground(SystemColor.textHighlight);
-		button.setForeground(Color.BLACK);
-		button.setBounds(40, 118, 80, 80);
-		contentPane.add(button);
-	
-		JButton button_1 = new JButton("2");
-		button_1.setBackground(SystemColor.textHighlight);
-		button_1.setForeground(Color.BLACK);
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+//============================================================
+		//jbutton
+		int levelButtonLenth=60;
+		int levelButtonWidth=60;
+		int levelNum = 31;
+		int NumOneRow = 5;
+		
+		JButton[] Levels = new JButton[levelNum];
+		int nextRow = 0;
+		int nextColumn = 0;
+		
+		for(int i = 1;i<levelNum;i++){
+			Levels[i] = new JButton(String.valueOf(i));
+			if(i%NumOneRow == 0){
+				nextRow++;
+				nextColumn = 0;
 			}
-		});
-		button_1.setBounds(160, 118, 80, 80);
-		contentPane.add(button_1);
+			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn, 89+(40+levelButtonWidth)*nextRow, levelButtonLenth, levelButtonWidth);	
+			nextColumn++;
+			
+			contentPane.add(Levels[i]);
+			
+			Levels[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					LevelEditorView lev = new LevelEditorView();
+					
+					lev.LevelEditorStart();
+					
+				}
+				
+			});
+			
+		}
 		
-		JButton button_2 = new JButton("3");
-		button_2.setBackground(SystemColor.textHighlight);
-		button_2.setForeground(Color.BLACK);
-		button_2.setBounds(280, 118, 80, 80);
-		contentPane.add(button_2);
 		
-		JButton button_3 = new JButton("4");
-		button_3.setBackground(SystemColor.textHighlight);
-		button_3.setForeground(Color.BLACK);
-		button_3.setBounds(400, 118, 80, 80);
-		contentPane.add(button_3);
 		
-		JButton button_4 = new JButton("5");
-		button_4.setBackground(SystemColor.textHighlight);
-		button_4.setForeground(Color.BLACK);
-		button_4.setBounds(520, 118, 80, 80);
-		contentPane.add(button_4);
 		
-		JButton button_5 = new JButton("6");
-		button_5.setBackground(SystemColor.textHighlight);
-		button_5.setForeground(Color.BLACK);
-		button_5.setBounds(40, 240, 80, 80);
-		contentPane.add(button_5);
 		
-		JButton button_6 = new JButton("7");
-		button_6.setBackground(SystemColor.textHighlight);
-		button_6.setForeground(Color.BLACK);
-		button_6.setBounds(160, 240, 80, 80);
-		contentPane.add(button_6);
 		
-		JButton button_7 = new JButton("8");
-		button_7.setBackground(SystemColor.textHighlight);
-		button_7.setForeground(Color.BLACK);
-		button_7.setBounds(280, 240, 80, 80);
-		contentPane.add(button_7);
 		
-		JButton button_8 = new JButton("9");
-		button_8.setBackground(SystemColor.textHighlight);
-		button_8.setForeground(Color.BLACK);
-		button_8.setBounds(400, 240, 80, 80);
-		contentPane.add(button_8);
 		
-		JButton btnNewButton = new JButton("10");
-		btnNewButton.setBackground(SystemColor.textHighlight);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(520, 240, 80, 80);
-		contentPane.add(btnNewButton);
+		
 		
 		JLabel lblKabasuji = new JLabel("KABASUJI");
 		lblKabasuji.setForeground(SystemColor.textHighlightText);
