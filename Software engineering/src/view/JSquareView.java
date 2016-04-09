@@ -8,11 +8,9 @@ public class JSquareView {
 	Square square;
 	Color cl;
 	
-	
 	public JSquareView(Square square,Color cl){
 		this.square = square;
 		this.cl = cl;
-		paint(null);
 		
 	}
 	
@@ -20,11 +18,6 @@ public class JSquareView {
 		g.setColor(cl);
 		g.fillRect(square.getColumn(), square.getRow(), 50, 50);
 	}
-	
-	
-	
-	
-	
 	
 
 }
