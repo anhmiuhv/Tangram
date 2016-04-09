@@ -1,7 +1,12 @@
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import model.Kabasuji;
+import model.Player;
+
 import org.w3c.dom.*;
+
+
 
 import javax.xml.parsers.*;
 import javax.xml.transform.Transformer;
@@ -10,8 +15,6 @@ import javax.xml.transform.TransformerFactory;
 import java.io.*;
 
 import javax.swing.*;
-
-import model.*;
 
 
 public class Main {
@@ -103,7 +106,7 @@ public class Main {
 			}      
 		});
 
-		app.setVisible(true);
+		app.setVisible(true)
 		*/
 	}
 	
