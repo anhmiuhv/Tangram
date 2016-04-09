@@ -107,7 +107,7 @@ public class LevelView extends JFrame {
 		});
 		
 		}
-
+		//fiodshjhaldshl
 		
 		contentPane.setLayout(gl_contentPane);
 	}
