@@ -13,7 +13,6 @@ public class JPieceView extends JPanel{
 	
 	public JPieceView(Piece piece){
 		this.piece = piece;
-		
 	}
 	
 	public void createPieceView(){

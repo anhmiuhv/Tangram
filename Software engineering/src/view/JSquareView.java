@@ -16,7 +16,7 @@ public class JSquareView {
 	
 	public void paint(Graphics g){
 		g.setColor(cl);
-		g.fillRect(square.getColumn(), square.getRow(), 50, 50);
+		g.fillRect(square.getColumn()*50, square.getRow()*50, 50, 50);
 	}
 	
 
