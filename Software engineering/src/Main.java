@@ -1,9 +1,12 @@
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import model.Kabasuji;
+import model.Player;
+
 import org.w3c.dom.*;
 
-import src.model.*;
+
 
 import javax.xml.parsers.*;
 import javax.xml.transform.Transformer;
