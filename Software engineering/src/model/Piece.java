@@ -7,7 +7,7 @@ public class Piece {
 	int pColumn;
 	Color cl;
 	boolean isMarked;
-	Square[] square;
+	Square[] square = new Square[6];
 	Square head;
 	
 	public Piece(int pRow, int pColumn,Square[] square, Square head){
