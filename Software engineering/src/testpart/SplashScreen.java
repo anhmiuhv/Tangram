@@ -9,6 +9,8 @@ package testpart;
 import java.awt.*;
 import javax.swing.*;
 
+import view.LevelView;
+
 public class SplashScreen extends JWindow {
   private int duration;
   public SplashScreen(int d) {
@@ -61,9 +63,11 @@ public class SplashScreen extends JWindow {
   }
   public static void main(String[] args) {
     // Throw a nice little title page up on the screen first
-    SplashScreen splash = new SplashScreen(10000);
+    SplashScreen splash = new SplashScreen(1000);
     // Normally, we'd call splash.showSplash() and get on with the program.
     // But, since this is only a test...
     splash.showSplashAndExit();
+   // LevelView levelSec = new LevelView();
+//	nw.LevelSelectStart();
   }
 }
