@@ -16,9 +16,9 @@ public class SplashS extends JPanel {
 	 */
 	public SplashS() {
 		
-		JLabel lblKabasuji = new JLabel("KABASUJI");
+		JLabel lblKabasuji = new JLabel("Kabasuji Builder");
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
-		lblKabasuji.setFont(new Font("SansSerif", Font.PLAIN, 130));
+		lblKabasuji.setFont(new Font("SansSerif", Font.PLAIN, 100));
 		
 		JLabel lblNewLabel = new JLabel("GROUP:Patroclus");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 50));
