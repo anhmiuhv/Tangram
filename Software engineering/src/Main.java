@@ -22,8 +22,9 @@ public class Main {
 	/**
 	 * get the number of level from xml file
 	 * @return number of level
+	 * @throws Exception 
 	 */
-	static int getNumlevel(){
+	static int getNumlevel() throws Exception{
 		int levelnum;
 		try{
 			File inputFile = new File(gameInfo);
@@ -41,13 +42,54 @@ public class Main {
 			}
 		}  catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
-		return -1;
+		return 0;
 	}
 	
+	/**
+	 * return the levels used by the game
+	 * @param numLevel number of level
+	 * @return array of Level
+	 */
+	static Level[] loadLevel(int numLevel){
+		/*
+		try
+	      {
+	         FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         e = (Level) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      }catch(IOException i)
+	      {
+	         i.printStackTrace();
+	         return;
+	      }catch(ClassNotFoundException c)
+	      {
+	         System.out.println("Employee class not found");
+	         c.printStackTrace();
+	         return;
+	      }
+	      */
+		return new Level[0];
+	}
 	public static void main (String[] args) {
 		
-		Kabasuji kabasuji = new Kabasuji();
+		//get number of Level
+		int numLevel;
+		try {
+			numLevel = getNumlevel();
+		} catch (Exception e){
+			e.printStackTrace();
+			return;
+		}
+		System.out.print(numLevel);
+		Level[] level = loadLevel(numLevel);
+		
+		
+		
+		Kabasuji kabasuji = new Kabasuji(level);
 		Player m = new Player("Linh", kabasuji);
 		
 		/*

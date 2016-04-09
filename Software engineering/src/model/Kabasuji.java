@@ -2,8 +2,10 @@ package model;
 
 public class Kabasuji {
 	Level[] levels;
-	public Kabasuji(){
-		
+	public Kabasuji(Level[] levels){
+		this.levels = levels;
 	}
+	
+	
 	
 }
