@@ -10,9 +10,9 @@ public class ReleaseLevel extends Level{
 	 */
 	private static final long serialVersionUID = 4710492805516683152L;
 	int Sets;
-	int[] redCounter;
-	int[] yellowCounter;
-	int[] blueCounter;
+	int redCounter;
+	int yellowCounter;
+	int blueCounter;
 	
 	
 	public ReleaseLevel(int LevelNumber, String LevelType, Board b, Bullpen p) {
