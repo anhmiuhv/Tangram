@@ -1,4 +1,4 @@
-package testpart;
+package view;
 // SplashScreen.java
 // A simple application to show a title screen in the center of the screen
 // for the amount of time given in the constructor.  This class includes
@@ -9,14 +9,13 @@ package testpart;
 import java.awt.*;
 import javax.swing.*;
 
-import view.LevelView;
-
 public class SplashScreen extends JWindow {
   private int duration;
   public SplashScreen(int d) {
     duration = d;
   }
 
+  
   // A simple little method to show a title screen in the center
   // of the screen for the amount of time given in the constructor
   public void showSplash() {
@@ -59,15 +58,17 @@ public class SplashScreen extends JWindow {
   }
   public void showSplashAndExit() {
     showSplash();
-    System.exit(0);
   }
+  
   public static void main(String[] args) {
     // Throw a nice little title page up on the screen first
     SplashScreen splash = new SplashScreen(1000);
     // Normally, we'd call splash.showSplash() and get on with the program.
     // But, since this is only a test...
     splash.showSplashAndExit();
-   // LevelView levelSec = new LevelView();
-//	nw.LevelSelectStart();
+     LevelSelection levelSec = new LevelSelection();
+     levelSec.LevelSelectStart();
   }
+  
+
 }
