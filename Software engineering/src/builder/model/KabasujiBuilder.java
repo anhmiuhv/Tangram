@@ -9,7 +9,7 @@ public class KabasujiBuilder {
 		this.editor = editor;
 	}
 	
-	public int getNumberOfLevel(){
+	public static int getNumberOfLevel(){
 //		return editor.size();
 		return 19;
 	}

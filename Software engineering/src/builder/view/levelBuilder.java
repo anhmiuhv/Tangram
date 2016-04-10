@@ -30,6 +30,8 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 
+import builder.model.KabasujiBuilder;
+import model.Kabasuji;
 import view.LevelView;
 
 public class levelBuilder extends JFrame {
@@ -71,8 +73,8 @@ public class levelBuilder extends JFrame {
 	 * Create the frame.
 	 */
 	public levelBuilder() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 871, 583);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 931, 617);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.textInactiveText);
 		contentPane.setForeground(Color.BLACK);
@@ -86,19 +88,19 @@ public class levelBuilder extends JFrame {
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
 		int levelNum = 31;
-		int NumOneRow = 5;
+		int NumOneRow = 8;
 		
 		JButton[] Levels = new JButton[levelNum];
 		int nextRow = 0;
 		int nextColumn = 0;
 		
-		for(int i = 1;i<levelNum;i++){
-			Levels[i] = new JButton(String.valueOf(i));
+		for(int i = 0;((i<levelNum)&&(KabasujiBuilder.getNumberOfLevel()>i));i++){
+			Levels[i] = new JButton(String.valueOf(i+1));
 			if(i%NumOneRow == 0){
 				nextRow++;
 				nextColumn = 0;
 			}
-			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn, 89+(40+levelButtonWidth)*nextRow, levelButtonLenth, levelButtonWidth);	
+			Levels[i].setBounds(50+(40+levelButtonLenth)*nextColumn, 40+(40+levelButtonWidth)*nextRow, levelButtonLenth, levelButtonWidth);	
 			nextColumn++;
 			
 			contentPane.add(Levels[i]);
@@ -108,12 +110,18 @@ public class levelBuilder extends JFrame {
 					LevelEditorView lev = new LevelEditorView();
 					
 					lev.LevelEditorStart();
+					close();
 					
 				}
 				
 			});
 			
 		}
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(12, 13, 889, 544);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		
 		
 		
@@ -125,51 +133,59 @@ public class levelBuilder extends JFrame {
 		
 		
 		JLabel lblKabasuji = new JLabel("KABASUJI");
-		lblKabasuji.setForeground(SystemColor.textHighlightText);
+		lblKabasuji.setBounds(353, 26, 110, 50);
+		panel.add(lblKabasuji);
+		lblKabasuji.setForeground(Color.BLACK);
 		lblKabasuji.setFont(new Font("Broadway Copyist Text Ext", Font.PLAIN, 34));
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
-		lblKabasuji.setBounds(225, 38, 200, 50);
-		contentPane.add(lblKabasuji);
 		
 		JButton button_9 = new JButton("New Level");
+		button_9.setBounds(741, 26, 110, 25);
+		panel.add(button_9);
 		button_9.setSelectedIcon(new ImageIcon("C:\\Users\\Bob\\Desktop\\add.png"));
-		button_9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_9.setBounds(520, 38, 100, 25);
-		contentPane.add(button_9);
-		
-		JButton btnMenu = new JButton("Main Menu");
-		btnMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnMenu.setBounds(520, 80, 100, 25);
-		contentPane.add(btnMenu);
 		
 		JButton button_10 = new JButton("Help");
+		button_10.setBounds(40, 26, 77, 25);
+		panel.add(button_10);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(25, 506, 92, 25);
+		panel.add(btnDelete);
+		
+		JButton btnEdit = new JButton("Edit");
+		btnEdit.setBounds(154, 506, 77, 25);
+		panel.add(btnEdit);
 		button_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		button_10.setBounds(27, 38, 63, 25);
-		contentPane.add(button_10);
-		
-		JButton btnNewButton_1 = new JButton("Next");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		button_9.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
+				LevelEditorView lev2 = new LevelEditorView();
+				lev2.LevelEditorStart();
+				close();
 			}
 		});
-		btnNewButton_1.setBounds(548, 412, 97, 25);
-		contentPane.add(btnNewButton_1);
 		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(40, 412, 97, 25);
-		contentPane.add(btnDelete);
+	}
+
+
+
+
+
+
+	public void levelBuilderStart() {
+		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					levelBuilder frame = new levelBuilder();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(160, 412, 97, 25);
-		contentPane.add(btnEdit);
 	}
 }

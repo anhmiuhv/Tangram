@@ -22,15 +22,7 @@ public class BuilderApplication {
 		    splash.showSplashAndExit();
 		   // LevelView levelSec = new LevelView();
 //			nw.LevelSelectStart();
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						levelBuilder frame = new levelBuilder();
-						frame.setVisible(true);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			});
+			lvlBuilder.levelBuilderStart();
 		  }
+	 
 }
