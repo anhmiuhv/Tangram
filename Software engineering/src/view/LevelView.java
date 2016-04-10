@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.Board;
+import model.Bullpen;
 import model.Piece;
 import model.Square;
 
@@ -70,9 +71,6 @@ public class LevelView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.RED);
-		
 		
 		//-----
 		Square[] s = new Square[144]; 
@@ -84,16 +82,41 @@ public class LevelView extends JFrame {
 		}
 		
 		Board testBoard = new Board(s);
-		JBoardView board = new JBoardView(350,150, testBoard);
+		JBoardView board = new JBoardView(400,210, testBoard);
 		contentPane.add(board);
 
 		
 		Piece p = new Piece(0,0,s,s[0]);
 		p.setColor(new Color(0,0,0));
 		
+	
 		
-		JPieceView jp = new JPieceView(p,10,10);
-		contentPane.add(jp);
+		
+		
+		Square bullPenSquare[] = new Square[6]; 
+		bullPenSquare[0] = new Square(1,1);
+		bullPenSquare[1] = new Square(0,1);
+		bullPenSquare[2] = new Square(0,2);
+		bullPenSquare[3] = new Square(0,3);
+		bullPenSquare[4] = new Square(0,4);
+		bullPenSquare[5] = new Square(0,5);		
+		
+		Piece bullPenPiece = new Piece(0,0,s,s[0]);
+		bullPenPiece.setColor(new Color(0,0,0));
+		
+		
+		Piece[] bullPenPieceArray = new Piece[6];
+		bullPenPieceArray[0] = bullPenPiece;
+		bullPenPieceArray[1] = bullPenPiece;
+		bullPenPieceArray[2] = bullPenPiece;
+		bullPenPieceArray[3] = bullPenPiece;
+		bullPenPieceArray[4] = bullPenPiece;
+		bullPenPieceArray[5] = bullPenPiece;
+		
+		Bullpen bp = new Bullpen(bullPenPieceArray);
+		
+		JBullPenView jbp = new JBullPenView(bp,20,140);
+		contentPane.add(jbp);
 		
 		//---
 		
@@ -110,22 +133,15 @@ public class LevelView extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(65)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(50)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)))
+					.addGap(65)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(569, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(269, Short.MAX_VALUE))
+					.addContainerGap(668, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
