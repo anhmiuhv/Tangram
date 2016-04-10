@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import model.Bullpen;
 import model.Piece;
+import javax.swing.JScrollPane;
 
 public class JBullPenView extends JPanel {
 
@@ -17,6 +18,8 @@ public class JBullPenView extends JPanel {
 	int pNum = 0;
 	int bpX;
 	int bpY;
+	
+	//JScrollPane scrollPane = new JScrollPane();
 	
 	public JBullPenView(Bullpen bp, int bpX, int bpY) {
 		this.bp = bp;
@@ -30,6 +33,8 @@ public class JBullPenView extends JPanel {
 	}
 	
 	public void createJBullPenView(){
+		//scrollPane.setBounds(bpX,bpY,180,180*4);
+		
 		setBounds(bpX,bpY,180,180*4);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		setLayout(null);
@@ -38,6 +43,7 @@ public class JBullPenView extends JPanel {
 			jp[i] = new JPieceView(pieces[i],i*180+5,0+5);
 			add(jp[i]);
 		}
+		
+		//scrollPane.setViewportView(this);
 	}
-
 }
