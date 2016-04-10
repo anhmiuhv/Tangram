@@ -13,12 +13,7 @@ import model.Piece;
 public class JPieceView extends JPanel{
 
 	Piece piece;
-	JPanel topPanel;
-	
-	JPanel squarePanel = new JPanel();
-	JPanel piecePanel = new JPanel();
 
-	
 	public JPieceView(Piece piece){
 		this.piece = piece;
 		createPieceView();
@@ -46,10 +41,10 @@ public class JPieceView extends JPanel{
 	public void createPieceView(){
 
 		//setBackground(Color.GREEN);
-		setBounds(100, 100, 500, 500);
+		setBounds(100,100, 180, 180);
 		setLayout(null);
 		
-		setSize(500, 500);
+		//setSize(500, 500);
 		
 		JPanel panel = new JPanel();
 		panel.setSize(500, 500);
