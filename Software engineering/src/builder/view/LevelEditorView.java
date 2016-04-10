@@ -195,6 +195,10 @@ public class LevelEditorView extends JFrame {
 		JButton btnHint = new JButton("Hint");
 		btnHint.setBounds(104, 453, 75, 25);
 		panel.add(btnHint);
+		
+		JButton btnDeleteLevel = new JButton("Delete Level");
+		btnDeleteLevel.setBounds(460, 453, 137, 25);
+		panel.add(btnDeleteLevel);
 		btnCreateBoardPart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

@@ -147,14 +147,6 @@ public class levelBuilder extends JFrame {
 		JButton button_10 = new JButton("Help");
 		button_10.setBounds(40, 26, 77, 25);
 		panel.add(button_10);
-		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(25, 506, 92, 25);
-		panel.add(btnDelete);
-		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(154, 506, 77, 25);
-		panel.add(btnEdit);
 		button_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
