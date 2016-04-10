@@ -84,8 +84,8 @@ public class LevelView extends JFrame {
 		}
 		
 		Board testBoard = new Board(s);
-//		JBoardView board = new JBoardView(350,150, testBoard);
-	//	contentPane.add(board);
+		JBoardView board = new JBoardView(350,150, testBoard);
+		contentPane.add(board);
 
 		
 		Piece p = new Piece(0,0,s,s[0]);
