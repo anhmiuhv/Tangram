@@ -2,27 +2,34 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import model.Piece;
 import model.Square;
-import view.JSquareView.MyPanel;
 
 public class Test extends JFrame{
 
 	
 	public static void main(String[] args) {
 		
-		
-	    JFrame.setDefaultLookAndFeelDecorated(true);
-	    JFrame frame = new JFrame("JFrame Color Example");
-	    frame.setSize(800,800);
-	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		MyPanel panel = null;
-		
-		
+		 JFrame frame = new JFrame("JFrame Color Example");
+		 frame.setVisible(true);
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame. setBounds(100, 100, 800, 800);
+		 JPanel contentPane = new JPanel();
+		 contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		 frame.setContentPane(contentPane);
+		 contentPane.setLayout(null);
+		 contentPane.setVisible(true);
+		 
+		 
+		 
+		 
 		Square s[] = new Square[6]; 
 		s[0] = new Square(1,1);
 		s[1] = new Square(0,1);
@@ -35,20 +42,12 @@ public class Test extends JFrame{
 		p.setColor(new Color(0,0,0));
 		
 		
-		JPieceView jp = new JPieceView(p,frame);
-		jp.createPieceView();
-		
-
-		
-
-		
+		JPieceView jp = new JPieceView(p);
+		contentPane.add(jp);
 
 		    // create a basic JFrame
 
-		 
-	
-		   
-		    
+	  
 		//Graphics g = f.getGraphics();
 		
 	//JSquareView js = new JSquareView(s[0],Color.BLACK);
