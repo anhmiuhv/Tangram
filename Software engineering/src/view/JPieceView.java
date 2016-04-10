@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Transparency;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,8 +15,14 @@ public class JPieceView extends JPanel{
 
 	Piece piece;
 
-	public JPieceView(Piece piece){
+	int pX;
+	int pY;
+	
+	public JPieceView(Piece piece, int pX, int pY){
+
 		this.piece = piece;
+		this.pX = pX;
+		this.pY = pY;
 		createPieceView();
 	}
 	
@@ -40,8 +47,10 @@ public class JPieceView extends JPanel{
 	
 	public void createPieceView(){
 
-		//setBackground(Color.GREEN);
-		setBounds(100,100, 180, 180);
+		//setBackground(Transparency.TRANSLUCENT);
+
+		setBounds(100, 100, 180, 180);
+		setOpaque(false);
 		setLayout(null);
 		
 		//setSize(500, 500);

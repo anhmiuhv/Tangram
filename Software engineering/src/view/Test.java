@@ -42,7 +42,7 @@ public class Test extends JFrame{
 		p.setColor(new Color(0,0,0));
 		
 		
-		JPieceView jp = new JPieceView(p);
+		JPieceView jp = new JPieceView(p,10,10);
 		contentPane.add(jp);
 
 		    // create a basic JFrame

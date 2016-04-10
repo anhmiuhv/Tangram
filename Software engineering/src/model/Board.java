@@ -5,9 +5,15 @@ public class Board {
 	Square[] square;
 	boolean cover;
 	Hint hints;
-	public Board(Piece[] piece, Square[] square){
+	
+	public Board(Square[] square){
 		this.piece = piece;
 		this.square = square;
 	}
+	
+	public Square[] getSquare(){
+		return square;
+	}
+	
 
 }
