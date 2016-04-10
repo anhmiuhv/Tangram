@@ -7,6 +7,12 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.Board;
+import model.Piece;
+import model.Square;
+
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
@@ -67,6 +73,30 @@ public class LevelView extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.RED);
 		
+		
+		//-----
+		Square[] s = new Square[144]; 
+		for (int i=0;i<12;i++){
+			for (int j=0;j<12;j++){
+		
+			s[i*12+j] = new Square(i,j);
+			}
+		}
+		
+		Board testBoard = new Board(s);
+//		JBoardView board = new JBoardView(350,150, testBoard);
+	//	contentPane.add(board);
+
+		
+		Piece p = new Piece(0,0,s,s[0]);
+		p.setColor(new Color(0,0,0));
+		
+		
+		JPieceView jp = new JPieceView(p,10,10);
+		contentPane.add(jp);
+		
+		//---
+		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,24 +108,24 @@ public class LevelView extends JFrame {
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(93)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(69, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(562, Short.MAX_VALUE)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-					.addGap(114))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(65)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(50)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(569, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(46)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-					.addGap(77)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(438, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(269, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
