@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.Bullpen;
 import model.Piece;
 import model.Square;
 
@@ -42,16 +43,15 @@ public class Test extends JFrame{
 		p.setColor(new Color(0,0,0));
 		
 		
-		JPieceView jp = new JPieceView(p,10,10);
-		contentPane.add(jp);
-
-		    // create a basic JFrame
-
-	  
-		//Graphics g = f.getGraphics();
+		Piece[] ps = new Piece[1];
+		ps[0] = p;
 		
-	//JSquareView js = new JSquareView(s[0],Color.BLACK);
-		//f.JSquareView();
+		Bullpen bp = new Bullpen(ps);
+		
+		JBullPenView jbp = new JBullPenView(bp,10,10);
+		contentPane.add(jbp);
+
+		
 	}
 	
 
