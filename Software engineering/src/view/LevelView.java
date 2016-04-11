@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import model.Board;
 import model.Bullpen;
 import model.Piece;
-import model.PuzzleLevel;
+import model.Level;
 import model.Square;
 
 
@@ -22,7 +22,6 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
@@ -78,21 +77,21 @@ public class LevelView extends JFrame {
 		
 		
 		//----- manully design board
-		Square[] s = new Square[144]; 
+		/*Square[] s = new Square[144]; 
 		for (int i=0;i<12;i++){
 			for (int j=0;j<12;j++){
 		
 			s[i*12+j] = new Square(i,j);
 			}
-		}
+		}*/
 		
-		Board testBoard = new Board(s);
-		JBoardView board = new JBoardView(450,210, testBoard);
+		//Board testBoard = new Board(s);
+		JBoardView board = new JBoardView(450,210, level.getBoard());
 		contentPane.add(board);
 //----------- manully design bullpen 
 		
-		Piece p = new Piece(0,0,s,s[0],1);
-		p.setColor(new Color(0,0,0));
+		//Piece p = new Piece(0,0,s,s[0],1);
+		//p.setColor(new Color(0,0,0));
 		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
@@ -129,7 +128,7 @@ public class LevelView extends JFrame {
 		
 		Bullpen bp = new Bullpen(bullPenPieceArray);*/
 		
-		//JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
+		JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -144,7 +143,7 @@ public class LevelView extends JFrame {
 		
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
-		//scrollPane.setViewportView(jbp);
+		scrollPane.setViewportView(jbp);
 		
 			
 			
