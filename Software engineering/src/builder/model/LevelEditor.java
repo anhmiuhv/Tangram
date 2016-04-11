@@ -10,4 +10,8 @@ public abstract class LevelEditor {
 		this.pc = pc;
 		this.bc = bc;
 	}
+	
+	public PieceCreator getPieceCreator(){
+		return pc;
+	}
 }

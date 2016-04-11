@@ -1,10 +1,8 @@
 package view;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import model.Bullpen;
 import model.Piece;
 import model.Square;
+
 
 public class Test extends JFrame{
 
@@ -28,9 +27,6 @@ public class Test extends JFrame{
 		 contentPane.setLayout(null);
 		 contentPane.setVisible(true);
 		 
-		 
-		 
-		 
 			Square s[] = new Square[6]; 
 			s[0] = new Square(1,1);
 			s[1] = new Square(0,1);
@@ -39,7 +35,7 @@ public class Test extends JFrame{
 			s[4] = new Square(0,4);
 			s[5] = new Square(0,5);		
 			
-			Piece p = new Piece(0,0,s,s[0]);
+			Piece p = new Piece(0,0,s,s[0],1);
 			p.setColor(new Color(0,0,0));
 			
 			

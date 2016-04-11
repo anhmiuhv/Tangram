@@ -25,6 +25,7 @@ import java.awt.Toolkit;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import builder.model.*;
 import view.LevelView;
 
 import java.awt.Font;
@@ -35,54 +36,28 @@ import java.awt.event.WindowEvent;
 public class LevelEditorView extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelEditorView frame = new LevelEditorView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	
-	
-	
-	
-	public static void LevelEditorStart() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelEditorView frame = new LevelEditorView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-		
-	
+	KabasujiBuilder kb;
+	int levelNum;
 	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
-	}
-
-	
-	
+	}	
 	
 	/**
 	 * Create the frame.
 	 */
-	public LevelEditorView() {
+	public LevelEditorView(KabasujiBuilder kb) {
+		this.kb = kb;
+	}
+	
+	public void setlevelNum(int levelNum){
+		this.levelNum = 0;
+		init();
+	}
+	
+	private void init() {
+		LevelEditor editor = kb.getLevel(levelNum);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 971, 564);
 		contentPane = new JPanel();
@@ -163,8 +138,7 @@ public class LevelEditorView extends JFrame {
 		radioButton_5.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
-		JButton btnCreatePiecePart = new JButton("Create Piece Part");
-		btnCreatePiecePart.setBounds(65, 94, 360, 329);
+		JPieceCreatorView btnCreatePiecePart = new JPieceCreatorView(editor);
 		panel.add(btnCreatePiecePart);
 		
 		JButton btnRandomPiece = new JButton("Random Piece");
@@ -178,8 +152,8 @@ public class LevelEditorView extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				levelBuilder lb = new levelBuilder();
-				lb.levelBuilderStart();
+				levelBuilder lb = new levelBuilder(kb);
+				lb.setVisible(true);
 				close();
 			}
 		});
@@ -205,8 +179,7 @@ public class LevelEditorView extends JFrame {
 		});
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				levelBuilder lb = new levelBuilder();
-				lb.levelBuilderStart();
+				levelBuilder lb = new levelBuilder(kb);
 				close();
 			}
 		});
