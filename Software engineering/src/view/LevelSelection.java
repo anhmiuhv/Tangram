@@ -6,11 +6,13 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.Achievement;
 import model.Board;
 import model.Bullpen;
 import model.Level;
@@ -63,12 +65,15 @@ public class LevelSelection extends JFrame {
 	public String getLevelImage(int levelNum){
 		if (levelNum==0){
 			return "images\\puzzleIcon.png";
+
 		}
 		else if (levelNum==1){
 			return "images\\lightningIcon.png";
+
 		}
 		else{
 			return "images\\releaseIcon.png";
+
 		}
 	}
 	
@@ -80,6 +85,7 @@ public class LevelSelection extends JFrame {
 	 * Create the frame.
 	 */
 	public LevelSelection() {
+		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 800, 800);
 		contentPane = new JPanel();
@@ -135,11 +141,43 @@ public class LevelSelection extends JFrame {
 				nextRow++;
 				nextColumn=0;
 			}
-			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(80+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
+			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(90+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
+	
+			JLabel stayLabel = null;
+			if (testLevels[i].getAchievement().getAchievement()==1){
+				stayLabel = new JLabel("star");
+				stayLabel.setBackground(Color.WHITE);
+				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 20, 20);
+				stayLabel.setIcon(new ImageIcon("images//onestar.png"));
+				panel.add(stayLabel);
+			}
+			else if (testLevels[i].getAchievement().getAchievement()==2){
+				 stayLabel = new JLabel("star");
+				stayLabel.setBackground(Color.WHITE);
+				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 40, 30);
+				stayLabel.setIcon(new ImageIcon("images//twostar.png"));
+				panel.add(stayLabel);
+			}
+			else  if (testLevels[i].getAchievement().getAchievement()==3){
+				//System.out.println("s");
+				stayLabel = new JLabel("star");
+				stayLabel.setBackground(Color.WHITE);
+				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 60, 20);
+				stayLabel.setIcon(new ImageIcon("images//threestar.png"));
+				panel.add(stayLabel);
+			}
+			else  if (testLevels[i].getAchievement().getAchievement()==0){
+				System.out.println("s");
+			}
+			else{
+				Levels[i].setIcon(new ImageIcon("images//lockicon.png"));
+				Levels[i].setEnabled(false);
+			}
+			
 			
 			JLabel lblNewLabel = new JLabel("1");
 			lblNewLabel.setBackground(Color.WHITE);
-			lblNewLabel.setBounds(100+(40+levelButtonLenth)*nextColumn+15, (80+levelButtonWidth)*nextRow-80, 30, 30);
+			lblNewLabel.setBounds(100+(40+levelButtonLenth)*nextColumn+15, (90+levelButtonWidth)*nextRow-80, 30, 30);
 			lblNewLabel.setIcon(new ImageIcon( getLevelImage( testLevels[i].getlevelTypeNum()) ));
 			panel.add(lblNewLabel);
 			
@@ -206,14 +244,19 @@ public class LevelSelection extends JFrame {
 			
 			if (i%3==0){
 			testLevels[i] = new PuzzleLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
+			testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 			else if (i%3==1){
 			testLevels[i] = new LightningLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
+			testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 			else {
 			testLevels[i] = new ReleaseLevel(i,GetLevelTpye(i%3),testBoard,bp);
+			testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 		}
+		testLevels[13].updateLevelStar(new Achievement(0));
+		testLevels[14].updateLevelStar(new Achievement(-1));
 		
 		return testLevels;
 		/*
@@ -226,7 +269,7 @@ public class LevelSelection extends JFrame {
 		*/
 	}
 	
-	
+	// new Random().nextInt(10) + 1
 	
 	
 	public String GetLevelTpye(int levelNum){
@@ -240,8 +283,6 @@ public class LevelSelection extends JFrame {
 			return "release";
 		}
 	}
-	
-
 }
 
 

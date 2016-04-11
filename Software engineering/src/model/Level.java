@@ -31,7 +31,17 @@ public abstract class Level implements Serializable{
 		return 2;
 		}
 	}
+	
+	public Achievement getAchievement(){
+		return star;
+	}
+	
 	abstract public boolean hasWon();
 	abstract public boolean doMove(IMove m);
 	abstract public void loadLevel(File f);
+
+	public void updateLevelStar(Achievement star) {
+		// TODO Auto-generated method stub
+		this.star = star;
+	}
 }

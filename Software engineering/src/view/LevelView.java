@@ -66,6 +66,7 @@ public class LevelView extends JFrame {
 	 * Create the frame.
 	 */
 	public LevelView() {
+		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
 		contentPane = new JPanel();
@@ -139,7 +140,7 @@ public class LevelView extends JFrame {
 			BlueStripe bs = new BlueStripe(1,1);
 			scrollPane.setColumnHeaderView(bs);
 		
-		contentPane.add(bs);
+	     contentPane.add(bs);
 		
 		
 		
