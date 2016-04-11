@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -36,7 +37,8 @@ public class JBullPenView extends JPanel {
 	
 	public void createJBullPenView(){
 
-		setBounds(bpX,bpY,180*2+15,180*3+20);
+		//setBounds(bpX,bpY,180*2+15,180*3+20);
+		setPreferredSize(new Dimension(180*2+15,180*4+20));
 
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		setLayout(null);

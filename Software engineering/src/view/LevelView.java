@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import model.Board;
@@ -66,7 +67,7 @@ public class LevelView extends JFrame {
 	 */
 	public LevelView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
+		setBounds(100, 100, 850, 850);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,7 +83,7 @@ public class LevelView extends JFrame {
 		}
 		
 		Board testBoard = new Board(s);
-		JBoardView board = new JBoardView(400,210, testBoard);
+		JBoardView board = new JBoardView(450,210, testBoard);
 		contentPane.add(board);
 
 		
@@ -116,7 +117,12 @@ public class LevelView extends JFrame {
 		Bullpen bp = new Bullpen(bullPenPieceArray);
 		
 		JBullPenView jbp = new JBullPenView(bp,20,140);
-		contentPane.add(jbp);
+		//contentPane.add(jbp);
+		
+		JScrollPane scrollPane = new JScrollPane();
+	
+		
+		
 		
 		//---
 		
@@ -143,6 +149,12 @@ public class LevelView extends JFrame {
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(668, Short.MAX_VALUE))
 		);
+		
+		contentPane.add(scrollPane);
+		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
+		scrollPane.setViewportView(jbp);
+		
 		contentPane.setLayout(gl_contentPane);
+		
 	}
 }
