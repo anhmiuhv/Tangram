@@ -37,5 +37,9 @@ public class ReleaseLevel extends Level{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Bullpen getBullpen(){
+		return p;
+	}
 
 }

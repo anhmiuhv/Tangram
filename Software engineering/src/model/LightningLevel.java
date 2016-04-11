@@ -32,5 +32,9 @@ public class LightningLevel extends Level{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Bullpen getBullpen(){
+		return p;
+	}
 
 }

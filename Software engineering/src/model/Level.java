@@ -30,6 +30,11 @@ public abstract class Level implements Serializable{
 		return 2;
 		}
 	}
+	
+	 public Bullpen getBullpen(){
+		 return p;
+	 }
+	
 	abstract public boolean hasWon();
 	abstract public boolean doMove(IMove m);
 	abstract public void loadLevel(File f);
