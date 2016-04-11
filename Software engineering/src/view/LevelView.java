@@ -23,6 +23,7 @@ import model.*;
 
 
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -33,6 +34,12 @@ import java.awt.event.ActionEvent;
 public class LevelView extends JFrame {
 
 	JLabel moves = new JLabel();
+	JLabel stayLabel = null;
+	int moveUsed = 0;
+	int totalMove = 0;
+	
+	JLabel timeLeft = new JLabel();
+	int tLeft = 0;
 	protected JPanel contentPane;
 	BlueStripe bs;
 	Level level;
@@ -113,12 +120,46 @@ public class LevelView extends JFrame {
 		
 		bs.add(btnNewButton);
 		
-		bs.add(moves);
-		moves.setText("Moves:0/0");
-		moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
-		moves.setForeground(Color.WHITE);
-		moves.setBounds(140,35, 210, 50);
-		this.add(moves);
+		if (level.getAchievement().getAchievement()==1){
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 20, 20);
+			stayLabel.setIcon(new ImageIcon("images//onestar.png"));
+			bs.add(stayLabel);
+		}
+		else if (level.getAchievement().getAchievement()==2){
+			 stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 40, 30);
+			stayLabel.setIcon(new ImageIcon("images//twostar.png"));
+			bs.add(stayLabel);
+		}
+		else  if (level.getAchievement().getAchievement()==3){
+			//System.out.println("s");
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 60, 20);
+			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
+			bs.add(stayLabel);
+		}
+		
+		if(level.getLevelType()=="puzzle"){
+			bs.add(moves);
+			moves.setText("Moves:0/0");
+			moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
+			moves.setForeground(Color.WHITE);
+			moves.setBounds(140,35, 210, 50);
+			
+		}else if(level.getLevelType()=="lightning"){
+			bs.add(timeLeft);
+			timeLeft.setText("Time left: " + tLeft);
+			timeLeft.setForeground(Color.white);
+			timeLeft.setFont(new Font("SansSerif", Font.PLAIN, 30));
+			timeLeft.setBounds(600,180, 210, 50);
+			
+		}else if(level.getLevelType()=="release"){
+			
+		}
 		
 		
 		

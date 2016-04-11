@@ -45,6 +45,10 @@ public abstract class Level implements Serializable{
 	 public Board getBoard(){
 		 return b;
 	 }
+	 
+	 public String getLevelType(){
+		 return LevelType;
+	 }
 
 	
 	abstract public boolean hasWon();
