@@ -9,11 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import model.Board;
-import model.Bullpen;
-import model.Piece;
-import model.PuzzleLevel;
-import model.Square;
+import model.*;
 
 
 import javax.swing.GroupLayout;
@@ -22,7 +18,6 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
@@ -129,7 +124,7 @@ public class LevelView extends JFrame {
 		
 		Bullpen bp = new Bullpen(bullPenPieceArray);*/
 		
-		//JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
+		JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
