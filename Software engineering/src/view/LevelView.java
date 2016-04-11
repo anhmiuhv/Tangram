@@ -2,9 +2,11 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -30,6 +32,7 @@ import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
 
+	JLabel moves = new JLabel();
 	protected JPanel contentPane;
 	BlueStripe bs;
 	Level level;
@@ -37,31 +40,7 @@ public class LevelView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	public static void LevelPlayStart() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	
 	
 	public void close(){
@@ -72,7 +51,10 @@ public class LevelView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelView() {
+	public LevelView(Level level) {
+		
+		
+		this.level = level;
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
@@ -83,21 +65,14 @@ public class LevelView extends JFrame {
 		
 		
 		//----- manully design board
-		/*Square[] s = new Square[144]; 
-		for (int i=0;i<12;i++){
-			for (int j=0;j<12;j++){
+
 		
-			s[i*12+j] = new Square(i,j);
-			}
-		}*/
-		
-		//Board testBoard = new Board(s);
 		JBoardView board = new JBoardView(450,210, level.getBoard());
 		contentPane.add(board);
 //----------- manully design bullpen 
 		
-		//Piece p = new Piece(0,0,s,s[0],1);
-		//p.setColor(new Color(0,0,0));
+/*		Piece p = new Piece(0,0,s,s[0],1);
+		p.setColor(new Color(0,0,0));*/
 		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
@@ -111,28 +86,6 @@ public class LevelView extends JFrame {
 		});
 		
 		
-		
-/*		Square bullPenSquare[] = new Square[6]; 
-		bullPenSquare[0] = new Square(1,1);
-		bullPenSquare[1] = new Square(0,1);
-		bullPenSquare[2] = new Square(0,2);
-		bullPenSquare[3] = new Square(0,3);
-		bullPenSquare[4] = new Square(0,4);
-		bullPenSquare[5] = new Square(0,5);		
-		
-		Piece bullPenPiece = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPiece.setColor(new Color(0,0,0));
-		
-		
-		Piece[] bullPenPieceArray = new Piece[6];
-		bullPenPieceArray[0] = bullPenPiece;
-		bullPenPieceArray[1] = bullPenPiece;
-		bullPenPieceArray[2] = bullPenPiece;
-		bullPenPieceArray[3] = bullPenPiece;
-		bullPenPieceArray[4] = bullPenPiece;
-		bullPenPieceArray[5] = bullPenPiece;
-		
-		Bullpen bp = new Bullpen(bullPenPieceArray);*/
 		
 		JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
 		
@@ -160,11 +113,28 @@ public class LevelView extends JFrame {
 		
 		bs.add(btnNewButton);
 		
+		bs.add(moves);
+		moves.setText("Moves:0/0");
+		moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
+		moves.setForeground(Color.WHITE);
+		moves.setBounds(140,35, 210, 50);
+		this.add(moves);
 		
 		
 		
 		
 		contentPane.setLayout(gl_contentPane);
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LevelView frame = new LevelView(null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 }
