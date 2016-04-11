@@ -20,8 +20,15 @@ public abstract class Level implements Serializable{
 	}
 	
 	public int levelTypeNum(){
-
+		if(LevelType.compareTo("puzzle")==0){
 		return 0;
+		}
+		else if(LevelType.compareTo("lightning")==0){
+		return 1;
+		}
+		else{
+		return 2;
+		}
 	}
 	abstract public boolean hasWon();
 	abstract public boolean doMove(IMove m);

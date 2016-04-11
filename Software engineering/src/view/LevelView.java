@@ -73,7 +73,7 @@ public class LevelView extends JFrame {
 		setContentPane(contentPane);
 		
 		
-		//-----
+		//----- manully design board
 		Square[] s = new Square[144]; 
 		for (int i=0;i<12;i++){
 			for (int j=0;j<12;j++){
@@ -85,7 +85,7 @@ public class LevelView extends JFrame {
 		Board testBoard = new Board(s);
 		JBoardView board = new JBoardView(450,210, testBoard);
 		contentPane.add(board);
-
+//----------- manully design bullpen 
 		
 		Piece p = new Piece(0,0,s,s[0],1);
 		p.setColor(new Color(0,0,0));
@@ -102,7 +102,7 @@ public class LevelView extends JFrame {
 		bullPenSquare[4] = new Square(0,4);
 		bullPenSquare[5] = new Square(0,5);		
 		
-		Piece bullPenPiece = new Piece(0,0,s,s[0],2);
+		Piece bullPenPiece = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 		bullPenPiece.setColor(new Color(0,0,0));
 		
 		

@@ -10,6 +10,13 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.Board;
+import model.Bullpen;
+import model.Level;
+import model.Piece;
+import model.Square;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
@@ -58,7 +65,7 @@ public class LevelSelection extends JFrame {
 			return "images\\lightningIcon.png";
 		}
 		else{
-			return "images\\realeaseIcon.png";
+			return "images\\releaseIcon.png";
 		}
 	}
 	
@@ -151,4 +158,82 @@ public class LevelSelection extends JFrame {
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	public Level[] createTestLevel(){
+		Level[] testLevels = new Level[15];
+		for (int i=0;i<15;i++){
+			Square bullPenSquare[] = new Square[6]; 
+			bullPenSquare[0] = new Square(1,1);
+			bullPenSquare[1] = new Square(0,1);
+			bullPenSquare[2] = new Square(0,2);
+			bullPenSquare[3] = new Square(0,3);
+			bullPenSquare[4] = new Square(0,4);
+			bullPenSquare[5] = new Square(0,5);		
+			
+			Piece bullPenPiece = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
+			bullPenPiece.setColor(new Color(0,0,0));
+			
+			
+			Piece[] bullPenPieceArray = new Piece[6];
+			bullPenPieceArray[0] = bullPenPiece;
+			bullPenPieceArray[1] = bullPenPiece;
+			bullPenPieceArray[2] = bullPenPiece;
+			bullPenPieceArray[3] = bullPenPiece;
+			bullPenPieceArray[4] = bullPenPiece;
+			bullPenPieceArray[5] = bullPenPiece;
+			
+			Bullpen bp = new Bullpen(bullPenPieceArray);
+			
+			
+			
+			Square[] s = new Square[144]; 
+			for (int i1=0;i1<12;i1++){
+				for (int j=0;j<12;j++){
+			
+				s[i1*12+j] = new Square(i1,j);
+				}
+			}
+			
+			Board testBoard = new Board(s);
+			
+			
+			//testLevels[0] = new Level(i,GetLevelTpye(i%3),testBoard,);
+		}
+		
+		return testLevels;
+		/*
+		public Level(int LevelNumber, String LevelType, Board b, Bullpen p){
+			this.LevelNumber = LevelNumber;
+			this.LevelType = LevelType;
+			this.b = b;
+			this.p = p;
+		}
+		*/
+	}
+	
+	
+	
+	
+	public String GetLevelTpye(int levelNum){
+		if(levelNum==0){
+			return "puzzle";
+		}
+		else if(levelNum==1){
+			return "lightning";
+		}
+		else {
+			return "release";
+		}
+	}
+	
+
 }
+
+
+
