@@ -18,6 +18,11 @@ public abstract class Level implements Serializable{
 		this.b = b;
 		this.p = p;
 	}
+	
+	public int levelTypeNum(){
+
+		return 0;
+	}
 	abstract public boolean hasWon();
 	abstract public boolean doMove(IMove m);
 	abstract public void loadLevel(File f);

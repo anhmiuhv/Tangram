@@ -50,6 +50,18 @@ public class LevelSelection extends JFrame {
 		});
 	}
 	
+	public String getLevelImage(int levelNum){
+		if (levelNum==0){
+			return "images\\puzzleIcon.png";
+		}
+		else if (levelNum==1){
+			return "images\\lightningIcon.png";
+		}
+		else{
+			return "images\\realeaseIcon.png";
+		}
+	}
+	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -59,7 +71,7 @@ public class LevelSelection extends JFrame {
 	 */
 	public LevelSelection() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
+		setBounds(0, 0, 800, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -69,16 +81,16 @@ public class LevelSelection extends JFrame {
 			gl_contentPane.setHorizontalGroup(
 				gl_contentPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(48)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 565, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(161, Short.MAX_VALUE))
+						.addGap(18)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 727, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(29, Short.MAX_VALUE))
 			);
 			gl_contentPane.setVerticalGroup(
 				gl_contentPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(73)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 467, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(211, Short.MAX_VALUE))
+						.addGap(78)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(85, Short.MAX_VALUE))
 			);
 		panel.setLayout(null);
 		
@@ -87,18 +99,14 @@ public class LevelSelection extends JFrame {
 		//list.add("hello");
 	//	String s = list.get(0);
 		
-		JLabel lblNewLabel = new JLabel("1");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(94, 145, 30, 30);
-		lblNewLabel.setIcon(new ImageIcon("images\\puzzleIcon.png"));
-		panel.add(lblNewLabel);
+
 		
 		
 		//----------------------  Jbutton parameter
 		contentPane.setLayout(gl_contentPane);
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
-		int levelNum =15;
+		int levelNum =20;
 		int NumOneRow = 5;
 		
 		
@@ -118,8 +126,16 @@ public class LevelSelection extends JFrame {
 				nextRow++;
 				nextColumn=0;
 			}
-			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn, 89+(40+levelButtonWidth)*nextRow, levelButtonLenth, levelButtonWidth);	
+			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(80+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
+			
+			JLabel lblNewLabel = new JLabel("1");
+			lblNewLabel.setBackground(Color.WHITE);
+			lblNewLabel.setBounds(94, 145, 30, 30);
+			lblNewLabel.setIcon(new ImageIcon(getLevelImage(1)));
+			panel.add(lblNewLabel);
+			
 			nextColumn++;
+			
 			
 			panel.add(Levels[i]);
 			Levels[i].addActionListener(new ActionListener() {
