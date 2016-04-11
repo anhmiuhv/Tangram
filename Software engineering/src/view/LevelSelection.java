@@ -14,7 +14,10 @@ import javax.swing.border.EmptyBorder;
 import model.Board;
 import model.Bullpen;
 import model.Level;
+import model.LightningLevel;
 import model.Piece;
+import model.PuzzleLevel;
+import model.ReleaseLevel;
 import model.Square;
 
 import javax.swing.GroupLayout;
@@ -106,19 +109,18 @@ public class LevelSelection extends JFrame {
 		//list.add("hello");
 	//	String s = list.get(0);
 		
-
 		
+		
+
+		Level[] testLevels = createTestLevel();
 		
 		//----------------------  Jbutton parameter
 		contentPane.setLayout(gl_contentPane);
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
-		int levelNum =20;
+		int levelNum = testLevels.length;
 		int NumOneRow = 5;
 		
-		
-
-
 		//---------------------- 
 		
 	
@@ -137,8 +139,8 @@ public class LevelSelection extends JFrame {
 			
 			JLabel lblNewLabel = new JLabel("1");
 			lblNewLabel.setBackground(Color.WHITE);
-			lblNewLabel.setBounds(94, 145, 30, 30);
-			lblNewLabel.setIcon(new ImageIcon(getLevelImage(1)));
+			lblNewLabel.setBounds(100+(40+levelButtonLenth)*nextColumn+15, (80+levelButtonWidth)*nextRow-80, 30, 30);
+			lblNewLabel.setIcon(new ImageIcon( getLevelImage( testLevels[i].getlevelTypeNum()) ));
 			panel.add(lblNewLabel);
 			
 			nextColumn++;
@@ -169,7 +171,7 @@ public class LevelSelection extends JFrame {
 		Level[] testLevels = new Level[15];
 		for (int i=0;i<15;i++){
 			Square bullPenSquare[] = new Square[6]; 
-			bullPenSquare[0] = new Square(1,1);
+			bullPenSquare[0] = new Square(1,3);
 			bullPenSquare[1] = new Square(0,1);
 			bullPenSquare[2] = new Square(0,2);
 			bullPenSquare[3] = new Square(0,3);
@@ -192,18 +194,25 @@ public class LevelSelection extends JFrame {
 			
 			
 			
-			Square[] s = new Square[144]; 
+			Square[] boardSquare = new Square[144]; 
 			for (int i1=0;i1<12;i1++){
 				for (int j=0;j<12;j++){
 			
-				s[i1*12+j] = new Square(i1,j);
+					boardSquare[i1*12+j] = new Square(i1,j);
 				}
 			}
 			
-			Board testBoard = new Board(s);
+			Board testBoard = new Board(boardSquare);
 			
-			
-			//testLevels[0] = new Level(i,GetLevelTpye(i%3),testBoard,);
+			if (i%3==0){
+			testLevels[i] = new PuzzleLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
+			}
+			else if (i%3==1){
+			testLevels[i] = new LightningLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
+			}
+			else {
+			testLevels[i] = new ReleaseLevel(i,GetLevelTpye(i%3),testBoard,bp);
+			}
 		}
 		
 		return testLevels;

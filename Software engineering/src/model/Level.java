@@ -12,6 +12,7 @@ public abstract class Level implements Serializable{
 	Bullpen p;
 	boolean locked;
 	Achievement star;
+	
 	public Level(int LevelNumber, String LevelType, Board b, Bullpen p){
 		this.LevelNumber = LevelNumber;
 		this.LevelType = LevelType;
@@ -19,7 +20,7 @@ public abstract class Level implements Serializable{
 		this.p = p;
 	}
 	
-	public int levelTypeNum(){
+	public int getlevelTypeNum(){
 		if(LevelType.compareTo("puzzle")==0){
 		return 0;
 		}
