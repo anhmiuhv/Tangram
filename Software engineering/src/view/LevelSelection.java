@@ -185,22 +185,25 @@ public class LevelSelection extends JFrame {
 		
 			
 			
-
+			final Level temp = testLevels[i];
 			
 			panel.add(Levels[i]);
+
 			Levels[i].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("dddd");
-				LevelView nw = new LevelView();
-				nw.LevelPlayStart();
+				LevelView nw = new LevelView(temp);
+				//LevelView nw = new LevelView(testLevels[0]);
+				
+
 				close();
 			
 			}
 		});
 		
 		}
-		
-		
+		System.out.println("dddd");
+
+	
 	}
 	
 	
