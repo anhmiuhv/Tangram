@@ -31,6 +31,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 import builder.model.KabasujiBuilder;
+import builder.model.LevelEditor;
 import model.Kabasuji;
 import view.LevelView;
 
@@ -39,40 +40,22 @@ public class levelBuilder extends JFrame {
 //	JButton[] levels;
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					levelBuilder frame = new levelBuilder();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	
-	
-
-	
+	KabasujiBuilder kb; 
 	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
 	
-	
-	
-	
 	/**
 	 * Create the frame.
 	 */
-	public levelBuilder() {
+	public levelBuilder(KabasujiBuilder kb) {
+		this.kb = kb;
+		init();
+	}
+	
+	private void init(){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 931, 617);
 		contentPane = new JPanel();
@@ -82,19 +65,16 @@ public class levelBuilder extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
-//============================================================
-		//jbutton
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
-		int levelNum = 31;
+		int levelNum = this.kb.getNumberOfLevel();
 		int NumOneRow = 8;
 		
 		JButton[] Levels = new JButton[levelNum];
 		int nextRow = 0;
 		int nextColumn = 0;
 		
-		for(int i = 0;((i<levelNum)&&(KabasujiBuilder.getNumberOfLevel()>i));i++){
+		for( int i = 0;(i < levelNum);i++){
 			Levels[i] = new JButton(String.valueOf(i+1));
 			if(i%NumOneRow == 0){
 				nextRow++;
@@ -104,14 +84,13 @@ public class levelBuilder extends JFrame {
 			nextColumn++;
 			
 			contentPane.add(Levels[i]);
-			
+			 
 			Levels[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					LevelEditorView lev = new LevelEditorView();
-					
-					lev.LevelEditorStart();
+					LevelEditorView lev = new LevelEditorView(kb);
+					lev.setlevelNum(0);
+					lev.setVisible(true);
 					close();
-					
 				}
 				
 			});
@@ -122,15 +101,6 @@ public class levelBuilder extends JFrame {
 		panel.setBounds(12, 13, 889, 544);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		JLabel lblKabasuji = new JLabel("KABASUJI");
 		lblKabasuji.setBounds(353, 26, 110, 50);
@@ -153,31 +123,15 @@ public class levelBuilder extends JFrame {
 		});
 		button_9.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				LevelEditorView lev2 = new LevelEditorView();
-				lev2.LevelEditorStart();
+				LevelEditorView lev2 = new LevelEditorView(kb);
+				lev2.setVisible(true);
 				close();
 			}
 		});
 		
-	}
-
-
-
-
-
-
-	public void levelBuilderStart() {
-		// TODO Auto-generated method stub
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					levelBuilder frame = new levelBuilder();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 		
 	}
+
+
+
 }

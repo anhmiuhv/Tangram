@@ -8,4 +8,8 @@ public class Builder {
 		this.builderName = builderName;
 		this.kBuilder = kBuilder;
 	}
+	
+	public KabasujiBuilder getKBuilder(){
+		return kBuilder;
+	}
 }
