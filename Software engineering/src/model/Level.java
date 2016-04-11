@@ -41,6 +41,11 @@ public abstract class Level implements Serializable{
 		 return p;
 	 }
 
+	 
+	 public Board getBoard(){
+		 return b;
+	 }
+
 	
 	abstract public boolean hasWon();
 	abstract public boolean doMove(IMove m);

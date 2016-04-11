@@ -9,7 +9,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+
+import model.Board;
+import model.Bullpen;
+import model.Piece;
+import model.Level;
+import model.Square;
+
 import model.*;
+
 
 
 import javax.swing.GroupLayout;
@@ -74,21 +82,21 @@ public class LevelView extends JFrame {
 		
 		
 		//----- manully design board
-		Square[] s = new Square[144]; 
+		/*Square[] s = new Square[144]; 
 		for (int i=0;i<12;i++){
 			for (int j=0;j<12;j++){
 		
 			s[i*12+j] = new Square(i,j);
 			}
-		}
+		}*/
 		
-		Board testBoard = new Board(s);
-		JBoardView board = new JBoardView(450,210, testBoard);
+		//Board testBoard = new Board(s);
+		JBoardView board = new JBoardView(450,210, level.getBoard());
 		contentPane.add(board);
 //----------- manully design bullpen 
 		
-		Piece p = new Piece(0,0,s,s[0],1);
-		p.setColor(new Color(0,0,0));
+		//Piece p = new Piece(0,0,s,s[0],1);
+		//p.setColor(new Color(0,0,0));
 		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
@@ -140,7 +148,7 @@ public class LevelView extends JFrame {
 		
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
-		//scrollPane.setViewportView(jbp);
+		scrollPane.setViewportView(jbp);
 		
 			
 			
