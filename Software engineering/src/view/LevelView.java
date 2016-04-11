@@ -123,7 +123,9 @@ public class LevelView extends JFrame {
 	
 		
 		
+		BlueStripe bs = new BlueStripe(1,1);
 		
+	
 		//---
 		
 		JButton btnNewButton = new JButton("Menu");
@@ -139,8 +141,8 @@ public class LevelView extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(65)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+					.addGap(0)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE,98, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(569, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -153,6 +155,12 @@ public class LevelView extends JFrame {
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
 		scrollPane.setViewportView(jbp);
+		
+		contentPane.add(bs);
+		
+		
+		
+		
 		
 		contentPane.setLayout(gl_contentPane);
 		
