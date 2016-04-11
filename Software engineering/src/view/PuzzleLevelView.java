@@ -7,14 +7,17 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 import model.Level;
+import model.PuzzleLevel;
 
 public class PuzzleLevelView extends LevelView {
 	
 	JLabel moves = new JLabel();
+
 	
 	public PuzzleLevelView(Level level){
+		System.out.println("ssss");
 		this.level = level;
-		
+
 		createPLView();
 	}
 	

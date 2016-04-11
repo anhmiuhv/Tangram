@@ -182,13 +182,17 @@ public class LevelSelection extends JFrame {
 			panel.add(lblNewLabel);
 			
 			nextColumn++;
+		
 			
+			
+
 			
 			panel.add(Levels[i]);
 			Levels[i].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//PuzzleLevelView nw = new PuzzleLevelView(testLevels[i]);
-				//nw.LevelPlayStart();
+				System.out.println("dddd");
+				LevelView nw = new LevelView();
+				nw.LevelPlayStart();
 				close();
 			
 			}
