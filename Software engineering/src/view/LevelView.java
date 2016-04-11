@@ -87,7 +87,7 @@ public class LevelView extends JFrame {
 		contentPane.add(board);
 
 		
-		Piece p = new Piece(0,0,s,s[0]);
+		Piece p = new Piece(0,0,s,s[0],1);
 		p.setColor(new Color(0,0,0));
 		
 	
@@ -102,7 +102,7 @@ public class LevelView extends JFrame {
 		bullPenSquare[4] = new Square(0,4);
 		bullPenSquare[5] = new Square(0,5);		
 		
-		Piece bullPenPiece = new Piece(0,0,s,s[0]);
+		Piece bullPenPiece = new Piece(0,0,s,s[0],2);
 		bullPenPiece.setColor(new Color(0,0,0));
 		
 		
