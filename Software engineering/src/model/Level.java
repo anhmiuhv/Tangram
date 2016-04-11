@@ -32,9 +32,15 @@ public abstract class Level implements Serializable{
 		}
 	}
 	
+
 	public Achievement getAchievement(){
 		return star;
 	}
+
+	 public Bullpen getBullpen(){
+		 return p;
+	 }
+
 	
 	abstract public boolean hasWon();
 	abstract public boolean doMove(IMove m);

@@ -35,4 +35,5 @@ public class PuzzleLevel extends Level {
 		
 	}
 
+
 }

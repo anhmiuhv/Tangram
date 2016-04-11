@@ -9,10 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import model.Board;
-import model.Bullpen;
-import model.Piece;
-import model.Square;
+import model.*;
 
 
 import javax.swing.GroupLayout;
@@ -25,7 +22,9 @@ import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
 
-	private JPanel contentPane;
+	protected JPanel contentPane;
+	BlueStripe bs;
+	Level level;
 
 	/**
 	 * Launch the application.
@@ -91,11 +90,20 @@ public class LevelView extends JFrame {
 		Piece p = new Piece(0,0,s,s[0],1);
 		p.setColor(new Color(0,0,0));
 		
-	
+		JButton btnNewButton = new JButton("Menu");
+		btnNewButton.setBounds(20, 20, 80, 80);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				LevelSelection nw = new LevelSelection();
+				nw.LevelSelectStart();
+				close();
+			}
+		});
 		
 		
 		
-		Square bullPenSquare[] = new Square[6]; 
+/*		Square bullPenSquare[] = new Square[6]; 
 		bullPenSquare[0] = new Square(1,1);
 		bullPenSquare[1] = new Square(0,1);
 		bullPenSquare[2] = new Square(0,2);
@@ -115,10 +123,9 @@ public class LevelView extends JFrame {
 		bullPenPieceArray[4] = bullPenPiece;
 		bullPenPieceArray[5] = bullPenPiece;
 		
-		Bullpen bp = new Bullpen(bullPenPieceArray);
+		Bullpen bp = new Bullpen(bullPenPieceArray);*/
 		
-		JBullPenView jbp = new JBullPenView(bp,20,140);
-		//contentPane.add(jbp);
+		JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -133,14 +140,16 @@ public class LevelView extends JFrame {
 		
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
-		scrollPane.setViewportView(jbp);
+		//scrollPane.setViewportView(jbp);
 		
 			
 			
-			BlueStripe bs = new BlueStripe(1,1);
-			scrollPane.setColumnHeaderView(bs);
+		bs = new BlueStripe(1,1);
+		scrollPane.setColumnHeaderView(bs);
 		
 	     contentPane.add(bs);
+		
+		bs.add(btnNewButton);
 		
 		
 		

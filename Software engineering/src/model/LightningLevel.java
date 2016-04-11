@@ -32,5 +32,5 @@ public class LightningLevel extends Level{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 }
