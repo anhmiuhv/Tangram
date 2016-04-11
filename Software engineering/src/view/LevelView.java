@@ -120,41 +120,24 @@ public class LevelView extends JFrame {
 		//contentPane.add(jbp);
 		
 		JScrollPane scrollPane = new JScrollPane();
-	
-		
-		
-		BlueStripe bs = new BlueStripe(1,1);
-		
-	
-		//---
-		
-		JButton btnNewButton = new JButton("Menu");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				LevelSelection nw = new LevelSelection();
-				nw.LevelSelectStart();
-				close();
-			}
-		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(0)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE,98, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(569, Short.MAX_VALUE))
+				.addGap(0, 824, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(668, Short.MAX_VALUE))
+				.addGap(0, 801, Short.MAX_VALUE)
 		);
 		
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
 		scrollPane.setViewportView(jbp);
+		
+			
+			
+			BlueStripe bs = new BlueStripe(1,1);
+			scrollPane.setColumnHeaderView(bs);
 		
 		contentPane.add(bs);
 		
