@@ -9,16 +9,21 @@ public class Piece {
 	boolean isMarked;
 	Square[] squares = new Square[6];
 	Square head;
+	int name;
 	
-	public Piece(int pRow, int pColumn,Square[] square, Square head){
+	public Piece(int pRow, int pColumn,Square[] square, Square head, int name){
 		this.pColumn = pColumn;
 		this.pRow = pRow;
 		this.squares = square;
 		this.head = head;
+		this.name = name;
 		}
 	
 	public Square[] getSquares(){
 		return squares;
+	}
+	public int getname(){
+		return name;
 	}
 	
 	public Color getColor(){

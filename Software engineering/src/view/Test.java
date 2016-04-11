@@ -1,16 +1,14 @@
 package view;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import model.Piece;
 import model.Square;
+
 
 public class Test extends JFrame{
 
@@ -26,9 +24,6 @@ public class Test extends JFrame{
 		 frame.setContentPane(contentPane);
 		 contentPane.setLayout(null);
 		 contentPane.setVisible(true);
-		 
-		 
-		 
 		 
 		Square s[] = new Square[6]; 
 		s[0] = new Square(1,1);
