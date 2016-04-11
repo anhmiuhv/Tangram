@@ -50,7 +50,6 @@ public class JBullPenView extends JPanel {
 			jp[i] = new JPieceView(pieces[i],(180+5)*BullPenXcount+5,((int)(i/2))*(180+5)+5);
 			BullPenXcount++;
 			add(jp[i]);
-			System.out.println((int)(i/2));
 		}
 		
 		//scrollPane.setViewportView(this);

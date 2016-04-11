@@ -73,7 +73,7 @@ public class LevelView extends JFrame {
 		setContentPane(contentPane);
 		
 		
-		//-----
+		//----- manully design board
 		Square[] s = new Square[144]; 
 		for (int i=0;i<12;i++){
 			for (int j=0;j<12;j++){
@@ -85,9 +85,9 @@ public class LevelView extends JFrame {
 		Board testBoard = new Board(s);
 		JBoardView board = new JBoardView(450,210, testBoard);
 		contentPane.add(board);
-
+//----------- manully design bullpen 
 		
-		Piece p = new Piece(0,0,s,s[0]);
+		Piece p = new Piece(0,0,s,s[0],1);
 		p.setColor(new Color(0,0,0));
 		
 	
@@ -102,7 +102,7 @@ public class LevelView extends JFrame {
 		bullPenSquare[4] = new Square(0,4);
 		bullPenSquare[5] = new Square(0,5);		
 		
-		Piece bullPenPiece = new Piece(0,0,s,s[0]);
+		Piece bullPenPiece = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 		bullPenPiece.setColor(new Color(0,0,0));
 		
 		
@@ -120,39 +120,30 @@ public class LevelView extends JFrame {
 		//contentPane.add(jbp);
 		
 		JScrollPane scrollPane = new JScrollPane();
-	
-		
-		
-		
-		//---
-		
-		JButton btnNewButton = new JButton("Menu");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				LevelSelection nw = new LevelSelection();
-				nw.LevelSelectStart();
-				close();
-			}
-		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(65)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(569, Short.MAX_VALUE))
+				.addGap(0, 824, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(668, Short.MAX_VALUE))
+				.addGap(0, 801, Short.MAX_VALUE)
 		);
 		
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
 		scrollPane.setViewportView(jbp);
+		
+			
+			
+			BlueStripe bs = new BlueStripe(1,1);
+			scrollPane.setColumnHeaderView(bs);
+		
+		contentPane.add(bs);
+		
+		
+		
+		
 		
 		contentPane.setLayout(gl_contentPane);
 		

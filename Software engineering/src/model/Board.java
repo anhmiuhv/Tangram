@@ -1,19 +1,28 @@
 package model;
 
 public class Board {
-	Piece[] piece;
-	Square[] square;
+	Square[] square = new Square[144];
 	boolean cover;
 	Hint hints;
+	Piece[] piece;
 	
 	public Board(Square[] square){
 		this.piece = piece;
 		this.square = square;
 	}
 	
-	public Square[] getSquare(){
-		return square;
+	public void coverBoard(Piece[] piece,Square[] square ){
+		//...
 	}
+	public Square[] getSquare(){
+		return square; //get the array square 
+	}
+	public void removepiece(Piece[] piece){
+		
+			
+		}
 	
-
-}
+	public void addpiece(Piece[] piece){
+		//...
+	}
+	}
