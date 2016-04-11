@@ -4,7 +4,9 @@ public class Board {
 	Square[] square = new Square[144];
 	boolean cover;
 	Hint hints;
-	public Board(Piece[] piece, Square[] square){
+	Piece[] piece;
+	
+	public Board(Square[] square){
 		this.piece = piece;
 		this.square = square;
 	}
@@ -19,9 +21,8 @@ public class Board {
 		
 			
 		}
-	}
+	
 	public void addpiece(Piece[] piece){
 		//...
 	}
-
-}
+	}

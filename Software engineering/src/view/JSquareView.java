@@ -28,7 +28,6 @@ public class JSquareView extends JPanel {
 	//lblNewLabel.setBounds(184, 49, 46, 14);
 	//panel.add(lblNewLabel);
 	 public void paintSquare() {
-
 		 setBackground(cl);
 		// setText("New label");
 		// setIcon(new ImageIcon("images\\puzzleIcon.png"));
