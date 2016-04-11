@@ -10,7 +10,7 @@ public class BuilderApplication {
 	
 	public BuilderApplication(Builder builder){
 		this.builder = builder;
-		this.lvlBuilder = new levelBuilder();
+		this.lvlBuilder = new levelBuilder(builder.getKBuilder());
 		init();
 	}
 	
@@ -22,7 +22,7 @@ public class BuilderApplication {
 		    splash.showSplashAndExit();
 		   // LevelView levelSec = new LevelView();
 //			nw.LevelSelectStart();
-			lvlBuilder.levelBuilderStart();
+			lvlBuilder.setVisible(true);
 		  }
 	 
 }

@@ -8,4 +8,12 @@ public class Square {
 		this.sColumn = sColumn;
 		this.sRow = sRow;
 	}
+	
+	public int getRow() {
+		return sRow;
+	}
+	
+	public int getColumn(){
+		return sColumn;
+	}
 }
