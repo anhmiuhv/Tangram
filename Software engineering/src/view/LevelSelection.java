@@ -154,7 +154,7 @@ public class LevelSelection extends JFrame {
 			else if (testLevels[i].getAchievement().getAchievement()==2){
 				 stayLabel = new JLabel("star");
 				stayLabel.setBackground(Color.WHITE);
-				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 40, 30);
+				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 40, 20);
 				stayLabel.setIcon(new ImageIcon("images//twostar.png"));
 				panel.add(stayLabel);
 			}
