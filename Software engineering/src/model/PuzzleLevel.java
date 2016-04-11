@@ -34,9 +34,6 @@ public class PuzzleLevel extends Level {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public Bullpen getBullpen(){
-		return p;
-	}
+
 
 }
