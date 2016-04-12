@@ -14,7 +14,7 @@ public class Kabasuji {
 	
 	  public static void main(String[] args) {
 		    // Throw a nice little title page up on the screen first
-		    SplashScreen splash = new SplashScreen(5000);
+		    SplashScreen splash = new SplashScreen(2000);
 		    // Normally, we'd call splash.showSplash() and get on with the program.
 		    // But, since this is only a test...
 		    splash.showSplashAndExit();
@@ -40,6 +40,30 @@ public class Kabasuji {
 	
 	  public static Level[] createTestLevel(){
 			Level[] testLevels = new Level[15];
+			int[] squareNum = new int[144];
+			Color[] cl = new Color[144];
+			
+			for (int i=0;i<144;i++){
+				squareNum[i] =0;
+				cl[i]=null;
+			}
+			int count18=0;
+			for (int i=1;i<4;i++){
+				for (int j=1;j<7;j++){
+				squareNum[count18] =j;
+				if (i==1){
+				cl[count18]=Color.RED;
+				}
+				else if (i==2){
+					cl[count18]=Color.YELLOW;
+					}
+				else if (i==3){
+					cl[count18]=Color.GREEN;
+					}
+				count18=count18+5;
+				}
+			}
+			
 			for (int i=0;i<15;i++){
 				Square bullPenSquare[] = new Square[6]; 
 				bullPenSquare[0] = new Square(1,3);
@@ -84,7 +108,7 @@ public class Kabasuji {
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 				}
 				else {
-				testLevels[i] = new ReleaseLevel(i,GetLevelTpye(i%3),testBoard,bp);
+				testLevels[i] = new ReleaseLevel(i,GetLevelTpye(i%3),testBoard,bp,squareNum,cl);
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 				}
 			}

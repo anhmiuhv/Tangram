@@ -19,8 +19,10 @@ public class ReleaseLevel extends Level{
 	Color[] cl;
 	
 	
-	public ReleaseLevel(int LevelNumber, String LevelType, Board b, Bullpen p) {
+	public ReleaseLevel(int LevelNumber, String LevelType, Board b, Bullpen p,int[] squareNum,Color[] cl) {
 		super(LevelNumber, LevelType, b, p);
+		this.squareNum=squareNum;
+		this.cl =cl;
 		// TODO Auto-generated constructor stub
 	}
 

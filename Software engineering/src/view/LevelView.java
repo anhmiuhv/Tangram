@@ -167,6 +167,7 @@ public class LevelView extends JFrame {
 			
 		}else if(level.getLevelType().equals("release")){
 			
+		
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
 			for(int i = 0;i<144;i++){
@@ -176,12 +177,13 @@ public class LevelView extends JFrame {
 					ll.setFont(new Font("SansSerif", Font.PLAIN, 28));
 					int x = level.getBoard().getSquare()[i].getColumn();
 					int y = level.getBoard().getSquare()[i].getRow();
-					ll.setBounds(x, y, 30, 30);
+					ll.setBounds(x*30+6, y*30+2, 30, 30);
 					board.add(ll);
+					
 				}
 			}
 		}
-		
+		board.createSquareView();
 
 
 

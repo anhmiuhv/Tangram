@@ -11,6 +11,7 @@ public class JBoardView extends JPanel {
 	Board board ;
 	int bX;
 	int bY;
+	JSquareView js;
 	
 	public JBoardView(int bX, int bY, Board board){
 		this.board = board;
@@ -28,17 +29,16 @@ public class JBoardView extends JPanel {
 		setLayout(null);
 		
 		//setSize(500, 500);
-		
-		JPanel panel = new JPanel();
-
-		 for (int i=0; i< board.getSquare().length;i++){
-				JSquareView js = new JSquareView(board.getSquare()[i],Color.WHITE);
-				add(js);
-		 }
-				//JPanel js = new JPanel();
-				//js.setBounds(63, 35, 161, 76);
-				//piecePanel.add(piecePanel);
-		  //  }
+	
 	
 	}
+	public void createSquareView(){
+
+		 for (int i=0; i< board.getSquare().length;i++){
+				js = new JSquareView(board.getSquare()[i],Color.WHITE);
+				add(js);
+		 }
+		 setLayout(null);
+	}
+	
 }

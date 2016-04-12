@@ -34,6 +34,17 @@ public class JSquareView extends JPanel {
 		 setBounds(square.getColumn()*30,square.getRow()*30,30,30);
 		 setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 	}
-			
+	 
+	 public void paintColorNum(int num,Color c) {
+		 JLabel lblNewLabel = new JLabel(""+num);
+
+		 lblNewLabel.setForeground(c);
+		 lblNewLabel.setBounds(0, 0, 30, 30);
+		 add(lblNewLabel);
+		// setIcon(new ImageIcon("images\\puzzleIcon.png"));
+		 //setBounds(square.getColumn()*30,square.getRow()*30,30,30);
+		 //setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+	}
+	 
 
 }
