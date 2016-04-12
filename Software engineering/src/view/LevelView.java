@@ -44,10 +44,10 @@ public class LevelView extends JFrame {
 	BlueStripe bs;
 	Level level;
 	
-	JButton horiFlip;
-	JButton vertiFlip;
-	JButton lRotate;
-	JButton rRotate;
+	JButton horiFlip = new JButton();
+	JButton vertiFlip = new JButton();
+	JButton lRotate = new JButton();
+	JButton rRotate = new JButton();
 
 	/**
 	 * Launch the application.
@@ -137,10 +137,10 @@ public class LevelView extends JFrame {
 		lRotate.setText("Rotate Left");
 		rRotate.setText("Rotate Right");
 		
-		horiFlip.setBounds(20, 690, 80, 40);
-		vertiFlip.setBounds(110, 690, 80, 40);
-		lRotate.setBounds(20, 740, 80, 40);
-		rRotate.setBounds(110, 740, 80, 40);
+		horiFlip.setBounds(90+180*2, 600, 80, 40);
+		vertiFlip.setBounds(180+180*2, 600, 80, 40);
+		lRotate.setBounds(90+180*2, 650, 80, 40);
+		rRotate.setBounds(180+180*2, 650, 80, 40);
 
 		
 		if (level.getAchievement().getAchievement()==1){
