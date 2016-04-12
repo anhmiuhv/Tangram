@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-
+import controller.LoadLevel;
 import model.Board;
 import model.Bullpen;
 import model.Piece;
@@ -85,8 +85,9 @@ public class LevelView extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				LevelSelection nw = new LevelSelection();
-				nw.LevelSelectStart();
+				//LevelSelection nw = new LevelSelection();
+				LoadLevel testlevel = new LoadLevel();
+				Kabasuji newgame = new Kabasuji(LoadLevel.createTestLevel());
 				close();
 			}
 		});

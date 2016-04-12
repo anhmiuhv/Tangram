@@ -32,35 +32,13 @@ import java.awt.Color;
 public class LevelSelection extends JFrame {
 
 	private JPanel contentPane;
+	Level[] testLevels;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelSelection frame = new LevelSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	
-	public static void LevelSelectStart() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelSelection frame = new LevelSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public String getLevelImage(int levelNum){
 		if (levelNum==0){
@@ -84,7 +62,8 @@ public class LevelSelection extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelSelection() {
+	public LevelSelection(Level[] testLevels) {
+		this. testLevels =testLevels;
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 800, 800);
@@ -118,7 +97,7 @@ public class LevelSelection extends JFrame {
 		
 		
 
-		Level[] testLevels = createTestLevel();
+		//Level[] testLevels = createTestLevel();
 		
 		//----------------------  Jbutton parameter
 		contentPane.setLayout(gl_contentPane);
@@ -193,16 +172,14 @@ public class LevelSelection extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				LevelView nw = new LevelView(temp);
 				//LevelView nw = new LevelView(testLevels[0]);
-				
-
+				//setVisible(false);
 				close();
-			
 			}
 		});
 		
 		}
 		System.out.println("dddd");
-
+		setVisible(true);
 	
 	}
 	
