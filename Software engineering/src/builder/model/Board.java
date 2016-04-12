@@ -1,4 +1,6 @@
 package builder.model;
+import model.*;
+
 
 public class Board {
 	Square[] squares;

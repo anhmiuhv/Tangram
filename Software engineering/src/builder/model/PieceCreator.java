@@ -1,4 +1,5 @@
 package builder.model;
+import model.*;
 
 public class PieceCreator {
 	Square base[] = new Square[36];

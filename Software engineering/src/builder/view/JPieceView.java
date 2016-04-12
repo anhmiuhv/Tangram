@@ -1,4 +1,4 @@
-package view;
+package builder.view;
 
 import java.awt.Color;
 import java.awt.Transparency;
@@ -35,7 +35,7 @@ public class JPieceView extends JPanel{
 		setLayout(null);		
 		
 		 for (int i=0; i<6;i++){
-				JSquareView js = new JSquareView(piece.getSquares()[i], Color.YELLOW);
+				JSquareView js = new JSquareView(piece.getSquares()[i],Color.YELLOW);
 				add(js);
 		 }
 
