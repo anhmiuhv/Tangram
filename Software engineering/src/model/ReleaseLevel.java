@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.io.File;
 
 import move.*;
@@ -13,6 +14,9 @@ public class ReleaseLevel extends Level{
 	int redCounter;
 	int yellowCounter;
 	int blueCounter;
+	
+	int[] squareNum;
+	Color[] cl;
 	
 	
 	public ReleaseLevel(int LevelNumber, String LevelType, Board b, Bullpen p) {
@@ -36,6 +40,14 @@ public class ReleaseLevel extends Level{
 	public void loadLevel(File f) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int[] getSquareNum(){
+		return squareNum;
+	}
+	
+	public Color[] getCl(){
+		return cl;
 	}
 
 }

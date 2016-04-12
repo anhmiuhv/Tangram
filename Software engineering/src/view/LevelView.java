@@ -112,8 +112,8 @@ public class LevelView extends JFrame {
 		scrollPane.setViewportView(jbp);
 
 
-
-		bs = new BlueStripe(1,1);
+		
+		bs = new BlueStripe(1,level.getLevelNumber()+1);
 		scrollPane.setColumnHeaderView(bs);
 
 		contentPane.add(bs);
@@ -129,7 +129,7 @@ public class LevelView extends JFrame {
 			bs.add(stayLabel);
 		}
 		else if (level.getAchievement().getAchievement()==2){
-			 stayLabel = new JLabel("star");
+			stayLabel = new JLabel("star");
 			stayLabel.setBackground(Color.WHITE);
 			stayLabel.setBounds(700,35, 40, 30);
 			stayLabel.setIcon(new ImageIcon("images//twostar.png"));
@@ -144,32 +144,44 @@ public class LevelView extends JFrame {
 			bs.add(stayLabel);
 		}
 		
-		if(level.getLevelType()=="puzzle"){
+		if(level.getLevelType().equals("puzzle")){
+			
+			moveUsed = ((PuzzleLevel) level).getUsedMove();
+			totalMove = ((PuzzleLevel) level).getAllowedMove();
+			
 			bs.add(moves);
-			moves.setText("Moves:0/0");
+			moves.setText("Moves: " + moveUsed + "/" + totalMove);
 			moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
 			moves.setForeground(Color.WHITE);
 			moves.setBounds(140,35, 210, 50);
 			
-		}else if(level.getLevelType()=="lightning"){
+			
+		}else if(level.getLevelType().equals("lightning")){
+			
 			bs.add(timeLeft);
 			timeLeft.setText("Time left: " + tLeft);
 			timeLeft.setForeground(Color.white);
 			timeLeft.setFont(new Font("SansSerif", Font.PLAIN, 30));
-			timeLeft.setBounds(600,180, 210, 50);
+			timeLeft.setBounds(140,35, 210, 50);
 			
-		}else if(level.getLevelType()=="release"){
+		}else if(level.getLevelType().equals("release")){
 			
+			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
+			Color[] cl = ((ReleaseLevel)level).getCl();
+			for(int i = 0;i<144;i++){
+				if(squareNum[i] != 0){
+					JLabel ll = new JLabel("" + squareNum[i]);
+					ll.setForeground(cl[i]);
+					ll.setFont(new Font("SansSerif", Font.PLAIN, 28));
+					int x = level.getBoard().getSquare()[i].getColumn();
+					int y = level.getBoard().getSquare()[i].getRow();
+					ll.setBounds(x, y, 30, 30);
+					board.add(ll);
+				}
+			}
 		}
 		
-	
 
-		bs.add(moves);
-		moves.setText("Moves:0/0");
-		moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
-		moves.setForeground(Color.WHITE);
-		moves.setBounds(140,35, 210, 50);
-		this.add(moves);
 
 
 		contentPane.setLayout(gl_contentPane);
