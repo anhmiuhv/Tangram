@@ -49,6 +49,10 @@ public abstract class Level implements Serializable{
 	 public String getLevelType(){
 		 return LevelType;
 	 }
+	 
+	 public int getLevelNumber(){
+		 return LevelNumber;
+	 }
 
 	
 	abstract public boolean hasWon();

@@ -10,6 +10,7 @@ public class LightningLevel extends Level{
 	 */
 	private static final long serialVersionUID = -5041499917978722960L;
 	int allowedTime;
+	
 	public LightningLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedTime) {
 		super(LevelNumber, LevelType, b, p);
 		this.allowedTime = allowedTime;

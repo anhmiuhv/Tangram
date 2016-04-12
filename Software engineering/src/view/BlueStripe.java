@@ -19,6 +19,7 @@ public class BlueStripe extends JPanel {
 	public BlueStripe(int type, int lvnum) {
 			this.type = type;
 			this.lvnum = lvnum;
+			
 			createBsView();
 	}
 	public void createBsView(){

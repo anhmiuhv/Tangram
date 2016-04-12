@@ -9,7 +9,7 @@ public class PuzzleLevel extends Level {
 	 * Generated serialized
 	 */
 	private static final long serialVersionUID = -4071396056939768290L;
-	int allowedMove;
+	int allowedMove = 0;
 	int usedMove = 0;
 	
 	public PuzzleLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedMove) {
@@ -34,6 +34,15 @@ public class PuzzleLevel extends Level {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getAllowedMove(){
+		return allowedMove;
+	}
+	
+	public int getUsedMove(){
+		return usedMove;
+	}
+
 
 
 }
