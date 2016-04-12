@@ -3,6 +3,7 @@ package model;
 import java.awt.Color;
 import java.util.Random;
 
+
 import view.Application;
 import view.LevelSelection;
 import view.SplashScreen;
@@ -29,6 +30,14 @@ public class Kabasuji {
 	}
 	  
 
+	
+	
+	private void initializeControllers() {
+		
+
+
+	}
+	
 	  public static Level[] createTestLevel(){
 			Level[] testLevels = new Level[15];
 			for (int i=0;i<15;i++){

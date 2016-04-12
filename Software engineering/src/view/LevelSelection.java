@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.LevelSelectController;
 import model.Achievement;
 import model.Board;
 import model.Bullpen;
@@ -170,10 +171,8 @@ public class LevelSelection extends JFrame {
 
 			Levels[i].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LevelView nw = new LevelView(temp);
-				//LevelView nw = new LevelView(testLevels[0]);
-				//setVisible(false);
-				close();
+		
+				new LevelSelectController(LevelSelection.this,temp).actionPerformed();
 			}
 		});
 		
