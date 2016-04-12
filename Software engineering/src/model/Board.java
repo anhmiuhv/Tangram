@@ -1,13 +1,13 @@
 package model;
 
 public class Board {
-	Square[] square = new Square[144];
+	Square[] square ;
 	boolean cover;
 	Hint hints;
 	Piece[] piece;
 	
 	public Board(Square[] square){
-		this.piece = piece;
+
 		this.square = square;
 	}
 	

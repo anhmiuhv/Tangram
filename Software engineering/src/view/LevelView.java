@@ -2,13 +2,14 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-
 
 import model.Board;
 import model.Bullpen;
@@ -21,6 +22,7 @@ import model.*;
 
 
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -30,140 +32,196 @@ import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
 
+	LevelSelection levelselection;
+	JLabel moves = new JLabel();
+	JLabel stayLabel = null;
+	int moveUsed = 0;
+	int totalMove = 0;
+	
+	JLabel timeLeft = new JLabel();
+	int tLeft = 0;
 	protected JPanel contentPane;
 	BlueStripe bs;
 	Level level;
+	
+	JButton horiFlip = new JButton();
+	JButton vertiFlip = new JButton();
+	JButton lRotate = new JButton();
+	JButton rRotate = new JButton();
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	public static void LevelPlayStart() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	
+
+
+
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
-	public LevelView() {
+	public LevelView(Level level, final LevelSelection levelselection) {
+		this.levelselection= levelselection;
+
+		this.level = level;
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
+		this.setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		
+
+
 		//----- manully design board
-		/*Square[] s = new Square[144]; 
-		for (int i=0;i<12;i++){
-			for (int j=0;j<12;j++){
-		
-			s[i*12+j] = new Square(i,j);
-			}
-		}*/
-		
-		//Board testBoard = new Board(s);
+
 		JBoardView board = new JBoardView(450,210, level.getBoard());
+
 		contentPane.add(board);
-//----------- manully design bullpen 
-		
-		//Piece p = new Piece(0,0,s,s[0],1);
-		//p.setColor(new Color(0,0,0));
-		
+		//----------- manully design bullpen 
+
+
+
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				LevelSelection nw = new LevelSelection();
-				nw.LevelSelectStart();
+				levelselection.setVisible(true);
+				//LevelSelection nw = new LevelSelection();
+				//LoadLevel testlevel = new LoadLevel();
+				//Kabasuji newgame = new Kabasuji(LoadLevel.createTestLevel());
 				close();
 			}
 		});
-		
-		
-		
-/*		Square bullPenSquare[] = new Square[6]; 
-		bullPenSquare[0] = new Square(1,1);
-		bullPenSquare[1] = new Square(0,1);
-		bullPenSquare[2] = new Square(0,2);
-		bullPenSquare[3] = new Square(0,3);
-		bullPenSquare[4] = new Square(0,4);
-		bullPenSquare[5] = new Square(0,5);		
-		
-		Piece bullPenPiece = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPiece.setColor(new Color(0,0,0));
-		
-		
-		Piece[] bullPenPieceArray = new Piece[6];
-		bullPenPieceArray[0] = bullPenPiece;
-		bullPenPieceArray[1] = bullPenPiece;
-		bullPenPieceArray[2] = bullPenPiece;
-		bullPenPieceArray[3] = bullPenPiece;
-		bullPenPieceArray[4] = bullPenPiece;
-		bullPenPieceArray[5] = bullPenPiece;
-		
-		Bullpen bp = new Bullpen(bullPenPieceArray);*/
-		
+
+
+
+
 		JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 824, Short.MAX_VALUE)
-		);
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 801, Short.MAX_VALUE)
-		);
-		
+				);
+
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
 		scrollPane.setViewportView(jbp);
+
+
 		
-			
-			
-		bs = new BlueStripe(1,1);
+		bs = new BlueStripe(1,level.getLevelNumber()+1);
 		scrollPane.setColumnHeaderView(bs);
-		
-	     contentPane.add(bs);
-		
+
+		contentPane.add(bs);
+
 		bs.add(btnNewButton);
 		
 		
+		contentPane.add(horiFlip);
+		contentPane.add(vertiFlip);
+		contentPane.add(lRotate);
+		contentPane.add(rRotate);
 		
+		horiFlip.setText("Horizontal Filp");
+		vertiFlip.setText("Vertical Filp");
+		lRotate.setText("Rotate Left");
+		rRotate.setText("Rotate Right");
 		
+		horiFlip.setBounds(90+180*2, 600, 80, 40);
+		vertiFlip.setBounds(180+180*2, 600, 80, 40);
+		lRotate.setBounds(90+180*2, 650, 80, 40);
+		rRotate.setBounds(180+180*2, 650, 80, 40);
+
 		
+		if (level.getAchievement().getAchievement()==1){
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 20, 20);
+			stayLabel.setIcon(new ImageIcon("images//onestar.png"));
+			bs.add(stayLabel);
+		}
+		else if (level.getAchievement().getAchievement()==2){
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 40, 30);
+			stayLabel.setIcon(new ImageIcon("images//twostar.png"));
+			bs.add(stayLabel);
+		}
+		else  if (level.getAchievement().getAchievement()==3){
+			//System.out.println("s");
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 60, 20);
+			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
+			bs.add(stayLabel);
+		}
+		
+		if(level.getLevelType().equals("puzzle")){
+			
+			moveUsed = ((PuzzleLevel) level).getUsedMove();
+			totalMove = ((PuzzleLevel) level).getAllowedMove();
+			
+			bs.add(moves);
+			moves.setText("Moves: " + moveUsed + "/" + totalMove);
+			moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
+			moves.setForeground(Color.WHITE);
+			moves.setBounds(140,35, 210, 50);
+			
+			
+		}else if(level.getLevelType().equals("lightning")){
+			
+			bs.add(timeLeft);
+			timeLeft.setText("Time left: " + tLeft);
+			timeLeft.setForeground(Color.white);
+			timeLeft.setFont(new Font("SansSerif", Font.PLAIN, 30));
+			timeLeft.setBounds(140,35, 210, 50);
+			
+		}else if(level.getLevelType().equals("release")){
+			
+		
+			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
+			Color[] cl = ((ReleaseLevel)level).getCl();
+			for(int i = 0;i<144;i++){
+				if(squareNum[i] != 0){
+					JLabel ll = new JLabel("" + squareNum[i]);
+					ll.setForeground(cl[i]);
+					ll.setFont(new Font("SansSerif", Font.PLAIN, 28));
+					int x = level.getBoard().getSquare()[i].getColumn();
+					int y = level.getBoard().getSquare()[i].getRow();
+					ll.setBounds(x*30+6, y*30+2, 30, 30);
+					board.add(ll);
+					
+				}
+			}
+		}
+		board.createSquareView();
+
+
+
 		contentPane.setLayout(gl_contentPane);
-		
+		setVisible(true);
+
+		/*
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LevelView frame = new LevelView(null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		 */
 	}
 }
