@@ -147,7 +147,6 @@ public class LevelSelection extends JFrame {
 				panel.add(stayLabel);
 			}
 			else  if (testLevels[i].getAchievement().getAchievement()==0){
-				System.out.println("s");
 			}
 			else{
 				Levels[i].setIcon(new ImageIcon("images//lockicon.png"));
@@ -177,7 +176,7 @@ public class LevelSelection extends JFrame {
 		});
 		
 		}
-		System.out.println("dddd");
+
 		setVisible(true);
 	
 	}

@@ -3,7 +3,7 @@ package model;
 public class Board {
 	Square[] square ;
 	boolean cover;
-	Hint hints;
+	Hint hints = null;
 	Piece[] piece;
 	
 	public Board(Square[] square){
@@ -25,6 +25,12 @@ public class Board {
 		
 			
 		}
+	
+	
+	public void sethint(Hint hints){
+		this.hints = hints;
+		
+	}
 	
 	public void addpiece(Piece[] piece){
 		//...

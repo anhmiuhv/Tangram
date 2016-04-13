@@ -15,20 +15,21 @@ public class HintView {
 	Board b;
 	Hint h;
 	
-	public HintView(JBoardView bv, Board b){
+	public HintView (JBoardView bv, Board b){
 		this.bv = bv;
 		this.b = b;
 		
 		h = b.getHint();
 		numofSquares = h.getHintSquares().length;
-				
+
+		createHintView();
 	}
 	
 	public void createHintView(){
-		
+			sv = new JPanel[numofSquares];
 		for(int i=0;i<numofSquares;i++){
 			sv[i] = new JPanel();
-			//setBackground(cl);
+			sv[i].setBackground(Color.white);
 
 			sv[i].setBounds(h.getHintSquares()[i].getColumn()*30,h.getHintSquares()[i].getRow()*30,30,30);
 			sv[i].setBorder(BorderFactory.createLineBorder(Color.BLUE, 4));

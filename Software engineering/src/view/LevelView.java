@@ -75,6 +75,11 @@ public class LevelView extends JFrame {
 		JBoardView board = new JBoardView(450,210, level.getBoard());
 
 		contentPane.add(board);
+		
+		HintView hv = new HintView(board,level.getBoard());
+		
+		
+		
 		//----------- manully design bullpen 
 
 		JButton btnNewButton = new JButton("Menu");
@@ -195,10 +200,12 @@ public class LevelView extends JFrame {
 					ll.setBounds(x*30+6, y*30+2, 30, 30);
 
 					board.add(ll);
+		
 					
 				}
 			}
 		}
+
 		board.createSquareView();
 
 
