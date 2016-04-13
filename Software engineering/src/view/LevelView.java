@@ -200,10 +200,12 @@ public class LevelView extends JFrame {
 					int y = level.getBoard().getSquare()[i].getRow();
 					ll.setBounds(x*30+6, y*30+2, 30, 30);
 					board.add(ll);
+		
 					
 				}
 			}
 		}
+
 		board.createSquareView();
 
 

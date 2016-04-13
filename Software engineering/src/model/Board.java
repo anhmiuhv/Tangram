@@ -22,6 +22,12 @@ public class Board {
 			
 		}
 	
+	
+	public void sethint(Hint hints){
+		this.hints = hints;
+		
+	}
+	
 	public void addpiece(Piece[] piece){
 		//...
 	}

@@ -97,7 +97,18 @@ public class Kabasuji {
 					}
 				}
 				
+				Square hitSquares[] = new Square[6]; 
+				hitSquares[0] = new Square(6,4);
+				hitSquares[1] = new Square(5,2);
+				hitSquares[2] = new Square(5,3);
+				hitSquares[3] = new Square(5,4);
+				hitSquares[4] = new Square(5,5);
+				hitSquares[5] = new Square(5,6);	
+				
+				Hint hints = new Hint(hitSquares);
+			
 				Board testBoard = new Board(boardSquare);
+				testBoard.sethint(hints);
 				
 				if (i%3==0){
 				testLevels[i] = new PuzzleLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
@@ -111,6 +122,7 @@ public class Kabasuji {
 				testLevels[i] = new ReleaseLevel(i,GetLevelTpye(i%3),testBoard,bp,squareNum,cl);
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 				}
+		
 			}
 			testLevels[13].updateLevelStar(new Achievement(0));
 			testLevels[14].updateLevelStar(new Achievement(-1));
