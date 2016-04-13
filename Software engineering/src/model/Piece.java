@@ -31,7 +31,7 @@ public class Piece {
 	}
 	
 	public void setColor(Color c){
-		cl = c;
+		this.cl = c;
 	}
 	
 	public int getpRow(){

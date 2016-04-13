@@ -30,7 +30,8 @@ public class JBoardView extends JPanel {
 		setLayout(null);
 		
 		//setSize(500, 500);
-	
+		showPieces();
+		
 	
 	}
 	public void createSquareView(){
@@ -40,6 +41,16 @@ public class JBoardView extends JPanel {
 				add(js);
 		 }
 		 setLayout(null);
+	}
+
+
+	public void showPieces(){
+		if  (board.getpiece()!=null){
+			for(int i=0;i<board.getpiece().length;i++){
+				showPiece(board.getpiece()[i]);
+			}
+		}
+		
 	}
 	
 	public void showPiece(Piece p){

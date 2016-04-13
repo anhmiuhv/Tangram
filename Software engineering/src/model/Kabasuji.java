@@ -79,19 +79,20 @@ public class Kabasuji {
 				
 				
 				Piece[] bullPenPieceArray = new Piece[6];
-				bullPenPieceArray[0] = bullPenPiece;
+				bullPenPieceArray[0] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 				bullPenPieceArray[0].setColor(Color.BLUE);
-				bullPenPieceArray[1] = bullPenPiece;
+				bullPenPieceArray[1] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 				bullPenPieceArray[1].setColor(Color.GREEN);
-				bullPenPieceArray[2] = bullPenPiece;
+				bullPenPieceArray[2] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 				bullPenPieceArray[2].setColor(Color.YELLOW);
-				bullPenPieceArray[3] = bullPenPiece;
+				bullPenPieceArray[3] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 				bullPenPieceArray[3].setColor(Color.ORANGE);
-				bullPenPieceArray[4] = bullPenPiece;
+				bullPenPieceArray[4] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 				bullPenPieceArray[4].setColor(Color.RED);
-				bullPenPieceArray[5] = bullPenPiece;
+				bullPenPieceArray[5] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
 				bullPenPieceArray[5].setColor(Color.PINK);
 				
+
 				Bullpen bp = new Bullpen(bullPenPieceArray);
 				
 				

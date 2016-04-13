@@ -4,7 +4,7 @@ public class Board {
 	Square[] square ;
 	boolean cover;
 	Hint hints = null;
-	Piece[] piece;
+	Piece[] piece =null;
 	
 	public Board(Square[] square){
 
@@ -26,14 +26,23 @@ public class Board {
 			
 		}
 	
+	public Piece[] getpiece(){
+		return piece;
+	}
 	
 	public void sethint(Hint hints){
 		this.hints = hints;
 		
 	}
 	
-	public void addpiece(Piece[] piece){
-		//...
+	public void addpiece(Piece piece){
+		if (piece==null){
+			this.piece = new Piece[1];
+			//this.piece[0] = new Piece();
+		}
+		else{
+			this.piece = new Piece[1];
+		}
 	}
 	
 }
