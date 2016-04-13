@@ -32,6 +32,10 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class LevelEditorView extends JFrame {
 
@@ -47,14 +51,13 @@ public class LevelEditorView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelEditorView(KabasujiBuilder kb) {
+	public LevelEditorView(KabasujiBuilder kb, int levelNum) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.kb = kb;
-	}
-	
-	public void setlevelNum(int levelNum){
-		this.levelNum = 0;
+		this.levelNum = levelNum;
 		init();
 	}
+	
 	
 	private void init() {
 		LevelEditor editor = kb.getLevel(levelNum);
@@ -67,7 +70,7 @@ public class LevelEditorView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 13, 906, 491);
+		panel.setBounds(12, 13, 906, 523);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -109,44 +112,45 @@ public class LevelEditorView extends JFrame {
 		panel.add(textField_1);
 		
 		JRadioButton radioButton = new JRadioButton("1");
-		radioButton.setBounds(772, 131, 35, 25);
+		radioButton.setBounds(761, 131, 46, 25);
 		panel.add(radioButton);
 		radioButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		radioButton.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JRadioButton radioButton_1 = new JRadioButton("2");
-		radioButton_1.setBounds(816, 131, 35, 25);
+		radioButton_1.setBounds(805, 131, 46, 25);
 		panel.add(radioButton_1);
 		radioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JRadioButton radioButton_2 = new JRadioButton("3");
-		radioButton_2.setBounds(859, 131, 35, 25);
+		radioButton_2.setBounds(849, 132, 45, 25);
 		panel.add(radioButton_2);
 		radioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JRadioButton radioButton_4 = new JRadioButton("5");
-		radioButton_4.setBounds(816, 165, 35, 25);
+		radioButton_4.setBounds(805, 165, 46, 25);
 		panel.add(radioButton_4);
 		radioButton_4.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JRadioButton radioButton_5 = new JRadioButton("6");
-		radioButton_5.setBounds(859, 165, 35, 25);
+		radioButton_5.setBounds(849, 165, 45, 25);
 		panel.add(radioButton_5);
 		radioButton_5.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JPieceCreatorView btnCreatePiecePart = new JPieceCreatorView(editor);
+		btnCreatePiecePart.setBounds(6, 290, 329, 195);
 		panel.add(btnCreatePiecePart);
 		
 		JButton btnRandomPiece = new JButton("Random Piece");
-		btnRandomPiece.setBounds(237, 453, 137, 25);
+		btnRandomPiece.setBounds(97, 492, 137, 25);
 		panel.add(btnRandomPiece);
 		
 		JButton btnCreateBoardPart = new JButton("Create Board Part");
-		btnCreateBoardPart.setBounds(652, 234, 242, 223);
+		btnCreateBoardPart.setBounds(622, 255, 242, 223);
 		panel.add(btnCreateBoardPart);
 		
 		JButton btnExit = new JButton("Exit");
@@ -161,18 +165,21 @@ public class LevelEditorView extends JFrame {
 		panel.add(btnExit);
 		
 		JRadioButton radioButton_3 = new JRadioButton("4");
-		radioButton_3.setBounds(772, 165, 35, 25);
+		radioButton_3.setBounds(761, 165, 46, 25);
 		panel.add(radioButton_3);
 		radioButton_3.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnHint = new JButton("Hint");
-		btnHint.setBounds(104, 453, 75, 25);
+		btnHint.setBounds(6, 492, 75, 25);
 		panel.add(btnHint);
 		
-		JButton btnDeleteLevel = new JButton("Delete Level");
-		btnDeleteLevel.setBounds(460, 453, 137, 25);
-		panel.add(btnDeleteLevel);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 44, 597, 234);
+		panel.add(scrollPane);
+		
+		JPieceContainerView pieceContainerView = new JPieceContainerView(editor);
+		scrollPane.setViewportView(pieceContainerView);
 		btnCreateBoardPart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

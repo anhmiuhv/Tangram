@@ -87,8 +87,7 @@ public class levelBuilder extends JFrame {
 			 
 			Levels[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					LevelEditorView lev = new LevelEditorView(kb);
-					lev.setlevelNum(0);
+					LevelEditorView lev = new LevelEditorView(kb, 0);
 					lev.setVisible(true);
 					close();
 				}
@@ -123,7 +122,7 @@ public class levelBuilder extends JFrame {
 		});
 		button_9.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				LevelEditorView lev2 = new LevelEditorView(kb);
+				LevelEditorView lev2 = new LevelEditorView(kb, 0);
 				lev2.setVisible(true);
 				close();
 			}

@@ -14,4 +14,8 @@ public abstract class LevelEditor {
 	public PieceCreator getPieceCreator(){
 		return pc;
 	}
+	
+	public PieceContainer getPieceContainer(){
+		return container;
+	}
 }
