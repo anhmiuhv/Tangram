@@ -28,10 +28,14 @@ public class JPieceCreatorView extends JPanel {
 	 * Create the panel.
 	 */
 	public JPieceCreatorView(LevelEditor lvle) {
-		setBorder(new LineBorder(new Color(0, 0, 0)));
+		
 		this.lvle = lvle;
 		this.pc = lvle.getPieceCreator();
-		
+		init();
+	}
+	
+	private void init(){
+		setBorder(new LineBorder(new Color(0, 0, 0)));
 		Square[] squareToDisplay = pc.getSquares();
 		boolean[] selectedSquare = pc.getSelected();
 		

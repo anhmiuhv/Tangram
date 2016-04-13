@@ -42,6 +42,13 @@ public class LevelEditorView extends JFrame {
 	private JPanel contentPane;
 	KabasujiBuilder kb;
 	int levelNum;
+	JBoardCreatorView jbc;
+	JPieceCreatorView jpc;
+	JPieceContainerView jcontainer;
+	TextField timer;
+	TextField move;
+	JTextField sets;
+	JComboBox mode;
 	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
@@ -70,7 +77,7 @@ public class LevelEditorView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 13, 906, 523);
+		panel.setBounds(12, 13, 953, 523);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -82,10 +89,10 @@ public class LevelEditorView extends JFrame {
 		btnRestart.setBounds(672, 6, 89, 25);
 		panel.add(btnRestart);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(783, 44, 111, 22);
-		panel.add(comboBox);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
+		mode = new JComboBox();
+		mode.setBounds(783, 44, 111, 22);
+		panel.add(mode);
+		mode.setModel(new DefaultComboBoxModel(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
 		
 		Label Type = new Label("Type:");
 		Type.setBounds(728, 44, 46, 24);
@@ -103,13 +110,13 @@ public class LevelEditorView extends JFrame {
 		label_3.setBounds(728, 132, 38, 24);
 		panel.add(label_3);
 		
-		TextField textField = new TextField();
-		textField.setBounds(783, 72, 24, 24);
-		panel.add(textField);
+		move = new TextField();
+		move.setBounds(783, 72, 24, 24);
+		panel.add(move);
 		
-		TextField textField_1 = new TextField();
-		textField_1.setBounds(783, 102, 24, 24);
-		panel.add(textField_1);
+		timer = new TextField();
+		timer.setBounds(783, 102, 24, 24);
+		panel.add(timer);
 		
 		JRadioButton radioButton = new JRadioButton("1");
 		radioButton.setBounds(761, 131, 46, 25);
@@ -141,17 +148,13 @@ public class LevelEditorView extends JFrame {
 		radioButton_5.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
-		JPieceCreatorView btnCreatePiecePart = new JPieceCreatorView(editor);
-		btnCreatePiecePart.setBounds(6, 290, 329, 195);
-		panel.add(btnCreatePiecePart);
+		jpc = new JPieceCreatorView(editor);
+		jpc.setBounds(6, 290, 329, 195);
+		panel.add(jpc);
 		
 		JButton btnRandomPiece = new JButton("Random Piece");
 		btnRandomPiece.setBounds(97, 492, 137, 25);
 		panel.add(btnRandomPiece);
-		
-		JButton btnCreateBoardPart = new JButton("Create Board Part");
-		btnCreateBoardPart.setBounds(622, 255, 242, 223);
-		panel.add(btnCreateBoardPart);
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -175,20 +178,16 @@ public class LevelEditorView extends JFrame {
 		panel.add(btnHint);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 44, 597, 234);
+		scrollPane.setBounds(6, 44, 427, 234);
 		panel.add(scrollPane);
 		
-		JPieceContainerView pieceContainerView = new JPieceContainerView(editor);
-		scrollPane.setViewportView(pieceContainerView);
-		btnCreateBoardPart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				levelBuilder lb = new levelBuilder(kb);
-				close();
-			}
-		});
+		jcontainer = new JPieceContainerView(editor);
+		scrollPane.setViewportView(jcontainer);
+		
+		jbc = new JBoardCreatorView(editor);
+		jbc.setBounds(540, 202,407,311);
+		panel.add(jbc);
+		
+		
 	}
 }
