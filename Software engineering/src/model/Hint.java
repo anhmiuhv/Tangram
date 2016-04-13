@@ -6,4 +6,7 @@ public class Hint {
 		this.square=square;
 	}
 	
+	public Square[] getHintSquares(){
+		return square;
+	}
 }
