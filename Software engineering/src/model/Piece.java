@@ -33,5 +33,13 @@ public class Piece {
 	public void setColor(Color c){
 		cl = c;
 	}
+	
+	public int getpRow(){
+		return pRow;
+	}
+	
+	public int getpColumn(){
+		return pColumn;
+	}
 }
 

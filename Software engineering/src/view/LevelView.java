@@ -49,12 +49,6 @@ public class LevelView extends JFrame {
 	JButton lRotate = new JButton();
 	JButton rRotate = new JButton();
 
-	/**
-	 * Launch the application.
-	 */
-
-
-
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -82,8 +76,6 @@ public class LevelView extends JFrame {
 
 		contentPane.add(board);
 		//----------- manully design bullpen 
-
-
 
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
@@ -137,10 +129,10 @@ public class LevelView extends JFrame {
 		lRotate.setText("Rotate Left");
 		rRotate.setText("Rotate Right");
 		
-		horiFlip.setBounds(90+180*2, 600, 80, 40);
-		vertiFlip.setBounds(180+180*2, 600, 80, 40);
-		lRotate.setBounds(90+180*2, 650, 80, 40);
-		rRotate.setBounds(180+180*2, 650, 80, 40);
+		horiFlip.setBounds(90+180*2, 600, 120, 40);
+		vertiFlip.setBounds(220+180*2, 600, 120, 40);
+		lRotate.setBounds(90+180*2, 650, 120, 40);
+		rRotate.setBounds(220+180*2, 650, 120, 40);
 
 		
 		if (level.getAchievement().getAchievement()==1){
@@ -188,8 +180,7 @@ public class LevelView extends JFrame {
 			
 		}else if(level.getLevelType().equals("release")){
 			
-			
-			
+
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
 			for(int i = 0;i<144;i++){
@@ -200,12 +191,15 @@ public class LevelView extends JFrame {
 					ll.setFont(new Font("SansSerif", Font.PLAIN, 28));
 					int x = level.getBoard().getSquare()[i].getColumn();
 					int y = level.getBoard().getSquare()[i].getRow();
-					ll.setBounds(x*30, y*30, 30, 30);
+
+					ll.setBounds(x*30+6, y*30+2, 30, 30);
+
 					board.add(ll);
+					
 				}
 			}
 		}
-		
+		board.createSquareView();
 
 
 

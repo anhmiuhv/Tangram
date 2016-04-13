@@ -6,11 +6,13 @@ import javax.swing.JPanel;
 
 import model.Board;
 import model.Piece;
+import model.Square;
 
 public class JBoardView extends JPanel {
 	Board board ;
 	int bX;
 	int bY;
+	JSquareView js;
 	
 	public JBoardView(int bX, int bY, Board board){
 		this.board = board;
@@ -28,17 +30,27 @@ public class JBoardView extends JPanel {
 		setLayout(null);
 		
 		//setSize(500, 500);
-		
-		JPanel panel = new JPanel();
-
-		 for (int i=0; i< board.getSquare().length;i++){
-				JSquareView js = new JSquareView(board.getSquare()[i],Color.WHITE);
-				add(js);
-		 }
-				//JPanel js = new JPanel();
-				//js.setBounds(63, 35, 161, 76);
-				//piecePanel.add(piecePanel);
-		  //  }
+	
 	
 	}
+	public void createSquareView(){
+
+		 for (int i=0; i< board.getSquare().length;i++){
+				js = new JSquareView(board.getSquare()[i],Color.WHITE);
+				add(js);
+		 }
+		 setLayout(null);
+	}
+	
+	public void addPiece(Piece p){
+		Square[] squares = new Square[6];
+		squares = p.getSquares();
+		JSquareView sv[] = new JSquareView[6];
+		for(int i=0;i<6;i++){
+			sv[i] = new JSquareView(squares[i],p.getColor());
+			add(sv[i]);
+			sv[i].setBounds(squares[i].getColumn()*30,squares[i].getRow()*30 , 30, 30);
+		}
+	}
+	
 }

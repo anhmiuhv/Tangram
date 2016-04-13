@@ -1,13 +1,13 @@
 package model;
 
 public class Board {
-	Square[] square = new Square[144];
+	Square[] square ;
 	boolean cover;
 	Hint hints;
 	Piece[] piece;
 	
 	public Board(Square[] square){
-		this.piece = piece;
+
 		this.square = square;
 	}
 	
@@ -17,6 +17,10 @@ public class Board {
 	public Square[] getSquare(){
 		return square; //get the array square 
 	}
+	public Hint getHint(){
+		return hints;
+	}
+	
 	public void removepiece(Piece[] piece){
 		
 			
@@ -25,4 +29,5 @@ public class Board {
 	public void addpiece(Piece[] piece){
 		//...
 	}
-	}
+	
+}
