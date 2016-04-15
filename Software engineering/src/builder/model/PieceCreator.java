@@ -1,5 +1,6 @@
 package builder.model;
-import model.*;
+import model.Piece;
+import model.Square;
 
 public class PieceCreator {
 	Square base[] = new Square[36];
