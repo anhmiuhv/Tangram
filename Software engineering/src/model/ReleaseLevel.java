@@ -52,4 +52,24 @@ public class ReleaseLevel extends Level{
 		return cl;
 	}
 
+	@Override
+	public void createLevelState() {
+		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,
+				-1, this.locked, this.star, this.p, this.squareNum, this.cl);
+	}
+
+	@Override
+	public void loadLevelState(LevelState levelState) {
+		this.levelState = levelState;
+		this.LevelNumber = levelState.getLevelNum();
+		this.LevelType = levelState.getLevelType();
+		this.b = new Board(levelState.getBoard().getSquare());
+		this.p = levelState.getBullpen();
+		this.locked = levelState.getLocked();
+		this.star = levelState.getAchievement();
+		this.squareNum = levelState.getSquareNum();
+		this.cl = levelState.getCl();
+		
+	}
+
 }

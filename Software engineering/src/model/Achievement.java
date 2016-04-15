@@ -1,6 +1,10 @@
 package model;
 
-public class Achievement {
+public class Achievement implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3467426884402000828L;
 	int stars;
 	
 	public Achievement(int stars){

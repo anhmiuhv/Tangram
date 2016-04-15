@@ -2,7 +2,13 @@ package model;
 
 import java.awt.Color;
 
-public class Piece {
+public class Piece implements java.io.Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8376887428934251501L;
 	int pRow;
 	int pColumn;
 	Color cl;
