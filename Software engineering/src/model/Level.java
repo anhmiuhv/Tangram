@@ -64,9 +64,16 @@ public abstract class Level{
 
 	
 	abstract public boolean hasWon();
-	abstract public boolean doMove(IMove m);
 	abstract public void loadLevel(File f);
+	/**
+	 * this func create a levelstate file for a level
+	 */
 	abstract public void createLevelState();
+	
+	/**
+	 * this func replace the level with the level in the levelState
+	 * @param levelState
+	 */
 	abstract public void loadLevelState(LevelState levelState);
 	
 	public void updateLevelStar(Achievement star) {
