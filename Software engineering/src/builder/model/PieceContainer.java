@@ -1,8 +1,12 @@
 package builder.model;
-import model.*;
+import model.Piece;
 import java.util.ArrayList;
 
-public class PieceContainer {
+public class PieceContainer implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2705956955185785315L;
 	ArrayList<Piece> pieces;
 	
 	public PieceContainer(){

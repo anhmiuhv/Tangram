@@ -19,8 +19,16 @@ public class Kabasuji {
 		// Normally, we'd call splash.showSplash() and get on with the program.
 		// But, since this is only a test...
 		splash.showSplashAndExit();
+		
+		LevelState createAlevel = new LevelState();
+		createAlevel.loadState("puzzle1.sav");
+		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
+		p.loadLevelState(createAlevel);
+		System.out.println(p.getLevelType());
+		Level[] l = new Level[1];
+		l[0] = p;
 		//Application app = new Applicaiton();
-		LevelSelection levelSec = new LevelSelection(createTestLevel());
+		LevelSelection levelSec = new LevelSelection(l);
 	}
 
 

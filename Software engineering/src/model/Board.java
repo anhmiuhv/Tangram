@@ -28,6 +28,7 @@ public class Board implements java.io.Serializable{
 				row++;
 			}
  		}
+		hints = new Hint();
 	}
 	
 	/**
