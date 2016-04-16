@@ -29,7 +29,7 @@ public class HorizontalFlipController  extends java.awt.event.MouseAdapter{
 			
 		Squares[i].setColumn(5 - Squares[i].getColumn());
 		}
-		System.out.println(bullpen.getPieces()[2].getpColumn());
+		System.out.println(bullpen.getPieces().get(1).getpColumn());
 	
 		levelview.reDrawBullpan(bullpen);
 		

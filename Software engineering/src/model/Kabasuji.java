@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -14,17 +15,18 @@ public class Kabasuji {
 
 	public static void main(String[] args) {
 		// Throw a nice little title page up on the screen first
-		SplashScreen splash = new SplashScreen(1000);
+
+		SplashScreen splash = new SplashScreen(500);
 		// Normally, we'd call splash.showSplash() and get on with the program.
 		// But, since this is only a test...
 		splash.showSplashAndExit();
 		
-		LevelState createAlevel = new LevelState();
-		createAlevel.loadState("puzzle1.sav");
-		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
-		p.loadLevelState(createAlevel);
-		Level[] l = new Level[1];
-		l[0] = p;
+		//LevelState createAlevel = new LevelState();
+		//createAlevel.loadState("puzzle1.sav");
+		//PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
+		//p.loadLevelState(createAlevel);
+		//Level[] l = new Level[1];
+		//l[0] = p;
 		//Application app = new Applicaiton();
 		LevelSelection levelSec = new LevelSelection(createTestLevel());
 	}
@@ -43,6 +45,7 @@ public class Kabasuji {
 
 	}
 
+	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){
 		Level[] testLevels = new Level[15];
 		int[] squareNum = new int[144];
@@ -83,22 +86,23 @@ public class Kabasuji {
 		bullPenPiece.setColor(new Color(0,0,0));
 
 
-		Piece[] bullPenPieceArray = new Piece[6];
-		bullPenPieceArray[0] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPieceArray[0].setColor(Color.BLUE);
-		bullPenPieceArray[1] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPieceArray[1].setColor(Color.GREEN);
-		bullPenPieceArray[2] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPieceArray[2].setColor(Color.YELLOW);
-		bullPenPieceArray[3] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPieceArray[3].setColor(Color.ORANGE);
-		bullPenPieceArray[4] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPieceArray[4].setColor(Color.RED);
-		bullPenPieceArray[5] = new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
-		bullPenPieceArray[5].setColor(Color.PINK);
+		ArrayList<Piece> bullPenPieceArray=new ArrayList<Piece>();
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.get(0).setColor(Color.BLUE);
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.get(1).setColor(Color.GREEN);
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.get(2).setColor(Color.YELLOW);
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.get(3).setColor(Color.ORANGE);
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.get(4).setColor(Color.RED);
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.get(5).setColor(Color.PINK);
 
 
 		Bullpen bp = new Bullpen(bullPenPieceArray);
+		//Bullpen bp = new Bullpen();
 
 
 
@@ -122,6 +126,13 @@ public class Kabasuji {
 
 		Board testBoard = new Board(boardSquare);
 		testBoard.sethint(hints);
+		
+		////// add remove test
+		bullPenPiece.setColor(Color.PINK);
+		bp.removepiece(bullPenPieceArray.get(5));
+		testBoard.addpiece(bullPenPiece);
+		///test over
+		
 		for (int i=0;i<15;i++){
 			if (i%3==0){
 				testLevels[i] = new PuzzleLevel(i,GetLevelTpye(i%3),testBoard,bp,20);

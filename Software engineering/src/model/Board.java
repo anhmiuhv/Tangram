@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Board implements java.io.Serializable{
 	/**
 	 * 
@@ -8,7 +10,7 @@ public class Board implements java.io.Serializable{
 	Square[] square ;
 	boolean cover;
 	Hint hints = null;
-	Piece[] piece =null;
+	ArrayList<Piece> piece = new ArrayList<Piece>();
 	int squareLeft;
 	
 	/**
@@ -26,6 +28,7 @@ public class Board implements java.io.Serializable{
 				row++;
 			}
  		}
+		hints = new Hint();
 	}
 	
 	/**
@@ -47,28 +50,20 @@ public class Board implements java.io.Serializable{
 		return hints;
 	}
 	
-	public void removepiece(Piece[] piece){
-		
-			
-		}
-	
-	public Piece[] getpiece(){
+	public ArrayList<Piece> getpiece(){
 		return piece;
 	}
 	
 	public void sethint(Hint hints){
-		this.hints = hints;
-		
+		this.hints = hints;	
 	}
 	
-	public void addpiece(Piece piece){
-		if (piece==null){
-			this.piece = new Piece[1];
-			//this.piece[0] = new Piece();
-		}
-		else{
-			this.piece = new Piece[1];
-		}
+	public boolean addpiece(Piece p){
+		return this.piece.add(p);
+	}
+	
+	public boolean removepiece(Piece p){
+		return this.piece.remove(p);
 	}
 	
 }

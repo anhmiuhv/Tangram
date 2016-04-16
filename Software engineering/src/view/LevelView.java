@@ -136,7 +136,7 @@ public class LevelView extends JFrame {
 		contentPane.add(rRotate);
 		horiFlip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new HorizontalFlipController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces()[0]).actionPerformed();
+				new HorizontalFlipController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(0)).actionPerformed();
 			}
 		});
 		

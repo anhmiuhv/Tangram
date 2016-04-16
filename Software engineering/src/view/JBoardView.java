@@ -46,8 +46,8 @@ public class JBoardView extends JPanel {
 
 	public void showPieces(){
 		if  (board.getpiece()!=null){
-			for(int i=0;i<board.getpiece().length;i++){
-				showPiece(board.getpiece()[i]);
+			for(int i=0;i<board.getpiece().size();i++){
+				showPiece(board.getpiece().get(i));
 			}
 		}
 		
@@ -59,8 +59,8 @@ public class JBoardView extends JPanel {
 		JSquareView sv[] = new JSquareView[6];
 		for(int i=0;i<6;i++){
 			sv[i] = new JSquareView(squares[i],p.getColor());
-			add(sv[i]);
 			sv[i].setBounds(squares[i].getColumn()*30,squares[i].getRow()*30 , 30, 30);
+			add(sv[i]);
 		}
 	}
 	
