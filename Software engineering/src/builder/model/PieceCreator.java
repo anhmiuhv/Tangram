@@ -25,12 +25,57 @@ public class PieceCreator {
 		}
 	}
 	
-	boolean validPiece(){
-		return false;
+	public boolean validPiece(){
+		
+		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
+
 	}
 	
-	void createPiece(){
+	private boolean dfsSquare(Square head){
+		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
+		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
+		Square tempsqUp = new Square(head.getColumn(), head.getRow()+1);
+		Square tempsqDn = new Square(head.getColumn(), head.getRow()-1);
+		if((piece.containSquare(tempsqRt))&& (!(tempsqRt.getVisit()))){
+			dfsSquare(tempsqRt);
+		}
+		if((piece.containSquare(tempsqLt))&& (!(tempsqLt.getVisit()))){
+			dfsSquare(tempsqLt);
+		}
+		if((piece.containSquare(tempsqDn))&& (!(tempsqDn.getVisit()))){
+			dfsSquare(tempsqDn);
+		}
+		if((piece.containSquare(tempsqUp))&& (!(tempsqUp.getVisit()))){
+			dfsSquare(tempsqUp);
+		}
 		
+		return piece.allVisited();
+		
+	}
+	
+	public boolean createPiece(){
+		
+		int counter = 0;
+		int row = 0;
+		int col = 0;
+		Square[] s = new Square[6];
+		for(int i = 0; i<36;i++){
+			if(selectedSquare[i]){
+				s[counter] = new Square(col,row);
+				counter++;
+			}
+			col++;
+			if (col > 5){
+				col = 0;
+				row++;
+			}
+			if (counter > 5) break;
+		}
+		
+		
+		this.piece = new Piece(0, 0,s, s[0], 0);
+		
+		return true;
 	}
 	
 	public Square[] getSquares(){
@@ -47,4 +92,6 @@ public class PieceCreator {
 	public void selectSquare(int row, int column){
 		this.selectedSquare[row * 6 + column] = true;
 	}
+	
+	
 }
