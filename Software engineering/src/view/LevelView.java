@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.HorizontalFlipController;
+import controller.LevelSelectController;
 import model.Board;
 import model.Bullpen;
 import model.Piece;
@@ -42,13 +44,17 @@ public class LevelView extends JFrame {
 	int tLeft = 0;
 	protected JPanel contentPane;
 	BlueStripe bs;
+	JBullPenView jbp;
 	Level level;
 	
 	JButton horiFlip = new JButton();
 	JButton vertiFlip = new JButton();
 	JButton lRotate = new JButton();
 	JButton rRotate = new JButton();
-
+	JScrollPane scrollPane = new JScrollPane();
+	int bullpenX = 20;
+	int bullpenY = 140;
+	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -57,7 +63,7 @@ public class LevelView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelView(Level level, final LevelSelection levelselection) {
+	public LevelView(final Level level, final LevelSelection levelselection) {
 		this.levelselection= levelselection;
 
 		this.level = level;
@@ -97,9 +103,9 @@ public class LevelView extends JFrame {
 
 
 
-		JBullPenView jbp = new JBullPenView(level.getBullpen(),20,140);
+		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
 
-		JScrollPane scrollPane = new JScrollPane();
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 				gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -119,7 +125,7 @@ public class LevelView extends JFrame {
 		bs = new BlueStripe(1,level.getLevelNumber()+1);
 		scrollPane.setColumnHeaderView(bs);
 
-		contentPane.add(bs);
+		contentPane.add(bs);        //   adddddddddddddddddddd
 
 		bs.add(btnNewButton);
 		
@@ -128,6 +134,11 @@ public class LevelView extends JFrame {
 		contentPane.add(vertiFlip);
 		contentPane.add(lRotate);
 		contentPane.add(rRotate);
+		horiFlip.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new HorizontalFlipController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces()[0]).actionPerformed();
+			}
+		});
 		
 		horiFlip.setText("Horizontal Filp");
 		vertiFlip.setText("Vertical Filp");
@@ -225,5 +236,13 @@ public class LevelView extends JFrame {
 			}
 		});
 		 */
+	}
+	
+	public void reDrawBullpan (Bullpen bullpen){
+
+		 //scrollPane.remove(jbp);
+		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
+			scrollPane.setViewportView(jbp);
+			contentPane.add(scrollPane);
 	}
 }

@@ -14,7 +14,7 @@ public class Kabasuji {
 
 	public static void main(String[] args) {
 		// Throw a nice little title page up on the screen first
-		SplashScreen splash = new SplashScreen(5000);
+		SplashScreen splash = new SplashScreen(1000);
 		// Normally, we'd call splash.showSplash() and get on with the program.
 		// But, since this is only a test...
 		splash.showSplashAndExit();
@@ -23,11 +23,10 @@ public class Kabasuji {
 		createAlevel.loadState("puzzle1.sav");
 		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
 		p.loadLevelState(createAlevel);
-		System.out.println(p.getLevelType());
 		Level[] l = new Level[1];
 		l[0] = p;
 		//Application app = new Applicaiton();
-		LevelSelection levelSec = new LevelSelection(l);
+		LevelSelection levelSec = new LevelSelection(createTestLevel());
 	}
 
 

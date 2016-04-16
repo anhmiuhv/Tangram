@@ -20,4 +20,12 @@ public class Square implements java.io.Serializable{
 	public int getRow(){
 		return sRow;
 	}
+	
+	public void setColumn(int sColumn){
+		this.sColumn = sColumn;		
+	}
+	
+	public void setRow(int srow){
+		this.sRow = sRow;		
+	}
 }
