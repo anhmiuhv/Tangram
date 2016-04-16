@@ -22,6 +22,7 @@ public class Square implements java.io.Serializable{
 		return sRow;
 	}
 	
+
 	public boolean getVisit(){
 		return this.visited;
 	}
@@ -30,5 +31,13 @@ public class Square implements java.io.Serializable{
 		return ((this.sColumn == sq.sColumn)&&(this.sRow == sq.sRow));
 	}
 	
+
+	public void setColumn(int sColumn){
+		this.sColumn = sColumn;		
+	}
+	
+	public void setRow(int srow){
+		this.sRow = sRow;		
+	}
 
 }

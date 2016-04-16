@@ -26,12 +26,6 @@ public class LightningLevel extends Level{
 	}
 
 	@Override
-	public boolean doMove(IMove m) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void loadLevel(File f) {
 		// TODO Auto-generated method stub
 		
@@ -50,6 +44,7 @@ public class LightningLevel extends Level{
 		this.LevelNumber = levelState.getLevelNum();
 		this.LevelType = levelState.getLevelType();
 		this.b = new Board(levelState.getBoard().getSquare());
+		this.b.sethint(levelState.getBoard().getHint());
 		this.p = levelState.getBullpen();
 		this.locked = levelState.getLocked();
 		this.star = levelState.getAchievement();
