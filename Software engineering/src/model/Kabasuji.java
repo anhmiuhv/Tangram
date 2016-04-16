@@ -28,7 +28,7 @@ public class Kabasuji {
 		Level[] l = new Level[1];
 		l[0] = p;
 		//Application app = new Applicaiton();
-		LevelSelection levelSec = new LevelSelection(l);
+		LevelSelection levelSec = new LevelSelection(createTestLevel());
 	}
 
 
@@ -127,16 +127,12 @@ public class Kabasuji {
 		Board testBoard = new Board(boardSquare);
 		testBoard.sethint(hints);
 		
-		/*////// add remove test
-		bp.removepiece(bullPenPieceArray.get(5));
+		////// add remove test
 		bullPenPiece.setColor(Color.PINK);
-		bp.addpiece(bullPenPiece);
-		bullPenPiece.setColor(Color.CYAN);
-		bp.addpiece(bullPenPiece);
+		bp.removepiece(bullPenPieceArray.get(5));
 		testBoard.addpiece(bullPenPiece);
-		testBoard.removepiece(bullPenPiece);
 		///test over
-*/		
+		
 		for (int i=0;i<15;i++){
 			if (i%3==0){
 				testLevels[i] = new PuzzleLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
