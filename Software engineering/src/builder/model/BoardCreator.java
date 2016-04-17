@@ -8,13 +8,13 @@ public class BoardCreator {
 	Board board;
 	boolean[] selectedSquare = new boolean[144];
 	Hint hints;
-	int selected;
+	int selected = 0;
 	
 	public BoardCreator(){
 		int row = 0;
 		int col = 0;
 		for (int i = 0; i < 144; i++){
-			squares[i] = new Square(row, col);
+			squares[i] = new Square(col, row);
 			col++;
 			if (col > 5){
 				col = 0;
@@ -31,11 +31,13 @@ public class BoardCreator {
 	
 	public void setSelected(boolean[] selected){
 		this.selectedSquare = selected;
+		for (int i = 0; i < 144; i++){
+			if (selectedSquare[i]){
+				this.selected++;
+			}
+		}
 	}
 	
-	boolean validBoard(){
-		return false;
-	}
 
 	public Square[] getSquares() {
 		return squares;
@@ -86,7 +88,11 @@ public class BoardCreator {
 	/**
 	 * create board from the selected squares
 	 */
-	public void createBoard(){
+	public boolean createBoard(){
+		if (selected % 6 != 0) {
+			this.board = null;
+			return false;
+		}
 		int row = 0;
 		int col = 0;
 		ArrayList<Square> s = new ArrayList<Square>();
@@ -101,10 +107,18 @@ public class BoardCreator {
 				row++;
 			}
 		}
-		
-		Square[] result = (Square[]) s.toArray();
+		Square[] result = s.toArray(new Square[s.size()]);
 		board = new Board(result);
-		
+		return true;
 	}
+	
+	public String isBoardCreated(){
+		if (this.board != null){
+			return "created";
+		}
+		return "not created";
+	}
+	
+	
 
 }

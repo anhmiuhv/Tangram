@@ -94,6 +94,7 @@ public class LevelEditorView extends JFrame {
 		panel.add(mode);
 		mode.setModel(new DefaultComboBoxModel(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
 		
+		
 		Label Type = new Label("Type:");
 		Type.setBounds(728, 44, 46, 24);
 		panel.add(Type);
@@ -148,9 +149,7 @@ public class LevelEditorView extends JFrame {
 		radioButton_5.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
-		jpc = new JPieceCreatorView(editor);
-		jpc.setBounds(6, 290, 329, 195);
-		panel.add(jpc);
+		
 		
 		JButton btnRandomPiece = new JButton("Random Piece");
 		btnRandomPiece.setBounds(97, 492, 137, 25);
@@ -183,6 +182,10 @@ public class LevelEditorView extends JFrame {
 		
 		jcontainer = new JPieceContainerView(editor);
 		scrollPane.setViewportView(jcontainer);
+		
+		jpc = new JPieceCreatorView(editor, this);
+		jpc.setBounds(6, 290, 329, 195);
+		panel.add(jpc);
 		
 		jbc = new JBoardCreatorView(editor);
 		jbc.setBounds(540, 202,407,311);

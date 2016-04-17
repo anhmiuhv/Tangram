@@ -15,7 +15,7 @@ public class PieceCreator {
 		int row = 0;
 		int col = 0;
 		for (int i = 0; i < 36; i++){
-			base[i] = new Square(row, col);
+			base[i] = new Square(col, row);
 			col++;
 			if (col > 5){
 				col = 0;
@@ -61,6 +61,7 @@ public class PieceCreator {
 		Square[] s = new Square[6];
 		for(int i = 0; i<36;i++){
 			if(selectedSquare[i]){
+				if (counter > 5) return false;
 				s[counter] = new Square(col,row);
 				counter++;
 			}
@@ -69,7 +70,7 @@ public class PieceCreator {
 				col = 0;
 				row++;
 			}
-			if (counter > 5) break;
+			
 		}
 		
 		

@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import model.Square;
+import builder.controller.CreateBoardController;
+import builder.controller.CreatePieceController;
+import builder.controller.SelectBoardTileController;
 import builder.model.BoardCreator;
 import builder.model.LevelEditor;
 
@@ -21,6 +24,7 @@ public class JBoardCreatorView extends JPanel {
 	private BoardCreator bc;
 	JSquareView[] squareV = new JSquareView[144];
 	JLabel count;
+	JLabel lblNotCreated;
 	/**
 	 * Create the panel.
 	 */
@@ -42,10 +46,11 @@ public class JBoardCreatorView extends JPanel {
 
 		for (int i = 0; i < 144; i++){
 			if (selectedSquare[i]){
-				squareV[i] = new JSquareView(squareToDisplay[i], Color.GRAY, 25);
+				squareV[i] = new JSquareView(squareToDisplay[i], Color.BLACK, 25);
 			} else {
 				squareV[i] = new JSquareView(squareToDisplay[i], Color.WHITE, 25);
 			}
+			squareV[i].addMouseListener(new SelectBoardTileController(lvle, this, squareV[i]));
 			panel.add(squareV[i]);
 		}
 
@@ -53,13 +58,25 @@ public class JBoardCreatorView extends JPanel {
 		setOpaque(false);
 		setLayout(null);
 		
-		count = new JLabel("Squares:");
-		count.setBounds(315, 6, 61, 16);
+		count = new JLabel("<html>Squares: <br>" + bc.getNumSelect() +"</html>");
+		count.setBounds(315, 6, 61, 32);
 		add(count);
+		
+		ImageIcon addLevel = new ImageIcon("images//addLevel.png");
+		JButton addButton = new JButton();
+		addButton.setBounds(316,70,60,60);
+		addButton.setIcon(addLevel);
+		addButton.addActionListener(new CreateBoardController(lvle, this));
+		add(addButton);
+		
+		lblNotCreated = new JLabel(bc.isBoardCreated());
+		lblNotCreated.setBounds(318, 142, 83, 16);
+		add(lblNotCreated);
 
-
-
-
-
+	}
+	
+	public void update(){
+		count.setText("<html>Squares: <br>" + bc.getNumSelect() +"</html>"); 
+		lblNotCreated.setText(bc.isBoardCreated());
 	}
 }

@@ -3,8 +3,8 @@ package move;
 import model.Level;
 
 public interface IMove {
-	boolean isMoveValid();
-	void doMove(Level level);
-	void undo(Level level);
+	boolean isMoveValid(Level level);
+	boolean doMove(Level level);
+	boolean undo(Level level);
 	
 }

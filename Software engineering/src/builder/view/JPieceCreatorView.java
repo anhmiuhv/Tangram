@@ -10,9 +10,14 @@ import java.awt.Color;
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import builder.controller.CreatePieceController;
+import builder.controller.SelectPieceTileController;
 import builder.model.*;
+
 import java.awt.GridLayout;
+
 import javax.swing.border.LineBorder;
+
 import model.*;
 public class JPieceCreatorView extends JPanel {
 	
@@ -21,16 +26,18 @@ public class JPieceCreatorView extends JPanel {
 	 */
 	private static final long serialVersionUID = -7437149537257431547L;
 	
+	private LevelEditorView lev;
 	private LevelEditor lvle;
 	private PieceCreator pc;
 	JSquareView[] squareV = new JSquareView[36];
 	/**
 	 * Create the panel.
 	 */
-	public JPieceCreatorView(LevelEditor lvle) {
+	public JPieceCreatorView(LevelEditor lvle, LevelEditorView lev) {
 		
 		this.lvle = lvle;
 		this.pc = lvle.getPieceCreator();
+		this.lev = lev;
 		init();
 	}
 	
@@ -46,10 +53,12 @@ public class JPieceCreatorView extends JPanel {
 		
 		for (int i = 0; i < 36; i++){
 			if (selectedSquare[i]){
-				squareV[i] = new JSquareView(squareToDisplay[i], Color.GRAY);
+				squareV[i] = new JSquareView(squareToDisplay[i], Color.BLACK);
 			} else {
 				squareV[i] = new JSquareView(squareToDisplay[i], Color.WHITE);
 			}
+			squareV[i].setLvle(lvle);
+			squareV[i].addMouseListener(new SelectPieceTileController(lvle, squareV[i]));;
 			panel.add(squareV[i]);
 		}
 		
@@ -57,6 +66,7 @@ public class JPieceCreatorView extends JPanel {
 		JButton addButton = new JButton();
 		addButton.setBounds(263,68,60,60);
 		addButton.setIcon(addLevel);
+		addButton.addActionListener(new CreatePieceController(lvle, this, this.lev.jcontainer));
 		add(addButton);
 		
 		

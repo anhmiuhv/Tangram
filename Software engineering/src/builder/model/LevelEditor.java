@@ -8,6 +8,10 @@ public abstract class LevelEditor {
 	LevelEditorState les;
 	String levelEditorType;
 	
+	public LevelEditor(LevelEditorState les){
+		this.loadLevelEditorState(les);
+	}
+	
 	public LevelEditor(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc){
 		this.levelNum = levelNum;
 		this.container = container;

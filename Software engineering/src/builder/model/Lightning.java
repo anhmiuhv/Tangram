@@ -9,6 +9,9 @@ public class Lightning extends LevelEditor {
 		this.allowedTime = allowedTime;
 	}
 	
+	public Lightning(LevelEditorState les){
+		super(les);
+	}
 	@Override
 	public void createLevelEditorState() {
 		this.les = new LevelEditorState(levelNum, LevelEditorState.LIGHTNING, allowedTime, -1, container, bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new int[0]);
@@ -23,6 +26,7 @@ public class Lightning extends LevelEditor {
 		this.bc.setBoard(les.getBoard());
 		this.bc.setHints(les.getHint());
 		this.allowedTime = les.getAllowedTime();
+		this.pc = new PieceCreator();
 	}
 
 }

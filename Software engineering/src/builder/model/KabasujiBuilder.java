@@ -14,7 +14,6 @@ public class KabasujiBuilder {
 	}
 	
 	public int getNumberOfLevel(){
-//		return editor.size();
-		return 19;
+		return editor.size();
 	}
 }

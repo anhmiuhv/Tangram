@@ -14,17 +14,22 @@ import builder.model.*;
 import model.*;
 public class JSquareView extends JPanel {
 	Square square;
+	public Square getSquare() {
+		return square;
+	}
+
 	Color cl;
 	JPanel topJPanel;
 	int size = 30;
-	
+	LevelEditor lvle;
+
 	public JSquareView(Square square,Color cl){
 		this.square = square;
 		this.cl = cl;
-		
+
 		paintSquare();
 	}
-	
+
 	public JSquareView(Square square,Color cl, int size){
 		this.square = square;
 		this.cl = cl;
@@ -32,27 +37,39 @@ public class JSquareView extends JPanel {
 		paintSquare();
 	}
 
+	public Color getColor(){
+		return cl;
+	}
 
 	public void setSize(int size){
 		this.size = size;
 	}
-	
+
 	public void setColor(Color cl){
 		this.cl = cl;
-		setBackground(cl);
+
 	}
-	
+
+	public LevelEditor getLvle() {
+		return lvle;
+	}
+
+	public void setLvle(LevelEditor lvle) {
+		this.lvle = lvle;
+	}
+
 	//JLabel lblNewLabel = new JLabel("New label");
 	//lblNewLabel.setBounds(184, 49, 46, 14);
 	//panel.add(lblNewLabel);
-	 public void paintSquare() {
-
-		 setBackground(cl);
-		// setText("New label");
-		// setIcon(new ImageIcon("images\\puzzleIcon.png"));
-		 setBounds(square.getColumn() * size, square.getRow() * size, size, size);
-		 setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+	public void paintSquare() {
+		paintColor();
+		setBounds(square.getColumn() * size, square.getRow() * size, size, size);
+		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 	}
-			
+
+	public void paintColor(){
+		setBackground(cl);
+	}
+
 
 }

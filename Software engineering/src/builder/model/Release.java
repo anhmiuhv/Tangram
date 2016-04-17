@@ -11,6 +11,9 @@ public class Release extends LevelEditor{
 		this.colorNum = colorNum;
 	}
 
+	public Release(LevelEditorState les){
+		super(les);
+	}
 	@Override
 	public void createLevelEditorState() {
 		this.les = new LevelEditorState(levelNum, LevelEditorState.PUZZLE, -1, -1, container, bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum);
@@ -26,5 +29,6 @@ public class Release extends LevelEditor{
 		this.bc.setHints(les.getHint());
 		this.squareNum = les.getSquareNum();
 		this.colorNum = les.getColor();
+		this.pc = new PieceCreator();
 	}
 }
