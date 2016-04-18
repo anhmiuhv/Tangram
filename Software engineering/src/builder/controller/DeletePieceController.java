@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import builder.model.LevelEditor;
-import builder.model.PieceContainer;
 import builder.move.DeletePieceMove;
 import builder.move.IMove;
 import builder.view.JPieceContainerView;

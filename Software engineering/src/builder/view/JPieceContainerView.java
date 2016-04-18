@@ -67,7 +67,6 @@ public class JPieceContainerView extends JPanel {
 		pieces = pc.getPieces();
 		pNum = pieces.size();
 		delete = new ArrayList<JButton>();
-		System.out.println(pNum);
 		for(int i = 0; i< pNum;i++){
 			if (i % 2 == 0){
 				PCXcount=0;

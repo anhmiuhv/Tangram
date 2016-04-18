@@ -5,11 +5,8 @@ import java.awt.event.ActionListener;
 
 import builder.model.LevelEditor;
 import builder.move.CreateBoardMove;
-import builder.move.CreatePieceMove;
 import builder.move.IMove;
 import builder.view.JBoardCreatorView;
-import builder.view.JPieceContainerView;
-import builder.view.JPieceCreatorView;
 
 public class CreateBoardController implements ActionListener {
 

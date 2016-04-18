@@ -47,7 +47,7 @@ public class JSquareView extends JPanel {
 
 	public void setColor(Color cl){
 		this.cl = cl;
-
+		paintColor();
 	}
 
 	public LevelEditor getLvle() {

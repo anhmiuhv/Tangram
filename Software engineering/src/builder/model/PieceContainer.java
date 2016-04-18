@@ -13,6 +13,10 @@ public class PieceContainer implements java.io.Serializable{
 		this.pieces = new ArrayList<Piece>();
 	}
 	
+	public PieceContainer(ArrayList<Piece> piece){
+		this.pieces = piece;
+	}
+	
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}

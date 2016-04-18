@@ -1,9 +1,9 @@
 package builder.model;
 
-import java.awt.Color;
-
 public class Puzzle extends LevelEditor {
 	int allowedMove;
+	
+	
 	
 	public Puzzle(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc, int allowedMove) {
 		super(levelNum, container, pc, bc);
@@ -29,7 +29,14 @@ public class Puzzle extends LevelEditor {
 		this.bc.setHints(les.getHint());
 		this.allowedMove = les.getAllowedMove();
 		this.pc = new PieceCreator();
+		this.levelEditorType = les.getLevelType();
 	}
-
 	
+	public int getAllowedMove() {
+		return allowedMove;
+	}
+	
+	public void setAllowedMove(int allowedMove) {
+		this.allowedMove = allowedMove;
+	}
 }

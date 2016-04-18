@@ -78,4 +78,22 @@ public class JPieceCreatorView extends JPanel {
 
 
 	}
+
+	public void update() {
+		Square[] squareToDisplay = pc.getSquares();
+		boolean[] selectedSquare = pc.getSelected();
+		
+		for (int i = 0; i < 36; i++){
+			if (selectedSquare[i]){
+				squareV[i].setColor(Color.BLACK);
+			} else {
+				squareV[i].setColor(Color.WHITE);
+			}
+		}
+		
+		setOpaque(false);
+		setLayout(null);
+
+		
+	}
 }

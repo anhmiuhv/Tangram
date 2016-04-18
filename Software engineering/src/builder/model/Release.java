@@ -1,7 +1,5 @@
 package builder.model;
 
-import java.awt.Color;
-
 public class Release extends LevelEditor{
 	int[] squareNum;
 	int[] colorNum;
@@ -9,6 +7,7 @@ public class Release extends LevelEditor{
 		super(levelNum, container, pc, bc);
 		this.squareNum = squareNum;
 		this.colorNum = colorNum;
+		this.levelEditorType = LevelEditorState.RELEASE;
 	}
 
 	public Release(LevelEditorState les){
@@ -16,7 +15,7 @@ public class Release extends LevelEditor{
 	}
 	@Override
 	public void createLevelEditorState() {
-		this.les = new LevelEditorState(levelNum, LevelEditorState.PUZZLE, -1, -1, container, bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum);
+		this.les = new LevelEditorState(levelNum, LevelEditorState.RELEASE, -1, -1, container, bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum);
 		
 	}
 	@Override
@@ -30,5 +29,6 @@ public class Release extends LevelEditor{
 		this.squareNum = les.getSquareNum();
 		this.colorNum = les.getColor();
 		this.pc = new PieceCreator();
+		this.levelEditorType = les.getLevelType();
 	}
 }

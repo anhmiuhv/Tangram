@@ -1,13 +1,14 @@
 package builder.model;
 
-import java.awt.Color;
 
 public class Lightning extends LevelEditor {
 	int allowedTime;
 	public Lightning(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc, int allowedTime) {
 		super(levelNum, container, pc, bc);
 		this.allowedTime = allowedTime;
+		this.levelEditorType = LevelEditorState.LIGHTNING;
 	}
+	
 	
 	public Lightning(LevelEditorState les){
 		super(les);
@@ -27,6 +28,17 @@ public class Lightning extends LevelEditor {
 		this.bc.setHints(les.getHint());
 		this.allowedTime = les.getAllowedTime();
 		this.pc = new PieceCreator();
+		this.levelEditorType = les.getLevelType();
 	}
+
+	public int getAllowedTime() {
+		return allowedTime;
+	}
+
+	public void setAllowedTime(int allowedTime) {
+		this.allowedTime = allowedTime;
+	}
+
+	
 
 }

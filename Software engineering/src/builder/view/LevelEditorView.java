@@ -13,6 +13,7 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -25,6 +26,9 @@ import java.awt.Toolkit;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import builder.controller.MoveInfoController;
+import builder.controller.SwitchLevelModeController;
+import builder.controller.TimerInfoController;
 import builder.model.*;
 import view.LevelView;
 
@@ -32,6 +36,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollBar;
@@ -45,11 +50,12 @@ public class LevelEditorView extends JFrame {
 	JBoardCreatorView jbc;
 	JPieceCreatorView jpc;
 	JPieceContainerView jcontainer;
-	TextField timer;
-	TextField move;
+	JTextField timer;
+	JTextField move;
 	JTextField sets;
 	JComboBox mode;
-	
+	LevelEditor editor;
+	LevelEditor clone;
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -62,12 +68,13 @@ public class LevelEditorView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.kb = kb;
 		this.levelNum = levelNum;
+		editor = kb.getLevel(levelNum);
 		init();
 	}
 	
 	
-	private void init() {
-		LevelEditor editor = kb.getLevel(levelNum);
+	public void init() {
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 971, 564);
 		contentPane = new JPanel();
@@ -83,6 +90,15 @@ public class LevelEditorView extends JFrame {
 		
 		JButton btnSave = new JButton("Save&Exit");
 		btnSave.setBounds(783, 6, 111, 25);
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editor.createLevelEditorState();
+				editor.getLes().saveState();
+				levelBuilder lb = new levelBuilder(new KabasujiBuilder());
+				lb.setVisible(true);
+				close();
+			}
+		});
 		panel.add(btnSave);
 		
 		JButton btnRestart = new JButton("Restart");
@@ -90,33 +106,56 @@ public class LevelEditorView extends JFrame {
 		panel.add(btnRestart);
 		
 		mode = new JComboBox();
-		mode.setBounds(783, 44, 111, 22);
+		mode.setBounds(783, 44, 128, 22);
 		panel.add(mode);
 		mode.setModel(new DefaultComboBoxModel(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
+		switch (editor.getLevelEditorType()){
+		case LevelEditorState.PUZZLE:
+			mode.setSelectedIndex(0);
+			break;
+		case LevelEditorState.LIGHTNING:
+			mode.setSelectedIndex(1);
+			break;
+		case LevelEditorState.RELEASE:
+			mode.setSelectedIndex(2);
+			break;
+		}
+		mode.addActionListener(new SwitchLevelModeController(this, editor, mode));
 		
 		
-		Label Type = new Label("Type:");
+		JLabel Type = new JLabel("Type:");
 		Type.setBounds(728, 44, 46, 24);
 		panel.add(Type);
 		
-		Label label_1 = new Label("Move:");
+		JLabel label_1 = new JLabel("Move:");
 		label_1.setBounds(728, 74, 48, 24);
 		panel.add(label_1);
 		
-		Label label_2 = new Label("Time:");
+		JLabel label_2 = new JLabel("Time:");
 		label_2.setBounds(728, 102, 46, 24);
 		panel.add(label_2);
 		
-		Label label_3 = new Label("Set:");
+		JLabel label_3 = new JLabel("Set:");
 		label_3.setBounds(728, 132, 38, 24);
 		panel.add(label_3);
 		
-		move = new TextField();
-		move.setBounds(783, 72, 24, 24);
+		move = new JTextField();
+		move.setBounds(783, 72, 89, 24);
+		move.setEditable(false);
+		if (editor.getLevelEditorType().equals(LevelEditorState.PUZZLE)){
+			move.setEditable(true);
+			move.addActionListener(new MoveInfoController(editor, move));
+		}
 		panel.add(move);
 		
-		timer = new TextField();
-		timer.setBounds(783, 102, 24, 24);
+		timer = new JTextField();
+		timer.setEditable(false);
+		timer.setBounds(783, 102, 89, 24);
+		if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)){
+			timer.setEditable(true);
+			timer.addActionListener(new TimerInfoController(editor, timer));
+		}
+		
 		panel.add(timer);
 		
 		JRadioButton radioButton = new JRadioButton("1");
@@ -158,7 +197,7 @@ public class LevelEditorView extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				levelBuilder lb = new levelBuilder(kb);
+				levelBuilder lb = new levelBuilder(new KabasujiBuilder());
 				lb.setVisible(true);
 				close();
 			}
@@ -192,5 +231,16 @@ public class LevelEditorView extends JFrame {
 		panel.add(jbc);
 		
 		
+	}
+	
+	public void update(){
+		if (editor.getLevelEditorType().equals(LevelEditorState.PUZZLE)){
+			move.setText(Integer.toString(((Puzzle) editor).getAllowedMove()));
+		}
+		if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)){
+			timer.setText(Integer.toString(((Lightning) editor).getAllowedTime()));
+		}
+		jbc.update();
+		jcontainer.update();
 	}
 }

@@ -1,6 +1,5 @@
 package builder.model;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,11 +11,16 @@ import model.Hint;
 public class LevelEditorState implements java.io.Serializable{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7037056491998374075L;
+
 	public static void main(String[] args){
 		LevelEditorState n = new LevelEditorState();
 		n.saveState();
 		LevelEditorState a = new LevelEditorState();
-		a.loadState("puzzle1.sav");
+		a.loadState("les0.sav");
 		System.out.println(a.levelName);
 	}
 	
@@ -41,13 +45,13 @@ public class LevelEditorState implements java.io.Serializable{
 	 * Create a default level state
 	 */
 	public LevelEditorState(){
-		this.levelNum = 1;
+		this.levelNum = 0;
 		this.levelType = LevelEditorState.PUZZLE;
 		this.board = new Board();
 		this.allowedMove = 6;
 		selectedSquare = createExampleSelectedSquare();
 		this.pc = new PieceContainer();
-		levelName = levelType + levelNum;
+		levelName = "les" + levelNum;
 	}
 	
 	/**
@@ -76,7 +80,7 @@ public class LevelEditorState implements java.io.Serializable{
 		this.hint = hint;
 		this.squareNum = squareNum;
 		this.color = color;
-		levelName = levelType + levelNum;
+		levelName = "les" + levelNum;
 	}
 
 	
@@ -219,8 +223,7 @@ public class LevelEditorState implements java.io.Serializable{
 		try{
 			
 			f = new File("leveleditor/" + fileName);
-			//System.out.println("../LevelBuilder/Levels/" + fileName);
-			//System.out.println(f.exists());
+		
 			// Open file to read from
 			saveFile = new FileInputStream(f);
 			

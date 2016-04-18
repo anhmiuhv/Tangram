@@ -3,7 +3,6 @@ package builder.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Arrays;
 
 import builder.model.LevelEditor;
 import builder.move.IMove;

@@ -3,12 +3,11 @@ package builder.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Arrays;
 
 import builder.model.LevelEditor;
 import builder.move.IMove;
 import builder.move.SelectTileBoardMove;
-import builder.move.SelectTileMove;
+
 import builder.view.JBoardCreatorView;
 import builder.view.JSquareView;
 
