@@ -7,12 +7,18 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.CloseKabasuji;
+import controller.GoMenuController;
 import controller.HorizontalFlipController;
 import controller.LevelSelectController;
+import controller.RotateLeftController;
+import controller.RotateRightController;
+import controller.VerticalFlipController;
 import model.Board;
 import model.Bullpen;
 import model.Piece;
@@ -27,6 +33,8 @@ import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -54,6 +62,7 @@ public class LevelView extends JFrame {
 	JScrollPane scrollPane = new JScrollPane();
 	int bullpenX = 20;
 	int bullpenY = 140;
+	boolean closeWindowsFlag;
 	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
@@ -64,6 +73,8 @@ public class LevelView extends JFrame {
 	 * Create the frame.
 	 */
 	public LevelView(final Level level, final LevelSelection levelselection) {
+		
+		closeWindowsFlag = false;
 		this.levelselection= levelselection;
 
 		this.level = level;
@@ -92,15 +103,32 @@ public class LevelView extends JFrame {
 		btnNewButton.setBounds(20, 20, 80, 80);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				levelselection.setVisible(true);
-				//LevelSelection nw = new LevelSelection();
-				//LoadLevel testlevel = new LoadLevel();
-				//Kabasuji newgame = new Kabasuji(LoadLevel.createTestLevel());
-				close();
+				if (new openWindowView("Are you sure to go to menu? (Current level ends and achievement will be saved)").valid()== true){
+				new GoMenuController(levelselection,LevelView.this).actionPerformed();
+				closeWindowsFlag = true;
+				}
+
 			}
 		});
 
-
+		
+		
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		    	if (closeWindowsFlag ==true){
+		    		 close();
+		    	}
+		    	else{
+		    		if (new  openWindowView("Are you sure to close the Kabasuji? (Current level ends and achievement will be saved)").valid()== true){
+		    			new CloseKabasuji().actionPerformed();
+		    	        }
+		    		else{
+		    				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		    			}
+		    	}
+		    }
+		});
 
 
 		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
@@ -136,13 +164,30 @@ public class LevelView extends JFrame {
 		contentPane.add(rRotate);
 		horiFlip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new HorizontalFlipController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(0)).actionPerformed();
+				new HorizontalFlipController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(1)).actionPerformed();
 			}
 		});
 		
 		horiFlip.setText("Horizontal Filp");
+		vertiFlip.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new VerticalFlipController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(1)).actionPerformed();
+				
+			}
+		});
 		vertiFlip.setText("Vertical Filp");
+		
+		lRotate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new RotateLeftController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(1)).actionPerformed();
+			}
+		});
 		lRotate.setText("Rotate Left");
+		rRotate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new RotateRightController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(1)).actionPerformed();
+			}
+		});
 		rRotate.setText("Rotate Right");
 		
 		horiFlip.setBounds(90+180*2, 600, 120, 40);

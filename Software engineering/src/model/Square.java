@@ -25,7 +25,7 @@ public class Square implements java.io.Serializable{
 		this.sColumn = sColumn;		
 	}
 	
-	public void setRow(int srow){
+	public void setRow(int sRow){
 		this.sRow = sRow;		
 	}
 }

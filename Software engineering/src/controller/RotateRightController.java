@@ -1,3 +1,5 @@
+
+
 package controller;
 import model.Bullpen;
 
@@ -8,14 +10,14 @@ import view.LevelView;
 
 
 
-public class HorizontalFlipController  extends java.awt.event.MouseAdapter{
+public class RotateRightController  extends java.awt.event.MouseAdapter{
 	
 	Piece piece;
 	Square[] Squares;
 	Bullpen bullpen;
 	LevelView levelview;
 	
-	public HorizontalFlipController(LevelView levelview , Bullpen bullpen,Piece piece){
+	public RotateRightController(LevelView levelview , Bullpen bullpen,Piece piece){
 		this.piece=piece;
 		this.bullpen =bullpen;
 		this.levelview= levelview;
@@ -23,9 +25,18 @@ public class HorizontalFlipController  extends java.awt.event.MouseAdapter{
 	
 	public void actionPerformed(){
 		Squares  = piece.getSquares();
+		
+		int  rl_x, rl_y ;
+		int halfX = 5;
+		int halfY = 5;
 		for (int i=0;i<6;i++){
+			rl_x = 	2*Squares[i].getColumn()-halfX;
+			rl_y = 	halfY - 2* Squares[i].getRow();
 			
-		Squares[i].setColumn(5 - Squares[i].getColumn());
+			rl_x = -rl_x;
+	
+			Squares[i].setColumn((halfX+rl_y)/2);
+			Squares[i].setRow((halfY-rl_x)/2);
 		}
 
 	

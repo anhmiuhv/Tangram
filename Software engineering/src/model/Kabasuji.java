@@ -73,31 +73,70 @@ public class Kabasuji {
 		}
 
 
-		Square bullPenSquare[] = new Square[6]; 
-		bullPenSquare[0] = new Square(1,3);
-		bullPenSquare[1] = new Square(0,1);
-		bullPenSquare[2] = new Square(0,2);
-		bullPenSquare[3] = new Square(0,3);
-		bullPenSquare[4] = new Square(0,4);
-		bullPenSquare[5] = new Square(0,5);		
+		Square bullPenSquare1[] = new Square[6]; 
+		bullPenSquare1[0] = new Square(1,3);
+		bullPenSquare1[1] = new Square(0,1);
+		bullPenSquare1[2] = new Square(0,2);
+		bullPenSquare1[3] = new Square(0,3);
+		bullPenSquare1[4] = new Square(0,4);
+		bullPenSquare1[5] = new Square(0,5);		
+		
+		Square bullPenSquare2[] = new Square[6]; 
+		bullPenSquare2[0] = new Square(0,0);
+		bullPenSquare2[1] = new Square(1,0);
+		bullPenSquare2[2] = new Square(2,0);
+		bullPenSquare2[3] = new Square(2,1);
+		bullPenSquare2[4] = new Square(2,2);
+		bullPenSquare2[5] = new Square(1,2);		
 
+		Square bullPenSquare3[] = new Square[6]; 
+		bullPenSquare3[0] = new Square(1,1);
+		bullPenSquare3[1] = new Square(0,1);
+		bullPenSquare3[2] = new Square(0,2);
+		bullPenSquare3[3] = new Square(0,3);
+		bullPenSquare3[4] = new Square(0,4);
+		bullPenSquare3[5] = new Square(0,5);		
+		
+		Square bullPenSquare4[] = new Square[6]; 
+		bullPenSquare4[0] = new Square(1,1);
+		bullPenSquare4[1] = new Square(2,1);
+		bullPenSquare4[2] = new Square(3,1);
+		bullPenSquare4[3] = new Square(3,2);
+		bullPenSquare4[4] = new Square(3,3);
+		bullPenSquare4[5] = new Square(3,4);		
 
-		Piece bullPenPiece= new Piece(0,0,bullPenSquare,bullPenSquare[0],2);
+		Square bullPenSquare5[] = new Square[6]; 
+		bullPenSquare5[0] = new Square(0,2);
+		bullPenSquare5[1] = new Square(1,2);
+		bullPenSquare5[2] = new Square(2,2);
+		bullPenSquare5[3] = new Square(3,2);
+		bullPenSquare5[4] = new Square(4,2);
+		bullPenSquare5[5] = new Square(5,2);	
+		
+		Square bullPenSquare6[] = new Square[6]; 
+		bullPenSquare6[0] = new Square(0,0);
+		bullPenSquare6[1] = new Square(0,1);
+		bullPenSquare6[2] = new Square(0,2);
+		bullPenSquare6[3] = new Square(0,3);
+		bullPenSquare6[4] = new Square(0,4);
+		bullPenSquare6[5] = new Square(0,5);	
+		
+		Piece bullPenPiece= new Piece(0,0,bullPenSquare1,bullPenSquare1[0],2);
 		bullPenPiece.setColor(new Color(0,0,0));
 
 
 		ArrayList<Piece> bullPenPieceArray=new ArrayList<Piece>();
-		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare1,bullPenSquare1[0],2));
 		bullPenPieceArray.get(0).setColor(Color.BLUE);
-		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare2,bullPenSquare2[0],2));
 		bullPenPieceArray.get(1).setColor(Color.GREEN);
-		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare3,bullPenSquare3[0],2));
 		bullPenPieceArray.get(2).setColor(Color.YELLOW);
-		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare4,bullPenSquare4[0],2));
 		bullPenPieceArray.get(3).setColor(Color.ORANGE);
-		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare5,bullPenSquare5[0],2));
 		bullPenPieceArray.get(4).setColor(Color.RED);
-		bullPenPieceArray.add(new Piece(0,0,bullPenSquare,bullPenSquare[0],2));
+		bullPenPieceArray.add(new Piece(0,0,bullPenSquare6,bullPenSquare6[0],2));
 		bullPenPieceArray.get(5).setColor(Color.PINK);
 
 
@@ -128,9 +167,9 @@ public class Kabasuji {
 		testBoard.sethint(hints);
 		
 		////// add remove test
-		bullPenPiece.setColor(Color.PINK);
-		bp.removepiece(bullPenPieceArray.get(5));
-		testBoard.addpiece(bullPenPiece);
+		//bullPenPiece.setColor(Color.PINK);
+		//bp.removepiece(bullPenPieceArray.get(5));
+		//testBoard.addpiece(bullPenPiece);
 		///test over
 		
 		for (int i=0;i<15;i++){
