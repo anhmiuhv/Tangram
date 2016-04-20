@@ -57,7 +57,8 @@ public class SwitchModeMove implements IMove{
 				this.lv.setEditor(new Lightning(le.getLevelNum(), le.getPieceContainer(), le.getPieceCreator(), le.getBoardCreator(), 0));
 				break;
 			case LevelEditorState.RELEASE:
-				this.lv.setEditor(new Release(le.getLevelNum(), le.getPieceContainer(), le.getPieceCreator(), le.getBoardCreator(), new int[144], new Color[144]));
+				this.lv.setEditor(new Release(le.getLevelNum(), le.getPieceContainer(), le.getPieceCreator(), 
+						le.getBoardCreator(), new int[144], new Color[144], Release.createEmptyListOfColoredNum()));
 				break;
 			}
 

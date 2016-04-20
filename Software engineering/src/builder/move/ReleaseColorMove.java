@@ -5,6 +5,8 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 
 import builder.model.LevelEditor;
+import builder.model.Release;
+import builder.view.JReleaseColoredNum;
 import builder.view.LevelEditorView;
 
 /**
@@ -15,10 +17,10 @@ import builder.view.LevelEditorView;
 public class ReleaseColorMove implements IMove {
 
 	LevelEditor editor;
-	LevelEditorView lev;
+	JReleaseColoredNum lev;
 	JComboBox box;
-	public ReleaseColorMove(LevelEditor editor, LevelEditorView lev, JComboBox box) {
-		this.editor = editor;
+	public ReleaseColorMove(LevelEditor editor2, JReleaseColoredNum lev, JComboBox box) {
+		this.editor = editor2;
 		this.lev = lev;
 		this.box = box;
 	}

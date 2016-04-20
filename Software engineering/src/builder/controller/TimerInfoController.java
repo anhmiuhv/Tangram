@@ -11,6 +11,7 @@ import builder.model.LevelEditor;
 import builder.model.Lightning;
 import builder.move.IMove;
 import builder.move.TimerChangeMove;
+import builder.view.LevelEditorView;
 /**
  * This class handles the timer information for LIGHTNING level
  * @author lthoang
@@ -20,7 +21,8 @@ public class TimerInfoController implements ActionListener {
 
 	LevelEditor editor;
 	JTextField t;
-	public TimerInfoController(LevelEditor editor, JTextField t){
+	LevelEditorView view;
+	public TimerInfoController(LevelEditor editor, JTextField t, LevelEditorView view){
 		this.editor = editor;
 		this.t = t;
 	}
@@ -30,6 +32,8 @@ public class TimerInfoController implements ActionListener {
 		
 		IMove m = new TimerChangeMove(t, (Lightning) editor);
 		m.doMove(editor);
+		view.update();
+		view.repaint();
 		System.out.println(((Lightning) editor).getAllowedTime());
 	}
 

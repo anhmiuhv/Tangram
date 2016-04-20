@@ -10,11 +10,28 @@ import java.awt.Color;
 public class ColoredNumber {
 	int i;
 	Color c;
+	int position;
+	
+	public int getPosition() {
+		return position;
+	}
 
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
+	public ColoredNumber (int i, Color c, int position){
+		this.i = i;
+		this.c = c;
+		this.position = position;
+	}
+	
 	public ColoredNumber (int i, Color c){
 		this.i = i;
 		this.c = c;
 	}
+	
+	
 
 	public String toString(){
 		if (c.equals(Color.YELLOW)){
