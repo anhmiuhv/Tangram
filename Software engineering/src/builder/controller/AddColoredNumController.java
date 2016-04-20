@@ -1,0 +1,41 @@
+package builder.controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import builder.model.LevelEditor;
+import builder.move.AddColoredNumMove;
+import builder.move.IMove;
+import builder.view.JReleaseColoredNum;
+import builder.view.LevelEditorView;
+
+/**
+ * This class represent the controller for the input coordination of the colored number on the board
+ * @author lthoang
+ * 
+ *
+ */
+public class AddColoredNumController implements ActionListener {
+
+	JReleaseColoredNum jrc;
+	LevelEditor editor;
+	LevelEditorView view;
+	JTextField textField;
+	public AddColoredNumController(JReleaseColoredNum jrc, LevelEditor editor, LevelEditorView view, JTextField textField){
+		this.jrc = jrc;
+		this.editor = editor;
+		this.view = view;
+		this.textField = textField;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		IMove m =new AddColoredNumMove(editor, textField, jrc);
+		m.doMove(editor);
+		
+	}
+	
+}
