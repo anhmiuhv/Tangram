@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.LevelState;
+
 /**
  * This class represent a release editor
  * @author lthoang
@@ -86,5 +88,11 @@ public class Release extends LevelEditor{
 		this.pc = new PieceCreator();
 		this.levelEditorType = les.getLevelType();
 		this.coloredNum = les.coloredNum;
+	}
+
+	@Override
+	public LevelState createLevelState() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

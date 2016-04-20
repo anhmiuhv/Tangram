@@ -3,6 +3,7 @@ package builder.model;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import model.LevelState;
 import model.Piece;
 import builder.move.IMove;
 
@@ -138,6 +139,8 @@ public abstract class LevelEditor {
 	 * @param les level editor state to load
 	 */
 	public abstract void loadLevelEditorState(LevelEditorState les);
+	
+	public abstract LevelState createLevelState();
 	
 	
 }
