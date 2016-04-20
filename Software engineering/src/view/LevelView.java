@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.HorizontalFlipController;
 import controller.LevelSelectController;
+import controller.pieceSelectionController;
 import model.Board;
 import model.Bullpen;
 import model.Piece;
@@ -29,6 +30,9 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
@@ -104,6 +108,8 @@ public class LevelView extends JFrame {
 
 
 		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
+		
+		jbp.addMouseListener(new pieceSelectionController(this,level.getBullpen()));
 
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -244,5 +250,9 @@ public class LevelView extends JFrame {
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
 			scrollPane.setViewportView(jbp);
 			contentPane.add(scrollPane);
+	}
+	
+	public JBullPenView getJBullPenView(){
+		return jbp;
 	}
 }

@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -11,11 +13,13 @@ import model.Bullpen;
 import model.Piece;
 import javax.swing.JScrollPane;
 
+import controller.pieceSelectionController;
+
 public class JBullPenView extends JPanel {
 
 	Bullpen bp;
 	
-	JPieceView[] jp = new JPieceView[10];
+	JPieceView[] jp = new JPieceView[20];
 	ArrayList<Piece> pieces;
 	int pNum = 0;
 	int BullPenXcount =0;
@@ -51,9 +55,15 @@ public class JBullPenView extends JPanel {
 			jp[i] = new JPieceView(pieces.get(i),(180+5)*BullPenXcount+5,((int)(i/2))*(180+5)+5);
 			BullPenXcount++;
 			add(jp[i]);
+	
 		}
-		
-		//scrollPane.setViewportView(this);
+
 	}
+	
+	public JPieceView[] getPieceView(){
+		return jp;
+	}
+	
+	
 }
 
