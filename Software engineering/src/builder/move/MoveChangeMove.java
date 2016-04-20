@@ -6,6 +6,11 @@ import builder.model.LevelEditorState;
 import builder.model.Puzzle;
 import builder.model.LevelEditor;
 
+/**
+ * this class represent a move to change the allowed move of the puzzle mode
+ * @author anhmiuhv
+ *
+ */
 public class MoveChangeMove implements IMove {
 
 	JTextField timer;

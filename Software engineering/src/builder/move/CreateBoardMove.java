@@ -3,6 +3,11 @@ package builder.move;
 import builder.model.BoardCreator;
 import builder.model.LevelEditor;
 
+/**
+ * this class represent a move to create board
+ * @author lthaong
+ *
+ */
 public class CreateBoardMove implements IMove {
 	
 	BoardCreator bc;

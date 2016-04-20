@@ -8,6 +8,11 @@ import builder.move.DeletePieceMove;
 import builder.move.IMove;
 import builder.view.JPieceContainerView;
 
+/**
+ * This class handle the delete buttons for the pieces in the Piece Container
+ * @author lthoang
+ *
+ */
 public class DeletePieceController implements ActionListener {
 
 	LevelEditor lvle;

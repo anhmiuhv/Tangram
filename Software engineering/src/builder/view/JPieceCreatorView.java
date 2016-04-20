@@ -1,6 +1,7 @@
 package builder.view;
 
 import javax.swing.ImageIcon;
+
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -19,6 +20,11 @@ import java.awt.GridLayout;
 import javax.swing.border.LineBorder;
 
 import model.*;
+/**
+ * this class represent a piece creator
+ * @author lthoang
+ *
+ */
 public class JPieceCreatorView extends JPanel {
 	
 	/**
@@ -79,6 +85,9 @@ public class JPieceCreatorView extends JPanel {
 
 	}
 
+	/**
+	 * update the view
+	 */
 	public void update() {
 		Square[] squareToDisplay = pc.getSquares();
 		boolean[] selectedSquare = pc.getSelected();

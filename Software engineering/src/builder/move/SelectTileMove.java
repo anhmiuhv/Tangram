@@ -6,7 +6,11 @@ import model.Square;
 import builder.model.LevelEditor;
 import builder.view.*;
 
-
+/**
+ * This class represent a move to select a square in the piece creator
+ * @author lthoang
+ *
+ */
 public class SelectTileMove implements IMove{
 
 	JSquareView square;

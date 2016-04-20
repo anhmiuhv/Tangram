@@ -5,12 +5,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSplitPane;
 
 import java.awt.FlowLayout;
 import java.awt.Component;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Label;
 import java.awt.TextField;
@@ -27,6 +30,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import builder.controller.MoveInfoController;
+import builder.controller.ReleaseColorController;
 import builder.controller.SwitchLevelModeController;
 import builder.controller.TimerInfoController;
 import builder.model.*;
@@ -42,6 +46,11 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+/**
+ * this class represent the editor view
+ * @author lthoang
+ *
+ */
 public class LevelEditorView extends JFrame {
 
 	private JPanel contentPane;
@@ -55,7 +64,8 @@ public class LevelEditorView extends JFrame {
 	JTextField sets;
 	JComboBox mode;
 	LevelEditor editor;
-	LevelEditor clone;
+	Color colorNum = Color.YELLOW;
+	JComboBox color;
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -73,6 +83,10 @@ public class LevelEditorView extends JFrame {
 	}
 	
 	
+	public void setEditor(LevelEditor editor) {
+		this.editor = editor;
+	}
+
 	public void init() {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -106,7 +120,7 @@ public class LevelEditorView extends JFrame {
 		panel.add(btnRestart);
 		
 		mode = new JComboBox();
-		mode.setBounds(783, 44, 128, 22);
+		mode.setBounds(783, 44, 143, 22);
 		panel.add(mode);
 		mode.setModel(new DefaultComboBoxModel(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
 		switch (editor.getLevelEditorType()){
@@ -131,19 +145,16 @@ public class LevelEditorView extends JFrame {
 		label_1.setBounds(728, 74, 48, 24);
 		panel.add(label_1);
 		
-		JLabel label_2 = new JLabel("Time:");
-		label_2.setBounds(728, 102, 46, 24);
-		panel.add(label_2);
-		
-		JLabel label_3 = new JLabel("Set:");
-		label_3.setBounds(728, 132, 38, 24);
-		panel.add(label_3);
+		JLabel lblDelete = new JLabel("Delete");
+		lblDelete.setBounds(728, 102, 46, 24);
+		panel.add(lblDelete);
 		
 		move = new JTextField();
 		move.setBounds(783, 72, 89, 24);
 		move.setEditable(false);
 		if (editor.getLevelEditorType().equals(LevelEditorState.PUZZLE)){
 			move.setEditable(true);
+			move.setText(Integer.toString((((Puzzle) editor).getAllowedMove())));
 			move.addActionListener(new MoveInfoController(editor, move));
 		}
 		panel.add(move);
@@ -153,6 +164,7 @@ public class LevelEditorView extends JFrame {
 		timer.setBounds(783, 102, 89, 24);
 		if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)){
 			timer.setEditable(true);
+			move.setText(Integer.toString((((Puzzle) editor).getAllowedMove())));
 			timer.addActionListener(new TimerInfoController(editor, timer));
 		}
 		
@@ -211,8 +223,27 @@ public class LevelEditorView extends JFrame {
 		radioButton_3.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButton_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
-		JButton btnHint = new JButton("Hint");
+		final JButton btnHint = new JButton("Hint");
 		btnHint.setBounds(6, 492, 75, 25);
+		btnHint.setOpaque(true);
+		btnHint.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		btnHint.setBackground(Color.WHITE);
+		btnHint.setBorderPainted(false);
+		btnHint.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (jbc.isHintMode()){
+					btnHint.setBackground(Color.WHITE);
+					btnHint.setForeground(Color.BLACK);
+				} else {
+					btnHint.setBackground(new Color(189,100,57));
+					btnHint.setForeground(Color.white);
+				}
+				jbc.setHintMode(!jbc.isHintMode());
+			}
+			
+		});
 		panel.add(btnHint);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -230,17 +261,35 @@ public class LevelEditorView extends JFrame {
 		jbc.setBounds(540, 202,407,311);
 		panel.add(jbc);
 		
+		color = new JComboBox();
+		color.setModel(new DefaultComboBoxModel(new String[] {"Yellow", "Orange", "Pink"}));
+		color.setBounds(660, 132, 101, 27);
+		color.setSelectedIndex(0);
+		color.addActionListener(new ReleaseColorController(color, this, editor));
+		if (!editor.getLevelEditorType().equals(LevelEditorState.RELEASE)){
+			color.setEnabled(false);
+		}
+		panel.add(color);
+		
 		
 	}
 	
 	public void update(){
 		if (editor.getLevelEditorType().equals(LevelEditorState.PUZZLE)){
 			move.setText(Integer.toString(((Puzzle) editor).getAllowedMove()));
-		}
-		if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)){
+			mode.setSelectedIndex(0);
+		} else if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)){
 			timer.setText(Integer.toString(((Lightning) editor).getAllowedTime()));
+			mode.setSelectedIndex(1);
+		} else {
+			mode.setSelectedIndex(2);
 		}
 		jbc.update();
 		jcontainer.update();
+		jpc.update();
+	}
+
+	public void setColorNum(Color colorNum) {
+		this.colorNum = colorNum;
 	}
 }

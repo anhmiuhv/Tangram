@@ -11,7 +11,11 @@ import builder.model.LevelEditor;
 import builder.model.Lightning;
 import builder.move.IMove;
 import builder.move.TimerChangeMove;
-
+/**
+ * This class handles the timer information for LIGHTNING level
+ * @author lthoang
+ *
+ */
 public class TimerInfoController implements ActionListener {
 
 	LevelEditor editor;

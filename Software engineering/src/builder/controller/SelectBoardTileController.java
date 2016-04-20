@@ -6,11 +6,16 @@ import java.awt.event.MouseListener;
 
 import builder.model.LevelEditor;
 import builder.move.IMove;
+import builder.move.SelectHintMove;
 import builder.move.SelectTileBoardMove;
-
 import builder.view.JBoardCreatorView;
 import builder.view.JSquareView;
 
+/**
+ * This class handles indidual square of the board creator
+ * @author anhmiuhv
+ *
+ */
 public class SelectBoardTileController implements MouseListener{
 	
 	LevelEditor lvle;
@@ -25,8 +30,13 @@ public class SelectBoardTileController implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		IMove m = new SelectTileBoardMove(view);
-		m.doMove(lvle);
+		if (jbc.isHintMode()){
+			IMove m = new SelectHintMove(view);
+			m.doMove(lvle);			
+		} else {
+			IMove m = new SelectTileBoardMove(view);
+			m.doMove(lvle);
+		}
 		view.paintColor();
 		jbc.update();
 		jbc.repaint();

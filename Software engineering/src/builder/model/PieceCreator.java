@@ -2,11 +2,19 @@ package builder.model;
 import model.Piece;
 import model.Square;
 
+/**
+ * This class represent a piece container
+ * @author lthoang
+ *
+ */
 public class PieceCreator {
 	Square base[] = new Square[36];
 	Piece piece;
 	boolean[] selectedSquare = new boolean[36];
 	
+	/**
+	 * create a piece creator
+	 */
 	public PieceCreator(){
 		init();
 	}
@@ -25,12 +33,21 @@ public class PieceCreator {
 		}
 	}
 	
+	/**
+	 * check whether the piece is valid
+	 * @return true if valid
+	 */
 	public boolean validPiece(){
 		
 		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
 
 	}
 	
+	/**
+	 * for checking a valid piece
+	 * @param head
+	 * @return
+	 */
 	private boolean dfsSquare(Square head){
 		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
 		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
@@ -53,6 +70,10 @@ public class PieceCreator {
 		
 	}
 	
+	/**
+	 * create the piece from the selected square 
+	 * @return true if success
+	 */
 	public boolean createPiece(){
 		
 		int counter = 0;
@@ -79,10 +100,18 @@ public class PieceCreator {
 		return true;
 	}
 	
+	/**
+	 * return the bases of piece creator
+	 * @return base of piece creator
+	 */
 	public Square[] getSquares(){
 		return base;
 	}
 	
+	/**
+	 * return the selected squares
+	 * @return selected squares
+	 */
 	public boolean[] getSelected(){
 		return selectedSquare;
 	}
@@ -90,6 +119,11 @@ public class PieceCreator {
 		return this.piece;
 	}
 	
+	/**
+	 * select a square for creating a piece
+	 * @param row
+	 * @param column
+	 */
 	public void selectSquare(int row, int column){
 		this.selectedSquare[row * 6 + column] = true;
 	}

@@ -6,7 +6,11 @@ import model.Square;
 import builder.model.LevelEditor;
 import builder.view.*;
 
-
+/**
+ * THis class represent a move to select a tile in the board creator
+ * @author lthoang
+ *
+ */
 public class SelectTileBoardMove implements IMove{
 
 	JSquareView square;
@@ -24,11 +28,11 @@ public class SelectTileBoardMove implements IMove{
 	public boolean doMove(LevelEditor level) {
 		if (square.getColor().equals(Color.BLACK)){
 			Square s = square.getSquare();
-			level.getBoardCreator().deselectSquare(s.getColumn() + s.getRow() * 6);
+			level.getBoardCreator().deselectSquare(s.getColumn() + s.getRow() * 12);
 			square.setColor(Color.WHITE);
 		} else {
 			Square s = square.getSquare();
-			level.getBoardCreator().selectSquare(s.getColumn() + s.getRow() * 6);
+			level.getBoardCreator().selectSquare(s.getColumn() + s.getRow() * 12);
 			square.setColor(Color.BLACK);
 		}
 		return true;

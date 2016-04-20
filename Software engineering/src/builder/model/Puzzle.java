@@ -1,6 +1,14 @@
 package builder.model;
 
+import java.awt.Color;
+
+/**
+ * THis class represent an Puzzle editor
+ * @author lthoang
+ *
+ */
 public class Puzzle extends LevelEditor {
+	/** allowed move in puzzle*/
 	int allowedMove;
 	
 	
@@ -16,7 +24,8 @@ public class Puzzle extends LevelEditor {
 	
 	@Override
 	public void createLevelEditorState() {
-		this.les = new LevelEditorState(levelNum, LevelEditorState.PUZZLE, -1, allowedMove, container, bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new int[0]);
+		this.les = new LevelEditorState(levelNum, LevelEditorState.PUZZLE, -1, allowedMove, container, 
+				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare());
 		
 	}
 	@Override
@@ -25,6 +34,7 @@ public class Puzzle extends LevelEditor {
 		this.levelNum = les.getLevelNum();
 		this.bc = new BoardCreator();
 		this.bc.setSelected(les.getSelectedSquare());
+		this.bc.setIsHintSquare(les.getIsHintSquare());
 		this.bc.setBoard(les.getBoard());
 		this.bc.setHints(les.getHint());
 		this.allowedMove = les.getAllowedMove();

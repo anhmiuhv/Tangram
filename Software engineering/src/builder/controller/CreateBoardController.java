@@ -8,6 +8,11 @@ import builder.move.CreateBoardMove;
 import builder.move.IMove;
 import builder.view.JBoardCreatorView;
 
+/**
+ * This class manage the action for Board Creator
+ * @author lthoang
+ *
+ */
 public class CreateBoardController implements ActionListener {
 
 	LevelEditor lvle;

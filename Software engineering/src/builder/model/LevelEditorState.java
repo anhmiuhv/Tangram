@@ -1,5 +1,6 @@
 package builder.model;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,6 +9,11 @@ import java.io.ObjectOutputStream;
 
 import model.Hint;
 
+/**
+ * THis class represent a level editor state
+ * @author lthoang
+ *
+ */
 public class LevelEditorState implements java.io.Serializable{
 
 
@@ -35,10 +41,11 @@ public class LevelEditorState implements java.io.Serializable{
 	int allowedMove;
 	PieceContainer pc;
 	boolean selectedSquare[];
+	boolean isHintSquare[];
 	Board board;
 	Hint hint;
 	int squareNum[];
-	int color[];
+	Color color[];
 	String levelName;
 	
 	/**
@@ -52,6 +59,7 @@ public class LevelEditorState implements java.io.Serializable{
 		selectedSquare = createExampleSelectedSquare();
 		this.pc = new PieceContainer();
 		levelName = "les" + levelNum;
+		this.isHintSquare = new boolean[144];
 	}
 	
 	/**
@@ -69,7 +77,7 @@ public class LevelEditorState implements java.io.Serializable{
 	 */
 	public LevelEditorState(int levelNum, String levelType, int allowedTime,
 			int allowedMove, PieceContainer pc, boolean[] selectedSquare,
-			Board board, Hint hint, int[] squareNum, int[] color) {
+			Board board, Hint hint, int[] squareNum, Color[] color, boolean isHintSquare[]) {
 		this.levelNum = levelNum;
 		this.levelType = levelType;
 		this.allowedTime = allowedTime;
@@ -81,6 +89,7 @@ public class LevelEditorState implements java.io.Serializable{
 		this.squareNum = squareNum;
 		this.color = color;
 		levelName = "les" + levelNum;
+		this.isHintSquare = isHintSquare;
 	}
 
 	
@@ -115,6 +124,14 @@ public class LevelEditorState implements java.io.Serializable{
 
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
+	}
+
+	public boolean[] getIsHintSquare() {
+		return isHintSquare;
+	}
+
+	public void setIsHintSquare(boolean[] isHintSquare) {
+		this.isHintSquare = isHintSquare;
 	}
 
 	public PieceContainer getPc() {
@@ -157,11 +174,11 @@ public class LevelEditorState implements java.io.Serializable{
 		this.squareNum = squareNum;
 	}
 
-	public int[] getColor() {
+	public Color[] getColor() {
 		return color;
 	}
 
-	public void setColor(int[] color) {
+	public void setColor(Color[] color) {
 		this.color = color;
 	}
 
@@ -244,6 +261,7 @@ public class LevelEditorState implements java.io.Serializable{
 			this.color = lvlst.color;
 			this.hint = lvlst.hint;
 			this.selectedSquare = lvlst.selectedSquare;
+			this.isHintSquare = lvlst.isHintSquare;
 			
 			// Close the file.
 			save.close(); // This also closes saveFile.

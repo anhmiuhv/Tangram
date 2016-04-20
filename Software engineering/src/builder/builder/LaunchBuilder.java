@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import builder.model.*;
 import builder.view.*;
 
-
+/**
+ * This class launch the builder
+ * @author lthoang
+ *
+ */
 public class LaunchBuilder {
 
 	public static void main(String[] args) {

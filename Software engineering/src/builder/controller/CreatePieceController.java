@@ -9,6 +9,11 @@ import builder.move.IMove;
 import builder.view.JPieceContainerView;
 import builder.view.JPieceCreatorView;
 
+/**
+ * This class managa the Piece Creator
+ * @author lthoang
+ *
+ */
 public class CreatePieceController implements ActionListener {
 
 	LevelEditor lvle;

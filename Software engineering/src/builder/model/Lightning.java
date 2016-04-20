@@ -1,7 +1,14 @@
 package builder.model;
 
+import java.awt.Color;
 
+/**
+ * This class represent the LIghtning editor
+ * @author lthoang
+ *
+ */
 public class Lightning extends LevelEditor {
+	/**Allowed time*/
 	int allowedTime;
 	public Lightning(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc, int allowedTime) {
 		super(levelNum, container, pc, bc);
@@ -15,7 +22,8 @@ public class Lightning extends LevelEditor {
 	}
 	@Override
 	public void createLevelEditorState() {
-		this.les = new LevelEditorState(levelNum, LevelEditorState.LIGHTNING, allowedTime, -1, container, bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new int[0]);
+		this.les = new LevelEditorState(levelNum, LevelEditorState.LIGHTNING, allowedTime, -1, container,
+				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare());
 		
 	}
 	@Override
@@ -24,6 +32,7 @@ public class Lightning extends LevelEditor {
 		this.levelNum = les.getLevelNum();
 		this.bc = new BoardCreator();
 		this.bc.setSelected(les.getSelectedSquare());
+		this.bc.setIsHintSquare(les.getIsHintSquare());
 		this.bc.setBoard(les.getBoard());
 		this.bc.setHints(les.getHint());
 		this.allowedTime = les.getAllowedTime();

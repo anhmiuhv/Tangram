@@ -11,8 +11,15 @@ import builder.model.LevelEditorState;
 import builder.model.PieceContainer;
 import builder.model.PieceCreator;
 import builder.model.Puzzle;
+import builder.move.IMove;
+import builder.move.SwitchModeMove;
 import builder.view.LevelEditorView;
 
+/**
+ * THis class handle the switching of game mode
+ * @author lthoang
+ *
+ */
 public class SwitchLevelModeController implements ActionListener {
 
 	LevelEditorView lv;
@@ -26,34 +33,9 @@ public class SwitchLevelModeController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.editor = new Puzzle(0, new PieceContainer(), new PieceCreator(), new BoardCreator(), 0);
+		IMove m = new SwitchModeMove(lv, editor, b);
+		m.doMove(editor);
 		lv.init();
 	}
-	/*new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String m = (String) mode.getSelectedItem();
-				switch (m){
-				case "Puzzle Level":
-					m = LevelEditorState.PUZZLE;
-					break;
-				case "Lightning Level":
-					m = LevelEditorState.LIGHTNING;
-					break;
-				case "Release Level":
-					m = LevelEditorState.RELEASE;
-					break;
-				}
-				
-				if (!editor.getLevelEditorType().equals(m)){
-					switch (m){
-					case LevelEditorState.PUZZLE:
-						this.editor 
-					}
-						
-				}
-			}*/
-
+	
 }

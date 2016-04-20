@@ -6,6 +6,11 @@ import builder.model.LevelEditor;
 import builder.model.LevelEditorState;
 import builder.model.Lightning;
 
+/**
+ * This class represent a move to change the time in the Lightning level
+ * @author anhmiuhv
+ *
+ */
 public class TimerChangeMove implements IMove {
 
 	Lightning lvle;

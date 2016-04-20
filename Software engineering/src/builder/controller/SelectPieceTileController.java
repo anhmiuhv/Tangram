@@ -9,6 +9,11 @@ import builder.move.IMove;
 import builder.move.SelectTileMove;
 import builder.view.JSquareView;
 
+/**
+ * This class handles the individual squares of piece creator
+ * @author lthoang
+ *
+ */
 public class SelectPieceTileController implements MouseListener{
 	
 	LevelEditor lvle;

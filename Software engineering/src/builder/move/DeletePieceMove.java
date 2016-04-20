@@ -2,6 +2,11 @@ package builder.move;
 import builder.model.PieceContainer;
 import builder.model.LevelEditor;
 
+/**
+ * This class represent a delete piece move
+ * @author lthoang
+ *
+ */
 public class DeletePieceMove implements IMove {
 
 	PieceContainer pc;

@@ -14,6 +14,11 @@ import builder.move.IMove;
 import builder.move.MoveChangeMove;
 import builder.move.TimerChangeMove;
 
+/**
+ * THis class handles the allowed move information for the puzzle level
+ * @author lthoang
+ *
+ */
 public class MoveInfoController implements ActionListener {
 
 	LevelEditor editor;

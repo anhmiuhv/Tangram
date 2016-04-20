@@ -13,27 +13,46 @@ import view.JPieceView;
 import builder.controller.DeletePieceController;
 import builder.model.*;
 
+/**
+ * This class represent a piece container view
+ * @author lthoang
+ *
+ */
 public class JPieceContainerView extends JPanel {
 											
 	LevelEditor lvl;
 	PieceContainer pc;
+	/**
+	 * individual pieces
+	 */
 	ArrayList<JPieceView> jp = new ArrayList<JPieceView>();
 	ArrayList<Piece> pieces;
+	/**
+	 * number of pieces
+	 */
 	int pNum = 0;
 	int PCXcount =0;
 	int PCycount =0;
+	/**
+	 * position of view
+	 */
 	int bpX;
+	/**
+	 * position of view
+	 */
 	int bpY;
 	ArrayList<JButton> delete;
-	//JScrollPane scrollPane = new JScrollPane();
-	
+		
 	public JPieceContainerView(LevelEditor lvl) {
 		this.lvl = lvl;
 		pc = lvl.getPieceContainer();
-		createJBullPenView();
+		createJPieceContainerView();
 	}
 	
-	public void createJBullPenView(){
+	/**
+	 * setup the view
+	 */
+	private void createJPieceContainerView(){
 
 		//setBounds(bpX,bpY,180*2+15,180*3+20);
 		setPreferredSize(new Dimension(180*2+30,180*20+20));
@@ -61,6 +80,9 @@ public class JPieceContainerView extends JPanel {
 		//scrollPane.setViewportView(this);
 	}
 	
+	/**
+	 * update the view
+	 */
 	public void update(){
 		removeAll();
 		jp = new ArrayList<JPieceView>();

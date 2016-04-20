@@ -1,11 +1,21 @@
 package builder.move;
 
+import java.awt.Color;
+
 import javax.swing.JComboBox;
 
 import builder.model.LevelEditor;
 import builder.model.LevelEditorState;
+import builder.model.Lightning;
+import builder.model.Puzzle;
+import builder.model.Release;
 import builder.view.LevelEditorView;
 
+/**
+ * This class represent a move to switch mode in the builder
+ * @author lthoang
+ *
+ */
 public class SwitchModeMove implements IMove{
 
 	LevelEditorView lv;
@@ -16,7 +26,7 @@ public class SwitchModeMove implements IMove{
 		this.le = lvle;
 		this.b = b;
 	}
-	
+
 	@Override
 	public boolean isMoveValid(LevelEditor level) {
 		return true;
@@ -37,13 +47,20 @@ public class SwitchModeMove implements IMove{
 			m = LevelEditorState.RELEASE;
 			break;
 		}
-		
+
 		if (!le.getLevelEditorType().equals(m)){
 			switch (m){
 			case LevelEditorState.PUZZLE:
-				 
+				this.lv.setEditor(new Puzzle(le.getLevelNum(), le.getPieceContainer(), le.getPieceCreator(), le.getBoardCreator(), 0));
+				break;
+			case LevelEditorState.LIGHTNING:
+				this.lv.setEditor(new Lightning(le.getLevelNum(), le.getPieceContainer(), le.getPieceCreator(), le.getBoardCreator(), 0));
+				break;
+			case LevelEditorState.RELEASE:
+				this.lv.setEditor(new Release(le.getLevelNum(), le.getPieceContainer(), le.getPieceCreator(), le.getBoardCreator(), new int[144], new Color[144]));
+				break;
 			}
-				
+
 		}
 		return true;
 	}

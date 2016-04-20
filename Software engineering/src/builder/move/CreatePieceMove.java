@@ -4,6 +4,11 @@ import builder.model.LevelEditor;
 import builder.model.PieceContainer;
 import builder.model.PieceCreator;
 
+/**
+ * this class represent a move to creat piece
+ * @author lthoang
+ *
+ */
 public class CreatePieceMove implements IMove{
 
 	PieceCreator pc;
