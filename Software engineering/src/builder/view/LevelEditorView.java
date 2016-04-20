@@ -60,6 +60,7 @@ public class LevelEditorView extends JFrame {
 	JBoardCreatorView jbc;
 	JPieceCreatorView jpc;
 	JPieceContainerView jcontainer;
+	JReleaseColoredNum releaseColoredNum;
 	JTextField timer;
 	JTextField move;
 	JTextField sets;
@@ -226,11 +227,11 @@ public class LevelEditorView extends JFrame {
 		jbc.setBounds(540, 202,407,311);
 		panel.add(jbc);
 		
-		JReleaseColoredNum releaseColoredNum = new JReleaseColoredNum(editor);
+		releaseColoredNum = new JReleaseColoredNum(editor, this);
 		releaseColoredNum.setBorder(new LineBorder(new Color(0, 0, 0)));
 		releaseColoredNum.setBounds(436, 43, 280, 150);
 		if (!editor.getLevelEditorType().equals(LevelEditorState.RELEASE)){
-			
+			releaseColoredNum.setEnabled(false);
 		}
 		panel.add(releaseColoredNum);
 		
@@ -267,6 +268,7 @@ public class LevelEditorView extends JFrame {
 		jbc.update();
 		jcontainer.update();
 		jpc.update();
+		releaseColoredNum.update();
 	}
 
 	
