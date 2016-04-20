@@ -68,6 +68,7 @@ public class LevelEditorView extends JFrame {
 	JLabel moveLabel;
 	LevelEditor editor;
 	JLabel timerLabel;
+	JPanel panel;
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -81,6 +82,18 @@ public class LevelEditorView extends JFrame {
 		this.kb = kb;
 		this.levelNum = levelNum;
 		editor = kb.getLevel(levelNum);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 971, 564);
+		contentPane = new JPanel();
+		contentPane.setForeground(SystemColor.controlText);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		panel = new JPanel();
+		panel.setBounds(12, 13, 953, 523);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		init();
 	}
 	
@@ -91,18 +104,8 @@ public class LevelEditorView extends JFrame {
 
 	public void init() {
 		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 971, 564);
-		contentPane = new JPanel();
-		contentPane.setForeground(SystemColor.controlText);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		panel.removeAll();
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(12, 13, 953, 523);
-		contentPane.add(panel);
-		panel.setLayout(null);
 		
 		JButton btnSave = new JButton("Save&Exit");
 		btnSave.setBounds(783, 6, 111, 25);

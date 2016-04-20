@@ -87,7 +87,6 @@ public class JBoardCreatorView extends JPanel {
 			squareV[i].addMouseListener(new SelectBoardTileController(lvle, this, squareV[i]));
 			if (lvle.getLevelEditorType().equals(LevelEditorState.RELEASE)){
 				int numLabel = ((Release) lvle).getSquareNum()[i];
-				System.out.println(numLabel);
 				Color c = ((Release) lvle).getColorNum()[i];
 				
 				squareV[i].paintColorNum(numLabel, c);
