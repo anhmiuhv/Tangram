@@ -6,17 +6,29 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Hint;
 
+/**
+ * THis class represent a level editor state
+ * @author lthoang
+ *
+ */
 public class LevelEditorState implements java.io.Serializable{
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7037056491998374075L;
 
 	public static void main(String[] args){
 		LevelEditorState n = new LevelEditorState();
 		n.saveState();
 		LevelEditorState a = new LevelEditorState();
-		a.loadState("puzzle1.sav");
+		a.loadState("les0.sav");
 		System.out.println(a.levelName);
 	}
 	
@@ -31,23 +43,26 @@ public class LevelEditorState implements java.io.Serializable{
 	int allowedMove;
 	PieceContainer pc;
 	boolean selectedSquare[];
+	boolean isHintSquare[];
 	Board board;
 	Hint hint;
 	int squareNum[];
-	int color[];
+	Color color[];
 	String levelName;
+	HashMap<String, ColoredNumber> coloredNum;
 	
 	/**
 	 * Create a default level state
 	 */
 	public LevelEditorState(){
-		this.levelNum = 1;
+		this.levelNum = 0;
 		this.levelType = LevelEditorState.PUZZLE;
 		this.board = new Board();
 		this.allowedMove = 6;
 		selectedSquare = createExampleSelectedSquare();
 		this.pc = new PieceContainer();
-		levelName = levelType + levelNum;
+		levelName = "les" + levelNum;
+		this.isHintSquare = new boolean[144];
 	}
 	
 	/**
@@ -64,8 +79,8 @@ public class LevelEditorState implements java.io.Serializable{
 	 * @param color
 	 */
 	public LevelEditorState(int levelNum, String levelType, int allowedTime,
-			int allowedMove, PieceContainer pc, boolean[] selectedSquare,
-			Board board, Hint hint, int[] squareNum, int[] color) {
+			int allowedMove, PieceContainer pc, boolean[] selectedSquare,Board board, 
+			Hint hint, int[] squareNum, Color[] color, boolean isHintSquare[], HashMap<String, ColoredNumber> coloredNum) {
 		this.levelNum = levelNum;
 		this.levelType = levelType;
 		this.allowedTime = allowedTime;
@@ -76,7 +91,9 @@ public class LevelEditorState implements java.io.Serializable{
 		this.hint = hint;
 		this.squareNum = squareNum;
 		this.color = color;
-		levelName = levelType + levelNum;
+		levelName = "les" + levelNum;
+		this.isHintSquare = isHintSquare;
+		this.coloredNum = coloredNum;
 	}
 
 	
@@ -111,6 +128,14 @@ public class LevelEditorState implements java.io.Serializable{
 
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
+	}
+
+	public boolean[] getIsHintSquare() {
+		return isHintSquare;
+	}
+
+	public void setIsHintSquare(boolean[] isHintSquare) {
+		this.isHintSquare = isHintSquare;
 	}
 
 	public PieceContainer getPc() {
@@ -153,11 +178,11 @@ public class LevelEditorState implements java.io.Serializable{
 		this.squareNum = squareNum;
 	}
 
-	public int[] getColor() {
+	public Color[] getColor() {
 		return color;
 	}
 
-	public void setColor(int[] color) {
+	public void setColor(Color[] color) {
 		this.color = color;
 	}
 
@@ -219,8 +244,7 @@ public class LevelEditorState implements java.io.Serializable{
 		try{
 			
 			f = new File("leveleditor/" + fileName);
-			//System.out.println("../LevelBuilder/Levels/" + fileName);
-			//System.out.println(f.exists());
+		
 			// Open file to read from
 			saveFile = new FileInputStream(f);
 			
@@ -241,7 +265,8 @@ public class LevelEditorState implements java.io.Serializable{
 			this.color = lvlst.color;
 			this.hint = lvlst.hint;
 			this.selectedSquare = lvlst.selectedSquare;
-			
+			this.isHintSquare = lvlst.isHintSquare;
+			this.coloredNum = lvlst.coloredNum;
 			// Close the file.
 			save.close(); // This also closes saveFile.
 		}

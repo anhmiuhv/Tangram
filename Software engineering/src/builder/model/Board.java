@@ -1,12 +1,17 @@
 package builder.model;
 import model.Square;
 
-
+/**
+ * This class represents a game board
+ * @author lthoang
+ *
+ */
 public class Board implements java.io.Serializable {
 	/**
-	 * 
+	 * For storing
 	 */
 	private static final long serialVersionUID = 8029643701095122688L;
+	/** Representing as an array of squares */
 	Square[] squares;
 	
 	/**
@@ -25,6 +30,11 @@ public class Board implements java.io.Serializable {
 			}
  		}
 	}
+	
+	/**
+	 * Create a custom board
+	 * @param squares the array of squares representing a board
+	 */
 	public Board(Square[] squares){
 		this.squares = squares;
 	}

@@ -12,47 +12,112 @@ import javax.swing.JPanel;
 
 import builder.model.*;
 import model.*;
+/**
+ * representing individual square
+ * @author lthoang
+ *
+ */
 public class JSquareView extends JPanel {
 	Square square;
+	/**
+	 * whether this square is hint
+	 */
+	boolean isHint;
+	JLabel numSquare = new JLabel();
+
+	public Square getSquare() {
+		return square;
+	}
+
 	Color cl;
 	JPanel topJPanel;
 	int size = 30;
-	
+	LevelEditor lvle;
+
 	public JSquareView(Square square,Color cl){
 		this.square = square;
 		this.cl = cl;
-		
+
 		paintSquare();
 	}
-	
+
 	public JSquareView(Square square,Color cl, int size){
 		this.square = square;
 		this.cl = cl;
 		this.size = size;
+		add(numSquare);
 		paintSquare();
 	}
 
+	public Color getColor(){
+		return cl;
+	}
 
+	/**
+	 * set the size of the square 
+	 * @param size length of the square
+	 */
 	public void setSize(int size){
 		this.size = size;
 	}
-	
+
 	public void setColor(Color cl){
 		this.cl = cl;
+		paintColor();
+	}
+
+	public LevelEditor getLvle() {
+		return lvle;
+	}
+
+	public void setLvle(LevelEditor lvle) {
+		this.lvle = lvle;
+	}
+
+	/**
+	 * update the square 
+	 */
+	public void paintSquare() {
+		paintColor();
+		setBounds(square.getColumn() * size, square.getRow() * size, size, size);
+		if (isHint){
+			setBorder(BorderFactory.createLineBorder(Color.BLUE, 4));
+		} else {
+			setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		}
+		numSquare.setBounds(0, 0, size, size);
+		
+	}
+
+	public void paintColorNum(int num,Color c) {
+		if (num != 0){
+			numSquare.setText(Integer.toString(num));
+			numSquare.setForeground(c);
+			
+		}
+
+	}
+
+	public void paintColor(){
 		setBackground(cl);
 	}
-	
-	//JLabel lblNewLabel = new JLabel("New label");
-	//lblNewLabel.setBounds(184, 49, 46, 14);
-	//panel.add(lblNewLabel);
-	 public void paintSquare() {
 
-		 setBackground(cl);
-		// setText("New label");
-		// setIcon(new ImageIcon("images\\puzzleIcon.png"));
-		 setBounds(square.getColumn() * size, square.getRow() * size, size, size);
-		 setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+	/**
+	 * set the square is hint or not
+	 * @param b
+	 */
+	public void setHint(boolean b) {
+		this.isHint = b;
+		paintSquare();
 	}
-			
+
+	/**
+	 * if this square is a hint square
+	 * @return true if it is, yeah I know it is stupid
+	 */
+	public boolean isHint() {
+		return isHint;
+	}
+
 
 }

@@ -1,16 +1,20 @@
 package builder.builder;
+import java.io.File;
 import java.util.ArrayList;
-
 import builder.model.*;
 import builder.view.*;
 
-
+/**
+ * This class launch the builder
+ * @author lthoang
+ *
+ */
 public class LaunchBuilder {
 
 	public static void main(String[] args) {
-		ArrayList<LevelEditor> editor = new ArrayList<LevelEditor>();
-		editor.add(new Puzzle(1, new PieceContainer(), new PieceCreator(), new BoardCreator(), 0));
-		Builder builder = new Builder("linh", new KabasujiBuilder(editor));
+		Builder builder = new Builder("linh", new KabasujiBuilder());
 		BuilderApplication app = new BuilderApplication(builder);	
 	}
+
+	
 }
