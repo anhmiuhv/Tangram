@@ -34,7 +34,10 @@ public class MoveInfoController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new MoveChangeMove(t, (Puzzle) editor);
-		m.doMove(editor);
+		if (m.doMove(editor)){
+			editor.pushUndo(m);
+		}
+		editor.getRedoStack().removeAllElements();
 		view.update();
 		view.repaint();
 		System.out.println(((Puzzle) editor).getAllowedMove() + "hhhhhhh");

@@ -27,6 +27,8 @@ public class ReleaseColorController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new ReleaseColorMove(editor, lev, box);
 		m.doMove(editor);
+		lev.update();
+		lev.repaint();
 	}
 
 }

@@ -7,10 +7,14 @@ import java.awt.Color;
  * @author lthoang
  *
  */
-public class ColoredNumber {
+public class ColoredNumber implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5759723735362156260L;
 	int i;
 	Color c;
-	int position;
+	int position = -1;
 	
 	public int getPosition() {
 		return position;

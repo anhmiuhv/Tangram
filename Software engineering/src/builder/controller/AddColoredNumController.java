@@ -8,6 +8,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import builder.model.LevelEditor;
+import builder.model.Release;
 import builder.move.AddColoredNumMove;
 import builder.move.IMove;
 import builder.view.JReleaseColoredNum;
@@ -34,8 +35,14 @@ public class AddColoredNumController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		IMove m =new AddColoredNumMove(editor, textField, jrc);
-		m.doMove(editor);
-		
+		if (m.doMove(editor)){
+			editor.pushUndo(m);
+		}
+		editor.getRedoStack().removeAllElements();
+		System.out.println(((Release) editor).getSquareNum()); 
+		jrc.update();
+		view.update();
+		view.repaint();
 	}
 	
 }

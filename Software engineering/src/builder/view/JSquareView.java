@@ -94,6 +94,8 @@ public class JSquareView extends JPanel {
 			numSquare.setText(Integer.toString(num));
 			numSquare.setForeground(c);
 			
+		} else {
+			numSquare.setText("");
 		}
 
 	}

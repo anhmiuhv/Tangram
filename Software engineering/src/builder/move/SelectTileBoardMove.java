@@ -14,13 +14,13 @@ import builder.view.*;
 public class SelectTileBoardMove implements IMove{
 
 	JSquareView square;
-	
+
 	public SelectTileBoardMove(JSquareView square){
 		this.square = square;
 	}
 	@Override
 	public boolean isMoveValid(LevelEditor level) {
-			return true;
+		return true;
 	}
 
 
@@ -36,13 +36,21 @@ public class SelectTileBoardMove implements IMove{
 			square.setColor(Color.BLACK);
 		}
 		return true;
-		
+
 	}
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		if (square.getColor().equals(Color.BLACK)){
+			Square s = square.getSquare();
+			level.getBoardCreator().deselectSquare(s.getColumn() + s.getRow() * 12);
+			square.setColor(Color.WHITE);
+		} else {
+			Square s = square.getSquare();
+			level.getBoardCreator().selectSquare(s.getColumn() + s.getRow() * 12);
+			square.setColor(Color.BLACK);
+		}
+		return true;
 	}
 
 }
