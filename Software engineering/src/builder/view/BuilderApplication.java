@@ -3,7 +3,11 @@ package builder.view;
 import java.awt.EventQueue;
 
 import builder.model.Builder;
-
+/**
+ * Top level view
+ * @author lthoang
+ *
+ */
 public class BuilderApplication {
 	levelBuilder lvlBuilder;
 	Builder builder;

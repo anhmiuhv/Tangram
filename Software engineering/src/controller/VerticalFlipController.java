@@ -8,14 +8,14 @@ import view.LevelView;
 
 
 
-public class HorizontalFlipController  extends java.awt.event.MouseAdapter{
+public class VerticalFlipController  extends java.awt.event.MouseAdapter{
 	
 	Piece piece;
 	Square[] Squares;
 	Bullpen bullpen;
 	LevelView levelview;
 	
-	public HorizontalFlipController(LevelView levelview , Bullpen bullpen,Piece piece){
+	public VerticalFlipController(LevelView levelview , Bullpen bullpen,Piece piece){
 		this.piece=piece;
 		this.bullpen =bullpen;
 		this.levelview= levelview;
@@ -24,8 +24,9 @@ public class HorizontalFlipController  extends java.awt.event.MouseAdapter{
 	public void actionPerformed(){
 		Squares  = piece.getSquares();
 		for (int i=0;i<6;i++){
-			
-		Squares[i].setColumn(5 - Squares[i].getColumn());
+	
+		Squares[i].setRow(5 - Squares[i].getRow());
+		System.out.println(Squares[i].getRow());
 		}
 
 	

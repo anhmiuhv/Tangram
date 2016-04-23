@@ -9,13 +9,23 @@ import javax.swing.border.EmptyBorder;
 
 import model.Piece;
 
-
+/**
+ * this class represent a piece
+ * @author lthoang
+ *
+ */
 
 public class JPieceView extends JPanel{
 
 	Piece piece;
 
+	/**
+	 * position of the Piece
+	 */
 	int pX;
+	/**
+	 * position of the Piece
+	 */
 	int pY;
 	
 	public JPieceView(Piece piece, int pX, int pY){
