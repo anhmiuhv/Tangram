@@ -1,5 +1,6 @@
 package builder.move;
 
+import builder.model.Board;
 import builder.model.BoardCreator;
 import builder.model.LevelEditor;
 
@@ -11,8 +12,12 @@ import builder.model.LevelEditor;
 public class CreateBoardMove implements IMove {
 	
 	BoardCreator bc;
+	Board oldBoard;
 	public CreateBoardMove(BoardCreator bc){
 		this.bc = bc;
+		if (bc.getBoard() != null){
+			this.oldBoard = new Board(bc.getBoard().getSquares());
+		}
 	}
 
 	@Override
@@ -27,8 +32,8 @@ public class CreateBoardMove implements IMove {
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		bc.setBoard(oldBoard);;
+		return true;
 	}
 
 }

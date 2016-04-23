@@ -15,6 +15,7 @@ public class MoveChangeMove implements IMove {
 
 	JTextField timer;
 	Puzzle editor;
+	int oldMove;
 	public MoveChangeMove(JTextField t, Puzzle editor) {
 		this.timer = t;
 		this.editor = editor;
@@ -36,14 +37,15 @@ public class MoveChangeMove implements IMove {
 	@Override
 	public boolean doMove(LevelEditor level) {
 		if (!isMoveValid(level)) return false;
+		oldMove = editor.getAllowedMove();
 		editor.setAllowedMove(Integer.parseInt(timer.getText()));
 		return true;
 	}
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		editor.setAllowedMove(oldMove);
+		return true;
 	}
 
 }

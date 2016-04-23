@@ -3,6 +3,10 @@ package builder.model;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import model.LevelState;
 
 /**
  * This class represent a release editor
@@ -10,12 +14,14 @@ import java.util.HashMap;
  *
  */
 public class Release extends LevelEditor{
+	
 	/** location of the number*/
 	int[] squareNum;
 	/** color of the num*/
 	Color[] colorNum;
+	HashMap<String, ColoredNumber> coloredNum;
+	Set<Integer> pos;
 	
-	HashMap<String, ColoredNumber> coloredNum = new HashMap<String, ColoredNumber>();
 	
 	public Release(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc
 			, int[] squareNum, Color[] colorNum, HashMap<String, ColoredNumber> coloredNum) {
@@ -24,8 +30,22 @@ public class Release extends LevelEditor{
 		this.colorNum = colorNum;
 		this.levelEditorType = LevelEditorState.RELEASE;
 		this.coloredNum = coloredNum;
+		this.pos = new HashSet<Integer>();
+		for (ColoredNumber cn: coloredNum.values()){
+			if (cn.position != -1){
+				pos.add(cn.position);
+			}
+		}
 	}
 
+	public boolean addPosition(int position){
+		
+		return pos.add(position);
+	}
+	
+	public boolean removePosition(int position){
+		return pos.remove(position);
+	}
 	public Release(LevelEditorState les){
 		super(les);
 	}
@@ -85,6 +105,26 @@ public class Release extends LevelEditor{
 		this.colorNum = les.getColor();
 		this.pc = new PieceCreator();
 		this.levelEditorType = les.getLevelType();
-		this.coloredNum = les.coloredNum;
+		this.coloredNum = Release.createEmptyListOfColoredNum();
+		for (int i = 0;i < 144; i++){
+			if (squareNum[i] != 0){
+				String s = new ColoredNumber(squareNum[i], colorNum[i]).toString();
+				this.coloredNum.get(s).setPosition(i);;
+			}
+		}
+		this.pos =  new HashSet<Integer>();
+		for (ColoredNumber cn: coloredNum.values()){
+			if (cn.position != -1){
+				System.out.println(this.pos.add(cn.position));
+			}
+		}
+
+	}
+
+	
+	@Override
+	public LevelState createLevelState() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

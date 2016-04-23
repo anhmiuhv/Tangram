@@ -1,4 +1,5 @@
 package builder.move;
+import model.Piece;
 import builder.model.PieceContainer;
 import builder.model.LevelEditor;
 
@@ -11,6 +12,7 @@ public class DeletePieceMove implements IMove {
 
 	PieceContainer pc;
 	int order;
+	Piece oldPiece;
 	public DeletePieceMove(PieceContainer pc, int order){
 		this.pc = pc;
 		this.order = order;
@@ -25,7 +27,7 @@ public class DeletePieceMove implements IMove {
 	public boolean doMove(LevelEditor level) {
 		if (!isMoveValid(level)) return false;
 		try{
-			pc.getPieces().remove(order);
+			oldPiece = pc.getPieces().remove(order);
 			return true;
 		} catch (Exception e){
 			return false;
@@ -35,8 +37,8 @@ public class DeletePieceMove implements IMove {
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		pc.getPieces().add(oldPiece);
+		return true;
 	}
 
 }

@@ -29,6 +29,7 @@ import javax.swing.JLabel;
  */
 public class JBoardCreatorView extends JPanel {
 
+	LevelEditorView lev;
 	private LevelEditor lvle;
 	private BoardCreator bc;
 	JSquareView[] squareV = new JSquareView[144];
@@ -36,6 +37,7 @@ public class JBoardCreatorView extends JPanel {
 	JLabel lblNotCreated;
 	/**whether the board creator is in hint mode*/
 	boolean hintMode;
+	boolean getCoordinate;
 	/**
 	 * in hint mode or not
 	 * @return true if in hint mode
@@ -53,17 +55,26 @@ public class JBoardCreatorView extends JPanel {
 	}
 
 
+	public boolean isGetCoordinate() {
+		return getCoordinate;
+	}
+
+	public void setGetCoordinate(boolean getCoordinate) {
+		this.getCoordinate = getCoordinate;
+	}
+	
+	
 	/**
 	 * Create the panel.
 	 */
-	public JBoardCreatorView(LevelEditor lvle) {
+	public JBoardCreatorView(LevelEditor lvle, LevelEditorView lev) {
 		this.lvle = lvle;
 		this.bc = lvle.getBoardCreator();
-		init();
+		this.lev = lev;
 	}
 
 	
-	private void init(){
+	public void init(){
 		Square[] squareToDisplay = bc.getSquares();
 		boolean[] selectedSquare = bc.getSelected();
 
@@ -84,10 +95,9 @@ public class JBoardCreatorView extends JPanel {
 			if (isHintSquare[i]){
 				squareV[i].setHint(true);
 			}
-			squareV[i].addMouseListener(new SelectBoardTileController(lvle, this, squareV[i]));
+			squareV[i].addMouseListener(new SelectBoardTileController(lvle, this, squareV[i], lev.getReleaseColoredNum()));
 			if (lvle.getLevelEditorType().equals(LevelEditorState.RELEASE)){
 				int numLabel = ((Release) lvle).getSquareNum()[i];
-				System.out.println(numLabel);
 				Color c = ((Release) lvle).getColorNum()[i];
 				
 				squareV[i].paintColorNum(numLabel, c);
@@ -114,13 +124,6 @@ public class JBoardCreatorView extends JPanel {
 		lblNotCreated.setBounds(318, 142, 83, 16);
 		add(lblNotCreated);
 		
-		
-		
-		/*
-			sv[i].setBounds(h.getHintSquares()[i].getColumn()*30,h.getHintSquares()[i].getRow()*30,30,30);
-			sv[i].setBorder(BorderFactory.createLineBorder(Color.BLUE, 4));
-			bv.add(sv[i]);
-*/
 
 	}
 	
@@ -132,6 +135,12 @@ public class JBoardCreatorView extends JPanel {
 		lblNotCreated.setText(bc.isBoardCreated());
 		for (int i = 0; i < 144; i++){
 			squareV[i].paintSquare();
+			if (lvle.getLevelEditorType().equals(LevelEditorState.RELEASE)){
+				int numLabel = ((Release) lvle).getSquareNum()[i];
+				Color c = ((Release) lvle).getColorNum()[i];
+				
+				squareV[i].paintColorNum(numLabel, c);
+			}
 		}
 	}
 }

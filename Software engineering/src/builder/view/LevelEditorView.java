@@ -30,9 +30,11 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import builder.controller.MoveInfoController;
+import builder.controller.RedoController;
 import builder.controller.ReleaseColorController;
 import builder.controller.SwitchLevelModeController;
 import builder.controller.TimerInfoController;
+import builder.controller.UndoController;
 import builder.model.*;
 import view.LevelView;
 
@@ -60,6 +62,7 @@ public class LevelEditorView extends JFrame {
 	JBoardCreatorView jbc;
 	JPieceCreatorView jpc;
 	JPieceContainerView jcontainer;
+	JReleaseColoredNum releaseColoredNum;
 	JTextField timer;
 	JTextField move;
 	JTextField sets;
@@ -67,6 +70,9 @@ public class LevelEditorView extends JFrame {
 	JLabel moveLabel;
 	LevelEditor editor;
 	JLabel timerLabel;
+	JPanel panel;
+	private JButton btnRedo;
+	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -80,16 +86,6 @@ public class LevelEditorView extends JFrame {
 		this.kb = kb;
 		this.levelNum = levelNum;
 		editor = kb.getLevel(levelNum);
-		init();
-	}
-	
-	
-	public void setEditor(LevelEditor editor) {
-		this.editor = editor;
-	}
-
-	public void init() {
-		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 971, 564);
 		contentPane = new JPanel();
@@ -98,10 +94,30 @@ public class LevelEditorView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(12, 13, 953, 523);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		init();
+		
+	}
+	
+	
+	public void setEditor(LevelEditor editor) {
+		this.editor = editor;
+	}
+	
+	/**
+	 * remove all the element in the level editor view
+	 */
+	public void removeshit(){
+		panel.removeAll();
+	}
+	
+	/**
+	 * initialize the view
+	 */
+	public void init() {
 		
 		JButton btnSave = new JButton("Save&Exit");
 		btnSave.setBounds(783, 6, 111, 25);
@@ -222,52 +238,77 @@ public class LevelEditorView extends JFrame {
 		jpc.setBounds(6, 290, 329, 195);
 		panel.add(jpc);
 		
-		jbc = new JBoardCreatorView(editor);
+		jbc = new JBoardCreatorView(editor, this);
 		jbc.setBounds(540, 202,407,311);
 		panel.add(jbc);
 		
-		JReleaseColoredNum releaseColoredNum = new JReleaseColoredNum(editor);
+		releaseColoredNum = new JReleaseColoredNum(editor, this);
 		releaseColoredNum.setBorder(new LineBorder(new Color(0, 0, 0)));
 		releaseColoredNum.setBounds(436, 43, 280, 150);
 		if (!editor.getLevelEditorType().equals(LevelEditorState.RELEASE)){
-			
+			releaseColoredNum.setEnabled(false);
+			for (Component component: releaseColoredNum.getComponents()){
+				component.setEnabled(false);
+			}
 		}
 		panel.add(releaseColoredNum);
 		
-		moveLabel = new JLabel("New label");
+		jbc.init();
+		moveLabel = new JLabel("0");
 		moveLabel.setBounds(886, 78, 61, 16);
 		if (editor.getLevelEditorType().equals(LevelEditorState.PUZZLE)){
 			moveLabel.setText(Integer.toString((((Puzzle) editor).getAllowedMove())));
 		}
 		panel.add(moveLabel);
 		
-		JLabel timerLabel = new JLabel("0");
+		timerLabel = new JLabel("0");
 		timerLabel.setBounds(886, 106, 61, 16);
 		if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)) {
 			timerLabel.setText(Integer.toString((((Lightning) editor).getAllowedTime())));
 		}
 		panel.add(timerLabel);
 		
+		JButton btnUndo = new JButton("Undo");
+		btnUndo.setBounds(120, 4, 89, 29);
+		btnUndo.addActionListener(new UndoController(this, editor));
+		panel.add(btnUndo);
+		
+		btnRedo = new JButton("Redo");
+		btnRedo.setBounds(218, 4, 89, 29);
+		btnRedo.addActionListener(new RedoController(this, editor));
+		panel.add(btnRedo);
+		
 		
 		
 	}
 	
+	/**
+	 * update the all the elements in the view
+	 */
 	public void update(){
 		if (editor.getLevelEditorType().equals(LevelEditorState.PUZZLE)){
 			move.setText(Integer.toString(((Puzzle) editor).getAllowedMove()));
-			mode.setSelectedIndex(0);
 			moveLabel.setText(Integer.toString((((Puzzle) editor).getAllowedMove())));
+			mode.setSelectedItem(0);
 		} else if (editor.getLevelEditorType().equals(LevelEditorState.LIGHTNING)){
 			timer.setText(Integer.toString(((Lightning) editor).getAllowedTime()));
 			timerLabel.setText(Integer.toString((((Lightning) editor).getAllowedTime())));
-			mode.setSelectedIndex(1);
+			mode.setSelectedItem(1);
 		} else {
-			mode.setSelectedIndex(2);
+			releaseColoredNum.update();
+			mode.setSelectedItem(2);
 		}
 		jbc.update();
 		jcontainer.update();
 		jpc.update();
+		
 	}
 
+	public JReleaseColoredNum getReleaseColoredNum() {
+		return releaseColoredNum;
+	}
 	
+	public JBoardCreatorView getJbc() {
+		return jbc;
+	}
 }

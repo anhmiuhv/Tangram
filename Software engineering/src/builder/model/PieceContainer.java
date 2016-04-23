@@ -48,4 +48,6 @@ public class PieceContainer implements java.io.Serializable{
 	public void addPiece(Piece piece){
 		pieces.add(piece);
 	}
+	
+	
 }

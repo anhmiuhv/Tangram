@@ -2,6 +2,8 @@ package builder.model;
 
 import java.awt.Color;
 
+import model.LevelState;
+
 /**
  * THis class represent an Puzzle editor
  * @author lthoang
@@ -48,5 +50,10 @@ public class Puzzle extends LevelEditor {
 	
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
+	}
+	@Override
+	public LevelState createLevelState() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

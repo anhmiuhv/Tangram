@@ -25,16 +25,20 @@ public class TimerInfoController implements ActionListener {
 	public TimerInfoController(LevelEditor editor, JTextField t, LevelEditorView view){
 		this.editor = editor;
 		this.t = t;
+		this.view = view;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		IMove m = new TimerChangeMove(t, (Lightning) editor);
-		m.doMove(editor);
+		if (m.doMove(editor)){
+			editor.pushUndo(m);
+		}
+		editor.getRedoStack().removeAllElements();
 		view.update();
 		view.repaint();
-		System.out.println(((Lightning) editor).getAllowedTime());
+
 	}
 
 }
