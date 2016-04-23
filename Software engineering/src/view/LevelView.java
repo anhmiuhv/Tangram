@@ -271,20 +271,9 @@ public class LevelView extends JFrame {
 
 
 		contentPane.setLayout(gl_contentPane);
+		reDrawBullpan(level.getBullpen());
 		setVisible(true);
 
-		/*
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		 */
 	}
 	
 	public void reDrawBullpan (Bullpen bullpen){
