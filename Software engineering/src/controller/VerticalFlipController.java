@@ -26,7 +26,7 @@ public class VerticalFlipController  extends java.awt.event.MouseAdapter{
 		for (int i=0;i<6;i++){
 	
 		Squares[i].setRow(5 - Squares[i].getRow());
-		System.out.println(Squares[i].getRow());
+		
 		}
 
 	

@@ -211,7 +211,7 @@ public class LevelView extends JFrame {
 			bs.add(stayLabel);
 		}
 		else  if (level.getAchievement().getAchievement()==3){
-			//System.out.println("s");
+
 			stayLabel = new JLabel("star");
 			stayLabel.setBackground(Color.WHITE);
 			stayLabel.setBounds(700,35, 60, 20);
@@ -287,6 +287,7 @@ public class LevelView extends JFrame {
 
 		 //scrollPane.remove(jbp);
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
+		 
 			scrollPane.setViewportView(jbp);
 			contentPane.add(scrollPane);
 	}
