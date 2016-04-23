@@ -41,8 +41,16 @@ public class SelectTileMove implements IMove{
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		if (square.getColor().equals(Color.BLACK)){
+			Square s = square.getSquare();
+			level.getPieceCreator().getSelected()[s.getColumn() + s.getRow() * 6] = false;
+			square.setColor(Color.WHITE);
+		} else {
+			Square s = square.getSquare();
+			level.getPieceCreator().getSelected()[s.getColumn() + s.getRow() * 6] = true;
+			square.setColor(Color.BLACK);
+		}
+		return true;
 	}
 
 }

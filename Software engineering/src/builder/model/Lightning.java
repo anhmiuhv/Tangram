@@ -2,6 +2,8 @@ package builder.model;
 
 import java.awt.Color;
 
+import model.LevelState;
+
 /**
  * This class represent the LIghtning editor
  * @author lthoang
@@ -46,6 +48,13 @@ public class Lightning extends LevelEditor {
 
 	public void setAllowedTime(int allowedTime) {
 		this.allowedTime = allowedTime;
+	}
+
+
+	@Override
+	public LevelState createLevelState() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

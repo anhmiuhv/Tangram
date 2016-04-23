@@ -28,7 +28,10 @@ public class CreatePieceController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new CreatePieceMove(lvle.getPieceCreator(), lvle.getPieceContainer());
-		m.doMove(lvle);
+		if (m.doMove(lvle)){
+			lvle.pushUndo(m);
+		}
+		lvle.getRedoStack().removeAllElements();
 		containerView.update();
 		containerView.repaint();
 		

@@ -38,4 +38,9 @@ public class Board implements java.io.Serializable {
 	public Board(Square[] squares){
 		this.squares = squares;
 	}
+
+	public Square[] getSquares() {
+		// TODO Auto-generated method stub
+		return squares;
+	}
 }

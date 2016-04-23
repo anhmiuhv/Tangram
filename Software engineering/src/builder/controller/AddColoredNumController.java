@@ -8,39 +8,41 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import builder.model.LevelEditor;
-import builder.model.Lightning;
-import builder.model.Puzzle;
+import builder.model.Release;
+import builder.move.AddColoredNumMove;
 import builder.move.IMove;
-import builder.move.MoveChangeMove;
-import builder.move.TimerChangeMove;
+import builder.view.JReleaseColoredNum;
 import builder.view.LevelEditorView;
 
 /**
- * THis class handles the allowed move information for the puzzle level
+ * This class represent the controller for the input coordination of the colored number on the board
  * @author lthoang
+ * 
  *
  */
-public class MoveInfoController implements ActionListener {
+public class AddColoredNumController implements ActionListener {
 
+	JReleaseColoredNum jrc;
 	LevelEditor editor;
-	JTextField t;
 	LevelEditorView view;
-	public MoveInfoController(LevelEditor editor, JTextField t, LevelEditorView view){
+	JTextField textField;
+	public AddColoredNumController(JReleaseColoredNum jrc, LevelEditor editor, LevelEditorView view, JTextField textField){
+		this.jrc = jrc;
 		this.editor = editor;
-		this.t = t;
 		this.view = view;
+		this.textField = textField;
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		IMove m = new MoveChangeMove(t, (Puzzle) editor);
+		IMove m =new AddColoredNumMove(editor, textField, jrc);
 		if (m.doMove(editor)){
 			editor.pushUndo(m);
 		}
 		editor.getRedoStack().removeAllElements();
+		System.out.println(((Release) editor).getSquareNum()); 
+		jrc.update();
 		view.update();
 		view.repaint();
-		System.out.println(((Puzzle) editor).getAllowedMove() + "hhhhhhh");
 	}
-
+	
 }

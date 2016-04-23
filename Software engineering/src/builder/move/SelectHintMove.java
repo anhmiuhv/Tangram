@@ -41,7 +41,15 @@ public class SelectHintMove implements IMove {
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
+		if (view.isHint()){
+			view.setHint(false);
+			Square s = view.getSquare();
+			level.getBoardCreator().deselectHintSquare(s.getColumn() + s.getRow() * 12);;
+		} else {
+			view.setHint(true);
+			Square s = view.getSquare();
+			level.getBoardCreator().selectHintSquare(s.getColumn() + s.getRow() * 12);;
+		}
 		return false;
 	}
 

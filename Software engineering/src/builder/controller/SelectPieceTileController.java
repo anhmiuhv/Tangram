@@ -27,7 +27,10 @@ public class SelectPieceTileController implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		IMove m = new SelectTileMove(view);
-		m.doMove(lvle);
+		if (m.doMove(lvle)){
+			lvle.pushUndo(m);
+		}
+		lvle.getRedoStack().removeAllElements();
 		view.paintColor();
 		view.repaint();
 		

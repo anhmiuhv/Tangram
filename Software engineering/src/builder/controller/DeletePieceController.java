@@ -28,9 +28,9 @@ public class DeletePieceController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new DeletePieceMove(lvle.getPieceContainer(), order);
 		if (m.doMove(lvle)){
-			
+			lvle.pushUndo(m);
 		}
-		
+		lvle.getRedoStack().removeAllElements();
 		jpc.update();
 		jpc.repaint();
 		

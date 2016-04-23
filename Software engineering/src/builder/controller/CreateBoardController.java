@@ -25,7 +25,10 @@ public class CreateBoardController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new CreateBoardMove(lvle.getBoardCreator());
-		m.doMove(lvle);
+		if (m.doMove(lvle)){
+			lvle.pushUndo(m);
+		}
+		lvle.getRedoStack().removeAllElements();
 		view.update();
 		view.repaint();
 		

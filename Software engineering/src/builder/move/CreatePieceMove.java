@@ -35,8 +35,8 @@ public class CreatePieceMove implements IMove{
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		container.deletePieces(container.getPieces().size() - 1);
+		return true;
 	}
 
 }
