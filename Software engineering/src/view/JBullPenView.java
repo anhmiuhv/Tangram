@@ -55,8 +55,8 @@ public class JBullPenView extends JPanel {
 			jp[i] = new JPieceView(pieces.get(i),(180+5)*BullPenXcount+5,((int)(i/2))*(180+5)+5);
 			BullPenXcount++;
 			add(jp[i]);
-	
 		}
+		jp[bp.getPieceSelected()].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
 	}
 	
