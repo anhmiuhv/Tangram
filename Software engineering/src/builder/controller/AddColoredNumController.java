@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import builder.model.LevelEditor;
 import builder.model.Release;
 import builder.move.AddColoredNumMove;
@@ -26,6 +23,13 @@ public class AddColoredNumController implements ActionListener {
 	LevelEditor editor;
 	LevelEditorView view;
 	JTextField textField;
+	/**
+	 * contruct a controller for the button in the Release colored number panel
+	 * @param jrc
+	 * @param editor
+	 * @param view
+	 * @param textField
+	 */
 	public AddColoredNumController(JReleaseColoredNum jrc, LevelEditor editor, LevelEditorView view, JTextField textField){
 		this.jrc = jrc;
 		this.editor = editor;

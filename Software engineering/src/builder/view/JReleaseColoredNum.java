@@ -6,7 +6,6 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import builder.controller.AddColoredNumController;
@@ -16,8 +15,6 @@ import builder.model.ColoredNumber;
 import builder.model.LevelEditor;
 import builder.model.LevelEditorState;
 import builder.model.Release;
-import builder.move.ReleaseColorMove;
-
 import javax.swing.JButton;
 /**
  * This class represent a view to config the coloredNumber of the release board
@@ -25,6 +22,10 @@ import javax.swing.JButton;
  *
  */
 public class JReleaseColoredNum extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8416096092554032428L;
 	JTextField textField;
 	JTextField textField_1;
 	JTextField textField_2;

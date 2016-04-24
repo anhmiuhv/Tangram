@@ -38,37 +38,72 @@ public class Release extends LevelEditor{
 		}
 	}
 
+	/**
+	 * add the position in the the position set
+	 * @param position
+	 * @return true if position has been added, false if the position exist
+	 */
 	public boolean addPosition(int position){
 		
 		return pos.add(position);
 	}
 	
+	/**
+	 * remove the position from the set
+	 * @param position
+	 * @return true if success
+	 */
 	public boolean removePosition(int position){
 		return pos.remove(position);
 	}
 	public Release(LevelEditorState les){
 		super(les);
 	}
+	
+	/**
+	 * get the color position in the board 
+	 * @return color array have 144 elements
+	 */
 	public Color[] getColorNum() {
 		return colorNum;
 	}
 
+	/**
+	 * set the color position in the board
+	 * @param colorNum color position
+	 */
 	public void setColorNum(Color[] colorNum) {
 		this.colorNum = colorNum;
 	}
 
+	/**
+	 * get the number position in the board
+	 * @return the position
+	 */
 	public int[] getSquareNum() {
 		return squareNum;
 	}
 
+	/**
+	 * set the postion in the board
+	 * @param squareNum position
+	 */
 	public void setSquareNum(int[] squareNum) {
 		this.squareNum = squareNum;
 	}
 
+	/**
+	 * get the colored number object array (this array is just for the validation of the release level)
+	 * @return
+	 */
 	public HashMap<String, ColoredNumber> getColoredNum() {
 		return coloredNum;
 	}
 
+	/**
+	 * set the colored number object array
+	 * @param coloredNum
+	 */
 	public void setColoredNum(HashMap<String, ColoredNumber> coloredNum) {
 		this.coloredNum = coloredNum;
 	}

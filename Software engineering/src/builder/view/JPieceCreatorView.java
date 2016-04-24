@@ -3,13 +3,10 @@ package builder.view;
 import javax.swing.ImageIcon;
 
 import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 
 import java.awt.Color;
 
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import builder.controller.CreatePieceController;
 import builder.controller.SelectPieceTileController;
@@ -89,7 +86,6 @@ public class JPieceCreatorView extends JPanel {
 	 * update the view
 	 */
 	public void update() {
-		Square[] squareToDisplay = pc.getSquares();
 		boolean[] selectedSquare = pc.getSelected();
 		
 		for (int i = 0; i < 36; i++){

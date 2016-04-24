@@ -18,7 +18,7 @@ public class AddColoredNumMove implements IMove {
 	LevelEditor lvle;
 	JTextField textField;
 	JReleaseColoredNum jrc;
-	int position;
+	int position = -1;
 	int prev;
 	public AddColoredNumMove(LevelEditor lvle, JTextField textField, JReleaseColoredNum jrc){
 		this.lvle = lvle;
@@ -34,10 +34,12 @@ public class AddColoredNumMove implements IMove {
 		Release r = (Release) lvle;
 		squareNum = r.getSquareNum();
 		colorNum = r.getColorNum();
-		try {
-			position = Integer.parseInt(textField.getText());
-		} catch (Exception e){
-			return false;
+		if (position == -1){
+			try {
+				position = Integer.parseInt(textField.getText());
+			} catch (Exception e){
+				return false;
+			}
 		}
 		if (position > 143 || position < 0) return false; 
 		boolean[] selected = lvle.getBoardCreator().getSelected();
@@ -76,7 +78,7 @@ public class AddColoredNumMove implements IMove {
 		c.setPosition(prev);
 		squareNum[position] = 0;
 		colorNum[position] = null;
-		
+
 		return true;
 	}
 

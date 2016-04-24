@@ -5,12 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 
-import builder.model.BoardCreator;
 import builder.model.LevelEditor;
-import builder.model.LevelEditorState;
-import builder.model.PieceContainer;
-import builder.model.PieceCreator;
-import builder.model.Puzzle;
 import builder.move.IMove;
 import builder.move.SwitchModeMove;
 import builder.view.LevelEditorView;
@@ -25,6 +20,12 @@ public class SwitchLevelModeController implements ActionListener {
 	LevelEditorView lv;
 	LevelEditor editor;
 	JComboBox b;
+	/**
+	 * controller for switching mode
+	 * @param lv
+	 * @param editor
+	 * @param b
+	 */
 	public SwitchLevelModeController(LevelEditorView lv, LevelEditor editor, JComboBox b){
 		this.lv = lv;
 		this.editor = editor;
@@ -35,8 +36,8 @@ public class SwitchLevelModeController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new SwitchModeMove(lv, editor, b);
 		m.doMove(editor);
-		lv.removeshit();
-		lv.init();
+		lv.getEditor().pushUndo(m);
+
 		lv.repaint();
 	}
 	

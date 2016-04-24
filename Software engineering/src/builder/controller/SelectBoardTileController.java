@@ -24,6 +24,13 @@ public class SelectBoardTileController implements MouseListener{
 	JSquareView view;
 	JBoardCreatorView jbc;
 	JReleaseColoredNum jrc;
+	/**
+	 * construct controller for individual tile of the board
+	 * @param lvle
+	 * @param jbc
+	 * @param view
+	 * @param jrc
+	 */
 	public SelectBoardTileController(LevelEditor lvle, JBoardCreatorView jbc, JSquareView view, JReleaseColoredNum jrc){
 		this.lvle = lvle;
 		this.view = view;

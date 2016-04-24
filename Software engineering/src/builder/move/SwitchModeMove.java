@@ -21,6 +21,13 @@ public class SwitchModeMove implements IMove{
 	LevelEditorView lv;
 	LevelEditor le;
 	JComboBox b;
+	LevelEditor oldle;
+	/**
+	 * creating a switching mode move
+	 * @param lv
+	 * @param lvle
+	 * @param b
+	 */
 	public SwitchModeMove(LevelEditorView lv, LevelEditor lvle, JComboBox b){
 		this.lv = lv;
 		this.le = lvle;
@@ -34,6 +41,8 @@ public class SwitchModeMove implements IMove{
 
 	@Override
 	public boolean doMove(LevelEditor level) {
+		oldle = lv.getEditor();
+		oldle.pushRedo(this);
 		// TODO Auto-generated method stub
 		String m = (String) b.getSelectedItem();
 		switch (m){
@@ -63,13 +72,17 @@ public class SwitchModeMove implements IMove{
 			}
 
 		}
+		lv.removeshit();
+		lv.init();
 		return true;
 	}
 
 	@Override
 	public boolean undo(LevelEditor level) {
-		// TODO Auto-generated method stub
-		return false;
+		lv.setEditor(oldle);
+		lv.removeshit();
+		lv.init();
+		return true;
 	}
 
 }

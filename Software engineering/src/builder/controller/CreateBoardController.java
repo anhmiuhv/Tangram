@@ -17,6 +17,11 @@ public class CreateBoardController implements ActionListener {
 
 	LevelEditor lvle;
 	JBoardCreatorView view;
+	/**
+	 * contruct a controller for the add board button
+	 * @param lvle
+	 * @param view
+	 */
 	public CreateBoardController(LevelEditor lvle, JBoardCreatorView view){
 		this.lvle = lvle;
 		this.view= view;

@@ -7,7 +7,11 @@ import javax.swing.*;
 import view.LevelView;
 
 public class SplashScreen extends JWindow {
-  private int duration;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1771052348449971102L;
+private int duration;
   public SplashScreen(int d) {
     duration = d;
   }

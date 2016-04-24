@@ -4,15 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import builder.model.LevelEditor;
-import builder.model.Lightning;
 import builder.model.Puzzle;
 import builder.move.IMove;
 import builder.move.MoveChangeMove;
-import builder.move.TimerChangeMove;
 import builder.view.LevelEditorView;
 
 /**
@@ -25,6 +20,12 @@ public class MoveInfoController implements ActionListener {
 	LevelEditor editor;
 	JTextField t;
 	LevelEditorView view;
+	/**
+	 * contruct controller for the text field
+	 * @param editor
+	 * @param t
+	 * @param view
+	 */
 	public MoveInfoController(LevelEditor editor, JTextField t, LevelEditorView view){
 		this.editor = editor;
 		this.t = t;
