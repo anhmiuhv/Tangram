@@ -1,9 +1,7 @@
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Kabasuji;
-import model.Level;
-import model.Player;
+import model.*;
 
 import org.w3c.dom.*;
 
