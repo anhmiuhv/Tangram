@@ -20,6 +20,7 @@ import controller.RotateLeftController;
 import controller.RotateRightController;
 import controller.TimerController;
 import controller.VerticalFlipController;
+import controller.pieceSelectionController;
 import model.Board;
 import model.Bullpen;
 import model.Piece;
@@ -38,6 +39,9 @@ import java.awt.Component;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
@@ -269,6 +273,7 @@ public class LevelView extends JFrame {
 		
 
 		contentPane.setLayout(gl_contentPane);
+		reDrawBullpan(level.getBullpen());
 		setVisible(true);
 		
 		
@@ -276,18 +281,6 @@ public class LevelView extends JFrame {
 		 timer.schedule(new TimerController(this), 0, 1000);  
 
 
-		/*
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		 */
 	}
 
 
@@ -309,6 +302,11 @@ public class LevelView extends JFrame {
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
 		 
 			scrollPane.setViewportView(jbp);
+			jbp.addMouseListener(new pieceSelectionController(this,level.getBullpen()));
 			contentPane.add(scrollPane);
+	}
+	
+	public JBullPenView getJBullPenView(){
+		return jbp;
 	}
 }
