@@ -178,7 +178,7 @@ public class Kabasuji {
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 			else if (i%3==1){
-				testLevels[i] = new LightningLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
+				testLevels[i] = new LightningLevel(i,GetLevelTpye(i%3),testBoard,bp,30);
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 			else {

@@ -19,6 +19,21 @@ public class LightningLevel extends Level{
 		this.allowedTime = allowedTime;
 	}
 
+	
+	public int getAllowedTime(){
+		return allowedTime;
+	}
+	
+	public int getUsedTime(){
+		return usedTime;
+	}
+	
+	
+	public void setUsedTime(int num){
+		this.usedTime = num;
+	}
+	
+	
 	@Override
 	public boolean hasWon() {
 		// TODO Auto-generated method stub
@@ -31,6 +46,8 @@ public class LightningLevel extends Level{
 		
 	}
 
+	
+	
 	@Override
 	public void createLevelState() {
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,

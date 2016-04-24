@@ -22,6 +22,7 @@ import controller.HorizontalFlipController;
 import controller.LevelSelectController;
 import controller.RotateLeftController;
 import controller.RotateRightController;
+import controller.TimerController;
 import controller.VerticalFlipController;
 import model.Board;
 import model.Bullpen;
@@ -45,6 +46,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
+import java.util.Timer;
 import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
@@ -54,14 +56,15 @@ public class LevelView extends JFrame {
 	JLabel stayLabel = null;
 	int moveUsed = 0;
 	int totalMove = 0;
-	
+	Timer timer;
 	JLabel timeLeft = new JLabel();
-	int tLeft = 0;
+	int usedTime= 0;
+	int allowedTime = 0; 
 	protected JPanel contentPane;
 	BlueStripe bs;
 	JBullPenView jbp;
 	Level level;
-	
+	JBoardView boardView;
 	JButton horiFlip = new JButton();
 	JButton vertiFlip = new JButton();
 	JButton lRotate = new JButton();
@@ -69,7 +72,7 @@ public class LevelView extends JFrame {
 	JScrollPane scrollPane = new JScrollPane();
 	int bullpenX = 20;
 	int bullpenY = 140;
-	boolean closeWindowsFlag;
+	public boolean closeWindowsFlag;
 	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
@@ -84,6 +87,7 @@ public class LevelView extends JFrame {
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
 
+		
 		this.level = level;
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -94,30 +98,11 @@ public class LevelView extends JFrame {
 		setContentPane(contentPane);
 
 
-		//----- manully design board
-
-		JBoardView board = new JBoardView(450,210, level.getBoard());
-
-		contentPane.add(board);
-		
-		HintView hv = new HintView(board,level.getBoard());
-		
-		
 		
 		//----------- manully design bullpen 
 
-		JButton btnNewButton = new JButton("Menu");
-		btnNewButton.setBounds(20, 20, 80, 80);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (new openWindowView("Are you sure to go to menu? (Current level ends and achievement will be saved)").valid()== true){
-				new GoMenuController(levelselection,LevelView.this).actionPerformed();
-				closeWindowsFlag = true;
-				}
 
-			}
-		});
-
+		reDrawBoard ();
 		
 		
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -156,13 +141,16 @@ public class LevelView extends JFrame {
 		scrollPane.setViewportView(jbp);
 
 
+		if(level.getLevelType().equals("lightning")){
+			 timer = new Timer();  
+			 timer.schedule(new TimerController(levelselection,this,level), 1000, 1000);  
+			 ((LightningLevel) level).setUsedTime(((LightningLevel) level).getAllowedTime());
+			}
+
 		
-		bs = new BlueStripe(1,level.getLevelNumber()+1);
-		scrollPane.setColumnHeaderView(bs);
+		reDrawBlueStripe();
+		
 
-		contentPane.add(bs);        //   adddddddddddddddddddd
-
-		bs.add(btnNewButton);
 		
 		
 		contentPane.add(horiFlip);
@@ -186,7 +174,7 @@ public class LevelView extends JFrame {
 		
 		lRotate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RotateLeftController(LevelView.this,level.getBullpen(),level.getBullpen().getPieces().get(1)).actionPerformed();
+				new RotateLeftController(LevelView.this,level.getBullpen()).actionPerformed();
 			}
 		});
 		lRotate.setText("Rotate Left");
@@ -202,6 +190,82 @@ public class LevelView extends JFrame {
 		lRotate.setBounds(90+180*2, 650, 120, 40);
 		rRotate.setBounds(220+180*2, 650, 120, 40);
 
+		contentPane.setLayout(gl_contentPane);
+		reDrawBullpan();
+		setVisible(true);
+		
+	}
+
+
+	public void reDrawBoard (){
+
+		//----- manully design board
+
+		boardView = new JBoardView(450,210, level.getBoard());
+
+		contentPane.add(boardView);
+		
+		HintView hv = new HintView(boardView,level.getBoard());
+		 if(level.getLevelType().equals("release")){
+			
+
+			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
+			Color[] cl = ((ReleaseLevel)level).getCl();
+			for(int i = 0;i<144;i++){
+				if(squareNum[i] != 0){
+					JLabel ll = new JLabel("" + squareNum[i]);
+					ll.setForeground(cl[i]);
+				
+					ll.setFont(new Font("SansSerif", Font.PLAIN, 28));
+					int x = level.getBoard().getSquare()[i].getColumn();
+					int y = level.getBoard().getSquare()[i].getRow();
+
+					ll.setBounds(x*30+6, y*30+2, 30, 30);
+
+					boardView.add(ll);
+		
+					
+				}
+			}
+		}
+			boardView.createSquareView();
+	}
+	
+	
+	
+	
+	public void reDrawBullpan (){
+
+		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
+		 
+			scrollPane.setViewportView(jbp);
+			jbp.addMouseListener(new BullpenController(this,level.getBullpen()));
+			contentPane.add(scrollPane);
+	}
+	
+	
+	public void reDrawBlueStripe (){
+
+		
+		bs = new BlueStripe(1,level.getLevelNumber()+1);
+		scrollPane.setColumnHeaderView(bs);
+
+		contentPane.add(bs);       
+
+
+		
+		JButton btnNewButton = new JButton("Menu");
+		btnNewButton.setBounds(20, 20, 80, 80);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (new openWindowView("Are you sure to go to menu? (Current level ends and achievement will be saved)").valid()== true){
+				new GoMenuController(levelselection,LevelView.this,level).actionPerformed();
+				closeWindowsFlag = true;
+				}
+
+			}
+		});
+		bs.add(btnNewButton);
 		
 		if (level.getAchievement().getAchievement()==1){
 			stayLabel = new JLabel("star");
@@ -218,7 +282,7 @@ public class LevelView extends JFrame {
 			bs.add(stayLabel);
 		}
 		else  if (level.getAchievement().getAchievement()==3){
-			//System.out.println("s");
+
 			stayLabel = new JLabel("star");
 			stayLabel.setBackground(Color.WHITE);
 			stayLabel.setBounds(700,35, 60, 20);
@@ -239,58 +303,24 @@ public class LevelView extends JFrame {
 			
 			
 		}else if(level.getLevelType().equals("lightning")){
-			
+
 			bs.add(timeLeft);
-			timeLeft.setText("Time left: " + tLeft);
+			timeLeft.setText("Time left: " + ((LightningLevel) level).getUsedTime());
 			timeLeft.setForeground(Color.white);
 			timeLeft.setFont(new Font("SansSerif", Font.PLAIN, 30));
 			timeLeft.setBounds(140,35, 210, 50);
-			
-		}else if(level.getLevelType().equals("release")){
-			
 
-			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
-			Color[] cl = ((ReleaseLevel)level).getCl();
-			for(int i = 0;i<144;i++){
-				if(squareNum[i] != 0){
-					JLabel ll = new JLabel("" + squareNum[i]);
-					ll.setForeground(cl[i]);
-				
-					ll.setFont(new Font("SansSerif", Font.PLAIN, 28));
-					int x = level.getBoard().getSquare()[i].getColumn();
-					int y = level.getBoard().getSquare()[i].getRow();
-
-					ll.setBounds(x*30+6, y*30+2, 30, 30);
-
-					board.add(ll);
-		
-					
-				}
-			}
 		}
-
-		board.createSquareView();
-
-
-
-		contentPane.setLayout(gl_contentPane);
-		reDrawBullpan(level.getBullpen());
-
-		setVisible(true);
 
 	}
 	
-	public void reDrawBullpan (Bullpen bullpen){
 
-		 //scrollPane.remove(jbp);
-		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
-		scrollPane.setViewportView(jbp);
-		jbp.addMouseListener(new BullpenController(this,level.getBullpen()));
-		//jbp.addMouseMotionListener(new BullpenController(this,level.getBullpen()).mouseDragged(null));
-		contentPane.add(scrollPane);
-	}
 	
 	public JBullPenView getJBullPenView(){
 		return jbp;
 	}
+	public Timer getTimer(){
+		return timer;
+	}
+	
 }

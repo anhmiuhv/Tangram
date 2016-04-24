@@ -163,7 +163,7 @@ public class LevelSelection extends JFrame {
 				panel.add(stayLabel);
 			}
 			else  if (testLevels[i].getAchievement().getAchievement()==3){
-				//System.out.println("s");
+
 				stayLabel = new JLabel("star");
 				stayLabel.setBackground(Color.WHITE);
 				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 60, 20);
