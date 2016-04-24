@@ -19,6 +19,12 @@ public class CreatePieceController implements ActionListener {
 	LevelEditor lvle;
 	JPieceContainerView containerView;
 	JPieceCreatorView pcView;
+	/**
+	 * construct a controller for the add piece button
+	 * @param lvle
+	 * @param pcView
+	 * @param containerView
+	 */
 	public CreatePieceController(LevelEditor lvle, JPieceCreatorView pcView, JPieceContainerView containerView){
 		this.lvle = lvle;
 		this.containerView = containerView;

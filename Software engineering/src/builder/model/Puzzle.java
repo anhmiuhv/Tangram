@@ -44,10 +44,18 @@ public class Puzzle extends LevelEditor {
 		this.levelEditorType = les.getLevelType();
 	}
 	
+	/**
+	 * get the allowed move
+	 * @return allowed move
+	 */
 	public int getAllowedMove() {
 		return allowedMove;
 	}
 	
+	/**
+	 * set the allowed move
+	 * @param allowedMove allowed move
+	 */
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
 	}

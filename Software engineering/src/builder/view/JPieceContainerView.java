@@ -1,6 +1,7 @@
 package builder.view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 import model.Piece;
 import view.JPieceView;
 import builder.controller.DeletePieceController;
+import builder.controller.PieceViewController;
 import builder.model.*;
 
 /**
@@ -20,6 +22,10 @@ import builder.model.*;
  */
 public class JPieceContainerView extends JPanel {
 											
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3915979770846852716L;
 	LevelEditor lvl;
 	PieceContainer pc;
 	/**
@@ -49,6 +55,19 @@ public class JPieceContainerView extends JPanel {
 		createJPieceContainerView();
 	}
 	
+	public void initializeTest(JTestFrame t){
+		int idx = 0;
+		for (Component c: getComponents()){
+			if (c instanceof JButton){
+				c.setVisible(false);
+				c.setEnabled(false);
+			}
+		}
+		for (JPieceView k: jp){
+			k.addMouseListener(new PieceViewController(pc, idx, k, t));
+			idx++;
+		}
+	}
 	/**
 	 * setup the view
 	 */

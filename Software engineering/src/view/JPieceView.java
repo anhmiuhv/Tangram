@@ -31,7 +31,7 @@ public class JPieceView extends JPanel{
 	public void createPieceView(){
 
 		setBounds(pX, pY, 180, 180);
-		setOpaque(false);
+		setOpaque(true);
 		setLayout(null);		
 		
 		if(piece != null){
@@ -40,6 +40,16 @@ public class JPieceView extends JPanel{
 				add(js);
 		 }
 		}
+	}
+
+
+	public Piece getPiece() {
+		return piece;
+	}
+
+
+	public void setPiece(Piece piece) {
+		this.piece = piece;
 	}
 	
 }

@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import model.LevelState;
+import model.Square;
 
 /**
  * This class represent a release editor
@@ -22,6 +23,9 @@ public class Release extends LevelEditor{
 	HashMap<String, ColoredNumber> coloredNum;
 	Set<Integer> pos;
 	
+	/** actual position of the square Num and the color*/
+	int[] actualNum;
+	Color[] actualColorNum;
 	
 	public Release(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc
 			, int[] squareNum, Color[] colorNum, HashMap<String, ColoredNumber> coloredNum) {
@@ -38,37 +42,72 @@ public class Release extends LevelEditor{
 		}
 	}
 
+	/**
+	 * add the position in the the position set
+	 * @param position
+	 * @return true if position has been added, false if the position exist
+	 */
 	public boolean addPosition(int position){
 		
 		return pos.add(position);
 	}
 	
+	/**
+	 * remove the position from the set
+	 * @param position
+	 * @return true if success
+	 */
 	public boolean removePosition(int position){
 		return pos.remove(position);
 	}
 	public Release(LevelEditorState les){
 		super(les);
 	}
+	
+	/**
+	 * get the color position in the board 
+	 * @return color array have 144 elements
+	 */
 	public Color[] getColorNum() {
 		return colorNum;
 	}
 
+	/**
+	 * set the color position in the board
+	 * @param colorNum color position
+	 */
 	public void setColorNum(Color[] colorNum) {
 		this.colorNum = colorNum;
 	}
 
+	/**
+	 * get the number position in the board
+	 * @return the position
+	 */
 	public int[] getSquareNum() {
 		return squareNum;
 	}
 
+	/**
+	 * set the postion in the board
+	 * @param squareNum position
+	 */
 	public void setSquareNum(int[] squareNum) {
 		this.squareNum = squareNum;
 	}
 
+	/**
+	 * get the colored number object array (this array is just for the validation of the release level)
+	 * @return
+	 */
 	public HashMap<String, ColoredNumber> getColoredNum() {
 		return coloredNum;
 	}
 
+	/**
+	 * set the colored number object array
+	 * @param coloredNum
+	 */
 	public void setColoredNum(HashMap<String, ColoredNumber> coloredNum) {
 		this.coloredNum = coloredNum;
 	}
@@ -80,6 +119,17 @@ public class Release extends LevelEditor{
 		
 	}
 	
+	public void createActualSquareNum(Board b){
+		Square[] s = b.getSquares();
+		this.actualNum = new int[s.length];
+		this.actualColorNum = new Color[s.length];
+		int idx = 0;
+		for (Square square: s){
+			if (squareNum[square.getColumn() + square.getRow() * 12] != 0){
+				
+			}
+		}
+	}
 	public static HashMap<String, ColoredNumber> createEmptyListOfColoredNum(){
 		HashMap<String, ColoredNumber> r = new HashMap<String, ColoredNumber>();
 		for (int i = 0; i < 6; i++){

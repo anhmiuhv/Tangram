@@ -42,10 +42,18 @@ public class Lightning extends LevelEditor {
 		this.levelEditorType = les.getLevelType();
 	}
 
+	/**
+	 * get the allowed time
+	 * @return allowed time
+	 */
 	public int getAllowedTime() {
 		return allowedTime;
 	}
-
+	
+	/**
+	 * set the allowed time
+	 * @param allowedTime allowed time
+	 */
 	public void setAllowedTime(int allowedTime) {
 		this.allowedTime = allowedTime;
 	}

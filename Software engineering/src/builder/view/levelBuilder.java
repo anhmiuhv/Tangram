@@ -1,19 +1,11 @@
 package builder.view;
 
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JToolBar;
-import javax.swing.JComboBox;
-
 import java.awt.Color;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -25,15 +17,11 @@ import javax.swing.SwingConstants;
 
 import java.awt.SystemColor;
 import java.awt.Font;
-import java.awt.Button;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 
 import builder.model.KabasujiBuilder;
-import builder.model.LevelEditor;
-import model.Kabasuji;
-import view.LevelView;
 
 /**
  * this class represent the editors chooser
@@ -45,6 +33,10 @@ public class levelBuilder extends JFrame {
 	
 //	JButton[] levels;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4096808060275039176L;
 	private JPanel contentPane;
 	KabasujiBuilder kb; 
 	

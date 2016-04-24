@@ -18,6 +18,12 @@ public class DeletePieceController implements ActionListener {
 	LevelEditor lvle;
 	JPieceContainerView jpc;
 	int order;
+	/**
+	 * construct a controller for the delete piece button
+	 * @param lvle
+	 * @param jpc
+	 * @param order
+	 */
 	public DeletePieceController(LevelEditor lvle, JPieceContainerView jpc, int order){
 		this.lvle = lvle;
 		this.jpc = jpc;

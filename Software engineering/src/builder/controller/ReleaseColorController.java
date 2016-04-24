@@ -16,6 +16,12 @@ public class ReleaseColorController implements ActionListener {
 	JReleaseColoredNum lev;
 	JComboBox box;
 	LevelEditor editor;
+	/**
+	 * construct controller for the release color combo box
+	 * @param comboBox
+	 * @param lev
+	 * @param editor2
+	 */
 	public ReleaseColorController(JComboBox comboBox,
 			JReleaseColoredNum lev, LevelEditor editor2) {
 		this.lev = lev;

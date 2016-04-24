@@ -5,9 +5,7 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 
 import builder.model.LevelEditor;
-import builder.model.Release;
 import builder.view.JReleaseColoredNum;
-import builder.view.LevelEditorView;
 
 /**
  * This class represent a move to change the color of the num

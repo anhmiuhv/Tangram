@@ -12,6 +12,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class SplashS extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4274966295587173717L;
+
+	/**
 	 * Create the panel.
 	 */
 	public SplashS() {

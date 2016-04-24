@@ -7,7 +7,11 @@ import builder.model.LevelEditor;
 import builder.view.JBoardCreatorView;
 import builder.view.JReleaseColoredNum;
 import builder.view.JSquareView;
-
+/**
+ * This class represent a move to get the coordinate from the clicked tile on the board
+ * @author lthoang
+ *
+ */
 public class GetCoordinateMove implements IMove {
 
 	JSquareView view;
