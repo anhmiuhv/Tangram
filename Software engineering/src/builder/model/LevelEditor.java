@@ -10,6 +10,7 @@ import builder.move.IMove;
 /**
  * THis class represent an editor
  * @author lthoang
+ * 
  *
  */
 public abstract class LevelEditor {
