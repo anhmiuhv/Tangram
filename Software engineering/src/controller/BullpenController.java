@@ -35,8 +35,10 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	    pieceN = ((me.getY()/185)+1)*2 - x;
 	    
 	    
-	    diffx = me.getX() - levelview.getJBullPenView().getPieceView()[pieceN].getX() +80;
-	    diffy = me.getY() - levelview.getJBullPenView().getPieceView()[pieceN].getY() - 40;
+
+	    diffx = me.getX() - levelview.getJBullPenView().getPieceView()[pieceN].getX() -20;
+	    diffy = me.getY() - levelview.getJBullPenView().getPieceView()[pieceN].getY() -140;
+
 	    
 	    levelview.diffx = diffx;
 	    levelview.diffy = diffy;
@@ -44,21 +46,18 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	    draggingPiece = bullpen.getPieces().get(pieceN);
 	    bullpen.getPieces().set(pieceN,null);
 
-	    levelview.draggingPiece = new JPieceView(draggingPiece, me.getPoint().x , me.getPoint().y );
+	    levelview.draggingPiece = new JPieceView(draggingPiece, me.getPoint().x - diffx, me.getPoint().y - diffy);
+
+	
 	    levelview.getTopPanel().add(levelview.draggingPiece);
 
 	    //levelview.setComponentZOrder(levelview.draggingPiece, 0);
 	    levelview.reDrawBullpan();
+	    levelview.repaint();
 	    
 	}
 	
-	/*@Override
-	public void mouseDragged(MouseEvent me) {
-		levelview.getParent().add(pv);
-		pv.setLocation(me.getPoint().x - diffx, me.getPoint().y - diffy);
-		
-		
-    }*/
+
 	@Override
 	public void mouseReleased(MouseEvent me) {
 		System.out.println("3");
