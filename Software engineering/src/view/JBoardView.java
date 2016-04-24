@@ -37,6 +37,7 @@ public class JBoardView extends JPanel {
 	public void createSquareView(){
 
 		 for (int i=0; i< board.getSquare().length;i++){
+
 				js = new JSquareView(board.getSquare()[i],Color.WHITE);
 				add(js);
 		 }
