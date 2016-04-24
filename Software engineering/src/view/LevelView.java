@@ -97,15 +97,15 @@ public class LevelView extends JFrame {
 		setBounds(100, 100, 850, 850);
 		this.setResizable(false);
 		topPanel = new JPanel();
-		topPanel.setBounds(100, 100, 850, 850);
+		topPanel.setBounds(0, 0, 850, 850);
 		topPanel.setOpaque(false);
 		topPanel.setLayout(null);
-		this.add(topPanel);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-
+		
+		this.add(topPanel);
 
 		
 		//----------- manully design bullpen 
