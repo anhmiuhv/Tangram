@@ -29,6 +29,8 @@ import model.*;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
+
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 
@@ -52,6 +54,8 @@ public class LevelView extends JFrame {
 	JLabel timeLeft = new JLabel();
 	int usedTime= 0;
 	int allowedTime = 0; 
+	public BullpenController bullpenController;
+	KabasujiMouseMotionAdapter kabasujiMouseMotionAdapter;
 	protected JPanel contentPane;
 	BlueStripe bs;
 	JBullPenView jbp;
@@ -82,7 +86,8 @@ public class LevelView extends JFrame {
 		
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
-
+		bullpenController = new BullpenController(this,level.getBullpen());
+		kabasujiMouseMotionAdapter = new KabasujiMouseMotionAdapter(this);
 		
 		this.level = level;
 		setTitle("Kabasuji");
@@ -135,6 +140,8 @@ public class LevelView extends JFrame {
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
 		scrollPane.setViewportView(jbp);
+		scrollPane.addMouseListener(bullpenController);
+		scrollPane.addMouseMotionListener(kabasujiMouseMotionAdapter);
 
 
 		if(level.getLevelType().equals("lightning")){
@@ -199,6 +206,7 @@ public class LevelView extends JFrame {
 
 		boardView = new JBoardView(450,210, level.getBoard());
 
+		
 		contentPane.add(boardView);
 		
 		HintView hv = new HintView(boardView,level.getBoard());
@@ -232,13 +240,14 @@ public class LevelView extends JFrame {
 	
 	public void reDrawBullpan (){
 
+		
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
 			
-			scrollPane.addMouseListener(new BullpenController(this,level.getBullpen()));
-			scrollPane.addMouseMotionListener(new KabasujiMouseMotionAdapter(this));
 			scrollPane.setViewportView(jbp);
+
 			contentPane.add(scrollPane);
 	}
+	
 	
 	
 	public void reDrawBlueStripe (){
@@ -312,6 +321,9 @@ public class LevelView extends JFrame {
 	}
 	
 
+	public JScrollPane getScrollPane(){
+		return scrollPane;
+	}
 	
 	public JBullPenView getJBullPenView(){
 		return jbp;

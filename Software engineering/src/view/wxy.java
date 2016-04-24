@@ -10,31 +10,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class wxy {
+import java.awt.Container;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
+
+/**
+ * 监听鼠标事件
+ * 可以看出，当双击鼠标时，第一次的点击会触发一次单击事件
+ * @author HAN
+ *
+ */
+public class wxy extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7554087008285696671L;
+
+
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		String s = "123";
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
-		frame.setContentPane(panel);
-		frame.setBounds(10, 10, 300, 300);
-		final JLabel label = new JLabel(s);
-		panel.setLayout(null);
-		panel.add(label);
-		label.setBounds(0, 0, 53, 19);
-		label.addMouseMotionListener(new MouseAdapter() {
 
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				Point point = label.getLocation();
-				label.setLocation(e.getPoint().x + point.x, e.getPoint().y + point.y);
-				
-			}
-		});
-		s = "456";
-		//panel.repaint();
-		//label.setText(s);
-		frame.setVisible(true);
 
 	}
 }
