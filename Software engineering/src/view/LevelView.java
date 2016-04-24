@@ -332,4 +332,8 @@ public class LevelView extends JFrame {
 		return timer;
 	}
 	
+	public JBoardView getJBoardView(){
+		return boardView;
+	}
+	
 }

@@ -42,7 +42,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	    bullpen.getPieces().set(pieceN,null);
 	    System.out.println(me.getPoint().x);
 	    levelview.draggingPiece = new JPieceView(draggingPiece, me.getPoint().x - diffx, me.getPoint().y - diffy);
-	    levelview.add(levelview.draggingPiece);
+	    levelview.add(levelview.draggingPiece,new Integer(Integer.MAX_VALUE));
 	    //levelview.setComponentZOrder(levelview.draggingPiece, 0);
 	    levelview.reDrawBullpan();
 	    
