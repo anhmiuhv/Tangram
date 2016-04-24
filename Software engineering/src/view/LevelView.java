@@ -1,16 +1,12 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DragGestureListener;
-import java.awt.dnd.DragSource;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -19,16 +15,12 @@ import controller.BullpenController;
 import controller.CloseKabasuji;
 import controller.GoMenuController;
 import controller.HorizontalFlipController;
-import controller.LevelSelectController;
+import controller.KabasujiMouseMotionAdapter;
 import controller.RotateLeftController;
 import controller.RotateRightController;
 import controller.TimerController;
 import controller.VerticalFlipController;
-import model.Board;
-import model.Bullpen;
-import model.Piece;
-import model.Level;
-import model.Square;
+
 
 import model.*;
 
@@ -72,6 +64,10 @@ public class LevelView extends JFrame {
 	JScrollPane scrollPane = new JScrollPane();
 	int bullpenX = 20;
 	int bullpenY = 140;
+	
+	public JPieceView draggingPiece = null;
+	public int diffx = 0;
+	public int diffy = 0;
 	public boolean closeWindowsFlag;
 	
 	public void close(){
@@ -237,9 +233,10 @@ public class LevelView extends JFrame {
 	public void reDrawBullpan (){
 
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
-		 
+			
+			scrollPane.addMouseListener(new BullpenController(this,level.getBullpen()));
+			scrollPane.addMouseMotionListener(new KabasujiMouseMotionAdapter(this));
 			scrollPane.setViewportView(jbp);
-			jbp.addMouseListener(new BullpenController(this,level.getBullpen()));
 			contentPane.add(scrollPane);
 	}
 	
