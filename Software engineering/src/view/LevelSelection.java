@@ -28,6 +28,8 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
@@ -76,37 +78,41 @@ public class LevelSelection extends JFrame {
 		
 		JPanel panel = new JPanel();
 			
-			JLabel lblNewLabel_1 = new JLabel("Menu");
+			JLabel lblNewLabel_1 = new JLabel("Kabasuji Level Selection");
 			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 36));
 			
 			JButton btnNewButton = new JButton("Help");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			GroupLayout gl_contentPane = new GroupLayout(contentPane);
 			gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_contentPane.createSequentialGroup()
 						.addGap(18)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 727, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(29, Short.MAX_VALUE))
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(30)
+						.addContainerGap()
 						.addComponent(btnNewButton)
-						.addPreferredGap(ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
-						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 359, GroupLayout.PREFERRED_SIZE)
-						.addGap(105))
+						.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 488, GroupLayout.PREFERRED_SIZE)
+						.addGap(107))
 			);
 			gl_contentPane.setVerticalGroup(
 				gl_contentPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(btnNewButton)
-								.addGap(34))
-							.addGroup(gl_contentPane.createSequentialGroup()
+						.addContainerGap(33, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)))
+								.addPreferredGap(ComponentPlacement.RELATED))
+							.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+								.addGap(29)))
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(85, Short.MAX_VALUE))
+						.addGap(52))
 			);
 		panel.setLayout(null);
 		
@@ -114,9 +120,7 @@ public class LevelSelection extends JFrame {
 		//List<String> list = new ArrayList<String>();
 		//list.add("hello");
 	//	String s = list.get(0);
-		
-		
-		
+
 
 		//Level[] testLevels = createTestLevel();
 		
@@ -159,7 +163,7 @@ public class LevelSelection extends JFrame {
 				panel.add(stayLabel);
 			}
 			else  if (testLevels[i].getAchievement().getAchievement()==3){
-				//System.out.println("s");
+
 				stayLabel = new JLabel("star");
 				stayLabel.setBackground(Color.WHITE);
 				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 60, 20);

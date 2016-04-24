@@ -35,6 +35,12 @@ import builder.model.LevelEditor;
 import model.Kabasuji;
 import view.LevelView;
 
+/**
+ * this class represent the editors chooser
+ * @author lthoang
+ * @author jchen5
+ *
+ */
 public class levelBuilder extends JFrame {
 	
 //	JButton[] levels;
@@ -84,10 +90,10 @@ public class levelBuilder extends JFrame {
 			nextColumn++;
 			
 			contentPane.add(Levels[i]);
-			 
+			final int levelNumber = i; 
 			Levels[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					LevelEditorView lev = new LevelEditorView(kb, 0);
+					LevelEditorView lev = new LevelEditorView(kb, levelNumber);
 					lev.setVisible(true);
 					close();
 				}
@@ -111,6 +117,7 @@ public class levelBuilder extends JFrame {
 		JButton button_9 = new JButton("New Level");
 		button_9.setBounds(741, 26, 110, 25);
 		panel.add(button_9);
+		
 		button_9.setSelectedIcon(new ImageIcon("C:\\Users\\Bob\\Desktop\\add.png"));
 		
 		JButton button_10 = new JButton("Help");
@@ -122,7 +129,8 @@ public class levelBuilder extends JFrame {
 		});
 		button_9.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				LevelEditorView lev2 = new LevelEditorView(kb, 0);
+				int levelNum = kb.addLevelState();
+				LevelEditorView lev2 = new LevelEditorView(kb, levelNum);
 				lev2.setVisible(true);
 				close();
 			}

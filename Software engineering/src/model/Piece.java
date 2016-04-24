@@ -47,5 +47,40 @@ public class Piece implements java.io.Serializable{
 	public int getpColumn(){
 		return pColumn;
 	}
+	
+	public Square getHead(){
+		return this.head;
+	}
+	
+	public boolean containSquare(Square sq){
+		for(int i = 0;i<6;i++){
+			if(squares[i].visited == false){
+				if(squares[i].isEqual(sq)){				
+					squares[i].visited = true;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean allVisited(){
+		for(int i = 0;i<6;i++){
+			if(squares[i].visited == false){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean isPiece(){
+		
+		for(int i = 0;i<6;i++){
+			if(squares[i] == null){
+				return false;
+			}
+		}
+		return true;
+	}
 }
 

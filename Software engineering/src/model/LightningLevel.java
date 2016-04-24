@@ -19,14 +19,23 @@ public class LightningLevel extends Level{
 		this.allowedTime = allowedTime;
 	}
 
+	
+	public int getAllowedTime(){
+		return allowedTime;
+	}
+	
+	public int getUsedTime(){
+		return usedTime;
+	}
+	
+	
+	public void setUsedTime(int num){
+		this.usedTime = num;
+	}
+	
+	
 	@Override
 	public boolean hasWon() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean doMove(IMove m) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -37,6 +46,8 @@ public class LightningLevel extends Level{
 		
 	}
 
+	
+	
 	@Override
 	public void createLevelState() {
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,
@@ -50,6 +61,7 @@ public class LightningLevel extends Level{
 		this.LevelNumber = levelState.getLevelNum();
 		this.LevelType = levelState.getLevelType();
 		this.b = new Board(levelState.getBoard().getSquare());
+		this.b.sethint(levelState.getBoard().getHint());
 		this.p = levelState.getBullpen();
 		this.locked = levelState.getLocked();
 		this.star = levelState.getAchievement();

@@ -1,4 +1,4 @@
-package view;
+/*package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
@@ -54,3 +54,4 @@ public class Test extends JFrame{
 }
 
 
+*/

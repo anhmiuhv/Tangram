@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import builder.model.PieceCreator;
 import model.*;
 
 public class test1 extends JFrame {
@@ -18,16 +19,15 @@ public class test1 extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					test1 frame = new test1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		PieceCreator pc = new PieceCreator();
+		pc.selectSquare(0, 0);
+		pc.selectSquare(3, 4);
+		pc.selectSquare(2, 1);
+		pc.selectSquare(4, 2);
+		pc.selectSquare(5, 0);
+		pc.selectSquare(1, 3);
+		pc.createPiece();
+		System.out.println(pc.validPiece());
 	}
 
 	/**

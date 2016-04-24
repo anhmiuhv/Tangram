@@ -16,7 +16,8 @@ public class JSquareView extends JPanel {
 	Square square;
 	Color cl;
 	JPanel topJPanel;
-	
+
+
 	public JSquareView(Square square,Color cl){
 		this.square = square;
 		this.cl = cl;
@@ -24,14 +25,11 @@ public class JSquareView extends JPanel {
 	}
 
 
-	//JLabel lblNewLabel = new JLabel("New label");
-	//lblNewLabel.setBounds(184, 49, 46, 14);
-	//panel.add(lblNewLabel);
+	
 	 public void paintSquare() {
 		 setBackground(cl);
-		// setText("New label");
-		// setIcon(new ImageIcon("images\\puzzleIcon.png"));
-		 setBounds(square.getColumn()*30,square.getRow()*30,30,30);
+			 setBounds(square.getColumn()*30,square.getRow()*30,30,30);
+			 
 		 setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 	}
 	 
@@ -41,9 +39,7 @@ public class JSquareView extends JPanel {
 		 lblNewLabel.setForeground(c);
 		 lblNewLabel.setBounds(0, 0, 30, 30);
 		 add(lblNewLabel);
-		// setIcon(new ImageIcon("images\\puzzleIcon.png"));
-		 //setBounds(square.getColumn()*30,square.getRow()*30,30,30);
-		 //setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+	
 	}
 	 
 
