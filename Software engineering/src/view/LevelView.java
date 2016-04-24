@@ -69,6 +69,8 @@ public class LevelView extends JFrame {
 	int bullpenX = 20;
 	int bullpenY = 140;
 	
+	JPanel topPanel;
+	
 	public JPieceView draggingPiece = null;
 	public int diffx = 0;
 	public int diffy = 0;
@@ -94,6 +96,12 @@ public class LevelView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
 		this.setResizable(false);
+		topPanel = new JPanel();
+		topPanel.setBounds(100, 100, 850, 850);
+		topPanel.setOpaque(false);
+		topPanel.setLayout(null);
+		this.add(topPanel);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -330,6 +338,10 @@ public class LevelView extends JFrame {
 	}
 	public Timer getTimer(){
 		return timer;
+	}
+	
+	public JPanel getTopPanel(){
+		return topPanel;
 	}
 	
 }
