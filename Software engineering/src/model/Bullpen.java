@@ -48,4 +48,8 @@ public class Bullpen implements java.io.Serializable{
 	public int getPieceSelected(){
 		return pieceSelected;
 	}
+	
+	public void removePiece(int pNum){
+		piece.remove(pNum);		
+	}
 }

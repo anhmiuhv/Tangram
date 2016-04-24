@@ -13,8 +13,6 @@ import model.Bullpen;
 import model.Piece;
 import javax.swing.JScrollPane;
 
-import controller.pieceSelectionController;
-
 public class JBullPenView extends JPanel {
 
 	Bullpen bp;
