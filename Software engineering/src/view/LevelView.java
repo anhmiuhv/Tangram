@@ -60,6 +60,7 @@ public class LevelView extends JFrame {
 	JLabel timeLeft = new JLabel();
 	int usedTime= 0;
 	int allowedTime = 0; 
+	public BullpenController bullpenController;
 	protected JPanel contentPane;
 	BlueStripe bs;
 	JBullPenView jbp;
@@ -86,7 +87,7 @@ public class LevelView extends JFrame {
 		
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
-
+		bullpenController = new BullpenController(this,level.getBullpen());
 		
 		this.level = level;
 		setTitle("Kabasuji");
@@ -139,7 +140,7 @@ public class LevelView extends JFrame {
 		contentPane.add(scrollPane);
 		scrollPane.setBounds(20, 140, 180*2+35, 180*3+25);
 		scrollPane.setViewportView(jbp);
-
+		scrollPane.addMouseListener(bullpenController);
 
 		if(level.getLevelType().equals("lightning")){
 			 timer = new Timer();  
@@ -203,6 +204,7 @@ public class LevelView extends JFrame {
 
 		boardView = new JBoardView(450,210, level.getBoard());
 
+		
 		contentPane.add(boardView);
 		
 		HintView hv = new HintView(boardView,level.getBoard());
@@ -236,12 +238,14 @@ public class LevelView extends JFrame {
 	
 	public void reDrawBullpan (){
 
+		
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
 		 
 			scrollPane.setViewportView(jbp);
-			jbp.addMouseListener(new BullpenController(this,level.getBullpen()));
+		
 			contentPane.add(scrollPane);
 	}
+	
 	
 	
 	public void reDrawBlueStripe (){
@@ -315,6 +319,9 @@ public class LevelView extends JFrame {
 	}
 	
 
+	public JScrollPane getScrollPane(){
+		return scrollPane;
+	}
 	
 	public JBullPenView getJBullPenView(){
 		return jbp;
