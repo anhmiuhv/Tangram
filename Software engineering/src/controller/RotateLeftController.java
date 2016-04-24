@@ -16,10 +16,11 @@ public class RotateLeftController  extends java.awt.event.MouseAdapter{
 	Bullpen bullpen;
 	LevelView levelview;
 	
-	public RotateLeftController(LevelView levelview , Bullpen bullpen,Piece piece){
-		this.piece=piece;
+	public RotateLeftController(LevelView levelview , Bullpen bullpen){
+
 		this.bullpen =bullpen;
 		this.levelview= levelview;
+		this.piece= bullpen.getPieces().get(bullpen.getPieceSelected());
 	}
 	
 	public void actionPerformed(){
@@ -39,7 +40,7 @@ public class RotateLeftController  extends java.awt.event.MouseAdapter{
 		}
 
 	
-		levelview.reDrawBullpan(bullpen);
+		levelview.reDrawBullpan();
 		
 	}	
 	

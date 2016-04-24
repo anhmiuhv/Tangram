@@ -41,7 +41,7 @@ public class pieceSelectionController implements MouseListener{
 	    pieceN = ((me.getY()/185)+1)*2 - x;
 	    bullpen.setPieceSelected(pieceN);
 	    
-	    levelview.reDrawBullpan(bullpen);
+	    levelview.reDrawBullpan();
 
 	}
 
