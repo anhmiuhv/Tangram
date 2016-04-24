@@ -50,7 +50,7 @@ public class KabasujiBuilder {
 	 * Add editor to the builder
 	 * @return levelNum
 	 */
-	public int addLevel(){
+	public int addLevelState(){
 		int levelNum = editor.size();
 		editor.add(new Puzzle(levelNum, new PieceContainer(), new PieceCreator(), new BoardCreator(), 0));
 		return levelNum;

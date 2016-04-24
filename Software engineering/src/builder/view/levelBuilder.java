@@ -26,6 +26,7 @@ import builder.model.KabasujiBuilder;
 /**
  * this class represent the editors chooser
  * @author lthoang
+ * @author jchen5
  *
  */
 public class levelBuilder extends JFrame {
@@ -120,7 +121,7 @@ public class levelBuilder extends JFrame {
 		});
 		button_9.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				int levelNum = kb.addLevel();
+				int levelNum = kb.addLevelState();
 				LevelEditorView lev2 = new LevelEditorView(kb, levelNum);
 				lev2.setVisible(true);
 				close();

@@ -36,9 +36,16 @@ import java.io.IOException;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
+import model.Achievement;
+import model.Board;
+import model.Bullpen;
+import model.Level;
+import model.LevelState;
+
 /**
  * this class represent the editor view
  * @author lthoang
+ * @author jchen5
  *
  */
 public class LevelEditorView extends JFrame {
@@ -60,6 +67,7 @@ public class LevelEditorView extends JFrame {
 	JComboBox mode;
 	JLabel moveLabel;
 	LevelEditor editor;
+	Level levelBuilt;
 	JLabel timerLabel;
 	JPanel panel;
 	private JButton btnRedo;
@@ -124,6 +132,10 @@ public class LevelEditorView extends JFrame {
 		panel.add(btnSave);
 
 		JButton btnRestart = new JButton("Restart");
+		btnRestart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnRestart.setBounds(672, 6, 89, 25);
 		panel.add(btnRestart);
 
@@ -295,6 +307,38 @@ public class LevelEditorView extends JFrame {
 		panel.add(btnNewButton);
 
 
+
+		
+		JButton btnCreateLevel = new JButton("Create Level");
+		btnCreateLevel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				int levelNum;
+//				String levelType;
+//				Board b;
+//				Bullpen p;
+//				levelBuilt = new Level(levelNum, levelType, b, p);
+//				
+//				
+//				Trying to figure this out
+				
+				
+				
+				
+				
+				
+//				editor.createLevelEditorState();
+//				editor.getLes().saveState();
+//				levelBuilder lb = new levelBuilder(new KabasujiBuilder());
+//				lb.setVisible(true);
+//				close();
+				
+			}
+		});
+		btnCreateLevel.setBounds(484, 6, 129, 25);
+		panel.add(btnCreateLevel);
+		
+		
+		
 
 	}
 

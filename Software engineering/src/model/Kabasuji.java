@@ -47,10 +47,14 @@ public class Kabasuji {
 
 	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){
-		Level[] testLevels = new Level[15];
+		Level[] testLevels = new Level[16];
 		int[] squareNum = new int[144];
+	
 		Color[] cl = new Color[144];
+		
+		
 
+		
 		for (int i=0;i<144;i++){
 			squareNum[i] =0;
 			cl[i]=null;
@@ -178,7 +182,7 @@ public class Kabasuji {
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 			else if (i%3==1){
-				testLevels[i] = new LightningLevel(i,GetLevelTpye(i%3),testBoard,bp,20);
+				testLevels[i] = new LightningLevel(i,GetLevelTpye(i%3),testBoard,bp,30);
 				testLevels[i].updateLevelStar(new Achievement(new Random().nextInt(3) + 1));
 			}
 			else {
@@ -190,6 +194,56 @@ public class Kabasuji {
 		testLevels[13].updateLevelStar(new Achievement(0));
 		testLevels[14].updateLevelStar(new Achievement(-1));
 
+		
+		
+		
+		//---------------------------------------------- 
+		int[] sixNum = new int[36];
+		Color[] sixcolor  = new Color[36];
+		for (int i=0;i<36;i++){
+			sixNum[i] =0;
+			sixcolor[i]=null;
+		}
+		int count1=0;
+		for (int i=1;i<4;i++){
+			for (int j=1;j<7;j++){
+				squareNum[count1] =j;
+				if (i==1){
+					cl[count1]=Color.RED;
+				}
+				else if (i==2){
+					cl[count1]=Color.YELLOW;
+				}
+				else if (i==3){
+					cl[count1]=Color.GREEN;
+				}
+				count1=count1+1;
+			}
+		}
+		Square[] sixBoardSquare = new Square[36]; 
+		for (int i1=0;i1<6;i1++){
+			for (int j=0;j<6;j++){
+
+				sixBoardSquare[i1*6+j] = new Square(i1,j);
+			}
+		}
+		Square sixhint[] = new Square[6]; 
+		sixhint[0] = new Square(1,0);
+		sixhint[1] = new Square(1,1);
+		sixhint[2] = new Square(1,2);
+		sixhint[3] = new Square(1,3);
+		sixhint[4] = new Square(1,4);
+		sixhint[5] = new Square(1,5);	
+
+		Hint sixhints = new Hint(sixhint);
+
+		Board sixBoard = new Board(sixBoardSquare);
+		sixBoard.sethint(sixhints);
+		
+		testLevels[15] = new ReleaseLevel(15,GetLevelTpye(14%3),sixBoard,bp,sixNum,sixcolor);
+		testLevels[15].updateLevelStar(new Achievement(1));
+		//--------------------------------------------
+		
 		return testLevels;
 		/*
 			public Level(int LevelNumber, String LevelType, Board b, Bullpen p){

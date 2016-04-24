@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import model.LevelState;
+import model.Square;
 
 /**
  * This class represent a release editor
@@ -22,6 +23,9 @@ public class Release extends LevelEditor{
 	HashMap<String, ColoredNumber> coloredNum;
 	Set<Integer> pos;
 	
+	/** actual position of the square Num and the color*/
+	int[] actualNum;
+	Color[] actualColorNum;
 	
 	public Release(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc
 			, int[] squareNum, Color[] colorNum, HashMap<String, ColoredNumber> coloredNum) {
@@ -115,6 +119,17 @@ public class Release extends LevelEditor{
 		
 	}
 	
+	public void createActualSquareNum(Board b){
+		Square[] s = b.getSquares();
+		this.actualNum = new int[s.length];
+		this.actualColorNum = new Color[s.length];
+		int idx = 0;
+		for (Square square: s){
+			if (squareNum[square.getColumn() + square.getRow() * 12] != 0){
+				
+			}
+		}
+	}
 	public static HashMap<String, ColoredNumber> createEmptyListOfColoredNum(){
 		HashMap<String, ColoredNumber> r = new HashMap<String, ColoredNumber>();
 		for (int i = 0; i < 6; i++){

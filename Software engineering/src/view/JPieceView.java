@@ -34,11 +34,12 @@ public class JPieceView extends JPanel{
 		setOpaque(true);
 		setLayout(null);		
 		
+		if(piece != null){
 		 for (int i=0; i<6;i++){
 				JSquareView js = new JSquareView(piece.getSquares()[i], piece.getColor());
 				add(js);
 		 }
-
+		}
 	}
 
 

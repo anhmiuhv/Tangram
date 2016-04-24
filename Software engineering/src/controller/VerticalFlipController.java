@@ -16,9 +16,10 @@ public class VerticalFlipController  extends java.awt.event.MouseAdapter{
 	LevelView levelview;
 	
 	public VerticalFlipController(LevelView levelview , Bullpen bullpen,Piece piece){
-		this.piece=piece;
+
 		this.bullpen =bullpen;
 		this.levelview= levelview;
+		this.piece= bullpen.getPieces().get(bullpen.getPieceSelected());
 	}
 	
 	public void actionPerformed(){
@@ -26,11 +27,11 @@ public class VerticalFlipController  extends java.awt.event.MouseAdapter{
 		for (int i=0;i<6;i++){
 	
 		Squares[i].setRow(5 - Squares[i].getRow());
-		System.out.println(Squares[i].getRow());
+		
 		}
 
 	
-		levelview.reDrawBullpan(bullpen);
+		levelview.reDrawBullpan();
 		
 	}	
 	
