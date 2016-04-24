@@ -18,6 +18,7 @@ import controller.HorizontalFlipController;
 import controller.LevelSelectController;
 import controller.RotateLeftController;
 import controller.RotateRightController;
+import controller.TimerController;
 import controller.VerticalFlipController;
 import model.Board;
 import model.Bullpen;
@@ -38,6 +39,7 @@ import java.awt.Component;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.Timer;
 import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
@@ -264,10 +266,15 @@ public class LevelView extends JFrame {
 
 		board.createSquareView();
 
-
+		
 
 		contentPane.setLayout(gl_contentPane);
 		setVisible(true);
+		
+		
+		 Timer timer = new Timer();  
+		 timer.schedule(new TimerController(this), 0, 1000);  
+
 
 		/*
 		EventQueue.invokeLater(new Runnable() {
@@ -282,8 +289,21 @@ public class LevelView extends JFrame {
 		});
 		 */
 	}
+
+
+	
+	
 	
 	public void reDrawBullpan (Bullpen bullpen){
+
+		 //scrollPane.remove(jbp);
+		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
+		 
+			scrollPane.setViewportView(jbp);
+			contentPane.add(scrollPane);
+	}
+	
+	public void reDrawBlueStripe (BlueStripe bs){
 
 		 //scrollPane.remove(jbp);
 		 jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
