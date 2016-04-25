@@ -66,7 +66,10 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 		
 		if(mex>=430 && mey>=70){
 			if(mex<=levelview.getBoardView().getWidth() + 430 && mey<=levelview.getBoardView().getHeight() + 70){
-				
+				levelview.getTopPanel().remove(levelview.getDraggingPieceView());
+				levelview.setDraggingPieceView(null);
+				levelview.reDrawBullpan();
+				levelview.getBoardController().mouseReleased(me);;
 				return;
 			}			
 		}

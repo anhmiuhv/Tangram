@@ -117,7 +117,7 @@ public class LevelView extends JFrame {
 
 
 		reDrawBoard ();
-		
+		boardView.addMouseListener(boardController);
 		
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
@@ -391,6 +391,10 @@ public class LevelView extends JFrame {
 	
 	public JBoardView getBoardView(){
 		return boardView;
+	}
+	
+	public BoardController getBoardController(){
+		return boardController;
 	}
 	
 }
