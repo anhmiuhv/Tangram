@@ -66,6 +66,8 @@ public class LevelEditorView extends JFrame {
 	private JPanel contentPane;
 	KabasujiBuilder kb;
 	int levelNum;
+	LevelEditor editor;
+	
 	JBoardCreatorView jbc;
 	JPieceCreatorView jpc;
 	JPieceContainerView jcontainer;
@@ -74,9 +76,7 @@ public class LevelEditorView extends JFrame {
 	JTextField move;
 	JTextField sets;
 	JComboBox mode;
-	JLabel moveLabel;
-	LevelEditor editor;
-	Level levelBuilt;
+	JLabel moveLabel;	
 	JLabel timerLabel;
 	JPanel panel;
 	private JButton btnRedo;
@@ -95,7 +95,7 @@ public class LevelEditorView extends JFrame {
 		this.levelNum = levelNum;
 		editor = kb.getLevel(levelNum);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 971, 564);
+		setBounds(100, 100, 971, 594);
 		contentPane = new JPanel();
 		contentPane.setForeground(SystemColor.controlText);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -251,7 +251,7 @@ public class LevelEditorView extends JFrame {
 		panel.add(jpc);
 		
 		jbc = new JBoardCreatorView(editor, this);
-		jbc.setBounds(540, 202,407,311);
+		jbc.setBounds(534, 206,407,311);
 		panel.add(jbc);
 		
 		releaseColoredNum = new JReleaseColoredNum(editor, this);
@@ -315,7 +315,7 @@ public class LevelEditorView extends JFrame {
 				
 			}
 		});
-		btnCreateLevel.setBounds(484, 6, 129, 25);
+		btnCreateLevel.setBounds(519, 6, 129, 25);
 		panel.add(btnCreateLevel);
 		
 		

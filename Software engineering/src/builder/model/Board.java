@@ -4,6 +4,7 @@ import model.Square;
 /**
  * This class represents a game board
  * @author lthoang
+ * @author jchen5
  *
  */
 public class Board implements java.io.Serializable {
@@ -42,5 +43,26 @@ public class Board implements java.io.Serializable {
 	public Square[] getSquares() {
 		// TODO Auto-generated method stub
 		return squares;
+	}
+	
+	public boolean containSquare(Square sq){
+		for(int i = 0;i < squares.length;i++){
+			if(squares[i].getVisit() == false){
+				if(squares[i].isEqual(sq)){				
+					squares[i].changeVisited(true);;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean allVisited(){
+		for(int i = 0;i < squares.length;i++){
+			if(squares[i].getVisit() == false){
+				return false;
+			}
+		}		
+		return true;
 	}
 }

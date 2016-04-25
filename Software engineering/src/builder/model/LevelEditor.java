@@ -10,7 +10,7 @@ import builder.move.IMove;
 /**
  * THis class represent an editor
  * @author lthoang
- * 
+ * @author jchen5 
  *
  */
 public abstract class LevelEditor {
@@ -19,6 +19,7 @@ public abstract class LevelEditor {
 	BoardCreator bc;
 	int levelNum;
 	LevelEditorState les;
+	LevelState ls;
 	/**
 	 * return the level editor state (save class)
 	 * @return level editor state
@@ -141,6 +142,10 @@ public abstract class LevelEditor {
 	 */
 	public abstract void loadLevelEditorState(LevelEditorState les);
 	
+	/**
+	 * create a level state for the level
+	 * @return
+	 */
 	public abstract LevelState createLevelState();
 	
 	
