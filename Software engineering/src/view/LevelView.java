@@ -92,7 +92,7 @@ public class LevelView extends JFrame {
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
 		bullpenController = new BullpenController(this,level.getBullpen());
-		boardController = new BoardController(this,level.getBoard(),level.getBullpen().getPieces().get(0));
+		boardController = new BoardController(this,level.getBoard());
 		
 		kabasujiMouseMotionAdapter = new KabasujiMouseMotionAdapter(this);
 		
