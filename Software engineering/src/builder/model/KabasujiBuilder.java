@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * This class represent all of the editoes can be chosen
  * @author lthoang
+ * @author jchen5
  *
  */
 public class KabasujiBuilder {

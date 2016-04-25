@@ -2,7 +2,7 @@ package model;
 
 public class Square implements java.io.Serializable{
 	/**
-	 * 
+	 * @author jchen5
 	 */
 	private static final long serialVersionUID = -8741905149170920342L;
 	int sRow;
@@ -25,6 +25,10 @@ public class Square implements java.io.Serializable{
 
 	public boolean getVisit(){
 		return this.visited;
+	}
+	
+	public void changeVisited(boolean to){
+		this.visited = to;
 	}
 	
 	public boolean isEqual(Square sq){
