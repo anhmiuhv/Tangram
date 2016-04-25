@@ -59,6 +59,14 @@ public class Piece implements java.io.Serializable{
 		return pColumn;
 	}
 	
+	public void setpRow(int pRow){
+		this.pRow = pRow;
+	}
+	
+	public void setpColumn(int pColumn){
+		this.pColumn= pColumn;
+	}
+	
 	public Square getHead(){
 		return this.head;
 	}

@@ -5,18 +5,21 @@ import java.awt.event.MouseEvent;
 import model.Board;
 import model.Piece;
 import view.JPieceView;
+import view.LevelView;
 
 public class BoardController extends java.awt.event.MouseAdapter{
 	
-	int diffx;
-	int diffy;
+	int diffx =0;
+	int diffy =0;
 	
+	LevelView levelView;
 	Board board;
 	Piece movingPiece;
 	
-	public BoardController(Board board,Piece movingPiece){
+	public BoardController(LevelView levelView,Board board,Piece movingPiece){
 		this.board = board;
 		this.movingPiece = movingPiece;
+		this.levelView =levelView;
 	}
 	
 	public void updateDiffxy(){
@@ -31,6 +34,11 @@ public class BoardController extends java.awt.event.MouseAdapter{
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		
+		System.out.println("22");
+		movingPiece.setpColumn(0);
+		movingPiece.setpRow(0);
+		board.addpiece(movingPiece);
+		levelView.reDrawBoard();
+		//levelView.getJBoardView().showPieces();
 	}
 }

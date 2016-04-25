@@ -88,10 +88,11 @@ public class LevelView extends JFrame {
 	 */
 	public LevelView(final Level level, final LevelSelection levelselection) {
 		
+		
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
 		bullpenController = new BullpenController(this,level.getBullpen());
-		//boardController = new BoardController();
+		boardController = new BoardController(this,level.getBoard(),level.getBullpen().getPieces().get(2));
 		
 		kabasujiMouseMotionAdapter = new KabasujiMouseMotionAdapter(this);
 		
@@ -217,6 +218,14 @@ public class LevelView extends JFrame {
 
 		//----- manully design board
 
+		//level.getBoard().addpiece(level.getBullpen().getPieces().get(1));
+
+		//System.out.println(level.getBullpen().getPieces().get(1).getpColumn());
+		//System.out.println(level.getBullpen().getPieces().get(1).getpRow());
+		if (boardView!=null){
+			level.getBoard().addpiece(level.getBullpen().getPieces().get(3));
+			System.out.println("dd");
+		}
 		boardView = new JBoardView(450,210, level.getBoard());
 
 		
