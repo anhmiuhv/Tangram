@@ -26,7 +26,6 @@ import controller.VerticalFlipController;
 import model.*;
 
 
-
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
@@ -55,10 +54,10 @@ public class LevelView extends JFrame {
 	JLabel timeLeft = new JLabel();
 	int usedTime= 0;
 	int allowedTime = 0; 
-	BullpenController bullpenController;
-	BoardController boardController;
+	public BullpenController bullpenController;
 	KabasujiMouseMotionAdapter kabasujiMouseMotionAdapter;
 	protected JPanel contentPane;
+	BoardController boardController;
 	BlueStripe bs;
 	JBullPenView jbp;
 	Level level;
@@ -73,9 +72,10 @@ public class LevelView extends JFrame {
 	
 	JPanel topPanel;
 	
-	public JPieceView draggingPiece = null;
-	public int diffx = 0;
-	public int diffy = 0;
+	JPieceView draggingPieceView = null;
+	Piece draggingPiece = null;
+	int diffx = 0;
+	int diffy = 0;
 	public boolean closeWindowsFlag;
 	
 	public void close(){
@@ -101,24 +101,23 @@ public class LevelView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
 		this.setResizable(false);
-
 		topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 850, 850);
 		topPanel.setOpaque(false);
 		topPanel.setLayout(null);
-
-	
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		this.add(topPanel);
 
+		
+		//----------- manully design bullpen 
 
 
 		reDrawBoard ();
-
-		boardView.addMouseListener(boardController);
+		
 		
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
@@ -218,6 +217,7 @@ public class LevelView extends JFrame {
 
 		//----- manully design board
 
+
 		//level.getBoard().addpiece(level.getBullpen().getPieces().get(1));
 
 		//System.out.println(level.getBullpen().getPieces().get(1).getpColumn());
@@ -225,6 +225,7 @@ public class LevelView extends JFrame {
 		if (boardView!=null){
 			contentPane.remove(boardView);
 		}
+
 		boardView = new JBoardView(450,210, level.getBoard());
 		
 		contentPane.add(boardView);
@@ -235,7 +236,7 @@ public class LevelView extends JFrame {
 
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
-			for(int i = 0;i<level.getBoard().getSquare().length;i++){
+			for(int i = 0;i<144;i++){
 				if(squareNum[i] != 0){
 					JLabel ll = new JLabel("" + squareNum[i]);
 					ll.setForeground(cl[i]);
@@ -272,13 +273,14 @@ public class LevelView extends JFrame {
 	
 	public void reDrawBlueStripe (){
 
-
-		bs = new BlueStripe(1,level.getLevelNumber()+1);
-
-		scrollPane.setColumnHeaderView(bs);
 		
+		bs = new BlueStripe(1,level.getLevelNumber()+1);
+		scrollPane.setColumnHeaderView(bs);
+
 		contentPane.add(bs);       
 
+
+		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -351,13 +353,44 @@ public class LevelView extends JFrame {
 		return timer;
 	}
 	
-
-	public JBoardView getJBoardView(){
-		return boardView;
-	}
 	public JPanel getTopPanel(){
 		return topPanel;
-
+	}
+	
+	public JPieceView getDraggingPieceView(){
+		return draggingPieceView;
+	}
+	
+	public void setDraggingPieceView(JPieceView jpv){
+		draggingPieceView = jpv;
+	}
+	
+	public int getDiffx(){
+		return diffx;
+	}
+	
+	public void setDiffx(int x){
+		diffx = x;
+	}
+	
+	public int getDiffy(){
+		return diffy;
+	}
+	
+	public void setDiffy(int y){
+		diffy = y;
+	}
+	
+	public Piece getDraggingPiece(){
+		return draggingPiece;
+	}
+	
+	public void setDraggingPiece(Piece p){
+		draggingPiece = p;
+	}
+	
+	public JBoardView getBoardView(){
+		return boardView;
 	}
 	
 }

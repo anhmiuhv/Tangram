@@ -4,7 +4,6 @@ import java.awt.event.MouseEvent;
 
 import model.Board;
 import model.Piece;
-import view.JPieceView;
 import view.LevelView;
 
 public class BoardController extends java.awt.event.MouseAdapter{
