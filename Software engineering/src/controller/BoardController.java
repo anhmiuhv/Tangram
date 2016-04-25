@@ -33,7 +33,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		System.out.println("2");
 		movingPiece.setpColumn(diffx);
 		movingPiece.setpRow(diffy);
 		board.addpiece(movingPiece);

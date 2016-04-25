@@ -69,7 +69,9 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 				levelview.getTopPanel().remove(levelview.getDraggingPieceView());
 				levelview.setDraggingPieceView(null);
 				levelview.reDrawBullpan();
-				levelview.getBoardController().mouseReleased(me);;
+				MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
+						me.getX()-430, me.getY()-70, me.getClickCount(), false);				
+				levelview.getBoardController().mouseReleased(newme);;
 				return;
 			}			
 		}
