@@ -40,6 +40,10 @@ public class Board implements java.io.Serializable {
 		this.squares = squares;
 	}
 
+	/**
+	 * Return the squares making the board
+	 * @return array of squares making up the board
+	 */
 	public Square[] getSquares() {
 		// TODO Auto-generated method stub
 		return squares;

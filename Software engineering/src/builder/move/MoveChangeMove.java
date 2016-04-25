@@ -8,7 +8,7 @@ import builder.model.LevelEditor;
 
 /**
  * this class represent a move to change the allowed move of the puzzle mode
- * @author anhmiuhv
+ * @author lthoang
  *
  */
 public class MoveChangeMove implements IMove {

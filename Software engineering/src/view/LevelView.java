@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.BoardController;
 import controller.BullpenController;
 import controller.CloseKabasuji;
 import controller.GoMenuController;
@@ -54,7 +55,8 @@ public class LevelView extends JFrame {
 	JLabel timeLeft = new JLabel();
 	int usedTime= 0;
 	int allowedTime = 0; 
-	public BullpenController bullpenController;
+	BullpenController bullpenController;
+	BoardController boardController;
 	KabasujiMouseMotionAdapter kabasujiMouseMotionAdapter;
 	protected JPanel contentPane;
 	BlueStripe bs;
@@ -89,6 +91,8 @@ public class LevelView extends JFrame {
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
 		bullpenController = new BullpenController(this,level.getBullpen());
+		//boardController = new BoardController();
+		
 		kabasujiMouseMotionAdapter = new KabasujiMouseMotionAdapter(this);
 		
 		this.level = level;
@@ -96,23 +100,24 @@ public class LevelView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
 		this.setResizable(false);
+
 		topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 850, 850);
 		topPanel.setOpaque(false);
 		topPanel.setLayout(null);
-		
+
+	
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		this.add(topPanel);
 
-		
-		//----------- manully design bullpen 
 
 
 		reDrawBoard ();
-		
+
+		boardView.addMouseListener(boardController);
 		
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
@@ -223,7 +228,7 @@ public class LevelView extends JFrame {
 
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
-			for(int i = 0;i<144;i++){
+			for(int i = 0;i<level.getBoard().getSquare().length;i++){
 				if(squareNum[i] != 0){
 					JLabel ll = new JLabel("" + squareNum[i]);
 					ll.setForeground(cl[i]);
@@ -260,14 +265,13 @@ public class LevelView extends JFrame {
 	
 	public void reDrawBlueStripe (){
 
-		
-		bs = new BlueStripe(1,level.getLevelNumber()+1);
-		scrollPane.setColumnHeaderView(bs);
 
+		bs = new BlueStripe(1,level.getLevelNumber()+1);
+
+		scrollPane.setColumnHeaderView(bs);
+		
 		contentPane.add(bs);       
 
-
-		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(20, 20, 80, 80);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -340,8 +344,13 @@ public class LevelView extends JFrame {
 		return timer;
 	}
 	
+
+	public JBoardView getJBoardView(){
+		return boardView;
+	}
 	public JPanel getTopPanel(){
 		return topPanel;
+
 	}
 	
 }

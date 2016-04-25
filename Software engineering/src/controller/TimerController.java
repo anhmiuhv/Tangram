@@ -19,6 +19,7 @@ public class TimerController extends TimerTask {
 		this.levelview =levelview;
 		this.level = level;
 		this.timeCount = ((LightningLevel) level).getAllowedTime();
+
 	}
 	
 	@Override  

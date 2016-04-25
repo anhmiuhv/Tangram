@@ -18,6 +18,11 @@ public class SelectPieceTileController implements MouseListener{
 	
 	LevelEditor lvle;
 	JSquareView view;
+	/**
+	 * contruct controller for the tile of the piece creator
+	 * @param lvle
+	 * @param view
+	 */
 	public SelectPieceTileController(LevelEditor lvle, JSquareView view){
 		this.lvle = lvle;
 		this.view = view;

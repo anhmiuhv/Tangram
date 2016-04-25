@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import builder.model.LevelEditor;
 import builder.model.Lightning;
 import builder.move.IMove;
@@ -22,6 +19,12 @@ public class TimerInfoController implements ActionListener {
 	LevelEditor editor;
 	JTextField t;
 	LevelEditorView view;
+	/**
+	 * controller for editing the timer info
+	 * @param editor
+	 * @param t
+	 * @param view
+	 */
 	public TimerInfoController(LevelEditor editor, JTextField t, LevelEditorView view){
 		this.editor = editor;
 		this.t = t;
