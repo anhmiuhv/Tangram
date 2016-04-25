@@ -8,8 +8,8 @@ import view.LevelView;
 
 public class BoardController extends java.awt.event.MouseAdapter{
 	
-	int diffx =80;
-	int diffy =80;
+	int diffx =0;
+	int diffy =0;
 	
 	LevelView levelView;
 	Board board;
@@ -34,10 +34,31 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	@Override
 	public void mouseReleased(MouseEvent me) {
 		System.out.println("2");
-		movingPiece.setpColumn(diffx);
-		movingPiece.setpRow(diffy);
+		movingPiece.setpColumn(diffx+levelView.getDiffx());
+		movingPiece.setpRow(diffy+levelView.getDiffy());
+		getHeadSquareInBoard();
 		board.addpiece(movingPiece);
 		levelView.reDrawBoard();
 		levelView.repaint();
+	}
+	
+	public int[] getHeadSquareInBoard(){
+		int closedColumn =diffx+levelView.getDiffx()/30;
+		int closedRow = diffy+levelView.getDiffy()/30;
+		int[] returnInt = new int[2];
+		
+		for(int i=0;i<board.getSquare().length;i++){
+			if ((closedColumn == board.getSquare()[i].getColumn())&&(closedRow == board.getSquare()[i].getRow())){
+				
+				System.out.println("dzk");
+			}
+		}
+		
+		return returnInt;
+	}
+	
+	public boolean doMove(){
+		
+		return false;
 	}
 }

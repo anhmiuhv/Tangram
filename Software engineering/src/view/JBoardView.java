@@ -60,7 +60,7 @@ public class JBoardView extends JPanel {
 		JSquareView[] sv = new JSquareView[6];
 		for(int i=0;i<6;i++){
 			sv[i] = new JSquareView(squares[i],p.getColor());
-			sv[i].setBounds(squares[i].getColumn()*30,squares[i].getRow()*30 , 30, 30);
+			sv[i].setBounds(squares[i].getColumn()*30+p.getpColumn(),squares[i].getRow()*30 +p.getpRow(), 30, 30);
 			add(sv[i]);
 
 		}
