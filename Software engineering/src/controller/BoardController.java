@@ -9,8 +9,8 @@ import view.LevelView;
 
 public class BoardController extends java.awt.event.MouseAdapter{
 	
-	int diffx =0;
-	int diffy =0;
+	int diffx =80;
+	int diffy =80;
 	
 	LevelView levelView;
 	Board board;
@@ -35,8 +35,8 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	@Override
 	public void mouseReleased(MouseEvent me) {
 		System.out.println("2");
-		movingPiece.setpColumn(0);
-		movingPiece.setpRow(0);
+		movingPiece.setpColumn(diffx);
+		movingPiece.setpRow(diffy);
 		board.addpiece(movingPiece);
 		levelView.reDrawBoard();
 		levelView.repaint();
