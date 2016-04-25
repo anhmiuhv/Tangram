@@ -8,7 +8,7 @@ public class Board implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = 8260314857254020443L;
 	Square[] square ;
-	boolean[] cover;
+	int[] cover;
 	Hint hints = null;
 	ArrayList<Piece> piece = new ArrayList<Piece>();
 	int squareLeft;
