@@ -65,5 +65,7 @@ public class Board implements java.io.Serializable{
 	public boolean removepiece(Piece p){
 		return this.piece.remove(p);
 	}
-	
-}
+	public int[] getCover(){
+		return cover;
+	}
+}	
