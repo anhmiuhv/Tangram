@@ -397,4 +397,8 @@ public class LevelView extends JFrame {
 		return boardController;
 	}
 	
+	public Level getLevel(){
+		return level;
+	}
+	
 }

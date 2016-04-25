@@ -37,6 +37,10 @@ public class PuzzleLevel extends Level {
 	public int getUsedMove(){
 		return usedMove;
 	}
+	
+	public void incrementUsedMove(){
+		usedMove++;
+	}
 
 	@Override
 	public void createLevelState() {
@@ -58,6 +62,27 @@ public class PuzzleLevel extends Level {
 		this.allowedMove = levelState.getAllowedMove();
 
 		
+	}
+
+	@Override
+	public void checkAchievement() {
+		int totalCover = 0;
+		for(int i = 0;i<b.getCover().length;i++){
+			if(b.getCover()[i] == 1){
+				totalCover++;
+			}
+		}
+		
+		if(totalCover == b.getpiece().size() - 2*6){
+			this.star.setAchievement(1);
+		}else if(totalCover == b.getpiece().size() - 1*6){
+			this.star.setAchievement(2);
+		}else if(totalCover == b.getpiece().size()){
+			this.star.setAchievement(3);
+			//end level
+		}else{
+			this.star.setAchievement(0);
+		}
 	}
 
 

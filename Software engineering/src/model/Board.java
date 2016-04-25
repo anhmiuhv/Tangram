@@ -84,4 +84,7 @@ public class Board implements java.io.Serializable{
 		}
 	}
 	
+	public int[] getCover(){
+		return cover;
+	}
 }

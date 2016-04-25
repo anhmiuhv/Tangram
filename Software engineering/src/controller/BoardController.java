@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 
 import model.Board;
 import model.Piece;
+import model.PuzzleLevel;
 import view.LevelView;
 
 public class BoardController extends java.awt.event.MouseAdapter{
@@ -43,6 +44,11 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		movingPiece.setpRow((int)dy);
 		//getHeadSquareInBoard();
 		board.addpiece(movingPiece);
+		//cover
+		if(levelView.getLevel() instanceof PuzzleLevel){
+			((PuzzleLevel)levelView.getLevel()).incrementUsedMove();
+		}
+		levelView.getLevel().checkAchievement();
 		levelView.reDrawBoard();
 		levelView.repaint();
 		}

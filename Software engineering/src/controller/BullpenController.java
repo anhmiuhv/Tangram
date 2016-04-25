@@ -39,15 +39,11 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	    diffx = me.getX() - levelview.getJBullPenView().getPieceView()[pieceN].getX() -20;
 	    diffy = me.getY() - levelview.getJBullPenView().getPieceView()[pieceN].getY() -140;
 	    
-	    System.out.println(diffx);
-	    System.out.println(diffy);
-	    
 	    levelview.setDiffx(diffx);
 	    levelview.setDiffy(diffy);
 	    bullpen.setPieceSelected(pieceN);
 	    draggingPiece = bullpen.getPieces().get(pieceN);
 	    levelview.setDraggingPiece(draggingPiece);
-	    System.out.println("111");
 	    bullpen.getPieces().set(pieceN,null);
 	    levelview.setDraggingPieceView(new JPieceView(draggingPiece, me.getPoint().x - diffx, me.getPoint().y - diffy));
 	    levelview.getTopPanel().add(levelview.getDraggingPieceView());
