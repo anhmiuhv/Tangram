@@ -205,6 +205,10 @@ public class BoardCreator {
 		Square[] result = s.toArray(new Square[s.size()]);
 		hints = new Hint(resultHint);
 		board = new Board(result);
+		if(!(dfsBoard(board.getSquares()[0]))){
+			board = null;
+			return false;
+		}
 		return true;
 	}
 
@@ -218,6 +222,75 @@ public class BoardCreator {
 		}
 		return "not created";
 	}
+	
+	private boolean dfsBoard(Square head){
+		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
+		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
+		Square tempsqUp = new Square(head.getColumn(), head.getRow()+1);
+		Square tempsqDn = new Square(head.getColumn(), head.getRow()-1);
+		Square tempsqRU = new Square(head.getColumn()+1, head.getRow()+1);
+		Square tempsqLU = new Square(head.getColumn()-1, head.getRow()+1);
+		Square tempsqRD = new Square(head.getColumn()+1, head.getRow()-1);
+		Square tempsqLD = new Square(head.getColumn()-1, head.getRow()-1);
+		
+		if((this.board.containSquare(tempsqRt))&& (!(tempsqRt.getVisit()))){
+			dfsBoard(tempsqRt);
+		}
+		if((this.board.containSquare(tempsqLt))&& (!(tempsqLt.getVisit()))){
+			dfsBoard(tempsqLt);
+		}
+		if((this.board.containSquare(tempsqDn))&& (!(tempsqDn.getVisit()))){
+			dfsBoard(tempsqDn);
+		}
+		if((this.board.containSquare(tempsqUp))&& (!(tempsqUp.getVisit()))){
+			dfsBoard(tempsqUp);
+		}
+		if((this.board.containSquare(tempsqRU))&& (!(tempsqRU.getVisit()))){
+			dfsBoard(tempsqRU);
+		}
+		if((this.board.containSquare(tempsqLU))&& (!(tempsqLU.getVisit()))){
+			dfsBoard(tempsqLU);
+		}
+		if((this.board.containSquare(tempsqLD))&& (!(tempsqLD.getVisit()))){
+			dfsBoard(tempsqLD);
+		}
+		if((this.board.containSquare(tempsqRD))&& (!(tempsqRD.getVisit()))){
+			dfsBoard(tempsqRD);
+		}
+		return this.board.allVisited();
+	}
+	
+
+	
+	
+//	public boolean validPiece(){
+//		
+//		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
+//
+//	}
+	
+	
+//	private boolean dfsSquare(Square head){
+//		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
+//		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
+//		Square tempsqUp = new Square(head.getColumn(), head.getRow()+1);
+//		Square tempsqDn = new Square(head.getColumn(), head.getRow()-1);
+//		if((piece.containSquare(tempsqRt))&& (!(tempsqRt.getVisit()))){
+//			dfsSquare(tempsqRt);
+//		}
+//		if((piece.containSquare(tempsqLt))&& (!(tempsqLt.getVisit()))){
+//			dfsSquare(tempsqLt);
+//		}
+//		if((piece.containSquare(tempsqDn))&& (!(tempsqDn.getVisit()))){
+//			dfsSquare(tempsqDn);
+//		}
+//		if((piece.containSquare(tempsqUp))&& (!(tempsqUp.getVisit()))){
+//			dfsSquare(tempsqUp);
+//		}
+//		
+//		return piece.allVisited();
+//		
+//	}
 
 
 
