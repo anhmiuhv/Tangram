@@ -115,7 +115,8 @@ public class Release extends LevelEditor{
 	@Override
 	public void createLevelEditorState() {
 		this.les = new LevelEditorState(levelNum, LevelEditorState.RELEASE, -1, -1, container, 
-				bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum, bc.getIsHintSquare(), this.coloredNum);
+				bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum, 
+				bc.getIsHintSquare(), this.coloredNum, this.actualNum, this.actualColorNum);
 		
 	}
 	
@@ -126,9 +127,12 @@ public class Release extends LevelEditor{
 		int idx = 0;
 		for (Square square: s){
 			if (squareNum[square.getColumn() + square.getRow() * 12] != 0){
-				
+				actualNum[idx] = squareNum[square.getColumn() + square.getRow() * 12];
+				actualColorNum[idx] = colorNum[square.getColumn() + square.getRow() * 12];
 			}
+			idx++;
 		}
+		return;
 	}
 	public static HashMap<String, ColoredNumber> createEmptyListOfColoredNum(){
 		HashMap<String, ColoredNumber> r = new HashMap<String, ColoredNumber>();
@@ -155,6 +159,8 @@ public class Release extends LevelEditor{
 		this.colorNum = les.getColor();
 		this.pc = new PieceCreator();
 		this.levelEditorType = les.getLevelType();
+		this.actualColorNum = les.getActualColor();
+		this.actualNum = les.getActualSquareNum();
 		this.coloredNum = Release.createEmptyListOfColoredNum();
 		for (int i = 0;i < 144; i++){
 			if (squareNum[i] != 0){

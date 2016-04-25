@@ -48,6 +48,8 @@ public class LevelEditorState implements java.io.Serializable{
 	Hint hint;
 	int squareNum[];
 	Color color[];
+	int actualSquareNum[];
+	Color actualColor[];
 	String levelName;
 	HashMap<String, ColoredNumber> coloredNum;
 	
@@ -80,7 +82,7 @@ public class LevelEditorState implements java.io.Serializable{
 	 */
 	public LevelEditorState(int levelNum, String levelType, int allowedTime,
 			int allowedMove, PieceContainer pc, boolean[] selectedSquare,Board board, 
-			Hint hint, int[] squareNum, Color[] color, boolean isHintSquare[], HashMap<String, ColoredNumber> coloredNum) {
+			Hint hint, int[] squareNum, Color[] color, boolean isHintSquare[], HashMap<String, ColoredNumber> coloredNum, int[] actualSquareNum, Color[] actualColor) {
 		this.levelNum = levelNum;
 		this.levelType = levelType;
 		this.allowedTime = allowedTime;
@@ -94,6 +96,8 @@ public class LevelEditorState implements java.io.Serializable{
 		levelName = "les" + levelNum;
 		this.isHintSquare = isHintSquare;
 		this.coloredNum = coloredNum;
+		this.actualSquareNum = actualSquareNum;
+		this.actualColor = actualColor;
 	}
 
 	
@@ -230,12 +234,28 @@ public class LevelEditorState implements java.io.Serializable{
 		this.squareNum = squareNum;
 	}
 
+	public int[] getActualSquareNum() {
+		return actualSquareNum;
+	}
+
+	public void setActualSquareNum(int[] actualSquareNum) {
+		this.actualSquareNum = actualSquareNum;
+	}
+
 	public Color[] getColor() {
 		return color;
 	}
 
 	public void setColor(Color[] color) {
 		this.color = color;
+	}
+
+	public Color[] getActualColor() {
+		return actualColor;
+	}
+
+	public void setActualColor(Color[] actualColor) {
+		this.actualColor = actualColor;
 	}
 
 	private boolean[] createExampleSelectedSquare(){
@@ -319,6 +339,8 @@ public class LevelEditorState implements java.io.Serializable{
 			this.selectedSquare = lvlst.selectedSquare;
 			this.isHintSquare = lvlst.isHintSquare;
 			this.coloredNum = lvlst.coloredNum;
+			this.actualColor = lvlst.actualColor;
+			this.actualSquareNum = lvlst.actualSquareNum;
 			// Close the file.
 			save.close(); // This also closes saveFile.
 		}

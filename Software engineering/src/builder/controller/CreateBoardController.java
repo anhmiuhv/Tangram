@@ -29,7 +29,7 @@ public class CreateBoardController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		IMove m = new CreateBoardMove(lvle.getBoardCreator());
+		IMove m = new CreateBoardMove(lvle);
 		if (m.doMove(lvle)){
 			lvle.pushUndo(m);
 		}
