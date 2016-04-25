@@ -397,4 +397,11 @@ public class LevelView extends JFrame {
 		return boardController;
 	}
 	
+	public Level getLevel(){
+		return level;
+	}
+	public BullpenController getBullpenController(){
+		return bullpenController;
+	}
+	
 }

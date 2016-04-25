@@ -68,4 +68,10 @@ public class ReleaseLevel extends Level{
 		
 	}
 
+	@Override
+	public void checkAchievement() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

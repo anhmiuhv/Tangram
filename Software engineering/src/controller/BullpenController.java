@@ -26,6 +26,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
+		
 		int x = 0;
 		if(me.getX() > 185){
 			x = 1; 

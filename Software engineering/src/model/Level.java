@@ -65,6 +65,7 @@ public abstract class Level{
 	
 	abstract public boolean hasWon();
 	abstract public void loadLevel(File f);
+	abstract public void checkAchievement();
 	/**
 	 * this func create a levelstate file for a level
 	 */

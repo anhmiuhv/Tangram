@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 
 import model.Board;
 import model.Piece;
+import model.PuzzleLevel;
 import view.LevelView;
 
 public class BoardController extends java.awt.event.MouseAdapter{
@@ -47,10 +48,21 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			movingPiece.setpColumn((int)dx);
 			movingPiece.setpRow((int)dy);
 			board.addpiece(movingPiece);
+			coverSquare((int)dx,(int)dy,movingPiece);
+			
+			if(levelView.getLevel() instanceof PuzzleLevel){
+				((PuzzleLevel)levelView.getLevel()).incrementUsedMove();
+			}
+			levelView.getLevel().checkAchievement();
+			levelView.reDrawBoard();
+			levelView.repaint();
 		}
-		
-		levelView.reDrawBoard();
-		levelView.repaint();
+		else{
+			levelView.getBullpenController().mouseReleased(null);
+		}
+	
+		//cover
+
 		}
 	}
 	
@@ -68,30 +80,48 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		return returnInt;
 	}
 	
+	public void coverSquare(int testColumn, int testRow, Piece testPiece){
+		for (int i =0;i<6;i++){
+			int findx;
+			int findy;
+			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
+			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
+			for (int j =0;j<board.getSquare().length;j++){
+				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
+					board.getCover()[j]=1;
+				}
+			}
+		}
+	}
+	
+	
 	public boolean doMove(int testColumn, int testRow, Piece testPiece){
 		int findx;
 		int findy;
-		
+
 		for (int i =0;i<6;i++){
 			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
 			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
 			int flag= 0;
-			for (int j =0;i<board.getSquare().length;i++){
+			for (int j =0;j<board.getSquare().length;j++){
 				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
 					if ( board.getCover()[j] !=0){
+
 						return false;
 					}
+
 					flag = 1;
 				}
 			}
 			if (flag == 0){
+
 				return false;
 			}
-			else{
-				flag = 0;
-			}
-			
 		}
 		return true;
 	}
+	
+	
+	
+
 }
