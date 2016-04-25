@@ -34,11 +34,11 @@ public class BoardController extends java.awt.event.MouseAdapter{
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		System.out.println("22");
+		System.out.println("2");
 		movingPiece.setpColumn(0);
 		movingPiece.setpRow(0);
 		board.addpiece(movingPiece);
 		levelView.reDrawBoard();
-		//levelView.getJBoardView().showPieces();
+		levelView.repaint();
 	}
 }
