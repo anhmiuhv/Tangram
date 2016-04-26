@@ -404,5 +404,6 @@ public class LevelView extends JFrame {
 	public BullpenController getBullpenController(){
 		return bullpenController;
 	}
+
 	
 }
