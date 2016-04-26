@@ -44,7 +44,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		
 			
 		if (doMove((int)dx,(int)dy,movingPiece)== true){
-			System.out.println("d");
+			System.out.println("board");
 			movingPiece.setpColumn((int)dx);
 			movingPiece.setpRow((int)dy);
 			board.addpiece(movingPiece);
@@ -59,6 +59,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			levelView.repaint();
 		}
 		else{
+
 			levelView.getBullpenController().mouseReleased(null);
 		}
 	
@@ -107,10 +108,8 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			for (int j =0;j<board.getSquare().length;j++){
 				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
 					if ( board.getCover()[j] !=0){
-
 						return false;
 					}
-
 					flag = 1;
 				}
 			}

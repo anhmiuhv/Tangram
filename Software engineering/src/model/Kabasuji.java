@@ -21,14 +21,16 @@ public class Kabasuji {
 		// But, since this is only a test...
 		splash.showSplashAndExit();
 		
-		//LevelState createAlevel = new LevelState();
-		//createAlevel.loadState("puzzle1.sav");
-		//PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
-		//p.loadLevelState(createAlevel);
-		//Level[] l = new Level[1];
-		//l[0] = p;
+		/*
+		LevelState createAlevel = new LevelState();
+		createAlevel.loadState("puzzle1.sav");
+		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
+		p.loadLevelState(createAlevel);
+		Level[] l = new Level[1];
+		l[0] = p;
+		*/
 		//Application app = new Applicaiton();
-		LevelSelection levelSec = new LevelSelection(createTestLevel());
+		LevelSelection levelSec = new LevelSelection( createPhaseTwoLevel());
 	}
 
 
@@ -41,10 +43,101 @@ public class Kabasuji {
 
 	private void initializeControllers() {
 
-
-
 	}
 
+	public static Level[] createPhaseTwoLevel(){
+		Level[] testLevels = new Level[1];
+		
+		Square Level1Piece1[] = new Square[6]; 
+		Level1Piece1[0] = new Square(0,0);
+		Level1Piece1[1] = new Square(1,0);
+		Level1Piece1[2] = new Square(2,0);
+		Level1Piece1[3] = new Square(3,0);
+		Level1Piece1[4] = new Square(4,0);
+		Level1Piece1[5] = new Square(5,0);		
+		
+		Square Level1Piece2[] = new Square[6]; 
+		Level1Piece2[0] = new Square(0,1);
+		Level1Piece2[1] = new Square(0,0);
+		Level1Piece2[2] = new Square(1,0);
+		Level1Piece2[3] = new Square(2,0);
+		Level1Piece2[4] = new Square(3,0);
+		Level1Piece2[5] = new Square(4,0);		
+		
+		Square Level1Piece3[] = new Square[6]; 
+		Level1Piece3[0] = new Square(0,0);
+		Level1Piece3[1] = new Square(0,1);
+		Level1Piece3[2] = new Square(0,2);
+		Level1Piece3[3] = new Square(1,0);
+		Level1Piece3[4] = new Square(1,1);
+		Level1Piece3[5] = new Square(1,2);		
+		
+		Square Level1Piece4[] = new Square[6]; 
+		Level1Piece4[0] = new Square(0,0);
+		Level1Piece4[1] = new Square(1,0);
+		Level1Piece4[2] = new Square(1,1);
+		Level1Piece4[3] = new Square(1,2);
+		Level1Piece4[4] = new Square(1,3);
+		Level1Piece4[5] = new Square(2,3);
+		
+		Square Level1Piece5[] = new Square[6]; 
+		Level1Piece5[0] = new Square(2,0);
+		Level1Piece5[1] = new Square(2,1);
+		Level1Piece5[2] = new Square(1,1);
+		Level1Piece5[3] = new Square(0,1);
+		Level1Piece5[4] = new Square(0,2);
+		Level1Piece5[5] = new Square(1,2);	
+		
+		Square Level1Piece6[] = new Square[6]; 
+		Level1Piece6[0] = new Square(2,0);
+		Level1Piece6[1] = new Square(2,1);
+		Level1Piece6[2] = new Square(1,1);
+		Level1Piece6[3] = new Square(0,1);
+		Level1Piece6[4] = new Square(1,2);
+		Level1Piece6[5] = new Square(2,2);	
+		
+		Piece bullPenPiece= new Piece(0,0,Level1Piece1,Level1Piece1[0],2);
+		bullPenPiece.setColor(new Color(0,0,0));
+		
+		ArrayList<Piece> bullPenPieceArray=new ArrayList<Piece>();
+		bullPenPieceArray.add(new Piece(0,0,Level1Piece1,Level1Piece1[0],2));
+		bullPenPieceArray.get(0).setColor(Color.BLUE);
+		bullPenPieceArray.add(new Piece(0,0,Level1Piece2,Level1Piece2[0],2));
+		bullPenPieceArray.get(1).setColor(Color.GREEN);
+		bullPenPieceArray.add(new Piece(0,0,Level1Piece3,Level1Piece3[0],2));
+		bullPenPieceArray.get(2).setColor(Color.YELLOW);
+		bullPenPieceArray.add(new Piece(0,0,Level1Piece4,Level1Piece4[0],2));
+		bullPenPieceArray.get(3).setColor(Color.ORANGE);
+		bullPenPieceArray.add(new Piece(0,0,Level1Piece5,Level1Piece5[0],2));
+		bullPenPieceArray.get(4).setColor(Color.RED);
+		bullPenPieceArray.add(new Piece(0,0,Level1Piece6,Level1Piece6[0],2));
+		bullPenPieceArray.get(5).setColor(Color.PINK);
+		Bullpen bp = new Bullpen(bullPenPieceArray);
+		
+		
+		Square[] sq = new Square[36]; 
+		for (int i1=0;i1<6;i1++){
+			for (int j=0;j<6;j++){
+				sq[i1*6+j] = new Square(i1,j);
+			}
+		}
+		Square hitSquares[] = new Square[6]; 
+		hitSquares[0] = new Square(0,0);
+		hitSquares[1] = new Square(1,0);
+		hitSquares[2] = new Square(2,0);
+		hitSquares[3] = new Square(3,0);
+		hitSquares[4] = new Square(4,0);
+		hitSquares[5] = new Square(5,0);	
+		Hint hints = new Hint(hitSquares);
+		Board bd = new Board(sq);
+		bd.sethint(hints);
+		
+		testLevels[0] = new PuzzleLevel(0,GetLevelTpye(0%3),bd,bp,20);
+		testLevels[0].updateLevelStar(new Achievement(0));
+		
+		return testLevels;
+	}
+	
 	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){
 		Level[] testLevels = new Level[16];
@@ -228,12 +321,12 @@ public class Kabasuji {
 			}
 		}
 		Square sixhint[] = new Square[6]; 
-		sixhint[0] = new Square(1,0);
-		sixhint[1] = new Square(1,1);
-		sixhint[2] = new Square(1,2);
-		sixhint[3] = new Square(1,3);
-		sixhint[4] = new Square(1,4);
-		sixhint[5] = new Square(1,5);	
+		sixhint[0] = new Square(0,0);
+		sixhint[1] = new Square(0,1);
+		sixhint[2] = new Square(0,2);
+		sixhint[3] = new Square(0,3);
+		sixhint[4] = new Square(0,4);
+		sixhint[5] = new Square(0,5);	
 
 		Hint sixhints = new Hint(sixhint);
 

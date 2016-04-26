@@ -117,8 +117,9 @@ public class LevelView extends JFrame {
 
 
 		reDrawBoard ();
+
 		boardView.addMouseListener(boardController);
-		
+
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
 		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -138,7 +139,6 @@ public class LevelView extends JFrame {
 
 
 		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
-
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -163,10 +163,8 @@ public class LevelView extends JFrame {
 			 ((LightningLevel) level).setUsedTime(((LightningLevel) level).getAllowedTime());
 			}
 
-		
-		reDrawBlueStripe();
-		
 
+		reDrawBlueStripe();
 		
 		
 		contentPane.add(horiFlip);
@@ -236,7 +234,7 @@ public class LevelView extends JFrame {
 
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
-			for(int i = 0;i<144;i++){
+			for(int i = 0;i<level.getBoard().getSquare().length;i++){
 				if(squareNum[i] != 0){
 					JLabel ll = new JLabel("" + squareNum[i]);
 					ll.setForeground(cl[i]);
