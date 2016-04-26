@@ -41,10 +41,13 @@ public class Kabasuji {
 
 	private void initializeControllers() {
 
-
-
 	}
 
+//	public static Level[] createPhaseTwoLevel(){
+
+	
+	//}
+	
 	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){
 		Level[] testLevels = new Level[16];
