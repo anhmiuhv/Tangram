@@ -56,7 +56,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		if(me == null){
+		if(me != null){
 			draggingPiece = levelview.getDraggingPiece();
 			if(draggingPiece == null){
 				System.out.println("Nothing being dragged");
@@ -79,7 +79,9 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 			}
 		}
 		bullpen.getPieces().set(pieceN,levelview.getDraggingPiece());
-		levelview.getTopPanel().remove(levelview.getDraggingPieceView());
+		if(me != null){
+			levelview.getTopPanel().remove(levelview.getDraggingPieceView());
+		}
 		levelview.setDraggingPieceView(null);
 		levelview.reDrawBullpan();
 		levelview.repaint();
