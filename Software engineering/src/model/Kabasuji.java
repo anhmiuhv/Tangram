@@ -96,9 +96,6 @@ public class Kabasuji {
 		Level1Piece6[4] = new Square(1,2);
 		Level1Piece6[5] = new Square(2,2);	
 		
-		Piece bullPenPiece= new Piece(0,0,Level1Piece1,Level1Piece1[0],2);
-		bullPenPiece.setColor(new Color(0,0,0));
-		
 		ArrayList<Piece> bullPenPieceArray=new ArrayList<Piece>();
 		bullPenPieceArray.add(new Piece(0,0,Level1Piece1,Level1Piece1[0],2));
 		bullPenPieceArray.get(0).setColor(Color.BLUE);
@@ -132,11 +129,13 @@ public class Kabasuji {
 		Board bd = new Board(sq);
 		bd.sethint(hints);
 		
-		testLevels[0] = new PuzzleLevel(0,GetLevelTpye(0%3),bd,bp,20);
+		testLevels[0] = new PuzzleLevel(0,GetLevelTpye(0%3),bd,bp,8);
 		testLevels[0].updateLevelStar(new Achievement(0));
 		
 		return testLevels;
 	}
+	
+	
 	
 	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){

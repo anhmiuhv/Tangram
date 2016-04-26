@@ -118,7 +118,7 @@ public class LevelView extends JFrame {
 
 		reDrawBoard ();
 
-		boardView.addMouseListener(boardController);
+
 
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
@@ -221,10 +221,14 @@ public class LevelView extends JFrame {
 		//System.out.println(level.getBullpen().getPieces().get(1).getpColumn());
 		//System.out.println(level.getBullpen().getPieces().get(1).getpRow());
 		if (boardView!=null){
+			boardView.removeMouseListener(boardController);
+			boardView.removeMouseMotionListener(kabasujiMouseMotionAdapter);
 			contentPane.remove(boardView);
 		}
 
 		boardView = new JBoardView(450,210, level.getBoard());
+		boardView.addMouseListener(boardController);
+		boardView.addMouseMotionListener(kabasujiMouseMotionAdapter);
 		
 		contentPane.add(boardView);
 		
