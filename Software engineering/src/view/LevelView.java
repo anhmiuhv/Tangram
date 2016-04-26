@@ -140,7 +140,6 @@ public class LevelView extends JFrame {
 
 		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
 
-
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 				gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -164,10 +163,8 @@ public class LevelView extends JFrame {
 			 ((LightningLevel) level).setUsedTime(((LightningLevel) level).getAllowedTime());
 			}
 
-		
-		reDrawBlueStripe();
-		
 
+		reDrawBlueStripe();
 		
 		
 		contentPane.add(horiFlip);
