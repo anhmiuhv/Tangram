@@ -228,12 +228,12 @@ public class Kabasuji {
 			}
 		}
 		Square sixhint[] = new Square[6]; 
-		sixhint[0] = new Square(1,0);
-		sixhint[1] = new Square(1,1);
-		sixhint[2] = new Square(1,2);
-		sixhint[3] = new Square(1,3);
-		sixhint[4] = new Square(1,4);
-		sixhint[5] = new Square(1,5);	
+		sixhint[0] = new Square(0,0);
+		sixhint[1] = new Square(0,1);
+		sixhint[2] = new Square(0,2);
+		sixhint[3] = new Square(0,3);
+		sixhint[4] = new Square(0,4);
+		sixhint[5] = new Square(0,5);	
 
 		Hint sixhints = new Hint(sixhint);
 
