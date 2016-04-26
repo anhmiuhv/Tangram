@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.Achievement;
+import model.Board;
+import model.Bullpen;
 import model.LevelState;
 import model.Square;
 
@@ -120,7 +123,7 @@ public class Release extends LevelEditor{
 		
 	}
 	
-	public void createActualSquareNum(Board b){
+	public void createActualSquareNum(builder.model.Board b){
 		Square[] s = b.getSquares();
 		this.actualNum = new int[s.length];
 		this.actualColorNum = new Color[s.length];
@@ -179,8 +182,18 @@ public class Release extends LevelEditor{
 
 	
 	@Override
-	public LevelState createLevelState() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean createLevelState() {
+		for (ColoredNumber cn: this.coloredNum.values()){
+			if (cn.getPosition() == -1) return false;
+		}
+	
+		if (this.getBoardCreator().getBoard() == null) return false;
+		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
+		b.sethint(this.getBoardCreator().getHints());
+		
+		LevelState n = new LevelState(100 + this.levelNum, LevelEditorState.RELEASE, b, 0, 0, false,
+				new Achievement(0), new Bullpen(this.getPieceContainer().getPieces()), this.actualNum, this.actualColorNum);
+		n.saveState();
+		return true;
 	}
 }

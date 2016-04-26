@@ -176,7 +176,7 @@ public abstract class LevelEditor {
 	 * create the level state object for save
 	 * @return level state
 	 */
-	public abstract LevelState createLevelState();
+	public abstract boolean createLevelState();
 	
 	
 }

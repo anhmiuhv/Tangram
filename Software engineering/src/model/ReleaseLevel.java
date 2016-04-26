@@ -18,6 +18,9 @@ public class ReleaseLevel extends Level{
 	int[] squareNum;
 	Color[] cl;
 	
+	public ReleaseLevel(LevelState ls){
+		super(ls);
+	}
 	
 	public ReleaseLevel(int LevelNumber, String LevelType, Board b, Bullpen p,int[] squareNum,Color[] cl) {
 		super(LevelNumber, LevelType, b, p);

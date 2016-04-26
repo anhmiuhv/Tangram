@@ -13,6 +13,10 @@ public class PuzzleLevel extends Level {
 	int allowedMove = 0;
 	int usedMove = 0;
 	
+	public PuzzleLevel(LevelState ls){
+		super(ls);
+	}
+	
 	public PuzzleLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedMove) {
 		super(LevelNumber, LevelType, b, p);
 		this.allowedMove = allowedMove;

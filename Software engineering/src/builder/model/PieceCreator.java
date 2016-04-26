@@ -1,6 +1,8 @@
 package builder.model;
+import java.awt.Color;
 import java.awt.Point;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import model.Piece;
@@ -134,6 +136,8 @@ public class PieceCreator {
 		
 		
 		this.piece = new Piece(0, 0,s, s[0], 0);
+		Random rand = new Random(); 
+		this.piece.setColor(new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
 		
 		return true;
 	}

@@ -10,6 +10,7 @@ import java.awt.Component;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -58,7 +59,7 @@ public class LevelEditorView extends JFrame {
 	KabasujiBuilder kb;
 	int levelNum;
 	LevelEditor editor;
-	
+
 	JBoardCreatorView jbc;
 	JPieceCreatorView jpc;
 	JPieceContainerView jcontainer;
@@ -294,7 +295,7 @@ public class LevelEditorView extends JFrame {
 				g.dispose();
 				try {
 					ImageIO.write(image, "jpg", new File("temp/Paint.jpg"));
-				
+
 				} catch (IOException exp) {
 					exp.printStackTrace();
 				}
@@ -308,37 +309,36 @@ public class LevelEditorView extends JFrame {
 
 
 
-		
+
 		JButton btnCreateLevel = new JButton("Create Level");
 		btnCreateLevel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				int levelNum;
-//				String levelType;
-//				Board b;
-//				Bullpen p;
-//				levelBuilt = new Level(levelNum, levelType, b, p);
-//				
-//				
-//				Trying to figure this out
-				
-				
-				
-				
-				
-				
-//				editor.createLevelEditorState();
-//				editor.getLes().saveState();
-//				levelBuilder lb = new levelBuilder(new KabasujiBuilder());
-//				lb.setVisible(true);
-//				close();
-				
+				try{
+					if (!editor.createLevelState()){
+						JOptionPane.showMessageDialog(contentPane,
+								"Level has not been created",
+								"Level has not been created",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(contentPane,
+								"Level has been created",
+								"Level has been created",
+								JOptionPane.PLAIN_MESSAGE);
+					}
+					} catch (Exception eror){
+						JOptionPane.showMessageDialog(contentPane,
+								"Level has not been created",
+								"Level has not been created",
+								JOptionPane.WARNING_MESSAGE);
+					}
+
 			}
 		});
 		btnCreateLevel.setBounds(519, 6, 129, 25);
 		panel.add(btnCreateLevel);
-		
-		
-		
+
+
+
 
 	}
 
