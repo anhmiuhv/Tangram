@@ -96,9 +96,6 @@ public class Kabasuji {
 		Level1Piece6[4] = new Square(1,2);
 		Level1Piece6[5] = new Square(2,2);	
 		
-		Piece bullPenPiece= new Piece(0,0,Level1Piece1,Level1Piece1[0],2);
-		bullPenPiece.setColor(new Color(0,0,0));
-		
 		ArrayList<Piece> bullPenPieceArray=new ArrayList<Piece>();
 		bullPenPieceArray.add(new Piece(0,0,Level1Piece1,Level1Piece1[0],2));
 		bullPenPieceArray.get(0).setColor(Color.BLUE);
@@ -137,6 +134,8 @@ public class Kabasuji {
 		
 		return testLevels;
 	}
+	
+	
 	
 	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){
