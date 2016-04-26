@@ -52,6 +52,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			
 			if(levelView.getLevel() instanceof PuzzleLevel){
 				((PuzzleLevel)levelView.getLevel()).incrementUsedMove();
+				levelView.updateBS();
 			}
 			levelView.getLevel().checkAchievement();
 			levelView.reDrawBoard();

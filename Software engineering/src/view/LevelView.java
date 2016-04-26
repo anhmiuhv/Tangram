@@ -403,6 +403,14 @@ public class LevelView extends JFrame {
 	public BullpenController getBullpenController(){
 		return bullpenController;
 	}
-
+	public BlueStripe getBlueStripe(){
+		return bs;
+	}
+	
+	public void updateBS(){
+		moveUsed = ((PuzzleLevel) level).getUsedMove();
+		totalMove = ((PuzzleLevel) level).getAllowedMove();
+		moves.setText("Moves: " + moveUsed + "/" + totalMove);
+	}
 	
 }
