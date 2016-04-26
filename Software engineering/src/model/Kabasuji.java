@@ -132,7 +132,7 @@ public class Kabasuji {
 		Board bd = new Board(sq);
 		bd.sethint(hints);
 		
-		testLevels[0] = new PuzzleLevel(0,GetLevelTpye(0%3),bd,bp,20);
+		testLevels[0] = new PuzzleLevel(0,GetLevelTpye(0%3),bd,bp,8);
 		testLevels[0].updateLevelStar(new Achievement(0));
 		
 		return testLevels;

@@ -411,4 +411,30 @@ public class LevelView extends JFrame {
 		moves.setText("Moves: " + moveUsed + "/" + totalMove);
 	}
 	
+	public void updateAchievement(){
+		if (level.getAchievement().getAchievement()==1){
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 20, 20);
+			stayLabel.setIcon(new ImageIcon("images//onestar.png"));
+			bs.add(stayLabel);
+		}
+		else if (level.getAchievement().getAchievement()==2){
+			bs.remove(stayLabel);
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 40, 30);
+			stayLabel.setIcon(new ImageIcon("images//twostar.png"));
+			bs.add(stayLabel);
+		}
+		else  if (level.getAchievement().getAchievement()==3){
+			bs.remove(stayLabel);
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 60, 20);
+			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
+			bs.add(stayLabel);
+		}
+	}
+	
 }

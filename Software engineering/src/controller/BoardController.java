@@ -44,7 +44,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		
 			
 		if (doMove((int)dx,(int)dy,movingPiece)== true){
-			System.out.println("board");
 			movingPiece.setpColumn((int)dx);
 			movingPiece.setpRow((int)dy);
 			board.addpiece(movingPiece);
@@ -55,6 +54,8 @@ public class BoardController extends java.awt.event.MouseAdapter{
 				levelView.updateBS();
 			}
 			levelView.getLevel().checkAchievement();
+			//System.out.println(levelView.getLevel().getS);
+			levelView.updateAchievement();
 			levelView.reDrawBoard();
 			levelView.repaint();
 		}

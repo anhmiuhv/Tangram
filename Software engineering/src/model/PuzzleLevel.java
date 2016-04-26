@@ -73,15 +73,15 @@ public class PuzzleLevel extends Level {
 			}
 		}
 		
-		if(totalCover == b.getpiece().size() - 2*6){
-			this.star.setAchievement(1);
-		}else if(totalCover == b.getpiece().size() - 1*6){
-			this.star.setAchievement(2);
-		}else if(totalCover == b.getpiece().size()){
-			this.star.setAchievement(3);
+		if(totalCover == (getBullpen().getPieces().size())*6 - 2*6){
+			updateLevelStar(new Achievement(1));
+		}else if(totalCover == (getBullpen().getPieces().size())*6 - 1*6){
+			updateLevelStar(new Achievement(2));
+		}else if(totalCover == (getBullpen().getPieces().size())*6){
+			updateLevelStar(new Achievement(3));
 			//end level
 		}else{
-			this.star.setAchievement(0);
+			updateLevelStar(new Achievement(0));
 		}
 	}
 
