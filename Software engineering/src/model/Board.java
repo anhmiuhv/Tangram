@@ -76,6 +76,7 @@ public class Board implements java.io.Serializable{
 	public boolean removepiece(Piece p){
 		return this.piece.remove(p);
 	}
+
 	
 	public void initializeCover(){
 		cover = new int[square.length];
@@ -88,3 +89,4 @@ public class Board implements java.io.Serializable{
 		return cover;
 	}
 }
+

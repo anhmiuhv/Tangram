@@ -56,28 +56,29 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		draggingPiece = levelview.getDraggingPiece();
-		if(draggingPiece == null){
-			System.out.println("Nothing being dragged");
-			return;
-		}
-		
-		int mex = me.getX();
-		int mey = me.getY();
-		
-		if(mex>=430 && mey>=70){
-			if(mex<=levelview.getBoardView().getWidth() + 430 && mey<=levelview.getBoardView().getHeight() + 70){
-				levelview.getTopPanel().remove(levelview.getDraggingPieceView());
-				levelview.setDraggingPieceView(null);
-				levelview.reDrawBullpan();
-				MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
-						me.getX()-430, me.getY()-70, me.getClickCount(), false);				
-				levelview.getBoardController().mouseReleased(newme);;
+		if(me == null){
+			draggingPiece = levelview.getDraggingPiece();
+			if(draggingPiece == null){
+				System.out.println("Nothing being dragged");
 				return;
-			}			
+			}
+
+			int mex = me.getX();
+			int mey = me.getY();
+			if(mex>=430 && mey>=70){
+				if(mex<=levelview.getBoardView().getWidth() + 430 && mey<=levelview.getBoardView().getHeight() + 70){
+					levelview.getTopPanel().remove(levelview.getDraggingPieceView());
+					levelview.setDraggingPieceView(null);
+					levelview.reDrawBullpan();
+
+					MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
+							me.getX()-430, me.getY()-70, me.getClickCount(), false);				
+					levelview.getBoardController().mouseReleased(newme);;
+					return;
+				}			
+			}
 		}
-		
-		bullpen.getPieces().set(pieceN,draggingPiece);
+		bullpen.getPieces().set(pieceN,levelview.getDraggingPiece());
 		levelview.getTopPanel().remove(levelview.getDraggingPieceView());
 		levelview.setDraggingPieceView(null);
 		levelview.reDrawBullpan();

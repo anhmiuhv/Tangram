@@ -27,7 +27,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
-		System.out.println("1");
 	    
 	}
 	
@@ -40,17 +39,30 @@ public class BoardController extends java.awt.event.MouseAdapter{
 
 			double dx= (double)(me.getX()-mouseAndHeadX)/30 +0.5;
 			double dy=	(double)(me.getY()-mouseAndHeadY)/30 +0.5;
-		movingPiece.setpColumn((int)dx);
-		movingPiece.setpRow((int)dy);
+
 		//getHeadSquareInBoard();
-		board.addpiece(movingPiece);
-		//cover
-		if(levelView.getLevel() instanceof PuzzleLevel){
-			((PuzzleLevel)levelView.getLevel()).incrementUsedMove();
+		
+			
+		if (doMove((int)dx,(int)dy,movingPiece)== true){
+			System.out.println("d");
+			movingPiece.setpColumn((int)dx);
+			movingPiece.setpRow((int)dy);
+			board.addpiece(movingPiece);
+			coverSquare((int)dx,(int)dy,movingPiece);
+			
+			if(levelView.getLevel() instanceof PuzzleLevel){
+				((PuzzleLevel)levelView.getLevel()).incrementUsedMove();
+			}
+			levelView.getLevel().checkAchievement();
+			levelView.reDrawBoard();
+			levelView.repaint();
 		}
-		levelView.getLevel().checkAchievement();
-		levelView.reDrawBoard();
-		levelView.repaint();
+		else{
+			levelView.getBullpenController().mouseReleased(null);
+		}
+	
+		//cover
+
 		}
 	}
 	
@@ -61,16 +73,55 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		
 		for(int i=0;i<board.getSquare().length;i++){
 			if ((closedColumn == board.getSquare()[i].getColumn())&&(closedRow == board.getSquare()[i].getRow())){
-				
-				System.out.println("dzk");
+
 			}
 		}
 		
 		return returnInt;
 	}
 	
-	public boolean doMove(){
-		
-		return false;
+	public void coverSquare(int testColumn, int testRow, Piece testPiece){
+		for (int i =0;i<6;i++){
+			int findx;
+			int findy;
+			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
+			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
+			for (int j =0;j<board.getSquare().length;j++){
+				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
+					board.getCover()[j]=1;
+				}
+			}
+		}
 	}
+	
+	
+	public boolean doMove(int testColumn, int testRow, Piece testPiece){
+		int findx;
+		int findy;
+
+		for (int i =0;i<6;i++){
+			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
+			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
+			int flag= 0;
+			for (int j =0;j<board.getSquare().length;j++){
+				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
+					if ( board.getCover()[j] !=0){
+
+						return false;
+					}
+
+					flag = 1;
+				}
+			}
+			if (flag == 0){
+
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	
+
 }
