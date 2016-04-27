@@ -1,11 +1,9 @@
 package builder.test;
 
-import static org.junit.Assert.*;
-
-import java.awt.event.MouseEvent;
-
-import javax.swing.JComponent;
-
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,12 +14,7 @@ import builder.view.BuilderApplication;
 
 public class testEditLevel {
 	/** (dx,dy) are offsets into the widget space. Feel Free to Use as Is. */
-	public MouseEvent createPressed (JComponent game, JComponent view, int dx, int dy) {
-		MouseEvent me = new MouseEvent(game, MouseEvent.MOUSE_PRESSED, 
-				System.currentTimeMillis(), 0, 
-				view.getX()+dx, view.getY()+dy, 0, false);
-		return me;
-	}
+	
 	
 	BuilderApplication app;
 	@Before
@@ -32,7 +25,23 @@ public class testEditLevel {
 	
 	@Test
 	public void test() {
-		//MouseEvent me =createPressed(this.app.lvlBuilder.getComponentAt(741, 26)))
+		Robot r;
+		try {
+			r = new Robot();
+			r.mouseMove(900, 175);
+			r.mousePress(InputEvent.BUTTON1_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_MASK);
+		} catch (AWTException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
