@@ -32,6 +32,8 @@ public class Kabasuji {
 		
 		//Application app = new Applicaiton();
 		LevelSelection levelSec = new LevelSelection(loadAll());//createPhaseTwoLevel());
+		
+		
 	}
 
 

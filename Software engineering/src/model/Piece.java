@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.util.Random;
 import java.util.Set;
 
 import view.JSquareView;
@@ -25,6 +26,7 @@ public class Piece implements java.io.Serializable{
 	 */
 	Square head;
 	int name;
+	int ranPieceNum =99;
 	/**
 	 * This set contains the offsets of all the other squares from the head squares
 	 * For example: if the head is Square(0,0) then the Square (1,1) 's offset from the head is Point(-1,-1) 
@@ -38,6 +40,98 @@ public class Piece implements java.io.Serializable{
 		this.head = head;
 		this.name = name;
 		}
+	
+	public Piece(){
+		int ranColumn = 5;
+		int ranRow = 5;
+		Square[] ranSquare = new Square[6];
+		ranSquare[0] = new Square(ranColumn,ranRow);
+		boolean repeat = false;
+		for(int  i = 1;i<6;i++){
+			while(repeat == false){
+			int randomNum = new Random().nextInt(4);
+			if (randomNum==0){
+				ranColumn++;
+			}
+			else if (randomNum==1){
+				ranColumn--;
+			}
+			else if (randomNum==2){
+				ranRow++;
+			}
+			else{
+				ranRow--;
+			}
+			repeat =true;
+			for (int  j = 0;j<i;j++){
+				if ((ranSquare[j].getColumn()==ranColumn)&&(ranSquare[j].getRow()==ranRow)){
+					repeat =false;
+				}
+			}
+			if (repeat == false){
+				if (randomNum==0){
+					ranColumn--;
+				}
+				else if (randomNum==1){
+					ranColumn++;
+				}
+				else if (randomNum==2){
+					ranRow--;
+				}
+				else{
+					ranRow++;
+				}
+			}
+			
+			}
+			ranSquare[i] = new Square(ranColumn,ranRow);
+			repeat =false;
+		}
+		
+
+		boolean minusOne = true;
+		while (minusOne ==true){
+			for (int  i = 0;i<6;i++){
+				if (ranSquare[i].getColumn()-1<0){
+					minusOne = false;
+				}
+			}
+			if (minusOne == true){
+				for (int  i = 0;i<6;i++){
+					ranSquare[i].setColumn(ranSquare[i].getColumn()-1);
+				}
+			}
+		}
+		minusOne = true;
+		while (minusOne ==true){
+			for (int  i = 0;i<6;i++){
+				if (ranSquare[i].getRow()-1<0){
+					minusOne = false;
+				}
+			}
+			if (minusOne == true){
+				for (int  i = 0;i<6;i++){
+					ranSquare[i].setRow(ranSquare[i].getRow()-1);
+				}
+			}
+		}
+		
+		for (int  i = 0;i<6;i++){
+			System.out.println(ranSquare[i].getColumn());
+			System.out.println(ranSquare[i].getRow());
+		}
+		
+		
+		ranPieceNum++;
+		
+		this.pColumn = 0;
+		this.pRow = 0;
+		this.squares = ranSquare;
+		this.head = ranSquare[0];
+		this.name = ranPieceNum;
+
+	}
+	
 	
 	public Square[] getSquares(){
 		return squares;
