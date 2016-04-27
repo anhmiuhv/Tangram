@@ -1,8 +1,10 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import model.Board;
+import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
 import view.JPieceView;
@@ -80,7 +82,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	@Override
 	public void mouseReleased(MouseEvent me) {
 
-		
 		movingPiece = levelView.getDraggingPiece();
 		if (movingPiece!= null){
 			double dx=0;
@@ -102,6 +103,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		if (doMove((int)dx,(int)dy,movingPiece)== true){
 			movingPiece.setpColumn((int)dx);
 			movingPiece.setpRow((int)dy);
+			markgreen(movingPiece);
 			board.addpiece(movingPiece);
 			coverSquare((int)dx,(int)dy,movingPiece);
 			
@@ -211,7 +213,11 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		return true;
 	}
 	
-	
+	public void markgreen(Piece mp){
+		if(levelView.getLevel() instanceof LightningLevel){
+			mp.setColor(Color.GREEN);
+		}
+	}
 	
 
 }
