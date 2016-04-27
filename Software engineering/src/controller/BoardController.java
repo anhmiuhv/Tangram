@@ -16,6 +16,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	LevelView levelView;
 	Board board;
 	Piece movingPiece;
+	boolean fromBoard = false;
 	
 	public BoardController(LevelView levelView,Board board){
 		this.board = board;
@@ -28,7 +29,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
-
+		fromBoard = true;
 		double dx= (double)(me.getX())/30 ;
 		double dy=	(double)(me.getY())/30 ;
 		int pressColumn = ((int)dx);
@@ -54,14 +55,14 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		}
 		else{
 			movingPiece = pressedPiece;
-			levelView.setDiffx(0);
-			levelView.setDiffy(0);
+			levelView.setDiffx(me.getX()-450);
+			levelView.setDiffy(me.getY()-210);
 			
 			levelView.setDraggingPiece(pressedPiece);
 			levelView.setDraggingPieceView(new JPieceView(pressedPiece, 450+me.getX() ,210+me.getY() ));
 			levelView.getTopPanel().add(levelView.getDraggingPieceView());
 
-			//board.removepiece(movingPiece);
+			board.removepiece(movingPiece);
 			
 		}
 
@@ -69,6 +70,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mouseReleased(MouseEvent me) {
+
 		movingPiece = levelView.getDraggingPiece();
 		if (movingPiece!= null){
 			mouseAndHeadX = levelView.getDiffx()+20 - 30*movingPiece.getSquares()[0].getColumn();
@@ -97,13 +99,19 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			levelView.repaint();
 		}
 		else{
-
-			levelView.getBullpenController().mouseReleased(null);
+			if(!fromBoard){
+				levelView.getBullpenController().mouseReleased(null);
+			}else{
+				
+			}
 		}
 	
 		//cover
 
 		}
+		//levelView.remove(levelView.getDraggingPieceView());
+		fromBoard = false;
+		//levelView.repaint();
 	}
 	
 	public int[] getHeadSquareInBoard(){
