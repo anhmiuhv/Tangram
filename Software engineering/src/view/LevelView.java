@@ -99,7 +99,7 @@ public class LevelView extends JFrame {
 
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 850, 850);
+		setBounds(0, 0, 850, 850);
 		this.setResizable(false);
 		topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 850, 850);
@@ -321,7 +321,6 @@ public class LevelView extends JFrame {
 			
 			moveUsed = ((PuzzleLevel) level).getUsedMove();
 			totalMove = ((PuzzleLevel) level).getAllowedMove();
-			System.out.println("kkk");
 			bs.add(moves);
 			moves.setText("Moves: " + moveUsed + "/" + totalMove);
 			moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
