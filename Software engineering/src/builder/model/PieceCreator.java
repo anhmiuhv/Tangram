@@ -1,4 +1,10 @@
 package builder.model;
+import java.awt.Color;
+import java.awt.Point;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 import model.Piece;
 import model.Square;
 
@@ -11,7 +17,7 @@ public class PieceCreator {
 	Square base[] = new Square[36];
 	Piece piece;
 	boolean[] selectedSquare = new boolean[36];
-	
+
 	/**
 	 * create a piece creator
 	 */
@@ -38,7 +44,10 @@ public class PieceCreator {
 	 * @return true if valid
 	 */
 	public boolean validPiece(){
-		
+		Set<Point> s = new HashSet<Point>();
+		piece.setOffset(offset(piece.getHead(), s));
+		System.out.println(piece.getHead().getColumn() + " " + piece.getHead().getRow());
+		System.out.println(s.toString());
 		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
 
 	}
@@ -70,6 +79,37 @@ public class PieceCreator {
 		
 	}
 	
+	
+	/**
+	 * for checking a valid piece
+	 * @param head
+	 * @return
+	 */
+	
+	public Set<Point> offset(Square head, Set<Point> s){
+		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
+		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
+		Square tempsqUp = new Square(head.getColumn(), head.getRow()+1);
+		Square tempsqDn = new Square(head.getColumn(), head.getRow()-1);
+		s.add(new Point(piece.getHead().getColumn() - head.getColumn(), piece.getHead().getRow() - head.getRow()));
+		if((piece.containSquare(tempsqRt))&& (!(tempsqRt.getVisit()))){
+			offset(tempsqRt,s);
+		}
+		if((piece.containSquare(tempsqLt))&& (!(tempsqLt.getVisit()))){
+			offset(tempsqLt,s);
+		}
+		if((piece.containSquare(tempsqDn))&& (!(tempsqDn.getVisit()))){
+			offset(tempsqDn,s);
+		}
+		if((piece.containSquare(tempsqUp))&& (!(tempsqUp.getVisit()))){
+			offset(tempsqUp,s);
+		}
+		
+		return s; 
+		
+	}
+	
+	
 	/**
 	 * create the piece from the selected square 
 	 * @return true if success
@@ -96,6 +136,8 @@ public class PieceCreator {
 		
 		
 		this.piece = new Piece(0, 0,s, s[0], 0);
+		Random rand = new Random(); 
+		this.piece.setColor(new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
 		
 		return true;
 	}

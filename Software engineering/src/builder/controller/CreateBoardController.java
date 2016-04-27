@@ -17,6 +17,11 @@ public class CreateBoardController implements ActionListener {
 
 	LevelEditor lvle;
 	JBoardCreatorView view;
+	/**
+	 * contruct a controller for the add board button
+	 * @param lvle
+	 * @param view
+	 */
 	public CreateBoardController(LevelEditor lvle, JBoardCreatorView view){
 		this.lvle = lvle;
 		this.view= view;
@@ -24,7 +29,7 @@ public class CreateBoardController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		IMove m = new CreateBoardMove(lvle.getBoardCreator());
+		IMove m = new CreateBoardMove(lvle);
 		if (m.doMove(lvle)){
 			lvle.pushUndo(m);
 		}

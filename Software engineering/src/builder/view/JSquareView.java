@@ -1,12 +1,10 @@
 package builder.view;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.Point;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,6 +16,10 @@ import model.*;
  *
  */
 public class JSquareView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 511586902599635879L;
 	Square square;
 	/**
 	 * whether this square is hint
@@ -89,6 +91,23 @@ public class JSquareView extends JPanel {
 		
 	}
 
+	/**
+	 * 
+	 * @return all the points making up this Square
+	 */
+	public ArrayList<Point> allPoints(){
+		ArrayList<Point> result = new ArrayList<Point>();
+		result.add(new Point(square.getColumn() * size, square.getRow()* size));
+		result.add(new Point(square.getColumn() * size + size, square.getRow()* size));
+		result.add(new Point(square.getColumn() * size, square.getRow()* size + size));
+		result.add(new Point(square.getColumn() * size + size, square.getRow()* size + size));
+		return result;
+	}
+	/**
+	 * paint color number
+	 * @param num
+	 * @param c
+	 */
 	public void paintColorNum(int num,Color c) {
 		if (num != 0){
 			numSquare.setText(Integer.toString(num));
@@ -100,6 +119,9 @@ public class JSquareView extends JPanel {
 
 	}
 
+	/**
+	 * paint color of the square
+	 */
 	public void paintColor(){
 		setBackground(cl);
 	}
@@ -121,5 +143,5 @@ public class JSquareView extends JPanel {
 		return isHint;
 	}
 
-
+	
 }

@@ -13,6 +13,10 @@ public class PuzzleLevel extends Level {
 	int allowedMove = 0;
 	int usedMove = 0;
 	
+	public PuzzleLevel(LevelState ls){
+		super(ls);
+	}
+	
 	public PuzzleLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedMove) {
 		super(LevelNumber, LevelType, b, p);
 		this.allowedMove = allowedMove;
@@ -37,6 +41,10 @@ public class PuzzleLevel extends Level {
 	public int getUsedMove(){
 		return usedMove;
 	}
+	
+	public void incrementUsedMove(){
+		usedMove++;
+	}
 
 	@Override
 	public void createLevelState() {
@@ -58,6 +66,27 @@ public class PuzzleLevel extends Level {
 		this.allowedMove = levelState.getAllowedMove();
 
 		
+	}
+
+	@Override
+	public void checkAchievement() {
+		int totalCover = 0;
+		for(int i = 0;i<b.getCover().length;i++){
+			if(b.getCover()[i] == 1){
+				totalCover++;
+			}
+		}
+		
+		if(totalCover == (getBullpen().getPieces().size())*6 - 2*6){
+			updateLevelStar(new Achievement(1));
+		}else if(totalCover == (getBullpen().getPieces().size())*6 - 1*6){
+			updateLevelStar(new Achievement(2));
+		}else if(totalCover == (getBullpen().getPieces().size())*6){
+			updateLevelStar(new Achievement(3));
+			//end level
+		}else{
+			updateLevelStar(new Achievement(0));
+		}
 	}
 
 

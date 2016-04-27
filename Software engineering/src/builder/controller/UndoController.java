@@ -15,6 +15,11 @@ import builder.view.LevelEditorView;
 public class UndoController implements ActionListener {
 	LevelEditorView lev;
 	LevelEditor editor;
+	/**
+	 * controller for undo
+	 * @param levelEditorView
+	 * @param editor
+	 */
 	public UndoController(LevelEditorView levelEditorView, LevelEditor editor) {
 		this.lev = levelEditorView;
 		this.editor = editor;

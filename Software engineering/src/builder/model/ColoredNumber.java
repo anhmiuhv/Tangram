@@ -16,10 +16,18 @@ public class ColoredNumber implements java.io.Serializable{
 	Color c;
 	int position = -1;
 	
+	/**
+	 * Get the position of the colored number
+	 * @return the colored number
+	 */
 	public int getPosition() {
 		return position;
 	}
 
+	/**
+	 * Set the position of the colored number
+	 * @param position of the colored number
+	 */
 	public void setPosition(int position) {
 		this.position = position;
 	}

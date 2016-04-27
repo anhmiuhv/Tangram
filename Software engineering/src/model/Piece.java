@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Color;
+import java.awt.Point;
+import java.util.Set;
 
 public class Piece implements java.io.Serializable{
 	
@@ -14,8 +16,17 @@ public class Piece implements java.io.Serializable{
 	Color cl;
 	boolean isMarked;
 	Square[] squares = new Square[6];
+	/**
+	 * The head of the square is always the highest row(row 0 is highest) square , 
+	 * if there are multiple squares on the highest row then the leftmost square will be chosen as the head
+	 */
 	Square head;
 	int name;
+	/**
+	 * This set contains the offsets of all the other squares from the head squares
+	 * For example: if the head is Square(0,0) then the Square (1,1) 's offset from the head is Point(-1,-1) 
+	 */
+	Set<Point> offset;
 	
 	public Piece(int pRow, int pColumn,Square[] square, Square head, int name){
 		this.pColumn = pColumn;
@@ -46,6 +57,14 @@ public class Piece implements java.io.Serializable{
 	
 	public int getpColumn(){
 		return pColumn;
+	}
+	
+	public void setpRow(int pRow){
+		this.pRow = pRow;
+	}
+	
+	public void setpColumn(int pColumn){
+		this.pColumn= pColumn;
 	}
 	
 	public Square getHead(){
@@ -81,6 +100,22 @@ public class Piece implements java.io.Serializable{
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * return the offset
+	 * @return
+	 */
+	public Set<Point> getOffset() {
+		return offset;
+	}
+
+	/**
+	 * set the offset
+	 * @param offset
+	 */
+	public void setOffset(Set<Point> offset) {
+		this.offset = offset;
 	}
 }
 

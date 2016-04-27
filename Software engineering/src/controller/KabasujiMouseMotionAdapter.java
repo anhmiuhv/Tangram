@@ -13,6 +13,6 @@ public class KabasujiMouseMotionAdapter extends java.awt.event.MouseMotionAdapte
 	
 	@Override
 	public void mouseDragged(java.awt.event.MouseEvent me) {
-		lv.draggingPiece.setLocation(me.getPoint().x - lv.diffx, me.getPoint().y - lv.diffy);
+		lv.getDraggingPieceView().setLocation(me.getPoint().x - lv.getDiffx(), me.getPoint().y - lv.getDiffy());
 	}
 }

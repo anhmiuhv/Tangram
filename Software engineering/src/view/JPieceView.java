@@ -41,5 +41,15 @@ public class JPieceView extends JPanel{
 		 }
 		}
 	}
+
+
+	public Piece getPiece() {
+		return piece;
+	}
+
+
+	public void setPiece(Piece piece) {
+		this.piece = piece;
+	}
 	
 }

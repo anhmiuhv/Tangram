@@ -13,6 +13,9 @@ public class LightningLevel extends Level{
 	int allowedTime;
 	int usedTime;
 	
+	public LightningLevel(LevelState ls){
+		super(ls);
+	}
 	
 	public LightningLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedTime) {
 		super(LevelNumber, LevelType, b, p);
@@ -66,6 +69,29 @@ public class LightningLevel extends Level{
 		this.locked = levelState.getLocked();
 		this.star = levelState.getAchievement();
 		this.allowedTime = levelState.getAllowedTime();
+	}
+
+
+	@Override
+	public void checkAchievement() {
+		int totalCover = 0;
+		for(int i = 0;i<b.getCover().length;i++){
+			if(b.getCover()[i] == 1){
+				totalCover++;
+			}
+		}
+		
+		if(totalCover == b.getpiece().size() - 2*6){
+			this.star.setAchievement(1);
+		}else if(totalCover == b.getpiece().size() - 1*6){
+			this.star.setAchievement(2);
+		}else if(totalCover == b.getpiece().size()){
+			this.star.setAchievement(3);
+			//end level
+		}else{
+			this.star.setAchievement(0);
+		}
+		
 	}
 	
 }

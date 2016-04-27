@@ -2,7 +2,10 @@ package builder.model;
 
 import java.awt.Color;
 
+import model.Achievement;
+import model.Bullpen;
 import model.LevelState;
+import model.Board;
 
 /**
  * THis class represent an Puzzle editor
@@ -27,7 +30,7 @@ public class Puzzle extends LevelEditor {
 	@Override
 	public void createLevelEditorState() {
 		this.les = new LevelEditorState(levelNum, LevelEditorState.PUZZLE, -1, allowedMove, container, 
-				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare(), null);
+				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare(), null, null, null);
 		
 	}
 	@Override
@@ -44,16 +47,30 @@ public class Puzzle extends LevelEditor {
 		this.levelEditorType = les.getLevelType();
 	}
 	
+	/**
+	 * get the allowed move
+	 * @return allowed move
+	 */
 	public int getAllowedMove() {
 		return allowedMove;
 	}
 	
+	/**
+	 * set the allowed move
+	 * @param allowedMove allowed move
+	 */
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
 	}
 	@Override
-	public LevelState createLevelState() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean createLevelState() {
+		if (this.getBoardCreator().getBoard() == null) return false;
+		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
+		b.sethint(this.getBoardCreator().getHints());
+		
+		LevelState n = new LevelState(100 + this.levelNum, LevelEditorState.PUZZLE, b, this.allowedMove, 0, false,
+				new Achievement(0), new Bullpen(this.getPieceContainer().getPieces()), null, null);
+		n.saveState();
+		return true;
 	}
 }

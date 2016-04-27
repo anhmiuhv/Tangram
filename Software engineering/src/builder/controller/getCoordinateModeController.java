@@ -21,6 +21,13 @@ public class getCoordinateModeController implements ActionListener {
 	JButton button;
 	LevelEditor level;
 	JReleaseColoredNum jrc;
+	/**
+	 * contruct a controller for the turn coordinate on mode
+	 * @param view
+	 * @param button
+	 * @param level
+	 * @param jrc
+	 */
 	public getCoordinateModeController(LevelEditorView view, JButton button, LevelEditor level, JReleaseColoredNum jrc){
 		this.view = view;
 		this.button = button;

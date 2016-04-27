@@ -13,4 +13,8 @@ public class Achievement implements java.io.Serializable{
 	public int getAchievement(){
 		return stars; //return the Achievement of the 
 	}
+	
+	public void setAchievement(int s){
+		stars = s;
+	}
 }

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.BoardController;
 import controller.BullpenController;
 import controller.CloseKabasuji;
 import controller.GoMenuController;
@@ -23,7 +24,6 @@ import controller.VerticalFlipController;
 
 
 import model.*;
-
 
 
 import javax.swing.GroupLayout;
@@ -57,6 +57,7 @@ public class LevelView extends JFrame {
 	public BullpenController bullpenController;
 	KabasujiMouseMotionAdapter kabasujiMouseMotionAdapter;
 	protected JPanel contentPane;
+	BoardController boardController;
 	BlueStripe bs;
 	JBullPenView jbp;
 	Level level;
@@ -71,9 +72,10 @@ public class LevelView extends JFrame {
 	
 	JPanel topPanel;
 	
-	public JPieceView draggingPiece = null;
-	public int diffx = 0;
-	public int diffy = 0;
+	JPieceView draggingPieceView = null;
+	Piece draggingPiece = null;
+	int diffx = 0;
+	int diffy = 0;
 	public boolean closeWindowsFlag;
 	
 	public void close(){
@@ -86,12 +88,15 @@ public class LevelView extends JFrame {
 	 */
 	public LevelView(final Level level, final LevelSelection levelselection) {
 		
+		this.level = level;
 		closeWindowsFlag = false;
 		this.levelselection= levelselection;
 		bullpenController = new BullpenController(this,level.getBullpen());
+		boardController = new BoardController(this,level.getBoard());
+		
 		kabasujiMouseMotionAdapter = new KabasujiMouseMotionAdapter(this);
 		
-		this.level = level;
+
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 850);
@@ -112,8 +117,9 @@ public class LevelView extends JFrame {
 
 
 		reDrawBoard ();
-		
-		
+
+
+
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
 		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -133,7 +139,6 @@ public class LevelView extends JFrame {
 
 
 		jbp = new JBullPenView(level.getBullpen(),bullpenX,bullpenY);
-
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -158,10 +163,8 @@ public class LevelView extends JFrame {
 			 ((LightningLevel) level).setUsedTime(((LightningLevel) level).getAllowedTime());
 			}
 
-		
-		reDrawBlueStripe();
-		
 
+		reDrawBlueStripe();
 		
 		
 		contentPane.add(horiFlip);
@@ -212,8 +215,20 @@ public class LevelView extends JFrame {
 
 		//----- manully design board
 
-		boardView = new JBoardView(450,210, level.getBoard());
 
+		//level.getBoard().addpiece(level.getBullpen().getPieces().get(1));
+
+		//System.out.println(level.getBullpen().getPieces().get(1).getpColumn());
+		//System.out.println(level.getBullpen().getPieces().get(1).getpRow());
+		if (boardView!=null){
+			boardView.removeMouseListener(boardController);
+			boardView.removeMouseMotionListener(kabasujiMouseMotionAdapter);
+			contentPane.remove(boardView);
+		}
+
+		boardView = new JBoardView(450,210, level.getBoard());
+		boardView.addMouseListener(boardController);
+		boardView.addMouseMotionListener(kabasujiMouseMotionAdapter);
 		
 		contentPane.add(boardView);
 		
@@ -223,7 +238,7 @@ public class LevelView extends JFrame {
 
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
-			for(int i = 0;i<144;i++){
+			for(int i = 0;i<level.getBoard().getSquare().length;i++){
 				if(squareNum[i] != 0){
 					JLabel ll = new JLabel("" + squareNum[i]);
 					ll.setForeground(cl[i]);
@@ -342,6 +357,88 @@ public class LevelView extends JFrame {
 	
 	public JPanel getTopPanel(){
 		return topPanel;
+	}
+	
+	public JPieceView getDraggingPieceView(){
+		return draggingPieceView;
+	}
+	
+	public void setDraggingPieceView(JPieceView jpv){
+		draggingPieceView = jpv;
+	}
+	
+	public int getDiffx(){
+		return diffx;
+	}
+	
+	public void setDiffx(int x){
+		diffx = x;
+	}
+	
+	public int getDiffy(){
+		return diffy;
+	}
+	
+	public void setDiffy(int y){
+		diffy = y;
+	}
+	
+	public Piece getDraggingPiece(){
+		return draggingPiece;
+	}
+	
+	public void setDraggingPiece(Piece p){
+		draggingPiece = p;
+	}
+	
+	public JBoardView getBoardView(){
+		return boardView;
+	}
+	
+	public BoardController getBoardController(){
+		return boardController;
+	}
+	
+	public Level getLevel(){
+		return level;
+	}
+	public BullpenController getBullpenController(){
+		return bullpenController;
+	}
+	public BlueStripe getBlueStripe(){
+		return bs;
+	}
+	
+	public void updateBS(){
+		moveUsed = ((PuzzleLevel) level).getUsedMove();
+		totalMove = ((PuzzleLevel) level).getAllowedMove();
+		moves.setText("Moves: " + moveUsed + "/" + totalMove);
+	}
+	
+	public void updateAchievement(){
+		if (level.getAchievement().getAchievement()==1){
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 20, 20);
+			stayLabel.setIcon(new ImageIcon("images//onestar.png"));
+			bs.add(stayLabel);
+		}
+		else if (level.getAchievement().getAchievement()==2){
+			bs.remove(stayLabel);
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 40, 30);
+			stayLabel.setIcon(new ImageIcon("images//twostar.png"));
+			bs.add(stayLabel);
+		}
+		else  if (level.getAchievement().getAchievement()==3){
+			bs.remove(stayLabel);
+			stayLabel = new JLabel("star");
+			stayLabel.setBackground(Color.WHITE);
+			stayLabel.setBounds(700,35, 60, 20);
+			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
+			bs.add(stayLabel);
+		}
 	}
 	
 }

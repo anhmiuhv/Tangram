@@ -1,6 +1,5 @@
 package builder.view;
 
-import java.awt.EventQueue;
 
 import builder.model.Builder;
 /**

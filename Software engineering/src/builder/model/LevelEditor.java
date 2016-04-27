@@ -10,7 +10,7 @@ import builder.move.IMove;
 /**
  * THis class represent an editor
  * @author lthoang
- * 
+ * @author jchen5 
  *
  */
 public abstract class LevelEditor {
@@ -19,6 +19,7 @@ public abstract class LevelEditor {
 	BoardCreator bc;
 	int levelNum;
 	LevelEditorState les;
+	LevelState ls;
 	/**
 	 * return the level editor state (save class)
 	 * @return level editor state
@@ -101,32 +102,62 @@ public abstract class LevelEditor {
 		return undoStack;
 	}
 
+	/**
+	 * Set the undo stack
+	 * @param undoStack
+	 */
 	public void setUndoStack(Stack<IMove> undoStack) {
 		this.undoStack = undoStack;
 	}
-
+	
+	/**
+	 * Get the redo stack
+	 * @return redo stack
+	 */
 	public Stack<IMove> getRedoStack() {
 		return redoStack;
 	}
-
+	
+	/**
+	 * Set the redo stack
+	 * @param redoStack
+	 */
 	public void setRedoStack(Stack<IMove> redoStack) {
 		this.redoStack = redoStack;
 	}
 
+	/**
+	 * Push move into undo stack
+	 * @param m undo stack
+	 * @return true if success
+	 */
 	public boolean pushUndo(IMove m){
 		undoStack.push(m);
 		return true;
 	}
 	
+	/**
+	 * pop a move from the undo stack
+	 * @return top most move
+	 */
 	public IMove popUndo(){
 		return undoStack.pop();
 	}
 	
+	/**
+	 * push the move into the redo stack
+	 * @param m move
+	 * @return true if success
+	 */
 	public boolean pushRedo(IMove m){
 		redoStack.push(m);
 		return true;
 	}
 	
+	/**
+	 * pop the move from the redo stack
+	 * @return the move
+	 */
 	public IMove popRedo(){
 		return redoStack.pop();
 	}
@@ -141,7 +172,11 @@ public abstract class LevelEditor {
 	 */
 	public abstract void loadLevelEditorState(LevelEditorState les);
 	
-	public abstract LevelState createLevelState();
+	/**
+	 * create the level state object for save
+	 * @return level state
+	 */
+	public abstract boolean createLevelState();
 	
 	
 }

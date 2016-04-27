@@ -2,6 +2,9 @@ package builder.model;
 
 import java.awt.Color;
 
+import model.Achievement;
+import model.Board;
+import model.Bullpen;
 import model.LevelState;
 
 /**
@@ -25,7 +28,7 @@ public class Lightning extends LevelEditor {
 	@Override
 	public void createLevelEditorState() {
 		this.les = new LevelEditorState(levelNum, LevelEditorState.LIGHTNING, allowedTime, -1, container,
-				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare(), null);
+				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare(), null, null, null);
 		
 	}
 	@Override
@@ -42,20 +45,33 @@ public class Lightning extends LevelEditor {
 		this.levelEditorType = les.getLevelType();
 	}
 
+	/**
+	 * get the allowed time
+	 * @return allowed time
+	 */
 	public int getAllowedTime() {
 		return allowedTime;
 	}
-
+	
+	/**
+	 * set the allowed time
+	 * @param allowedTime allowed time
+	 */
 	public void setAllowedTime(int allowedTime) {
 		this.allowedTime = allowedTime;
 	}
 
 
 	@Override
-	public LevelState createLevelState() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public boolean createLevelState() {
+		if (this.getBoardCreator().getBoard() == null) return false;
+		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
+		b.sethint(this.getBoardCreator().getHints());
+		
+		LevelState n = new LevelState(100 + this.levelNum, LevelEditorState.LIGHTNING, b, 0, this.allowedTime, false,
+				new Achievement(0), new Bullpen(this.getPieceContainer().getPieces()), null, null);
+		n.saveState();
+		return true;	}
 
 	
 

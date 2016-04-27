@@ -48,6 +48,8 @@ public class LevelEditorState implements java.io.Serializable{
 	Hint hint;
 	int squareNum[];
 	Color color[];
+	int actualSquareNum[];
+	Color actualColor[];
 	String levelName;
 	HashMap<String, ColoredNumber> coloredNum;
 	
@@ -80,7 +82,7 @@ public class LevelEditorState implements java.io.Serializable{
 	 */
 	public LevelEditorState(int levelNum, String levelType, int allowedTime,
 			int allowedMove, PieceContainer pc, boolean[] selectedSquare,Board board, 
-			Hint hint, int[] squareNum, Color[] color, boolean isHintSquare[], HashMap<String, ColoredNumber> coloredNum) {
+			Hint hint, int[] squareNum, Color[] color, boolean isHintSquare[], HashMap<String, ColoredNumber> coloredNum, int[] actualSquareNum, Color[] actualColor) {
 		this.levelNum = levelNum;
 		this.levelType = levelType;
 		this.allowedTime = allowedTime;
@@ -94,54 +96,108 @@ public class LevelEditorState implements java.io.Serializable{
 		levelName = "les" + levelNum;
 		this.isHintSquare = isHintSquare;
 		this.coloredNum = coloredNum;
+		this.actualSquareNum = actualSquareNum;
+		this.actualColor = actualColor;
 	}
 
 	
-
+	/**
+	 * get the level Number
+	 * @return level number
+	 */
 	public int getLevelNum() {
 		return levelNum;
 	}
 
+	/**
+	 * set the level number
+	 * @param levelNum level number
+	 */
 	public void setLevelNum(int levelNum) {
 		this.levelNum = levelNum;
 	}
-
+	
+	/**
+	 * get the level type
+	 * @return level type
+	 */
 	public String getLevelType() {
 		return levelType;
 	}
 
+	/**
+	 * set the level type
+	 * @param levelType level type
+	 */
 	public void setLevelType(String levelType) {
 		this.levelType = levelType;
 	}
-
+	
+	/**
+	 * get the allowed time
+	 * @return allowed time
+	 */
 	public int getAllowedTime() {
 		return allowedTime;
 	}
+
+	/**
+	 * set the allowed time
+	 * @param allowedTime allowed time
+	 */
 
 	public void setAllowedTime(int allowedTime) {
 		this.allowedTime = allowedTime;
 	}
 
+	/**
+	 * get the allowed move
+	 * @return allowed move
+	 */
+
 	public int getAllowedMove() {
 		return allowedMove;
 	}
 
+	/**
+	 * set the allowed move
+	 * @param allowedMove allowed move
+	 */
+
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
 	}
-
+	
+	/**
+	 * get the editor hint squares
+	 * @return editor hint squares
+	 */
 	public boolean[] getIsHintSquare() {
 		return isHintSquare;
 	}
+
+	/**
+	 * set the editor hint squares
+	 * @param isHintSquare editor hint squares
+	 */
 
 	public void setIsHintSquare(boolean[] isHintSquare) {
 		this.isHintSquare = isHintSquare;
 	}
 
+	/**
+	 * get the piece container
+	 * @return piece container
+	 */
+
 	public PieceContainer getPc() {
 		return pc;
 	}
 
+	/**
+	 * set the piece container
+	 * @param pc piece container
+	 */
 	public void setPc(PieceContainer pc) {
 		this.pc = pc;
 	}
@@ -178,12 +234,28 @@ public class LevelEditorState implements java.io.Serializable{
 		this.squareNum = squareNum;
 	}
 
+	public int[] getActualSquareNum() {
+		return actualSquareNum;
+	}
+
+	public void setActualSquareNum(int[] actualSquareNum) {
+		this.actualSquareNum = actualSquareNum;
+	}
+
 	public Color[] getColor() {
 		return color;
 	}
 
 	public void setColor(Color[] color) {
 		this.color = color;
+	}
+
+	public Color[] getActualColor() {
+		return actualColor;
+	}
+
+	public void setActualColor(Color[] actualColor) {
+		this.actualColor = actualColor;
 	}
 
 	private boolean[] createExampleSelectedSquare(){
@@ -267,6 +339,8 @@ public class LevelEditorState implements java.io.Serializable{
 			this.selectedSquare = lvlst.selectedSquare;
 			this.isHintSquare = lvlst.isHintSquare;
 			this.coloredNum = lvlst.coloredNum;
+			this.actualColor = lvlst.actualColor;
+			this.actualSquareNum = lvlst.actualSquareNum;
 			// Close the file.
 			save.close(); // This also closes saveFile.
 		}

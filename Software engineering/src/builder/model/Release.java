@@ -6,7 +6,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.Achievement;
+import model.Board;
+import model.Bullpen;
 import model.LevelState;
+import model.Square;
 
 /**
  * This class represent a release editor
@@ -22,6 +26,9 @@ public class Release extends LevelEditor{
 	HashMap<String, ColoredNumber> coloredNum;
 	Set<Integer> pos;
 	
+	/** actual position of the square Num and the color*/
+	int[] actualNum;
+	Color[] actualColorNum;
 	
 	public Release(int levelNum, PieceContainer container, PieceCreator pc, BoardCreator bc
 			, int[] squareNum, Color[] colorNum, HashMap<String, ColoredNumber> coloredNum) {
@@ -38,37 +45,72 @@ public class Release extends LevelEditor{
 		}
 	}
 
+	/**
+	 * add the position in the the position set
+	 * @param position
+	 * @return true if position has been added, false if the position exist
+	 */
 	public boolean addPosition(int position){
 		
 		return pos.add(position);
 	}
 	
+	/**
+	 * remove the position from the set
+	 * @param position
+	 * @return true if success
+	 */
 	public boolean removePosition(int position){
 		return pos.remove(position);
 	}
 	public Release(LevelEditorState les){
 		super(les);
 	}
+	
+	/**
+	 * get the color position in the board 
+	 * @return color array have 144 elements
+	 */
 	public Color[] getColorNum() {
 		return colorNum;
 	}
 
+	/**
+	 * set the color position in the board
+	 * @param colorNum color position
+	 */
 	public void setColorNum(Color[] colorNum) {
 		this.colorNum = colorNum;
 	}
 
+	/**
+	 * get the number position in the board
+	 * @return the position
+	 */
 	public int[] getSquareNum() {
 		return squareNum;
 	}
 
+	/**
+	 * set the postion in the board
+	 * @param squareNum position
+	 */
 	public void setSquareNum(int[] squareNum) {
 		this.squareNum = squareNum;
 	}
 
+	/**
+	 * get the colored number object array (this array is just for the validation of the release level)
+	 * @return
+	 */
 	public HashMap<String, ColoredNumber> getColoredNum() {
 		return coloredNum;
 	}
 
+	/**
+	 * set the colored number object array
+	 * @param coloredNum
+	 */
 	public void setColoredNum(HashMap<String, ColoredNumber> coloredNum) {
 		this.coloredNum = coloredNum;
 	}
@@ -76,10 +118,25 @@ public class Release extends LevelEditor{
 	@Override
 	public void createLevelEditorState() {
 		this.les = new LevelEditorState(levelNum, LevelEditorState.RELEASE, -1, -1, container, 
-				bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum, bc.getIsHintSquare(), this.coloredNum);
+				bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum, 
+				bc.getIsHintSquare(), this.coloredNum, this.actualNum, this.actualColorNum);
 		
 	}
 	
+	public void createActualSquareNum(builder.model.Board b){
+		Square[] s = b.getSquares();
+		this.actualNum = new int[s.length];
+		this.actualColorNum = new Color[s.length];
+		int idx = 0;
+		for (Square square: s){
+			if (squareNum[square.getColumn() + square.getRow() * 12] != 0){
+				actualNum[idx] = squareNum[square.getColumn() + square.getRow() * 12];
+				actualColorNum[idx] = colorNum[square.getColumn() + square.getRow() * 12];
+			}
+			idx++;
+		}
+		return;
+	}
 	public static HashMap<String, ColoredNumber> createEmptyListOfColoredNum(){
 		HashMap<String, ColoredNumber> r = new HashMap<String, ColoredNumber>();
 		for (int i = 0; i < 6; i++){
@@ -105,6 +162,8 @@ public class Release extends LevelEditor{
 		this.colorNum = les.getColor();
 		this.pc = new PieceCreator();
 		this.levelEditorType = les.getLevelType();
+		this.actualColorNum = les.getActualColor();
+		this.actualNum = les.getActualSquareNum();
 		this.coloredNum = Release.createEmptyListOfColoredNum();
 		for (int i = 0;i < 144; i++){
 			if (squareNum[i] != 0){
@@ -123,8 +182,18 @@ public class Release extends LevelEditor{
 
 	
 	@Override
-	public LevelState createLevelState() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean createLevelState() {
+		for (ColoredNumber cn: this.coloredNum.values()){
+			if (cn.getPosition() == -1) return false;
+		}
+	
+		if (this.getBoardCreator().getBoard() == null) return false;
+		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
+		b.sethint(this.getBoardCreator().getHints());
+		
+		LevelState n = new LevelState(100 + this.levelNum, LevelEditorState.RELEASE, b, 0, 0, false,
+				new Achievement(0), new Bullpen(this.getPieceContainer().getPieces()), this.actualNum, this.actualColorNum);
+		n.saveState();
+		return true;
 	}
 }

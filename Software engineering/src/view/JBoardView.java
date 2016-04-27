@@ -37,6 +37,7 @@ public class JBoardView extends JPanel {
 	public void createSquareView(){
 
 		 for (int i=0; i< board.getSquare().length;i++){
+
 				js = new JSquareView(board.getSquare()[i],Color.WHITE);
 				add(js);
 		 }
@@ -54,13 +55,16 @@ public class JBoardView extends JPanel {
 	}
 	
 	public void showPiece(Piece p){
-		Square[] squares = new Square[6];
+		Square[] squares;
 		squares = p.getSquares();
-		JSquareView sv[] = new JSquareView[6];
+		JSquareView[] sv = new JSquareView[6];
 		for(int i=0;i<6;i++){
+
 			sv[i] = new JSquareView(squares[i],p.getColor());
-			sv[i].setBounds(squares[i].getColumn()*30,squares[i].getRow()*30 , 30, 30);
+			sv[i].setBounds((squares[i].getColumn()-squares[0].getColumn())*30+ p.getpColumn()*30,
+					(squares[i].getRow()-squares[0].getRow())*30+p.getpRow()*30, 30, 30);
 			add(sv[i]);
+
 		}
 	}
 	

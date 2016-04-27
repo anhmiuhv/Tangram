@@ -1,19 +1,13 @@
 package builder.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
-import model.Hint;
 import model.Square;
 import builder.controller.CreateBoardController;
-import builder.controller.CreatePieceController;
 import builder.controller.SelectBoardTileController;
 import builder.model.BoardCreator;
 import builder.model.LevelEditor;
@@ -29,6 +23,10 @@ import javax.swing.JLabel;
  */
 public class JBoardCreatorView extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6795924142621210786L;
 	LevelEditorView lev;
 	private LevelEditor lvle;
 	private BoardCreator bc;
