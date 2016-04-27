@@ -45,9 +45,6 @@ public class PieceCreator {
 	 */
 	public boolean validPiece(){
 		Set<Point> s = new HashSet<Point>();
-		piece.setOffset(offset(piece.getHead(), s));
-		System.out.println(piece.getHead().getColumn() + " " + piece.getHead().getRow());
-		System.out.println(s.toString());
 		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
 
 	}

@@ -13,7 +13,7 @@ public class PlacedPiece {
 	BufferedImage image;
 	int x;
 	int y;
-	Color random = Color.CYAN;
+	Color random;
 	Rectangle[] araragi;
 	int rotate = 0;
 	
@@ -21,6 +21,7 @@ public class PlacedPiece {
 		this.piece = piece;
 		this.x = x;
 		this.y = y;
+		this.random = this.piece.getColor();
 		this.image = new BufferedImage(140, 140, BufferedImage.TYPE_INT_ARGB); 
 		Graphics2D g2d = image.createGraphics();
 		BasicStroke line = new BasicStroke(2);

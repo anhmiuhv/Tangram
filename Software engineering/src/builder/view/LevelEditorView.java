@@ -185,12 +185,6 @@ public class LevelEditorView extends JFrame {
 
 		panel.add(timer);
 
-
-
-		JButton btnRandomPiece = new JButton("Random Piece");
-		btnRandomPiece.setBounds(97, 492, 137, 25);
-		panel.add(btnRandomPiece);
-
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
