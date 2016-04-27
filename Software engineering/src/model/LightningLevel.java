@@ -80,13 +80,13 @@ public class LightningLevel extends Level{
 				totalCover++;
 			}
 		}
-		
-		if(totalCover == (getBullpen().getPieces().size())*6 - 2*6){
-			updateLevelStar(new Achievement(1));
-		}else if(totalCover == (getBullpen().getPieces().size())*6 - 1*6){
-			updateLevelStar(new Achievement(2));
-		}else if(totalCover == (getBullpen().getPieces().size())*6){
+
+		if(	totalCover == b.getCover().length){
 			updateLevelStar(new Achievement(3));
+		}else if(totalCover >= b.getCover().length - 1*6){
+			updateLevelStar(new Achievement(2));
+		}else if(totalCover >= b.getCover().length - 2*6){
+			updateLevelStar(new Achievement(1));
 			//end level
 		}else{
 			updateLevelStar(new Achievement(0));
