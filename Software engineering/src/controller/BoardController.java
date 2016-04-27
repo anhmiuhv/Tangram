@@ -1,11 +1,8 @@
 package controller;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 
-import builder.model.Lightning;
 import model.Board;
-import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
 import view.JPieceView;
@@ -20,6 +17,9 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	Board board;
 	Piece movingPiece;
 	boolean fromBoard = false;
+	
+	int dbouardX =0;
+	int dbouardY =0;
 	
 	public BoardController(LevelView levelView,Board board){
 		this.board = board;
@@ -54,19 +54,25 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		
 		if(found == false){
 			movingPiece = null;
+
 			
 		}
 		else{
 			movingPiece = pressedPiece;
-			levelView.setDiffx(me.getX()-450);
-			levelView.setDiffy(me.getY()-210);
-			
 			levelView.setDraggingPiece(pressedPiece);
-			levelView.setDraggingPieceView(new JPieceView(pressedPiece, 450+me.getX() ,210+me.getY() ));
+			levelView.setDraggingPieceView(new JPieceView(pressedPiece, 450+movingPiece.getpColumn()*30,210+movingPiece.getpRow()*30 ));
 			levelView.getTopPanel().add(levelView.getDraggingPieceView());
+			levelView.setDiffx(me.getX()-450-movingPiece.getpColumn()*30);
+			levelView.setDiffy(me.getY()-210-movingPiece.getpRow()*30);
+			dbouardX = me.getX() - movingPiece.getpColumn()*30;
+			dbouardY = me.getY() - movingPiece.getpRow()*30;
+			
 
 			board.removepiece(movingPiece);
-			
+			removeCoverSquare(movingPiece.getpColumn(),movingPiece.getpRow(),movingPiece);
+			//levelView.reDrawBoard();
+			levelView.getBoardView().removePieceView(movingPiece);
+			levelView.getBoardView().repaint();
 		}
 
 	}
@@ -74,13 +80,21 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	@Override
 	public void mouseReleased(MouseEvent me) {
 
+		
 		movingPiece = levelView.getDraggingPiece();
 		if (movingPiece!= null){
+			double dx=0;
+			double dy=0;
+			if (fromBoard ==false){
 			mouseAndHeadX = levelView.getDiffx()+20 - 30*movingPiece.getSquares()[0].getColumn();
 			mouseAndHeadY = levelView.getDiffy()+140 - 30*movingPiece.getSquares()[0].getRow();
-
-			double dx= (double)(me.getX()-mouseAndHeadX)/30 +0.5;
-			double dy=	(double)(me.getY()-mouseAndHeadY)/30 +0.5;
+			dx= (double)(me.getX()-mouseAndHeadX)/30 +0.5;
+			dy=	(double)(me.getY()-mouseAndHeadY)/30 +0.5;
+			}
+			else{
+				dx = (double)(me.getX()- dbouardX)/30+0.5;
+				dy = (double)(me.getY()- dbouardY)/30+0.5 ;
+			}
 
 		//getHeadSquareInBoard();
 		
@@ -88,7 +102,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		if (doMove((int)dx,(int)dy,movingPiece)== true){
 			movingPiece.setpColumn((int)dx);
 			movingPiece.setpRow((int)dy);
-			markgreen(movingPiece);
 			board.addpiece(movingPiece);
 			coverSquare((int)dx,(int)dy,movingPiece);
 			
@@ -99,8 +112,17 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			levelView.getLevel().checkAchievement();
 			//System.out.println(levelView.getLevel().getS);
 			levelView.updateAchievement();
+			
+			if (levelView.getDraggingPieceView() != null){
+			levelView.getTopPanel().remove(levelView.getDraggingPieceView());
+			}
+
+			levelView.setDraggingPieceView(null);
+			
 			levelView.reDrawBoard();
 			levelView.repaint();
+		
+
 		}
 		else{
 			if(!fromBoard){
@@ -132,6 +154,20 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		return returnInt;
 	}
 	
+	public void removeCoverSquare(int testColumn, int testRow, Piece testPiece){	
+		for (int i =0;i<6;i++){
+			int findx;
+			int findy;
+			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
+			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
+			for (int j =0;j<board.getSquare().length;j++){
+				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
+					board.getCover()[j]=0;
+				}
+			}
+		}
+	}
+	
 	public void coverSquare(int testColumn, int testRow, Piece testPiece){
 		for (int i =0;i<6;i++){
 			int findx;
@@ -154,27 +190,25 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		for (int i =0;i<6;i++){
 			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
 			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
+
 			int flag= 0;
 			for (int j =0;j<board.getSquare().length;j++){
+
 				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
+				
 					if ( board.getCover()[j] !=0){
+
 						return false;
+
 					}
 					flag = 1;
 				}
 			}
 			if (flag == 0){
-
 				return false;
 			}
 		}
 		return true;
-	}
-	
-	public void markgreen(Piece mp){
-		if(levelView.getLevel() instanceof LightningLevel){
-			mp.setColor(Color.GREEN);
-		}
 	}
 	
 	
