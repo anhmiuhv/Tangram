@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.MouseEvent;
 
 import model.Bullpen;
+import model.LightningLevel;
 import model.Piece;
 import view.JPieceView;
 import view.LevelView;
@@ -46,7 +47,17 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	    bullpen.setPieceSelected(pieceN);
 	    draggingPiece = bullpen.getPieces().get(pieceN);
 	    levelview.setDraggingPiece(draggingPiece);
-	    bullpen.getPieces().set(pieceN,null);
+	    
+	    if (levelview.getLevel() instanceof LightningLevel){
+	    	Piece ranpiece =new Piece();
+	    	ranpiece.setColor(bullpen.getPieces().get(pieceN).getColor());
+	    	  bullpen.getPieces().set(pieceN,ranpiece);
+	    	  
+	    }
+	    else{
+	    	bullpen.getPieces().set(pieceN,null);
+	    }
+	    
 	    levelview.setDraggingPieceView(new JPieceView(draggingPiece, me.getPoint().x - diffx, me.getPoint().y - diffy));
 	    levelview.getTopPanel().add(levelview.getDraggingPieceView());
 	    //levelview.setComponentZOrder(levelview.draggingPiece, 0);

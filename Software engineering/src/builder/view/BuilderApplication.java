@@ -8,24 +8,36 @@ import builder.model.Builder;
  *
  */
 public class BuilderApplication {
-	public levelBuilder lvlBuilder;
+	levelBuilder lvlBuilder;
 	Builder builder;
-	
+	boolean splasher;
+
+	public BuilderApplication(Builder builder, boolean splasher){
+		this.builder = builder;
+		this.lvlBuilder = new levelBuilder(builder.getKBuilder());
+		this.splasher = splasher;
+		init();
+	}
+
 	public BuilderApplication(Builder builder){
 		this.builder = builder;
 		this.lvlBuilder = new levelBuilder(builder.getKBuilder());
+		this.splasher = true;
 		init();
 	}
-	
-	 public void init() {
-		    // Throw a nice little title page up on the screen first
-		    SplashScreen splash = new SplashScreen(5000);
-		    // Normally, we'd call splash.showSplash() and get on with the program.
-		    // But, since this is only a test...
-		    splash.showSplashAndExit();
-		   // LevelView levelSec = new LevelView();
-//			nw.LevelSelectStart();
-			lvlBuilder.setVisible(true);
-		  }
-	 
+
+	public void init() {
+		if (splasher){
+
+			SplashScreen splash = new SplashScreen(5000);
+
+			splash.showSplashAndExit();
+		}
+		lvlBuilder.setVisible(true);
+	}
+
+	public levelBuilder getLvlBuilder() {
+		return lvlBuilder;
+	}
+
 }
