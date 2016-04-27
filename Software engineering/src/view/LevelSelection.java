@@ -187,35 +187,42 @@ public class LevelSelection extends JFrame {
 				nextColumn=0;
 			}
 			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(90+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
-	
-			JLabel stayLabel = null;
-			if (testLevels.get(i).getAchievement().getAchievement()==1){
-				stayLabel = new JLabel("star");
-				stayLabel.setBackground(Color.WHITE);
-				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 20, 20);
-				stayLabel.setIcon(new ImageIcon("images//onestar.png"));
-				panel.add(stayLabel);
-			}
-			else if (testLevels.get(i).getAchievement().getAchievement()==2){
-				 stayLabel = new JLabel("star");
-				stayLabel.setBackground(Color.WHITE);
-				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 40, 20);
-				stayLabel.setIcon(new ImageIcon("images//twostar.png"));
-				panel.add(stayLabel);
-			}
-			else  if (testLevels.get(i).getAchievement().getAchievement()==3){
-
-				stayLabel = new JLabel("star");
-				stayLabel.setBackground(Color.WHITE);
-				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 60, 20);
-				stayLabel.setIcon(new ImageIcon("images//threestar.png"));
-				panel.add(stayLabel);
-			}
-			else  if (testLevels.get(i).getAchievement().getAchievement()==0){
-			}
-			else{
+			
+			//System.out.println("A:"+testLevels.get(i).getAchievement().getAchievement());
+			//System.out.println("IsL:"+testLevels.get(i).isLocked());
+			//testLevels.get(i).isLocked() &&
+			if( i-1>=0 && testLevels.get(i-1).getAchievement().getAchievement()==0){
 				Levels[i].setIcon(new ImageIcon("images//lockicon.png"));
 				Levels[i].setEnabled(false);
+			}else{
+				JLabel stayLabel = null;
+				if (testLevels.get(i).getAchievement().getAchievement()==1){
+					stayLabel = new JLabel("star");
+					stayLabel.setBackground(Color.WHITE);
+					stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 20, 20);
+					stayLabel.setIcon(new ImageIcon("images//onestar.png"));
+					panel.add(stayLabel);
+				}
+				else if (testLevels.get(i).getAchievement().getAchievement()==2){
+					stayLabel = new JLabel("star");
+					stayLabel.setBackground(Color.WHITE);
+					stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 40, 20);
+					stayLabel.setIcon(new ImageIcon("images//twostar.png"));
+					panel.add(stayLabel);
+				}
+				else  if (testLevels.get(i).getAchievement().getAchievement()==3){
+
+					stayLabel = new JLabel("star");
+					stayLabel.setBackground(Color.WHITE);
+					stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 60, 20);
+					stayLabel.setIcon(new ImageIcon("images//threestar.png"));
+					panel.add(stayLabel);
+				}
+				else  if (testLevels.get(i).getAchievement().getAchievement()==0){
+				}
+				else{
+
+				}
 			}
 			
 			

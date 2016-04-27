@@ -54,7 +54,7 @@ public class LightningLevel extends Level{
 	@Override
 	public void createLevelState() {
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,
-				this.allowedTime, this.locked, this.star, this.p, new int[0], new Color[0]);
+				this.allowedTime, true, this.star, this.p, new int[0], new Color[0]);
 		
 	}
 
@@ -80,13 +80,13 @@ public class LightningLevel extends Level{
 				totalCover++;
 			}
 		}
-		
-		if(totalCover == (getBullpen().getPieces().size())*6 - 2*6){
-			updateLevelStar(new Achievement(1));
-		}else if(totalCover == (getBullpen().getPieces().size())*6 - 1*6){
-			updateLevelStar(new Achievement(2));
-		}else if(totalCover == (getBullpen().getPieces().size())*6){
+
+		if(	totalCover == b.getCover().length){
 			updateLevelStar(new Achievement(3));
+		}else if(totalCover >= b.getCover().length - 1*6){
+			updateLevelStar(new Achievement(2));
+		}else if(totalCover >= b.getCover().length - 2*6){
+			updateLevelStar(new Achievement(1));
 			//end level
 		}else{
 			updateLevelStar(new Achievement(0));
