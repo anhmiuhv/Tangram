@@ -13,6 +13,14 @@ public abstract class Level{
 	Bullpen p;
 	ArrayList<Piece> bullpenPiece;
 	boolean locked;
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+
 	Achievement star;
 	LevelState levelState;
 	
@@ -89,6 +97,7 @@ public abstract class Level{
 		// TODO Auto-generated method stub
 		this.star = star;
 	}
+	
 
 	
 }
