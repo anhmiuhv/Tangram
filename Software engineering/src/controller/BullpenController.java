@@ -19,6 +19,8 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	int diffy;
 	int pieceN = 0;	
 	
+	boolean fromBullpen = false;
+	
 	public BullpenController(LevelView levelview, Bullpen bp){
 		this.levelview = levelview;
 		this.bullpen = bp;
@@ -26,7 +28,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
-		
+		fromBullpen = true;
 		int x = 0;
 		if(me.getX() > 185){
 			x = 1; 

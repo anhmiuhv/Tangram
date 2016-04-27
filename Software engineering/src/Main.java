@@ -12,6 +12,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -87,7 +88,7 @@ public class Main {
 			return;
 		}
 		System.out.print(numLevel);
-		Level[] level = loadLevel(numLevel);
+	//	ArrayList<Level> level = loadLevel(numLevel);
 		
 		
 		
