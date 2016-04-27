@@ -2,6 +2,9 @@ package model;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.ArrayList;
+
+import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
 
 import move.*;
 
@@ -12,7 +15,6 @@ public class PuzzleLevel extends Level {
 	private static final long serialVersionUID = -4071396056939768290L;
 	int allowedMove;
 	int usedMove;
-	
 	public PuzzleLevel(LevelState ls){
 		super(ls);
 	}
@@ -49,13 +51,17 @@ public class PuzzleLevel extends Level {
 
 	@Override
 	public void createLevelState() {
-		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, 
-				this.allowedMove, -1, this.locked, this.star, this.p, new int[0], new Color[0]);
+		Board b = new Board(this.getBoard().getSquare());
+		b.sethint(this.getBoard().getHint());
+		Bullpen bp = new Bullpen(bullpenPiece);
+		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, 
+				this.allowedMove, -1, this.locked, this.star, bp, new int[0], new Color[0]);
 		
 	}
 
 	@Override
 	public void loadLevelState(LevelState levelState) {
+		
 		this.levelState = levelState;
 		this.LevelNumber = levelState.getLevelNum();
 		this.LevelType = levelState.getLevelType();
@@ -65,7 +71,10 @@ public class PuzzleLevel extends Level {
 		this.locked = levelState.getLocked();
 		this.star = levelState.getAchievement();
 		this.allowedMove = levelState.getAllowedMove();
-
+		this.bullpenPiece = new ArrayList<Piece>();
+		for (Piece piece: this.p.getPieces()){
+			this.bullpenPiece.add(piece);
+		}
 		
 	}
 

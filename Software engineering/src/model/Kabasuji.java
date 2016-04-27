@@ -23,12 +23,12 @@ public class Kabasuji {
 		splash.showSplashAndExit();
 		
 		
-		LevelState createAlevel = new LevelState();
-		createAlevel.loadState("Level0.sav");
+		/*LevelState createAlevel = new LevelState();
+		createAlevel.loadState("puzzle101.sav");
 		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
 		p.loadLevelState(createAlevel);
 		Level[] l = new Level[1];
-		l[0] = p;
+		l[0] = p;*/
 		
 		//Application app = new Applicaiton();
 		LevelSelection levelSec = new LevelSelection(loadAll());//createPhaseTwoLevel());
