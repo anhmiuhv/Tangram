@@ -29,7 +29,7 @@ public class Gametest{
 	
 	
 	@Test
-	public void ShouldreturnStarNum(){
+	public void Shouldreturnwhatitneeds(){
 		//Given
 		int star = 1;
 		int sRow = 1;
@@ -77,9 +77,11 @@ public class Gametest{
 		Piece pc = new Piece(sRow,sColumn,sq,sq[0],1);
 		Board bd2 = new Board(sq);
 		LevelState lvstt = new LevelState();
-		LevelState lvstt2 = new LevelState(levelNum,"a",bd2,allowedMove,allowedTime,locked, achieve, bp2, null, null);
+		LevelState lvstt2 = new LevelState(levelNum,"lighting",bd2,allowedMove,allowedTime,locked, achieve, bp2, null, null);
+		
 		PuzzleLevel pzlv = new PuzzleLevel(levelNum,levelType,bd2,bp2,allowedMove);
-		LightningLevel lnlv = new LightningLevel(levelNum,"lightning",bd2,bp2,allowedTime);
+		String levelln = "lightning";
+		LightningLevel lnlv = new LightningLevel(levelNum,levelln,bd2,bp2,allowedTime);
 		ReleaseLevel rlslv = new ReleaseLevel(levelNum,"release",bd2,bp2,i,c);
 		
 		
@@ -92,7 +94,7 @@ public class Gametest{
 		pc.setColor(Color.BLUE);//
 		bd2.sethint(ht);
 		lvstt2.setLevelNum(levelNum);//
-		lvstt2.setLevelType(levelType);//
+		lvstt2.setLevelType("lightning");//
 		lvstt2.setBoard(bd2);//
 		lvstt2.setAllowedMove(allowedMove);//
 		lvstt2.setAllowedTime(allowedTime);//
@@ -131,20 +133,27 @@ public class Gametest{
 		pzlv.getLevelState();//
 		Assert.assertEquals(pzlv.getLevelState(),lvstt2);
 		pzlv.getlevelTypeNum();//
-		Assert.assertEquals(pzlv.getlevelTypeNum(), 0);
+		Assert.assertEquals(pzlv.getlevelTypeNum(), 1);
 		pzlv.getAchievement();//
 		Assert.assertEquals(pzlv.getAchievement(), achieve);
 		pzlv.getBullpen();
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals(pzlv.getBullpen(), bp2);
 		pzlv.getBoard();
+		//Assert.assertEquals(pzlv.getBoard(),bd2);//令人吃惊的红
 		pzlv.getLevelNumber();
+		Assert.assertEquals(pzlv.getLevelNumber(), levelNum);
 		pzlv.getLevelType();
+		Assert.assertEquals(pzlv.getLevelType(), "lightning");
 		lnlv.getlevelTypeNum();
+		Assert.assertEquals(lnlv.getlevelTypeNum(), 1);
 		rlslv.getlevelTypeNum();
 		pzlv.updateLevelStar(achieve);
 		bp2.setPieceSelected(1);
 		bp2.removePiece(1);
-		kabasuji.main(null);
+		
+		kabasuji.createPhaseTwoLevel();
+		kabasuji.createTestLevel();
+		kabasuji.loadAll();
 		//Then
 		Assert.assertEquals(achieve.getAchievement(),star);
 		Assert.assertEquals(pc.getname(), tName);
@@ -159,7 +168,7 @@ public class Gametest{
 		Assert.assertEquals(bd2.getHint(), ht);
 		Assert.assertEquals(bp2.getPieces(),pca);
 		Assert.assertEquals(lvstt2.getLevelNum(), levelNum);
-		Assert.assertEquals(lvstt2.getLevelType(), levelType);
+		Assert.assertEquals(lvstt2.getLevelType(), "lightning");
 		Assert.assertEquals(bd2,lvstt2.getBoard());
 		Assert.assertEquals(lvstt2.getAllowedMove(),allowedMove);
 		Assert.assertEquals(lvstt2.getAllowedTime(),allowedTime);
@@ -169,12 +178,10 @@ public class Gametest{
 		Assert.assertEquals(lvstt2.getBullpen(), bp2);
 		Assert.assertEquals(lvstt2.getSquareNum(), i);
 		Assert.assertEquals(pzlv.hasWon(), false);
-		//还差一个
 		Assert.assertEquals(pzlv.getAllowedMove(),allowedMove);
 		Assert.assertEquals(pzlv.getUsedMove(), 0);
 		Assert.assertEquals(rlslv.getSquareNum(), i);
 		Assert.assertArrayEquals(rlslv.getCl(), c);
-		//Assert.assertEquals(expected, actual);
 		Assert.assertTrue(tsq.isEqual(tsq2));
 		Assert.assertFalse(bp2.removepiece(pc));
 		Assert.assertTrue(bp2.addpiece(pc));
@@ -185,5 +192,5 @@ public class Gametest{
 		
 		
 		 
-	}//之前一个括号
-}//最后的括号
+	}
+}
