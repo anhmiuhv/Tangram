@@ -12,6 +12,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -87,12 +88,12 @@ public class Main {
 			return;
 		}
 		System.out.print(numLevel);
-		Level[] level = loadLevel(numLevel);
+	//	ArrayList<Level> level = loadLevel(numLevel);
 		
 		
 		
-		Kabasuji kabasuji = new Kabasuji(level);
-		Player m = new Player("Linh", kabasuji);
+		//Kabasuji kabasuji = new Kabasuji(level);
+		//Player m = new Player("Linh", kabasuji);
 		
 		/*
 		// if using 'app' within the anonymous class generated below, must be marked final.
