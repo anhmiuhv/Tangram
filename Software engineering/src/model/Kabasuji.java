@@ -1,16 +1,17 @@
 package model;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+import builder.model.LevelEditorState;
 import view.Application;
 import view.LevelSelection;
 import view.SplashScreen;
 
 public class Kabasuji {
-	Level[] levels;
+	ArrayList<Level> levels;
 
 
 	public static void main(String[] args) {
@@ -21,21 +22,21 @@ public class Kabasuji {
 		// But, since this is only a test...
 		splash.showSplashAndExit();
 		
-		/*
+		
 		LevelState createAlevel = new LevelState();
-		createAlevel.loadState("puzzle1.sav");
+		createAlevel.loadState("puzzle100.sav");
 		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
 		p.loadLevelState(createAlevel);
 		Level[] l = new Level[1];
 		l[0] = p;
-		*/
+		
 		//Application app = new Applicaiton();
-		LevelSelection levelSec = new LevelSelection( createPhaseTwoLevel());
+		LevelSelection levelSec = new LevelSelection(loadAll());//createPhaseTwoLevel());
 	}
 
 
 
-	public Kabasuji(Level[] level){
+	public Kabasuji(ArrayList<Level> level){
 		this.levels = level;
 		LevelSelection levelSec = new LevelSelection(level);
 	}
@@ -358,4 +359,45 @@ public class Kabasuji {
 			return "release";
 		}
 	}
+	
+	/**
+	 * load the editor from default location
+	 * @return array of editors
+	 */
+	public static ArrayList<Level> loadAll(){
+		ArrayList<Level> all = new ArrayList<Level>();
+
+		try{
+			File dir = new File("levels/");
+			File[] directoryListing = dir.listFiles();
+			if(directoryListing != null){  // Use default level directory to create buttons
+				for(File child : directoryListing){
+					if (child.getName().equals(".DS_Store")) continue;
+					LevelState tmp = new LevelState();
+					tmp.loadState(child.getName());
+					String levelType = tmp.getLevelType();
+					if(levelType != null){
+						Level newLevel = null;
+						if(levelType.equals(LevelEditorState.PUZZLE)){
+							newLevel = new PuzzleLevel(tmp);
+						} else if(levelType.equals(LevelEditorState.LIGHTNING)) {
+							newLevel = new LightningLevel(tmp);
+						} else if(levelType.equals(LevelEditorState.RELEASE)) {
+							newLevel = new ReleaseLevel(tmp);			
+						}
+						all.add(newLevel);
+					}
+					
+					
+				}
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return all;
+
+	}
+
 }

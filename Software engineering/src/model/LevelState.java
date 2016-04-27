@@ -12,7 +12,12 @@ public class LevelState implements java.io.Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -907392206519815818L;
+	private static final long serialVersionUID = 758901305732397174L;
+
+	/**
+	 * 
+	 */
+	
 
 
 	/**

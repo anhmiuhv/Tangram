@@ -2,7 +2,10 @@ package builder.model;
 
 import java.awt.Color;
 
+import model.Achievement;
+import model.Bullpen;
 import model.LevelState;
+import model.Board;
 
 /**
  * THis class represent an Puzzle editor
@@ -60,8 +63,14 @@ public class Puzzle extends LevelEditor {
 		this.allowedMove = allowedMove;
 	}
 	@Override
-	public LevelState createLevelState() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean createLevelState() {
+		if (this.getBoardCreator().getBoard() == null) return false;
+		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
+		b.sethint(this.getBoardCreator().getHints());
+		
+		LevelState n = new LevelState(100 + this.levelNum, LevelEditorState.PUZZLE, b, this.allowedMove, 0, false,
+				new Achievement(0), new Bullpen(this.getPieceContainer().getPieces()), null, null);
+		n.saveState();
+		return true;
 	}
 }

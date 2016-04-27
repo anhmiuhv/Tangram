@@ -1,43 +1,31 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.Random;
-
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.LevelSelectController;
-import model.Achievement;
-import model.Board;
-import model.Bullpen;
 import model.Level;
-import model.LightningLevel;
-import model.Piece;
-import model.PuzzleLevel;
-import model.ReleaseLevel;
-import model.Square;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Color;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.Font;
 
 public class LevelSelection extends JFrame {
 
 	private JPanel contentPane;
-	Level[] testLevels;
+	ArrayList<Level> testLevels;
 
 	/**
 	 * Launch the application.
@@ -67,8 +55,8 @@ public class LevelSelection extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelSelection(Level[] testLevels) {
-		this. testLevels =testLevels;
+	public LevelSelection(ArrayList<Level> testLevels) {
+		this.testLevels =testLevels;
 		setTitle("Kabasuji");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 800, 800);
@@ -128,7 +116,7 @@ public class LevelSelection extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
-		int levelNum = testLevels.length;
+		int levelNum = this.testLevels.size();
 		int NumOneRow = 5;
 		
 		//---------------------- 
@@ -148,21 +136,21 @@ public class LevelSelection extends JFrame {
 			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(90+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
 	
 			JLabel stayLabel = null;
-			if (testLevels[i].getAchievement().getAchievement()==1){
+			if (testLevels.get(i).getAchievement().getAchievement()==1){
 				stayLabel = new JLabel("star");
 				stayLabel.setBackground(Color.WHITE);
 				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 20, 20);
 				stayLabel.setIcon(new ImageIcon("images//onestar.png"));
 				panel.add(stayLabel);
 			}
-			else if (testLevels[i].getAchievement().getAchievement()==2){
+			else if (testLevels.get(i).getAchievement().getAchievement()==2){
 				 stayLabel = new JLabel("star");
 				stayLabel.setBackground(Color.WHITE);
 				stayLabel.setBounds(100+(40+levelButtonLenth)*nextColumn, (90+levelButtonWidth)*nextRow+10, 40, 20);
 				stayLabel.setIcon(new ImageIcon("images//twostar.png"));
 				panel.add(stayLabel);
 			}
-			else  if (testLevels[i].getAchievement().getAchievement()==3){
+			else  if (testLevels.get(i).getAchievement().getAchievement()==3){
 
 				stayLabel = new JLabel("star");
 				stayLabel.setBackground(Color.WHITE);
@@ -170,7 +158,7 @@ public class LevelSelection extends JFrame {
 				stayLabel.setIcon(new ImageIcon("images//threestar.png"));
 				panel.add(stayLabel);
 			}
-			else  if (testLevels[i].getAchievement().getAchievement()==0){
+			else  if (testLevels.get(i).getAchievement().getAchievement()==0){
 			}
 			else{
 				Levels[i].setIcon(new ImageIcon("images//lockicon.png"));
@@ -181,14 +169,14 @@ public class LevelSelection extends JFrame {
 			JLabel lblNewLabel = new JLabel("1");
 			lblNewLabel.setBackground(Color.WHITE);
 			lblNewLabel.setBounds(100+(40+levelButtonLenth)*nextColumn+15, (90+levelButtonWidth)*nextRow-80, 30, 30);
-			lblNewLabel.setIcon(new ImageIcon( getLevelImage( testLevels[i].getlevelTypeNum()) ));
+			lblNewLabel.setIcon(new ImageIcon( getLevelImage( testLevels.get(i).getlevelTypeNum()) ));
 			panel.add(lblNewLabel);
 			
 			nextColumn++;
 		
 			
 			
-			final Level temp = testLevels[i];
+			final Level temp = testLevels.get(i);
 			
 			panel.add(Levels[i]);
 

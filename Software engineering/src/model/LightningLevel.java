@@ -13,6 +13,9 @@ public class LightningLevel extends Level{
 	int allowedTime;
 	int usedTime;
 	
+	public LightningLevel(LevelState ls){
+		super(ls);
+	}
 	
 	public LightningLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedTime) {
 		super(LevelNumber, LevelType, b, p);

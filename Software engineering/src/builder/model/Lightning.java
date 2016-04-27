@@ -2,6 +2,9 @@ package builder.model;
 
 import java.awt.Color;
 
+import model.Achievement;
+import model.Board;
+import model.Bullpen;
 import model.LevelState;
 
 /**
@@ -60,10 +63,15 @@ public class Lightning extends LevelEditor {
 
 
 	@Override
-	public LevelState createLevelState() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public boolean createLevelState() {
+		if (this.getBoardCreator().getBoard() == null) return false;
+		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
+		b.sethint(this.getBoardCreator().getHints());
+		
+		LevelState n = new LevelState(100 + this.levelNum, LevelEditorState.LIGHTNING, b, 0, this.allowedTime, false,
+				new Achievement(0), new Bullpen(this.getPieceContainer().getPieces()), null, null);
+		n.saveState();
+		return true;	}
 
 	
 
