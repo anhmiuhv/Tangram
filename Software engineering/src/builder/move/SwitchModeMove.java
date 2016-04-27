@@ -20,7 +20,7 @@ public class SwitchModeMove implements IMove{
 
 	LevelEditorView lv;
 	LevelEditor le;
-	JComboBox b;
+	JComboBox<String> b;
 	LevelEditor oldle;
 	/**
 	 * creating a switching mode move
@@ -28,7 +28,7 @@ public class SwitchModeMove implements IMove{
 	 * @param lvle
 	 * @param b
 	 */
-	public SwitchModeMove(LevelEditorView lv, LevelEditor lvle, JComboBox b){
+	public SwitchModeMove(LevelEditorView lv, LevelEditor lvle, JComboBox<String> b){
 		this.lv = lv;
 		this.le = lvle;
 		this.b = b;

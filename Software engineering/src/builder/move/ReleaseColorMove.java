@@ -16,8 +16,8 @@ public class ReleaseColorMove implements IMove {
 
 	LevelEditor editor;
 	JReleaseColoredNum lev;
-	JComboBox box;
-	public ReleaseColorMove(LevelEditor editor2, JReleaseColoredNum lev, JComboBox box) {
+	JComboBox<String> box;
+	public ReleaseColorMove(LevelEditor editor2, JReleaseColoredNum lev, JComboBox<String> box) {
 		this.editor = editor2;
 		this.lev = lev;
 		this.box = box;

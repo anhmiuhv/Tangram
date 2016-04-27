@@ -37,12 +37,6 @@ import java.io.IOException;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
-import model.Achievement;
-import model.Board;
-import model.Bullpen;
-import model.Level;
-import model.LevelState;
-
 /**
  * this class represent the editor view
  * @author lthoang
@@ -67,7 +61,7 @@ public class LevelEditorView extends JFrame {
 	JTextField timer;
 	JTextField move;
 	JTextField sets;
-	JComboBox mode;
+	JComboBox<String> mode;
 	JLabel moveLabel;	
 	JLabel timerLabel;
 	JPanel panel;
@@ -140,10 +134,10 @@ public class LevelEditorView extends JFrame {
 		btnRestart.setBounds(672, 6, 89, 25);
 		panel.add(btnRestart);
 
-		mode = new JComboBox();
+		mode = new JComboBox<String>();
 		mode.setBounds(783, 44, 143, 22);
 		panel.add(mode);
-		mode.setModel(new DefaultComboBoxModel(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
+		mode.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle Level", "Lightning Level", "Release Level"}));
 		switch (editor.getLevelEditorType()){
 		case LevelEditorState.PUZZLE:
 			mode.setSelectedIndex(0);

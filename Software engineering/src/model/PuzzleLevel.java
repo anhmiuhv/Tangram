@@ -10,8 +10,8 @@ public class PuzzleLevel extends Level {
 	 * Generated serialized
 	 */
 	private static final long serialVersionUID = -4071396056939768290L;
-	int allowedMove = 0;
-	int usedMove = 0;
+	int allowedMove;
+	int usedMove;
 	
 	public PuzzleLevel(LevelState ls){
 		super(ls);
@@ -20,6 +20,7 @@ public class PuzzleLevel extends Level {
 	public PuzzleLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedMove) {
 		super(LevelNumber, LevelType, b, p);
 		this.allowedMove = allowedMove;
+		this.usedMove = 0;
 	}
 
 	@Override

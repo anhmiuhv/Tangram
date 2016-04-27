@@ -1,8 +1,6 @@
 package builder.view;
 
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.JFrame;
 
 import builder.controller.PuzzleController;
@@ -14,6 +12,10 @@ import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 
 public class JTestFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6466331255422484144L;
 	private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 	JPieceContainerView jpc;
 	LevelEditor editor;

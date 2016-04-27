@@ -13,7 +13,7 @@ public class JBoardView extends JPanel {
 	int bX;
 	int bY;
 	JSquareView js;
-	
+
 	public JBoardView(int bX, int bY, Board board){
 		this.board = board;
 		this.bX = bX;
@@ -58,13 +58,20 @@ public class JBoardView extends JPanel {
 		Square[] squares;
 		squares = p.getSquares();
 		JSquareView[] sv = new JSquareView[6];
+		p.boardViewSquare = sv;
 		for(int i=0;i<6;i++){
-
+			
 			sv[i] = new JSquareView(squares[i],p.getColor());
 			sv[i].setBounds((squares[i].getColumn()-squares[0].getColumn())*30+ p.getpColumn()*30,
 					(squares[i].getRow()-squares[0].getRow())*30+p.getpRow()*30, 30, 30);
 			add(sv[i]);
 
+		}
+	}
+	
+	public void removePieceView(Piece p){
+		for(int i=0;i<6;i++){
+			this.remove(p.boardViewSquare[i]);
 		}
 	}
 	

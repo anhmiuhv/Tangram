@@ -62,13 +62,12 @@ public class test1 extends JFrame {
 		JPieceView pieceView = new JPieceView(p, 40, 40);
 		Rectangle[] r = pieceView.getRectange();
 		pieceView.setBounds(0, 0, 0, 0);
-		DrawPolyPanel drawPolyPanel = new DrawPolyPanel(r);
-		drawPolyPanel.setBounds(144, 93, 226, 214);
+		
 		contentPane.add(pieceView);
 		
 		JPieceView pieceView_1 = new JPieceView(p, 0, 0);
 		pieceView_1.setBounds(437, 159, 255, 168);
-		contentPane.add(drawPolyPanel);
+
 		contentPane.add(pieceView_1);
 	
 	}

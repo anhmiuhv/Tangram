@@ -4,8 +4,6 @@ package builder.view;
 import java.awt.*;
 import javax.swing.*;
 
-import view.LevelView;
-
 public class SplashScreen extends JWindow {
   /**
 	 * 
@@ -35,7 +33,7 @@ private int duration;
     // Build the splash screen
     
 
-    Color oraRed = new Color(156, 20, 20,  255);
+    
     Color Blue = new Color(0,255,255);
     content.setBorder(BorderFactory.createLineBorder(Blue, 10));
     

@@ -164,7 +164,25 @@ public class LevelView extends JFrame {
 			}
 
 
+		bs = new BlueStripe(1,level.getLevelNumber()+1);
+		scrollPane.setColumnHeaderView(bs);
+
+		contentPane.add(bs);       
 		reDrawBlueStripe();
+
+		
+		JButton btnNewButton = new JButton("Menu");
+		btnNewButton.setBounds(20, 20, 80, 80);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (new openWindowView("Are you sure to go to menu? (Current level ends and achievement will be saved)").valid()== true){
+				new GoMenuController(levelselection,LevelView.this,level).actionPerformed();
+				closeWindowsFlag = true;
+				}
+
+			}
+		});
+		bs.add(btnNewButton);
 		
 		
 		contentPane.add(horiFlip);
@@ -276,27 +294,7 @@ public class LevelView extends JFrame {
 	public void reDrawBlueStripe (){
 
 		
-		bs = new BlueStripe(1,level.getLevelNumber()+1);
-		scrollPane.setColumnHeaderView(bs);
-
-		contentPane.add(bs);       
-
-
-		
-		JButton btnNewButton = new JButton("Menu");
-		btnNewButton.setBounds(20, 20, 80, 80);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (new openWindowView("Are you sure to go to menu? (Current level ends and achievement will be saved)").valid()== true){
-				new GoMenuController(levelselection,LevelView.this,level).actionPerformed();
-				closeWindowsFlag = true;
-				}
-
-			}
-		});
-		bs.add(btnNewButton);
-		
-		if (level.getAchievement().getAchievement()==1){
+	/*	if (level.getAchievement().getAchievement()==1){
 			stayLabel = new JLabel("star");
 			stayLabel.setBackground(Color.WHITE);
 			stayLabel.setBounds(700,35, 20, 20);
@@ -317,13 +315,13 @@ public class LevelView extends JFrame {
 			stayLabel.setBounds(700,35, 60, 20);
 			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
 			bs.add(stayLabel);
-		}
+		}*/
 		
 		if(level.getLevelType().equals("puzzle")){
 			
 			moveUsed = ((PuzzleLevel) level).getUsedMove();
 			totalMove = ((PuzzleLevel) level).getAllowedMove();
-			
+			System.out.println("kkk");
 			bs.add(moves);
 			moves.setText("Moves: " + moveUsed + "/" + totalMove);
 			moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
@@ -332,7 +330,6 @@ public class LevelView extends JFrame {
 			
 			
 		}else if(level.getLevelType().equals("lightning")){
-
 			bs.add(timeLeft);
 			timeLeft.setText("Time left: " + ((LightningLevel) level).getUsedTime());
 			timeLeft.setForeground(Color.white);

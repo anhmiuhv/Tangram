@@ -17,6 +17,7 @@ public class GoMenuController  extends java.awt.event.MouseAdapter{
 	}
 	
 	public void actionPerformed(){
+		levelselect.reloadLevel();
 		levelselect.setVisible(true);
 		
 		

@@ -61,10 +61,8 @@ public class Board implements java.io.Serializable{
 		this.hints = hints;	
 	}
 	
-	public boolean addpiece(Piece p){
-		if(this.piece.add(p)){
-			
-			
+	public boolean addpiece(Piece p){		
+		if(this.piece.add(p)){			
 			return true;
 		}else{
 			return false;

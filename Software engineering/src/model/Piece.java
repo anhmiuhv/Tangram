@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.Set;
 
+import view.JSquareView;
+
 public class Piece implements java.io.Serializable{
 	
 	
@@ -15,6 +17,7 @@ public class Piece implements java.io.Serializable{
 	int pColumn;
 	Color cl;
 	boolean isMarked;
+	public JSquareView[] boardViewSquare;
 	Square[] squares = new Square[6];
 	/**
 	 * The head of the square is always the highest row(row 0 is highest) square , 

@@ -8,7 +8,7 @@ import builder.model.Builder;
  *
  */
 public class BuilderApplication {
-	levelBuilder lvlBuilder;
+	public levelBuilder lvlBuilder;
 	Builder builder;
 	
 	public BuilderApplication(Builder builder){

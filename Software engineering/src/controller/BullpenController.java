@@ -19,6 +19,8 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	int diffy;
 	int pieceN = 0;	
 	
+	boolean fromBullpen = false;
+	
 	public BullpenController(LevelView levelview, Bullpen bp){
 		this.levelview = levelview;
 		this.bullpen = bp;
@@ -26,7 +28,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
-		
+		fromBullpen = true;
 		int x = 0;
 		if(me.getX() > 185){
 			x = 1; 
@@ -56,15 +58,15 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		if(me != null){
-			draggingPiece = levelview.getDraggingPiece();
-			if(draggingPiece == null){
-				System.out.println("Nothing being dragged");
-				return;
-			}
-
+		draggingPiece = levelview.getDraggingPiece();
+		if(draggingPiece == null){
+			System.out.println("Nothing being dragged");
+			return;
+		}
+		if(fromBullpen && me != null){
 			int mex = me.getX();
 			int mey = me.getY();
+			
 			if(mex>=430 && mey>=70){
 				if(mex<=levelview.getBoardView().getWidth() + 430 && mey<=levelview.getBoardView().getHeight() + 70){
 					levelview.getTopPanel().remove(levelview.getDraggingPieceView());
@@ -73,10 +75,30 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 
 					MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
 							me.getX()-430, me.getY()-70, me.getClickCount(), false);				
-					levelview.getBoardController().mouseReleased(newme);;
+					levelview.getBoardController().mouseReleased(newme);
 					return;
 				}			
 			}
+			
+		}
+		
+		if(!fromBullpen && me != null){
+			int bpX = me.getX() - 20;
+			int bpY = me.getY() - 140;
+			
+			int x = 0;
+			if(bpX > 185){
+				x = 1; 
+			}else{
+				x = 2;
+			}	
+		    pieceN = ((bpY/185)+1)*2 - bpX;
+		    
+		    if(bullpen.getPieces().get(pieceN) != null){
+		    	levelview.getBoardController().mouseReleased(null);
+		    	return;
+		    }
+			
 		}
 		bullpen.getPieces().set(pieceN,levelview.getDraggingPiece());
 		if(me != null){
@@ -85,6 +107,8 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 		levelview.setDraggingPieceView(null);
 		levelview.reDrawBullpan();
 		levelview.repaint();
+		
+		fromBullpen = false;
 	}
  
 

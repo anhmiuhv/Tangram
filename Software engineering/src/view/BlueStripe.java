@@ -29,7 +29,7 @@ public class BlueStripe extends JPanel {
 		lvNum.setText("Level " + lvnum);
 		lvNum.setFont(new Font("SansSerif", Font.PLAIN, 50));
 		lvNum.setForeground(Color.WHITE);
-		lvNum.setBounds(345,35, 210, 50);
+		lvNum.setBounds(345,35, 230, 50);
 		this.add(lvNum);
 		
 	}
