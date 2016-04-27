@@ -54,10 +54,14 @@ public class BoardController extends java.awt.event.MouseAdapter{
 
 		}
 		
+		if(levelView.getLevel() instanceof LightningLevel){
+			found = false;
+		}
+		
 		if(found == false){
 			movingPiece = null;
-
-			
+			levelView.setDraggingPiece(pressedPiece);
+			levelView.setDraggingPieceView(null);
 		}
 		else{
 			movingPiece = pressedPiece;
@@ -81,7 +85,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mouseReleased(MouseEvent me) {
-
 		movingPiece = levelView.getDraggingPiece();
 		if (movingPiece!= null){
 			double dx=0;
@@ -186,6 +189,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	
 	public boolean doMove(int testColumn, int testRow, Piece testPiece){
+		
 		int findx;
 		int findy;
 

@@ -4,13 +4,20 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import builder.model.LevelEditorState;
 import controller.LevelSelectController;
 import model.Level;
+import model.LevelState;
+import model.LightningLevel;
+import model.PuzzleLevel;
+import model.ReleaseLevel;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
@@ -27,6 +34,8 @@ public class LevelSelection extends JFrame {
 	private JPanel contentPane;
 	ArrayList<Level> testLevels;
 
+	JButton[] Levels;
+	JPanel panel;
 	/**
 	 * Launch the application.
 	 */
@@ -64,7 +73,7 @@ public class LevelSelection extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 			
 			JLabel lblNewLabel_1 = new JLabel("Kabasuji Level Selection");
 			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 36));
@@ -114,15 +123,59 @@ public class LevelSelection extends JFrame {
 		
 		//----------------------  Jbutton parameter
 		contentPane.setLayout(gl_contentPane);
+
+		
+		//---------------------- 
+		
+	
+		addlevels();
+
+		setVisible(true);
+	
+	}
+	public static ArrayList<Level> loadAll(){
+		ArrayList<Level> all = new ArrayList<Level>();
+
+		try{
+			File dir = new File("levels/");
+			File[] directoryListing = dir.listFiles();
+			if(directoryListing != null){  // Use default level directory to create buttons
+				for(File child : directoryListing){
+					if (child.getName().equals(".DS_Store")) continue;
+					LevelState tmp = new LevelState();
+					tmp.loadState(child.getName());
+					String levelType = tmp.getLevelType();
+					if(levelType != null){
+						Level newLevel = null;
+						if(levelType.equals(LevelEditorState.PUZZLE)){
+							newLevel = new PuzzleLevel(tmp);
+						} else if(levelType.equals(LevelEditorState.LIGHTNING)) {
+							newLevel = new LightningLevel(tmp);
+						} else if(levelType.equals(LevelEditorState.RELEASE)) {
+							newLevel = new ReleaseLevel(tmp);			
+						}
+						all.add(newLevel);
+					}
+					
+					
+				}
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return all;
+
+	}
+	
+	public void addlevels(){
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
 		int levelNum = this.testLevels.size();
 		int NumOneRow = 5;
 		
-		//---------------------- 
-		
-	
-		JButton[] Levels = new JButton[levelNum];
+		Levels = new JButton[levelNum];
 		int nextRow=0;	
 		int nextColumn=0;
 		for (int i=0;i<levelNum;i++){
@@ -188,9 +241,14 @@ public class LevelSelection extends JFrame {
 		});
 		
 		}
-
-		setVisible(true);
+	}
 	
+	public void reloadLevel(){
+		
+		testLevels = loadAll();
+		panel.removeAll();
+		
+		addlevels();		
 	}
 }
 

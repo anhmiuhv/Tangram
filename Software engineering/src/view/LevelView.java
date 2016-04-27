@@ -168,7 +168,7 @@ public class LevelView extends JFrame {
 		scrollPane.setColumnHeaderView(bs);
 
 		contentPane.add(bs);       
-		
+		reDrawBlueStripe();
 
 		
 		JButton btnNewButton = new JButton("Menu");
@@ -321,7 +321,7 @@ public class LevelView extends JFrame {
 			
 			moveUsed = ((PuzzleLevel) level).getUsedMove();
 			totalMove = ((PuzzleLevel) level).getAllowedMove();
-			
+			System.out.println("kkk");
 			bs.add(moves);
 			moves.setText("Moves: " + moveUsed + "/" + totalMove);
 			moves.setFont(new Font("SansSerif", Font.PLAIN, 30));
