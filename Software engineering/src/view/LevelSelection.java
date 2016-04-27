@@ -188,7 +188,10 @@ public class LevelSelection extends JFrame {
 			}
 			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(90+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
 			
-			if(testLevels.get(i).isLocked() && i!=0){
+			//System.out.println("A:"+testLevels.get(i).getAchievement().getAchievement());
+			//System.out.println("IsL:"+testLevels.get(i).isLocked());
+			//testLevels.get(i).isLocked() &&
+			if( i-1>=0 && testLevels.get(i-1).getAchievement().getAchievement()==0){
 				Levels[i].setIcon(new ImageIcon("images//lockicon.png"));
 				Levels[i].setEnabled(false);
 			}else{

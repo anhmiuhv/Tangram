@@ -54,7 +54,7 @@ public class LightningLevel extends Level{
 	@Override
 	public void createLevelState() {
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,
-				this.allowedTime, this.locked, this.star, this.p, new int[0], new Color[0]);
+				this.allowedTime, true, this.star, this.p, new int[0], new Color[0]);
 		
 	}
 
