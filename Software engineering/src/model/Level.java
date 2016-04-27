@@ -2,6 +2,8 @@ package model;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import move.*;
 public abstract class Level{
 
@@ -9,6 +11,7 @@ public abstract class Level{
 	String LevelType;
 	Board b;
 	Bullpen p;
+	ArrayList<Piece> bullpenPiece;
 	boolean locked;
 	Achievement star;
 	LevelState levelState;
@@ -22,6 +25,11 @@ public abstract class Level{
 		this.LevelType = LevelType;
 		this.b = b;
 		this.p = p;
+		this.bullpenPiece = new ArrayList<Piece>();
+		for (Piece piece: this.p.getPieces()){
+			this.bullpenPiece.add(piece);
+		}
+		
 	}
 
 	public LevelState getLevelState(){

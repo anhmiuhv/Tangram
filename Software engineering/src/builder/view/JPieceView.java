@@ -75,13 +75,7 @@ public class JPieceView extends JPanel{
 
 	}
 
-	public ArrayList<Point> allPoints(){
-		ArrayList<Point> allpoint = new ArrayList<Point>();
-		for (JSquareView j: array){
-			allpoint.addAll(j.allPoints());
-		}
-		return allpoint;
-	}
+	
 
 	/**
 	 * get the rectangle shape of the piece

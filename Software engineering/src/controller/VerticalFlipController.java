@@ -32,7 +32,6 @@ public class VerticalFlipController  extends java.awt.event.MouseAdapter{
 
 	
 		levelview.reDrawBullpan();
-		
 	}	
 	
 }
