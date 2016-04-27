@@ -12,23 +12,20 @@ import org.junit.Test;
 import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
-import builder.view.LevelEditorView;
 
-public class testEditLevel {
+public class testEditOldLevel {
 	/** (dx,dy) are offsets into the widget space. Feel Free to Use as Is. */
 	
 	
 	BuilderApplication app;
-	//LevelEditorView lvlev;
 	@Before
 	public void setup(){
 		Builder builder = new Builder("linh", new KabasujiBuilder());
 		this.app = new BuilderApplication(builder, false);	
-		//this.lvlev = this.app.getLvlBuilder().getLvle();
 	}
 	
 	@After
-	public  void dispose(){
+	public void dispose(){
 		this.app.getLvlBuilder().close();
 	}
 	@Test
@@ -38,13 +35,14 @@ public class testEditLevel {
 			r = new Robot();
 			r.setAutoDelay(40);
 			r.setAutoWaitForIdle(true);
-			r.mouseMove(900, 175);
+			r.mouseMove(200, 315);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-			r.mouseMove(200, 165);
+		
+			
+			r.mouseMove(910, 150);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

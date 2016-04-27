@@ -39,6 +39,7 @@ public class levelBuilder extends JFrame {
 	private static final long serialVersionUID = 4096808060275039176L;
 	private JPanel contentPane;
 	KabasujiBuilder kb; 
+	LevelEditorView lvle;
 	
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
@@ -122,13 +123,17 @@ public class levelBuilder extends JFrame {
 		button_9.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
 				int levelNum = kb.addLevelState();
-				LevelEditorView lev2 = new LevelEditorView(kb, levelNum);
-				lev2.setVisible(true);
+				lvle = new LevelEditorView(kb, levelNum);
+				lvle.setVisible(true);
 				close();
 			}
 		});
 		
 		
+	}
+
+	public LevelEditorView getLvle() {
+		return lvle;
 	}
 
 
