@@ -6,15 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 
 import builder.model.LevelEditor;
-import builder.model.Release;
 import builder.move.IMove;
 import builder.move.ReleaseColorMove;
 import builder.view.JReleaseColoredNum;
-import builder.view.LevelEditorView;
 
 public class ReleaseColorController implements ActionListener {
 	JReleaseColoredNum lev;
-	JComboBox box;
+	JComboBox<String> box;
 	LevelEditor editor;
 	/**
 	 * construct controller for the release color combo box
@@ -22,7 +20,7 @@ public class ReleaseColorController implements ActionListener {
 	 * @param lev
 	 * @param editor2
 	 */
-	public ReleaseColorController(JComboBox comboBox,
+	public ReleaseColorController(JComboBox<String> comboBox,
 			JReleaseColoredNum lev, LevelEditor editor2) {
 		this.lev = lev;
 		this.box = comboBox;

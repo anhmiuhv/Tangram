@@ -1,10 +1,8 @@
 package builder.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +14,10 @@ import builder.model.PieceContainer;
 import builder.model.PlacedPiece;
 
 public class JPuzzleView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6844295609697032689L;
 	private BufferedImage image;
 	JTestFrame app;
 	PieceContainer pc;

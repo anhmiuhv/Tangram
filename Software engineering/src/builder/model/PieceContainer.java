@@ -2,7 +2,6 @@ package builder.model;
 import model.Piece;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * This class represent a piece container

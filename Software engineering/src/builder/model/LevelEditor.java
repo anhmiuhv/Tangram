@@ -1,10 +1,8 @@
 package builder.model;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 import model.LevelState;
-import model.Piece;
 import builder.move.IMove;
 
 /**

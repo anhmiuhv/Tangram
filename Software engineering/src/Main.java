@@ -91,8 +91,8 @@ public class Main {
 		
 		
 		
-		Kabasuji kabasuji = new Kabasuji(level);
-		Player m = new Player("Linh", kabasuji);
+		//Kabasuji kabasuji = new Kabasuji(level);
+		//Player m = new Player("Linh", kabasuji);
 		
 		/*
 		// if using 'app' within the anonymous class generated below, must be marked final.

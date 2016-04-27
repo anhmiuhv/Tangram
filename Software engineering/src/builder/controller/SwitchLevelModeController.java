@@ -19,14 +19,14 @@ public class SwitchLevelModeController implements ActionListener {
 
 	LevelEditorView lv;
 	LevelEditor editor;
-	JComboBox b;
+	JComboBox<String> b;
 	/**
 	 * controller for switching mode
 	 * @param lv
 	 * @param editor
 	 * @param b
 	 */
-	public SwitchLevelModeController(LevelEditorView lv, LevelEditor editor, JComboBox b){
+	public SwitchLevelModeController(LevelEditorView lv, LevelEditor editor, JComboBox<String> b){
 		this.lv = lv;
 		this.editor = editor;
 		this.b = b;

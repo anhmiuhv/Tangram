@@ -15,6 +15,7 @@ import builder.model.ColoredNumber;
 import builder.model.LevelEditor;
 import builder.model.LevelEditorState;
 import builder.model.Release;
+
 import javax.swing.JButton;
 /**
  * This class represent a view to config the coloredNumber of the release board
@@ -34,7 +35,7 @@ public class JReleaseColoredNum extends JPanel {
 	JTextField textField_5;
 	Color colorNum;
 	LevelEditor editor;
-	JComboBox comboBox;
+	JComboBox<String> comboBox;
 	LevelEditorView lev;
 	JButton btnNewButton;
 	JButton button;
@@ -104,8 +105,8 @@ public class JReleaseColoredNum extends JPanel {
 		textField_5.addActionListener(new AddColoredNumController(this, editor, lev, textField_5));
 		add(textField_5);
 				
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Yellow", "Orange", "Pink"}));
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Yellow", "Orange", "Pink"}));
 		comboBox.addActionListener(new ReleaseColorController(comboBox, this, editor));
 		comboBox.setSelectedIndex(0);
 		comboBox.setBounds(6, 6, 118, 27);
