@@ -24,7 +24,7 @@ public class Kabasuji {
 		
 		
 		LevelState createAlevel = new LevelState();
-		createAlevel.loadState("puzzle100.sav");
+		createAlevel.loadState("Level0.sav");
 		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
 		p.loadLevelState(createAlevel);
 		Level[] l = new Level[1];
