@@ -52,5 +52,20 @@ public class testEditLevel {
 		
 		
 	}
+	
+//	public void lockTest(){
+//		Robot r;
+//		try {
+//			r = new Robot();
+//			r.setAutoDelay(40);
+//			r.setAutoWaitForIdle(true);
+//			
+//		}
+//		catch (AWTException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		
+//	}
 
 }

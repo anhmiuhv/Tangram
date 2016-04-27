@@ -49,6 +49,11 @@ public class Board implements java.io.Serializable {
 		return squares;
 	}
 	
+	/**
+	 * 
+	 * @param sq
+	 * @return the boolean decided if current board contains the Square
+	 */
 	public boolean containSquare(Square sq){
 		for(int i = 0;i < squares.length;i++){
 			if(squares[i].getVisit() == false){
@@ -61,6 +66,10 @@ public class Board implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @return if all the squares in the board are visited
+	 */
 	public boolean allVisited(){
 		for(int i = 0;i < squares.length;i++){
 			if(squares[i].getVisit() == false){
