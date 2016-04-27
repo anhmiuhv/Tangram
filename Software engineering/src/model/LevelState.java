@@ -62,7 +62,7 @@ public class LevelState implements java.io.Serializable{
 		this.locked = false;
 		this.achievements = new Achievement(0);
 		this.bullpen = new Bullpen();
-		levelName = levelType + levelNum;
+		levelName = "level" + levelNum;
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class LevelState implements java.io.Serializable{
 		this.bullpen = bullpen;	
 		this.squareNum = squareNum;
 		this.cl =cl;
-		levelName = levelType + levelNum;
+		levelName = "level" + levelNum;
 	}
 	
 	public int getLevelNum(){
