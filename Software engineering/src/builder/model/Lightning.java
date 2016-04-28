@@ -25,8 +25,10 @@ public class Lightning extends LevelEditor {
 	public Lightning(LevelEditorState les){
 		super(les);
 	}
+	
 	@Override
 	public void createLevelEditorState() {
+		container.clearPlacedPiece();
 		this.les = new LevelEditorState(levelNum, LevelEditorState.LIGHTNING, allowedTime, -1, container,
 				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare(), null, null, null);
 		

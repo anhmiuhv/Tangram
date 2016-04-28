@@ -12,7 +12,11 @@ import model.Piece;
  * @author lthoang
  *
  */
-public class PlacedPiece {
+public class PlacedPiece implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3311468800867799182L;
 	Piece piece;
 	BufferedImage image;
 	int x;

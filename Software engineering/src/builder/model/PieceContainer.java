@@ -114,7 +114,15 @@ public class PieceContainer implements java.io.Serializable{
 	public void setDraggingPiece(PlacedPiece draggingPiece) {
 		this.draggingPiece = draggingPiece;
 	}
-
+	
+	/**
+	 * clear all of the placed piece
+	 */
+	public void clearPlacedPiece(){
+		this.selected = null;
+		this.active = null;
+		this.chosen = null;
+	}
 	
 
 	

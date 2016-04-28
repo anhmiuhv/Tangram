@@ -1,17 +1,16 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Transparency;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import model.Piece;
 
 
 
 public class JPieceView extends JPanel{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 705044680974999768L;
 
 	Piece piece;
 
@@ -31,7 +30,7 @@ public class JPieceView extends JPanel{
 	public void createPieceView(){
 
 		setBounds(pX, pY, 180, 180);
-		setOpaque(false);
+		setOpaque(true);
 		setLayout(null);		
 		
 		if(piece != null){
