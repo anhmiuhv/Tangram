@@ -203,9 +203,12 @@ public class BoardController extends java.awt.event.MouseAdapter{
 				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
 				
 					if ( board.getCover()[j] !=0){
-
-						return false;
-
+					    if (levelView.getLevel() instanceof LightningLevel){
+					    	
+					    }
+					    else{
+					    	return false;
+					    }
 					}
 					flag = 1;
 				}

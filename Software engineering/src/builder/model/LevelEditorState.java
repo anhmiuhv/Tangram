@@ -13,6 +13,7 @@ import model.Hint;
 /**
  * THis class represent a level editor state
  * @author lthoang
+ * @author jchen5
  *
  */
 public class LevelEditorState implements java.io.Serializable{
@@ -201,34 +202,66 @@ public class LevelEditorState implements java.io.Serializable{
 		this.pc = pc;
 	}
 
+	/**
+	 * 
+	 * @return return the selectedSquare
+	 */
 	public boolean[] getSelectedSquare() {
 		return selectedSquare;
 	}
 
+	/**
+	 * 
+	 * @param selectedSquare set the selectedSquare same as the input
+	 */
 	public void setSelectedSquare(boolean[] selectedSquare) {
 		this.selectedSquare = selectedSquare;
 	}
 
+	/**
+	 * 
+	 * @return return the current board
+	 */
 	public Board getBoard() {
 		return board;
 	}
 
+	/**
+	 * 
+	 * @param board set the board same as the input
+	 */
 	public void setBoard(Board board) {
 		this.board = board;
 	}
 
+	/**
+	 * 
+	 * @return get the current Hint
+	 */
 	public Hint getHint() {
 		return hint;
 	}
 
+	/**
+	 * 
+	 * @param hint set the hint the same to hint
+	 */
 	public void setHint(Hint hint) {
 		this.hint = hint;
 	}
 
+	/**
+	 * 
+	 * @return get the current square numbers
+	 */
 	public int[] getSquareNum() {
 		return squareNum;
 	}
 
+	/**
+	 * 
+	 * @param squareNum set the square number same as the input
+	 */
 	public void setSquareNum(int[] squareNum) {
 		this.squareNum = squareNum;
 	}
@@ -257,6 +290,10 @@ public class LevelEditorState implements java.io.Serializable{
 		this.actualColor = actualColor;
 	}
 
+	/**
+	 * 
+	 * @return create a sample selectedSquare
+	 */
 	private boolean[] createExampleSelectedSquare(){
 		boolean[] r = new boolean[144];
 		int row = 0;

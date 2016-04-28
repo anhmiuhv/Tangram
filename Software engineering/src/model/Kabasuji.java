@@ -5,6 +5,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.junit.experimental.theories.Theories;
+
 import builder.model.LevelEditorState;
 import view.Application;
 import view.LevelSelection;
@@ -368,7 +370,7 @@ public class Kabasuji {
 	 */
 	public static ArrayList<Level> loadAll(){
 		ArrayList<Level> all = new ArrayList<Level>();
-
+		boolean unlocked =false;
 		try{
 			File dir = new File("levels/");
 			File[] directoryListing = dir.listFiles();
@@ -386,6 +388,17 @@ public class Kabasuji {
 							newLevel = new LightningLevel(tmp);
 						} else if(levelType.equals(LevelEditorState.RELEASE)) {
 							newLevel = new ReleaseLevel(tmp);			
+						}
+						if(newLevel.getAchievement().getAchievement()>0){
+							unlocked = true;
+						}else {
+							unlocked = false;
+						}
+						if(unlocked){
+							System.out.println("aaa");
+							newLevel.setLocked(false);
+						}else{
+							newLevel.setLocked(true);
 						}
 						all.add(newLevel);
 					}

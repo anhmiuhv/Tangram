@@ -7,6 +7,7 @@ import model.Hint;
 /**
  * This class represent a board creator
  * @author lthoang
+ * @author jchen5
  *
  */
 public class BoardCreator {
@@ -61,11 +62,19 @@ public class BoardCreator {
 			}
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @return an array of boolean which indicate which blocks are hint
+	 */
 	public boolean[] getIsHintSquare() {
 		return isHintSquare;
 	}
-
+	
+	/**
+	 * 
+	 * @param isHintSquare set hint square
+	 */
 	public void setIsHintSquare(boolean[] isHintSquare) {
 		this.isHintSquare = isHintSquare;
 	}
@@ -147,7 +156,6 @@ public class BoardCreator {
 	/**
 	 * select hint square
 	 */
-	
 	public void selectHintSquare(int i){
 		isHintSquare[i] = true;
 	}
@@ -259,39 +267,6 @@ public class BoardCreator {
 		}
 		return this.board.allVisited();
 	}
-	
-
-	
-	
-//	public boolean validPiece(){
-//		
-//		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
-//
-//	}
-	
-	
-//	private boolean dfsSquare(Square head){
-//		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
-//		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
-//		Square tempsqUp = new Square(head.getColumn(), head.getRow()+1);
-//		Square tempsqDn = new Square(head.getColumn(), head.getRow()-1);
-//		if((piece.containSquare(tempsqRt))&& (!(tempsqRt.getVisit()))){
-//			dfsSquare(tempsqRt);
-//		}
-//		if((piece.containSquare(tempsqLt))&& (!(tempsqLt.getVisit()))){
-//			dfsSquare(tempsqLt);
-//		}
-//		if((piece.containSquare(tempsqDn))&& (!(tempsqDn.getVisit()))){
-//			dfsSquare(tempsqDn);
-//		}
-//		if((piece.containSquare(tempsqUp))&& (!(tempsqUp.getVisit()))){
-//			dfsSquare(tempsqUp);
-//		}
-//		
-//		return piece.allVisited();
-//		
-//	}
-
 
 
 }

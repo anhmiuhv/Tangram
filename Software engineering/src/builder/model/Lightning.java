@@ -63,6 +63,9 @@ public class Lightning extends LevelEditor {
 
 
 	@Override
+	/**
+	 * create a new level State and save
+	 */
 	public boolean createLevelState() {
 		if (this.getBoardCreator().getBoard() == null) return false;
 		model.Board b = new Board(this.getBoardCreator().getBoard().getSquares());
