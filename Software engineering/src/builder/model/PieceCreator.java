@@ -77,35 +77,7 @@ public class PieceCreator {
 	}
 	
 	
-	/**
-	 * for checking a valid piece
-	 * @param head
-	 * @return
-	 */
-	
-	public Set<Point> offset(Square head, Set<Point> s){
-		Square tempsqRt = new Square(head.getColumn()+1, head.getRow());
-		Square tempsqLt = new Square(head.getColumn()-1, head.getRow());
-		Square tempsqUp = new Square(head.getColumn(), head.getRow()+1);
-		Square tempsqDn = new Square(head.getColumn(), head.getRow()-1);
-		s.add(new Point(piece.getHead().getColumn() - head.getColumn(), piece.getHead().getRow() - head.getRow()));
-		if((piece.containSquare(tempsqRt))&& (!(tempsqRt.getVisit()))){
-			offset(tempsqRt,s);
-		}
-		if((piece.containSquare(tempsqLt))&& (!(tempsqLt.getVisit()))){
-			offset(tempsqLt,s);
-		}
-		if((piece.containSquare(tempsqDn))&& (!(tempsqDn.getVisit()))){
-			offset(tempsqDn,s);
-		}
-		if((piece.containSquare(tempsqUp))&& (!(tempsqUp.getVisit()))){
-			offset(tempsqUp,s);
-		}
 		
-		return s; 
-		
-	}
-	
 	
 	/**
 	 * create the piece from the selected square 
@@ -154,6 +126,11 @@ public class PieceCreator {
 	public boolean[] getSelected(){
 		return selectedSquare;
 	}
+	
+	/**
+	 * return the piece
+	 * @return
+	 */
 	public Piece getPiece(){
 		return this.piece;
 	}

@@ -33,6 +33,7 @@ public class PieceContainer implements java.io.Serializable{
 	 */
 	public PieceContainer(ArrayList<Piece> piece){
 		this.pieces = piece;
+		this.selected = new ArrayList<PlacedPiece>();
 	}
 	
 	/**
@@ -91,26 +92,49 @@ public class PieceContainer implements java.io.Serializable{
 		this.selected.remove(order);
 	}
 
+	/**
+	 * get chosen piece
+	 * @return chosen piece
+	 */
 	public Piece getChosen() {
 		return chosen;
 	}
 
+	/**
+	 * set chosen piece
+	 */
 	public void setChosen(Piece chosen) {
 		this.chosen = chosen;
 	}
 
+	/**
+	 * get active piece
+	 * @return
+	 */
 	public PlacedPiece getActive() {
 		return active;
 	}
 	
+	/**
+	 * set active piece
+	 * @param pp active piece
+	 */
 	public void setActive(PlacedPiece pp) {
 		this.active = pp;
 	}
 
+	/**
+	 * get the dragging piece
+	 * @return dragging piece
+	 */
 	public PlacedPiece getDraggingPiece() {
 		return draggingPiece;
 	}
 
+	/**
+	 * set the dragging piece
+	 * @param draggingPiece
+	 */
 	public void setDraggingPiece(PlacedPiece draggingPiece) {
 		this.draggingPiece = draggingPiece;
 	}
@@ -119,7 +143,7 @@ public class PieceContainer implements java.io.Serializable{
 	 * clear all of the placed piece
 	 */
 	public void clearPlacedPiece(){
-		this.selected = null;
+		this.selected = new ArrayList<PlacedPiece>();
 		this.active = null;
 		this.chosen = null;
 	}
