@@ -110,12 +110,13 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 			}	
 		    pieceN = (((me.getY()+sbValue)/185)+1)*2 - x;
 		    if(bullpen.getPieces().get(pieceN) != null){
-		    	System.out.println("dzk");
 		    	levelview.getBoardController().mouseReleased(null);
 		    	return;
 		    }
 			
 		}
+		levelview.getDraggingPiece().setpRow(0);
+		levelview.getDraggingPiece().setpColumn(0);
 		bullpen.getPieces().set(pieceN,levelview.getDraggingPiece());
 		if(me != null && fromBullpen){
 			levelview.getTopPanel().remove(levelview.getDraggingPieceView());
