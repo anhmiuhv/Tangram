@@ -30,9 +30,11 @@ public class TimerController extends TimerTask {
 		levelview.reDrawBlueStripe();
 		if (timeCount==0){
 			
-			levelview.closeWindowsFlag = true;
-			new GoMenuController(levelselect,levelview,level).actionPerformed();
-			levelview.close();
+			//levelview.closeWindowsFlag = true;
+			//new GoMenuController(levelselect,levelview,level).actionPerformed();
+			//levelview.close();
+			
+			new AchievementController(levelselect,levelview,levelview.getLevel().getAchievement()).actionPerformed();;
 		}
   }  
 
