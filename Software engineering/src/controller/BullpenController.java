@@ -87,26 +87,25 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 					MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
 							me.getX()-430, me.getY()-70, me.getClickCount(), false);				
 					levelview.getBoardController().mouseReleased(newme);
+					fromBullpen = false;
 					return;
 				}			
 			}
 			
 		}
-		
 		if(!fromBullpen && me != null){
-			int bpX = me.getX() - 20;
-			int bpY = me.getY() - 140;
-			
+			System.out.println("111");
 			int x = 0;
-			if(bpX > 185){
+			if(me.getX() > 185){
 				x = 1; 
 			}else{
 				x = 2;
 			}	
-		    pieceN = ((bpY/185)+1)*2 - bpX;
-		    
+		    pieceN = ((me.getY()/185)+1)*2 - x;
+		    System.out.println(pieceN);
 		    if(bullpen.getPieces().get(pieceN) != null){
-		    	//levelview.getBoardController().mouseReleased(null);
+		    	levelview.getBoardController().mouseReleased(null);
+		    	System.out.println("aaa");
 		    	return;
 		    }
 			

@@ -89,6 +89,8 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		
 		//mouse release in bullpen
 		if(me.getX()>=-430 && me.getY()>=-70 && me.getX()<= -55 && me.getY() <= 670){
+			
+
 			levelView.getTopPanel().remove(levelView.getDraggingPieceView());
 			levelView.setDraggingPieceView(null);
 			levelView.getJBullPenView().repaint();
@@ -96,7 +98,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
 					me.getX()+430, me.getY()+70, me.getClickCount(), false);
 			
-			levelView.getBullpenController().mousePressed(newme);
+			levelView.getBullpenController().mouseReleased(newme);
 		}
 		
 		
