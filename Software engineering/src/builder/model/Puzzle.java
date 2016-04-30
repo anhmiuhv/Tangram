@@ -29,6 +29,7 @@ public class Puzzle extends LevelEditor {
 	
 	@Override
 	public void createLevelEditorState() {
+		container.clearPlacedPiece();
 		this.les = new LevelEditorState(levelNum, LevelEditorState.PUZZLE, -1, allowedMove, container, 
 				bc.getSelected(),bc.getBoard(), bc.getHints(), new int[0], new Color[0], bc.getIsHintSquare(), null, null, null);
 		

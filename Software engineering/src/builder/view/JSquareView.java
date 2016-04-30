@@ -91,18 +91,7 @@ public class JSquareView extends JPanel {
 		
 	}
 
-	/**
-	 * 
-	 * @return all the points making up this Square
-	 */
-	public ArrayList<Point> allPoints(){
-		ArrayList<Point> result = new ArrayList<Point>();
-		result.add(new Point(square.getColumn() * size, square.getRow()* size));
-		result.add(new Point(square.getColumn() * size + size, square.getRow()* size));
-		result.add(new Point(square.getColumn() * size, square.getRow()* size + size));
-		result.add(new Point(square.getColumn() * size + size, square.getRow()* size + size));
-		return result;
-	}
+
 	/**
 	 * paint color number
 	 * @param num

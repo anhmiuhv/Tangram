@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.MouseEvent;
 
+import javax.swing.JScrollBar;
+
 import model.Bullpen;
 import model.LightningLevel;
 import model.Piece;
@@ -29,6 +31,8 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
+		JScrollBar jBar = levelview.getScrollPane().getVerticalScrollBar();
+		int sbValue = jBar.getValue();
 		fromBullpen = true;
 		int x = 0;
 		if(me.getX() > 185){
@@ -36,11 +40,10 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 		}else{
 			x = 2;
 		}	
-	    pieceN = ((me.getY()/185)+1)*2 - x;
-	    
+	    pieceN = (((me.getY()+sbValue)/185)+1)*2 - x;
 	    
 	    diffx = me.getX() - levelview.getJBullPenView().getPieceView()[pieceN].getX() -20;
-	    diffy = me.getY() - levelview.getJBullPenView().getPieceView()[pieceN].getY() -140;
+	    diffy = me.getY()+sbValue - levelview.getJBullPenView().getPieceView()[pieceN].getY() -140;
 	    
 	    levelview.setDiffx(diffx);
 	    levelview.setDiffy(diffy);
@@ -63,20 +66,24 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	    //levelview.setComponentZOrder(levelview.draggingPiece, 0);
 	    levelview.reDrawBullpan();
 	    levelview.repaint();
-	    
+	    jBar.setValue(sbValue);
 	}
 	
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
+		JScrollBar jBar = levelview.getScrollPane().getVerticalScrollBar();
+		int sbValue = jBar.getValue();
+		
 		draggingPiece = levelview.getDraggingPiece();
 		if(draggingPiece == null){
 			System.out.println("Nothing being dragged");
+			jBar.setValue(sbValue);
 			return;
 		}
 		if(fromBullpen && me != null){
 			int mex = me.getX();
-			int mey = me.getY();
+			int mey = me.getY()+sbValue;
 			
 			if(mex>=430 && mey>=70){
 				if(mex<=levelview.getBoardView().getWidth() + 430 && mey<=levelview.getBoardView().getHeight() + 70){
@@ -88,30 +95,29 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 							me.getX()-430, me.getY()-70, me.getClickCount(), false);				
 					levelview.getBoardController().mouseReleased(newme);
 					fromBullpen = false;
+					jBar.setValue(sbValue);
 					return;
 				}			
 			}
 			
 		}
 		if(!fromBullpen && me != null){
-			System.out.println("111");
 			int x = 0;
 			if(me.getX() > 185){
 				x = 1; 
 			}else{
 				x = 2;
 			}	
-		    pieceN = ((me.getY()/185)+1)*2 - x;
-		    System.out.println(pieceN);
+		    pieceN = (((me.getY()+sbValue)/185)+1)*2 - x;
 		    if(bullpen.getPieces().get(pieceN) != null){
+		    	System.out.println("dzk");
 		    	levelview.getBoardController().mouseReleased(null);
-		    	System.out.println("aaa");
 		    	return;
 		    }
 			
 		}
 		bullpen.getPieces().set(pieceN,levelview.getDraggingPiece());
-		if(me != null){
+		if(me != null && fromBullpen){
 			levelview.getTopPanel().remove(levelview.getDraggingPieceView());
 		}
 		levelview.setDraggingPieceView(null);
@@ -119,6 +125,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 		levelview.repaint();
 		
 		fromBullpen = false;
+		jBar.setValue(sbValue);
 	}
  
 
