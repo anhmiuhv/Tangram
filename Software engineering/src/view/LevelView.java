@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.AchievementController;
 import controller.BoardController;
 import controller.BullpenController;
 import controller.CloseKabasuji;
@@ -409,6 +410,9 @@ public class LevelView extends JFrame {
 		moveUsed = ((PuzzleLevel) level).getUsedMove();
 		totalMove = ((PuzzleLevel) level).getAllowedMove();
 		moves.setText("Moves: " + moveUsed + "/" + totalMove);
+		if (moveUsed == totalMove){
+			new AchievementController(levelselection,this,this.getLevel().getAchievement()).actionPerformed();;
+		}
 	}
 	
 	public void updateAchievement(){
