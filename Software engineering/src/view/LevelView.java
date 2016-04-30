@@ -233,11 +233,6 @@ public class LevelView extends JFrame {
 
 		//----- manully design board
 
-
-		//level.getBoard().addpiece(level.getBullpen().getPieces().get(1));
-
-		//System.out.println(level.getBullpen().getPieces().get(1).getpColumn());
-		//System.out.println(level.getBullpen().getPieces().get(1).getpRow());
 		if (boardView!=null){
 			boardView.removeMouseListener(boardController);
 			boardView.removeMouseMotionListener(kabasujiMouseMotionAdapter);

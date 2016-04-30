@@ -395,7 +395,6 @@ public class Kabasuji {
 							unlocked = false;
 						}
 						if(unlocked){
-							System.out.println("aaa");
 							newLevel.setLocked(false);
 						}else{
 							newLevel.setLocked(true);

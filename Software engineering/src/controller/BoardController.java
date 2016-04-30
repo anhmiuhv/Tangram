@@ -86,6 +86,20 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	@Override
 	public void mouseReleased(MouseEvent me) {
 		movingPiece = levelView.getDraggingPiece();
+		
+		//mouse release in bullpen
+		if(me.getX()>=-430 && me.getY()>=-70 && me.getX()<= -55 && me.getY() <= 670){
+			levelView.getTopPanel().remove(levelView.getDraggingPieceView());
+			levelView.setDraggingPieceView(null);
+			levelView.getJBullPenView().repaint();
+			
+			MouseEvent newme = new MouseEvent(me.getComponent(), me.getID(), me.getWhen(), me.getModifiers(), 
+					me.getX()+430, me.getY()+70, me.getClickCount(), false);
+			
+			levelView.getBullpenController().mousePressed(newme);
+		}
+		
+		
 		if (movingPiece!= null){
 			double dx=0;
 			double dy=0;
@@ -115,7 +129,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 				levelView.updateBS();
 			}
 			levelView.getLevel().checkAchievement();
-			//System.out.println(levelView.getLevel().getS);
 			levelView.updateAchievement();
 			
 			if (levelView.getDraggingPieceView() != null){
@@ -126,8 +139,6 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			
 			levelView.reDrawBoard();
 			levelView.repaint();
-		
-
 		}
 		else{
 			if(!fromBoard){
@@ -135,6 +146,11 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			}else{
 				
 			}
+			if (levelView.getDraggingPieceView() != null){
+				levelView.getTopPanel().remove(levelView.getDraggingPieceView());
+			}
+			levelView.setDraggingPieceView(null);
+			levelView.repaint();
 		}
 	
 		//cover

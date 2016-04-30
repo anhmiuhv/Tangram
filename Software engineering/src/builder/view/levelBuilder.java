@@ -101,7 +101,7 @@ public class levelBuilder extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblKabasuji = new JLabel("KABASUJI");
-		lblKabasuji.setBounds(353, 26, 110, 50);
+		lblKabasuji.setBounds(353, 26, 250, 50);
 		panel.add(lblKabasuji);
 		lblKabasuji.setForeground(Color.BLACK);
 		lblKabasuji.setFont(new Font("Broadway Copyist Text Ext", Font.PLAIN, 34));

@@ -116,11 +116,11 @@ public class Piece implements java.io.Serializable{
 			}
 		}
 		
-		for (int  i = 0;i<6;i++){
+		/*for (int  i = 0;i<6;i++){
 			System.out.println(ranSquare[i].getColumn());
 			System.out.println(ranSquare[i].getRow());
 		}
-		
+		*/
 		
 		ranPieceNum++;
 		

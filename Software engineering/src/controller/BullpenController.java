@@ -106,7 +106,7 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 		    pieceN = ((bpY/185)+1)*2 - bpX;
 		    
 		    if(bullpen.getPieces().get(pieceN) != null){
-		    	levelview.getBoardController().mouseReleased(null);
+		    	//levelview.getBoardController().mouseReleased(null);
 		    	return;
 		    }
 			
