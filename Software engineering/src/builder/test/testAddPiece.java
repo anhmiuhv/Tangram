@@ -49,6 +49,12 @@ public class testAddPiece {
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
 			
+			for (int i = 0; i < 4; i++){
+				r.mouseMove(300, 140);
+				r.mousePress(InputEvent.BUTTON1_MASK);
+				r.mouseRelease(InputEvent.BUTTON1_MASK);
+			}
+
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

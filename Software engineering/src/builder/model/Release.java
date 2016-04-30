@@ -116,6 +116,7 @@ public class Release extends LevelEditor{
 
 	@Override
 	public void createLevelEditorState() {
+		container.clearPlacedPiece();
 		this.les = new LevelEditorState(levelNum, LevelEditorState.RELEASE, -1, -1, container, 
 				bc.getSelected(),bc.getBoard(), bc.getHints(), this.squareNum, this.colorNum, 
 				bc.getIsHintSquare(), this.coloredNum, this.actualNum, this.actualColorNum);

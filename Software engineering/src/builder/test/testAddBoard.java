@@ -27,7 +27,7 @@ public class testAddBoard {
 	public void dispose(){
 		this.app.getLvlBuilder().getLvle().close();
 	}
-	
+
 	@Test
 	public void test() {
 		Robot r;
@@ -57,14 +57,18 @@ public class testAddBoard {
 			r.mouseMove(1000, 450);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-
-
+			for (int i = 0; i < 17; i++){
+				r.mouseMove(300, 140);
+				r.mousePress(InputEvent.BUTTON1_MASK);
+				r.mouseRelease(InputEvent.BUTTON1_MASK);
+			}
+			
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		
+
 	}
 
 

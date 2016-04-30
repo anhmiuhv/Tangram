@@ -44,7 +44,9 @@ public class ColoredNumber implements java.io.Serializable{
 	}
 	
 	
-
+	/**
+	 * @return change the number to string
+	 */
 	public String toString(){
 		if (c.equals(Color.YELLOW)){
 			return "Yellow" + i;	
