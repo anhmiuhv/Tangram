@@ -67,10 +67,12 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		else{
 			movingPiece = pressedPiece;
 			levelView.setDraggingPiece(pressedPiece);
-			levelView.setDraggingPieceView(new JPieceView(pressedPiece, 450+movingPiece.getpColumn()*30,210+movingPiece.getpRow()*30 ));
+			levelView.setDraggingPieceView(new JPieceView(pressedPiece, 450+movingPiece.getpColumn()*30-movingPiece.getSquares()[0].getColumn()*30,210+movingPiece.getpRow()*30 -movingPiece.getSquares()[0].getRow()*30));
 			levelView.getTopPanel().add(levelView.getDraggingPieceView());
-			levelView.setDiffx(me.getX()-450-movingPiece.getpColumn()*30);
-			levelView.setDiffy(me.getY()-210-movingPiece.getpRow()*30);
+			System.out.println( 450+movingPiece.getpColumn()*30);
+			System.out.println( 210+movingPiece.getpRow()*30 );
+			levelView.setDiffx(me.getX()-450-movingPiece.getpColumn()*30+movingPiece.getSquares()[0].getColumn()*30);
+			levelView.setDiffy(me.getY()-210-movingPiece.getpRow()*30+movingPiece.getSquares()[0].getRow()*30);
 			dbouardX = me.getX() - movingPiece.getpColumn()*30;
 			dbouardY = me.getY() - movingPiece.getpRow()*30;
 
