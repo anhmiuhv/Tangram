@@ -3,10 +3,13 @@ package controller;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
+import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
+
 import model.Board;
 import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
+import model.ReleaseLevel;
 import view.JPieceView;
 import view.LevelView;
 
@@ -141,13 +144,15 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		if (doMove((int)dx,(int)dy,movingPiece)== true){
 			movingPiece.setpColumn((int)dx);
 			movingPiece.setpRow((int)dy);
-			markgreen(movingPiece);
-			board.addpiece(movingPiece);
+			Piece greenPiece = markgreen(movingPiece);
+			board.addpiece(greenPiece);
 			coverSquare((int)dx,(int)dy,movingPiece);
 			
 			if(levelView.getLevel() instanceof PuzzleLevel){
 				((PuzzleLevel)levelView.getLevel()).incrementUsedMove();
 				levelView.updateBS();
+			}else if(levelView.getLevel() instanceof ReleaseLevel){
+				coverColor((int)dx,(int)dy,movingPiece);
 			}
 			levelView.getLevel().checkAchievement();
 			levelView.updateAchievement();
@@ -225,6 +230,29 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		}
 	}
 	
+	public void coverColor(int testColumn, int testRow, Piece testPiece){
+		for (int i =0;i<6;i++){
+			int findx;
+			int findy;
+			findx=testColumn+ testPiece.getSquares()[i].getColumn()- testPiece.getSquares()[0].getColumn();
+			findy = testRow + testPiece.getSquares()[i].getRow()- testPiece.getSquares()[0].getRow();
+			for (int j =0;j<board.getSquare().length;j++){
+				if ((board.getSquare()[j].getColumn()==findx)&&(board.getSquare()[j].getRow()==findy)){
+					if(((ReleaseLevel)levelView.getLevel()).getCl()[j] == null){
+						continue;
+					}
+					if(((ReleaseLevel)levelView.getLevel()).getCl()[j].equals(Color.pink)){
+						((ReleaseLevel)levelView.getLevel()).increamentRed();
+					}else if(((ReleaseLevel)levelView.getLevel()).getCl()[j].equals(Color.orange)){
+						((ReleaseLevel)levelView.getLevel()).increamentGreen();
+					}else if(((ReleaseLevel)levelView.getLevel()).getCl()[j].equals(Color.yellow)){
+						((ReleaseLevel)levelView.getLevel()).increamentYellow();
+					}
+				}
+			}
+		}
+	}
+	
 	
 	public boolean doMove(int testColumn, int testRow, Piece testPiece){
 		
@@ -258,10 +286,12 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		return true;
 	}
 	
-	public void markgreen(Piece mp){
+	public Piece markgreen(Piece mp){
+		Piece newmp = new Piece(mp.getpRow(),mp.getpColumn(),mp.getSquares(),mp.getHead(),mp.getname());
 		if(levelView.getLevel() instanceof LightningLevel){
-			mp.setColor(Color.GREEN);
+			newmp.setColor(Color.GREEN);
 		}
+		return newmp;
 	}
 	
 

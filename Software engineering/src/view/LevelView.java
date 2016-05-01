@@ -246,10 +246,8 @@ public class LevelView extends JFrame {
 		
 		contentPane.add(boardView);
 		
-		HintView hv = new HintView(boardView,level.getBoard());
+		
 		 if(level.getLevelType().equals("release")){
-			
-
 			int[] squareNum = ((ReleaseLevel)level).getSquareNum();
 			Color[] cl = ((ReleaseLevel)level).getCl();
 			for(int i = 0;i<level.getBoard().getSquare().length;i++){
@@ -269,7 +267,8 @@ public class LevelView extends JFrame {
 				}
 			}
 		}
-			boardView.createSquareView();
+		HintView hv = new HintView(boardView,level.getBoard());
+		boardView.createSquareView();
 	}
 	
 	
