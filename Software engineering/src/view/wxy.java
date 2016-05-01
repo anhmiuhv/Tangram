@@ -17,8 +17,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 
 /**
- * 监听鼠标事件
- * 可以看出，当双击鼠标时，第一次的点击会触发一次单击事件
+ * 
  * @author HAN
  *
  */

@@ -38,7 +38,7 @@ public class AchievementController {
 		}
 		else{
 			JOptionPane.showMessageDialog(levelview.getContentPane(),
-					"You get 3 stars, that is awesome£¡", "Achievement", JOptionPane.INFORMATION_MESSAGE);
+					"You get 3 stars, that is awesome", "Achievement", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("aaaaaaa");
 		}
 		levelview.closeWindowsFlag = true;
