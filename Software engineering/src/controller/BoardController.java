@@ -290,6 +290,8 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		Piece newmp = new Piece(mp.getpRow(),mp.getpColumn(),mp.getSquares(),mp.getHead(),mp.getname());
 		if(levelView.getLevel() instanceof LightningLevel){
 			newmp.setColor(Color.GREEN);
+		}else{
+			newmp.setColor(mp.getColor());
 		}
 		return newmp;
 	}
