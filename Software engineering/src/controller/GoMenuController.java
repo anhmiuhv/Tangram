@@ -17,6 +17,7 @@ public class GoMenuController  extends java.awt.event.MouseAdapter{
 	}
 	
 	public void actionPerformed(){
+
 		level.createLevelState();
 		level.getLevelState().saveState();
 		

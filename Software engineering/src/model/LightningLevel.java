@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.ArrayList;
 
 import move.*;
 
@@ -53,8 +54,12 @@ public class LightningLevel extends Level{
 	
 	@Override
 	public void createLevelState() {
-		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,
-				this.allowedTime, true, this.star, this.p, new int[0], new Color[0]);
+		Board b = new Board(this.getBoard().getSquare());
+		b.sethint(this.getBoard().getHint());
+		Bullpen bp = new Bullpen(bullpenPiece);
+		System.out.println(bullpenPiece.get(0).getColor());
+		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, -1,
+				this.allowedTime, true, this.star, bp, new int[0], new Color[0]);
 		
 	}
 
@@ -69,6 +74,11 @@ public class LightningLevel extends Level{
 		this.locked = levelState.getLocked();
 		this.star = levelState.getAchievement();
 		this.allowedTime = levelState.getAllowedTime();
+		this.bullpenPiece = new ArrayList<Piece>();
+		for (Piece piece: this.p.getPieces()){
+			//System.out.println(piece.getColor());
+			this.bullpenPiece.add(piece);
+		}
 	}
 
 

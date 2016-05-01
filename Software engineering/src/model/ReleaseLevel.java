@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.ArrayList;
 
 import move.*;
 
@@ -11,9 +12,10 @@ public class ReleaseLevel extends Level{
 	 */
 	private static final long serialVersionUID = 4710492805516683152L;
 	int Sets;
+
 	int redCounter;
 	int yellowCounter;
-	int blueCounter;
+	int greenCounter;
 	
 	int[] squareNum;
 	Color[] cl;
@@ -26,7 +28,11 @@ public class ReleaseLevel extends Level{
 		super(LevelNumber, LevelType, b, p);
 		this.squareNum=squareNum;
 		this.cl =cl;
-		// TODO Auto-generated constructor stub
+		
+		Sets = 0;
+		redCounter = 0;
+		yellowCounter = 0;
+		greenCounter = 0;
 	}
 
 	@Override
@@ -52,8 +58,11 @@ public class ReleaseLevel extends Level{
 
 	@Override
 	public void createLevelState() {
-		this.levelState = new LevelState(this.LevelNumber, this.LevelType, this.b, -1,
-				-1, this.locked, this.star, this.p, this.squareNum, this.cl);
+		Board b = new Board(this.getBoard().getSquare());
+		b.sethint(this.getBoard().getHint());
+		Bullpen bp = new Bullpen(bullpenPiece);
+		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, 
+				-1, -1, true, this.star, bp, this.squareNum, this.cl);
 	}
 
 	@Override
@@ -68,13 +77,74 @@ public class ReleaseLevel extends Level{
 		this.star = levelState.getAchievement();
 		this.squareNum = levelState.getSquareNum();
 		this.cl = levelState.getCl();
+		this.bullpenPiece = new ArrayList<Piece>();
+		for (Piece piece: this.p.getPieces()){
+			this.bullpenPiece.add(piece);
+		}
 		
 	}
 
 	@Override
 	public void checkAchievement() {
-		// TODO Auto-generated method stub
+		Sets = 0;
+		if(redCounter == 6){
+			Sets++;
+		}
+		if(greenCounter == 6){
+			Sets++;
+		}
+		if(yellowCounter == 6){
+			Sets++;
+		}
 		
+		
+		if(Sets == 1){
+			updateLevelStar(new Achievement(1));
+		}else if(Sets == 2){
+			updateLevelStar(new Achievement(2));
+		}else if(Sets == 3){
+			updateLevelStar(new Achievement(3));
+			//end level
+		}else{
+			updateLevelStar(new Achievement(0));
+		}
+		
+	}
+	
+	public int getRedCounter() {
+		return redCounter;
+	}
+	
+	public void increamentRed(){
+		redCounter++;
+	}
+
+	public int getYellowCounter() {
+		return yellowCounter;
+	}
+	
+	public void increamentYellow(){
+		yellowCounter++;
+	}
+
+	public int getGreenCounter() {
+		return greenCounter;
+	}
+	
+	public void increamentGreen(){
+		greenCounter++;
+	}
+
+	public void setRedCounter(int redCounter) {
+		this.redCounter = redCounter;
+	}
+
+	public void setYellowCounter(int yellowCounter) {
+		this.yellowCounter = yellowCounter;
+	}
+
+	public void setGreenCounter(int greenCounter) {
+		this.greenCounter = greenCounter;
 	}
 
 }
