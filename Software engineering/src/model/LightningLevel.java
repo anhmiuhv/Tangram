@@ -59,7 +59,7 @@ public class LightningLevel extends Level{
 		Bullpen bp = new Bullpen(bullpenPiece);
 		System.out.println(bullpenPiece.get(0).getColor());
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, -1,
-				this.allowedTime, true, this.star, bp, new int[0], new Color[0]);
+				this.allowedTime, this.isLocked(), this.star, bp, new int[0], new Color[0]);
 		
 	}
 
