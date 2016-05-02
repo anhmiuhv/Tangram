@@ -24,15 +24,6 @@ public class LevelState implements java.io.Serializable{
 	 * 
 	 */
 	
-
-	public static void main(String[] args){
-		LevelState n = new LevelState();
-		n.saveState();
-		LevelState a = new LevelState();
-		a.loadState("puzzle1.sav");
-		//System.out.println(a.levelName);
-	}
-	
 	
 	//Name of level type
 	public static final String PUZZLE = "puzzle";

@@ -47,7 +47,7 @@ public class PuzzleLevel extends Level {
 		b.sethint(this.getBoard().getHint());
 		Bullpen bp = new Bullpen(bullpenPiece);
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, 
-				this.allowedMove, -1, true, this.star, bp, new int[0], new Color[0]);
+				this.allowedMove, -1, this.isLocked(), this.star, bp, new int[0], new Color[0]);
 		
 	}
 
