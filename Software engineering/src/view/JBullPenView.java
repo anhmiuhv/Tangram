@@ -2,8 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -11,9 +9,13 @@ import javax.swing.JPanel;
 
 import model.Bullpen;
 import model.Piece;
-import javax.swing.JScrollPane;
 
 public class JBullPenView extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8737427457509103124L;
 
 	Bullpen bp;
 	

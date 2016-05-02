@@ -8,9 +8,9 @@ If you select Lightning level, similarly input time allowed and Enter.
 If you select Release level (you have to select square on board first)
 , select color first, then pick the number and place it on the board. 
 
-For creating the board, press the squares.
+For constructing the board, select the squares. You can also deselect the square. You cannot deselect the square if the square is a hint square
  
-For creating the hint, click on hint button to switch to hint mode and click on the squares of the board to create hint. A valid hint 
+For creating the hint, click on hint button to switch to hint mode and select one of the squares of the board to create a hint square. A valid hint 
 contains 6 squares on the board. 
 
 click on the "+" button to create the board. To be able to create the board, the board has to be connected and have 6n squares, and contains a valid hint. Then you can test the level by pressing the Test button.

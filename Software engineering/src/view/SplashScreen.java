@@ -10,7 +10,11 @@ import java.awt.*;
 import javax.swing.*;
 
 public class SplashScreen extends JWindow {
-  private int duration;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4269604548453140157L;
+private int duration;
   public SplashScreen(int d) {
     duration = d;
   }
@@ -36,7 +40,6 @@ public class SplashScreen extends JWindow {
     
 
     Color oraRed = new Color(156, 20, 20,  255);
-    Color Blue = new Color(0,255,255);
     content.setBorder(BorderFactory.createLineBorder(oraRed, 10));
     
 

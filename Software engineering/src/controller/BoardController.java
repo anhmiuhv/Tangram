@@ -3,8 +3,6 @@ package controller;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
-import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
-
 import model.Board;
 import model.LightningLevel;
 import model.Piece;

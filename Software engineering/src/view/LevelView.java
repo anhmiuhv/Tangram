@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,26 +27,25 @@ import controller.VerticalFlipController;
 
 import model.*;
 
-
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
 
 public class LevelView extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4163113649165145864L;
 	LevelSelection levelselection;
 	JLabel moves = new JLabel();
 	JLabel stayLabel = null;
@@ -267,6 +267,7 @@ public class LevelView extends JFrame {
 				}
 			}
 		}
+		@SuppressWarnings("unused")
 		HintView hv = new HintView(boardView,level.getBoard());
 		boardView.createSquareView();
 	}

@@ -2,6 +2,8 @@ package builder.move;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
 import model.Square;
 import builder.model.LevelEditor;
 import builder.view.*;
@@ -18,14 +20,22 @@ public class SelectTileBoardMove implements IMove{
 	public SelectTileBoardMove(JSquareView square){
 		this.square = square;
 	}
+	
 	@Override
-	public boolean isMoveValid(LevelEditor level) {
-		return true;
+	public boolean isMoveValid(LevelEditor level) {	
+		return !square.isHint();
 	}
 
 
 	@Override
 	public boolean doMove(LevelEditor level) {
+		if (!isMoveValid(level)) {
+			JOptionPane.showMessageDialog(square.getParent(),
+					"This square is a hint square",
+					"Invalid move",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
 		if (square.getColor().equals(Color.BLACK)){
 			Square s = square.getSquare();
 			level.getBoardCreator().deselectSquare(s.getColumn() + s.getRow() * 12);

@@ -9,6 +9,10 @@ import model.Piece;
 import model.Square;
 
 public class JBoardView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5437116973071766436L;
 	Board board ;
 	int bX;
 	int bY;
