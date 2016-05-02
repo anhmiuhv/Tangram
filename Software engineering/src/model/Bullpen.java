@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 public class Bullpen implements java.io.Serializable{

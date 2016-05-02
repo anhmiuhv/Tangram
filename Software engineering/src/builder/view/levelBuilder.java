@@ -2,6 +2,7 @@ package builder.view;
 
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -16,12 +17,14 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.SwingConstants;
 
-import java.awt.Desktop;
+import java.awt.HeadlessException;
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import builder.model.KabasujiBuilder;
 
@@ -121,9 +124,13 @@ public class levelBuilder extends JFrame {
 		button_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Desktop.getDesktop().open(new File("temp/builderhelp"));
+					JOptionPane.showMessageDialog(contentPane, 
+								readFile("temp/builderhelp", Charset.defaultCharset()), 
+								"Help", 
+								JOptionPane.INFORMATION_MESSAGE);
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -140,10 +147,26 @@ public class levelBuilder extends JFrame {
 		
 	}
 
+	/**
+	 * get the level editor view of the app
+	 * @return level editor view
+	 */
 	public LevelEditorView getLvle() {
 		return lvle;
 	}
 
-
+	/**
+	 * helper method to read text from file
+	 * @param path path to file
+	 * @param encoding text encoding
+	 * @return string from the file
+	 * @throws IOException
+	 */
+	private static String readFile(String path, Charset encoding) 
+			  throws IOException 
+			{
+			  byte[] encoded = Files.readAllBytes(Paths.get(path));
+			  return new String(encoded, encoding);
+			}
 
 }

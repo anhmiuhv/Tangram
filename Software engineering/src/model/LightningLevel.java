@@ -4,13 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-import move.*;
-
 public class LightningLevel extends Level{
-	/**
-	 * Generated serialized
-	 */
-	private static final long serialVersionUID = -5041499917978722960L;
 	int allowedTime;
 	int usedTime;
 	

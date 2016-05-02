@@ -1,12 +1,9 @@
 package builder.test;
 
-import static org.junit.Assert.*;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +11,11 @@ import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
+/**
+ * test adding piece
+ * @author lthoang
+ *
+ */
 public class testAddPiece {
 
 	BuilderApplication app;

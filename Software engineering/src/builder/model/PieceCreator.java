@@ -132,8 +132,8 @@ public class PieceCreator {
 	
 	/**
 	 * select a square for creating a piece
-	 * @param row
-	 * @param column
+	 * @param row row of square
+	 * @param column column of square
 	 */
 	public void selectSquare(int row, int column){
 		this.selectedSquare[row * 6 + column] = true;

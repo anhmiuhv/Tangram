@@ -12,6 +12,11 @@ import org.junit.Test;
 
 import builder.model.PlacedPiece;
 
+/**
+ * test placed piece
+ * @author lthoang
+ *
+ */
 public class testPlacedPiece {
 	PlacedPiece n;
 	Piece p;

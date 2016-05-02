@@ -4,13 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-import move.*;
-
 public class ReleaseLevel extends Level{
-	/**
-	 * Generated serrialized
-	 */
-	private static final long serialVersionUID = 4710492805516683152L;
 	int Sets;
 
 	int redCounter;

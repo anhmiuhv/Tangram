@@ -99,14 +99,6 @@ public abstract class LevelEditor {
 	public Stack<IMove> getUndoStack() {
 		return undoStack;
 	}
-
-	/**
-	 * Set the undo stack
-	 * @param undoStack
-	 */
-	public void setUndoStack(Stack<IMove> undoStack) {
-		this.undoStack = undoStack;
-	}
 	
 	/**
 	 * Get the redo stack
@@ -116,14 +108,6 @@ public abstract class LevelEditor {
 		return redoStack;
 	}
 	
-	/**
-	 * Set the redo stack
-	 * @param redoStack
-	 */
-	public void setRedoStack(Stack<IMove> redoStack) {
-		this.redoStack = redoStack;
-	}
-
 	/**
 	 * Push move into undo stack
 	 * @param m undo stack

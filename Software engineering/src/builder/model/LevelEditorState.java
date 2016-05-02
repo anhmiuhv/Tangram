@@ -69,16 +69,20 @@ public class LevelEditorState implements java.io.Serializable{
 	
 	/**
 	 * Create LevelEditorState
-	 * @param levelNum
-	 * @param levelType
-	 * @param allowedTime
-	 * @param allowedMove
-	 * @param pc
-	 * @param selectedSquare
-	 * @param board
-	 * @param hint
-	 * @param squareNum
-	 * @param color
+	 * @param levelNum level number
+	 * @param levelType level type
+	 * @param allowedTime allowed time for lightning level
+	 * @param allowedMove allowed move for puzzle level
+	 * @param pc piece container
+	 * @param selectedSquare selected squares on the board
+	 * @param board the board created
+	 * @param hint hint of the game
+	 * @param squareNum numbers of the square
+	 * @param color colors of the number of the square
+	 * @param isHintSquare array of hint squares
+	 * @param coloredNumber colored number object for release level
+	 * @param actualSquareNum square num format for LevelState
+	 * @param actualColor color format for LevelState
 	 */
 	public LevelEditorState(int levelNum, String levelType, int allowedTime,
 			int allowedMove, PieceContainer pc, boolean[] selectedSquare,Board board, 
@@ -183,14 +187,26 @@ public class LevelEditorState implements java.io.Serializable{
 		return squareNum;
 	}
 
+	/**
+	 * get actual square numbers
+	 * @return actual square numbers
+	 */
 	public int[] getActualSquareNum() {
 		return actualSquareNum;
 	}
 
+	/**
+	 * get array of colors
+	 * @return colors array
+	 */
 	public Color[] getColor() {
 		return color;
 	}
 
+	/**
+	 * get actual array of colors
+	 * @return array of colors
+	 */
 	public Color[] getActualColor() {
 		return actualColor;
 	}
@@ -248,7 +264,7 @@ public class LevelEditorState implements java.io.Serializable{
 	
 	/**
 	 * Loads a LevelEditorState object from [fileName].sav in the levels directory
-	 * @param fileName
+	 * @param fileName path to file
 	 */
 	public void loadState(String fileName) {
 		File f;

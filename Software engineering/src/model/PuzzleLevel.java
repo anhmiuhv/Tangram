@@ -4,15 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
-
-import move.*;
-
 public class PuzzleLevel extends Level {
-	/**
-	 * Generated serialized
-	 */
-	private static final long serialVersionUID = -4071396056939768290L;
 	int allowedMove;
 	int usedMove;
 	public PuzzleLevel(LevelState ls){

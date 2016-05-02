@@ -1,5 +1,8 @@
-For the level builder,  Click New Level button to create a new level. For the piece creator on bottom left corner, user can create a piece by pressing 6 square. The piece can be successfully added into the piece container by pressing the "+" 
-button if the piece is valid. In the piece container, you can delete the piece you created. You should select level type on the top right corner. 
+For the level builder,  Click New Level button to create a new level. For the piece creator 
+on bottom left corner, user can create a piece by pressing 6 square. 
+The piece can be successfully added into the piece container by pressing the "+" button if the piece is valid.
+In the piece container, you can delete the piece you created.
+You should select level type on the top right corner. 
 
 If puzzle level is selected, you then input allowed move AND PRESS ENTER key to validate. 
 
@@ -13,7 +16,8 @@ For constructing the board, select the squares. You can also deselect the square
 For creating the hint, click on hint button to switch to hint mode and select one of the squares of the board to create a hint square. A valid hint 
 contains 6 squares on the board. 
 
-click on the "+" button to create the board. To be able to create the board, the board has to be connected and have 6n squares, and contains a valid hint. Then you can test the level by pressing the Test button.
+click on the "+" button to create the board. To be able to create the board, the board has to be connected and have 6n squares, and contains a valid hint.
+ Then you can test the level by pressing the Test button.
 
 Click on Create Level button to and then click on Save&Exit to finish creating the level. 
 

@@ -6,6 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import builder.model.*;
+
+/**
+ * test release level
+ * @author lthoang
+ *
+ */
 public class testRelease {
 	Release r;
 	LevelEditorState les;
