@@ -1,7 +1,5 @@
 package builder.test;
 
-import static org.junit.Assert.*;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -14,7 +12,7 @@ import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
-public class testAddPiece {
+public class testAddBoard {
 
 	BuilderApplication app;
 	@Before
@@ -27,7 +25,7 @@ public class testAddPiece {
 	public void dispose(){
 		this.app.getLvlBuilder().getLvle().close();
 	}
-	
+
 	@Test
 	public void test() {
 		Robot r;
@@ -39,28 +37,36 @@ public class testAddPiece {
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
 
-			for (int i = 150; i < 150 + 30 * 6; i = i +30){
-				r.mouseMove(i, 450);
+			for (int i = 670; i < 670 + 25 * 6; i = i +25){
+				r.mouseMove(i, 370);
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 			}
-			
-			r.mouseMove(150 + 30 * 6 + 90, 540);
+			r.mouseMove(150, 640);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-			
-			for (int i = 0; i < 4; i++){
-				r.mouseMove(300, 140);
+
+			for (int i = 670; i < 670 + 25 * 6; i = i +25){
+				r.mouseMove(i, 370);
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 			}
 
+			r.mouseMove(1000, 450);
+			r.mousePress(InputEvent.BUTTON1_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_MASK);
+			for (int i = 0; i < 17; i++){
+				r.mouseMove(300, 140);
+				r.mousePress(InputEvent.BUTTON1_MASK);
+				r.mouseRelease(InputEvent.BUTTON1_MASK);
+			}
+			
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		
+
 	}
 
 

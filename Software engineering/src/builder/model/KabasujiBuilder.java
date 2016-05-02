@@ -70,6 +70,7 @@ public class KabasujiBuilder {
 			if(directoryListing != null){  // Use default level directory to create buttons
 				for(File child : directoryListing){
 					if (child.getName().equals(".DS_Store")) continue;
+					if (child.getName().equals("test")) continue;
 					LevelEditorState tmp = new LevelEditorState();
 					tmp.loadState(child.getName());
 					String levelType = tmp.getLevelType();
@@ -97,19 +98,4 @@ public class KabasujiBuilder {
 
 	}
 	
-	/**
-	 * replace location of the array with the given editor
-	 * @param order order
-	 * @param editor editor
-	 * @return true if successfull
-	 */
-	public boolean replace(int order, LevelEditor editor){
-		try{
-			this.editor.remove(order);
-			this.editor.add(order, editor);
-			return true;
-		} catch (Exception e){
-			return false;
-		}
 	}
-}

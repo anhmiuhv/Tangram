@@ -174,7 +174,7 @@ public class Release extends LevelEditor{
 		this.pos =  new HashSet<Integer>();
 		for (ColoredNumber cn: coloredNum.values()){
 			if (cn.position != -1){
-				System.out.println(this.pos.add(cn.position));
+				this.pos.add(cn.position);
 			}
 		}
 
