@@ -4,6 +4,7 @@ package builder.view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
 
 import javax.swing.JLabel;
@@ -15,11 +16,12 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.SwingConstants;
 
+import java.awt.Desktop;
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Toolkit;
-
-import javax.swing.ImageIcon;
+import java.io.File;
+import java.io.IOException;
 
 import builder.model.KabasujiBuilder;
 
@@ -111,13 +113,19 @@ public class levelBuilder extends JFrame {
 		button_9.setBounds(741, 26, 110, 25);
 		panel.add(button_9);
 		
-		button_9.setSelectedIcon(new ImageIcon("C:\\Users\\Bob\\Desktop\\add.png"));
+		
 		
 		JButton button_10 = new JButton("Help");
 		button_10.setBounds(40, 26, 77, 25);
 		panel.add(button_10);
 		button_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Desktop.getDesktop().open(new File("temp/builderhelp"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		button_9.addActionListener(new ActionListener() {			

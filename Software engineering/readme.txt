@@ -15,13 +15,23 @@ the time is up, the game will end and go back to level selection panel.
 For the level builder,  Click New Level button to create a new level. For the piece creator on bottom left corner, user can 
 create a piece by pressing 6 square. The piece can be successfully added into the piece container by pressing the "+" 
 button if the piece is valid. In the piece container, you can delete the piece you created. You should select level type on 
-the top right corner. If puzzlelevel is selected, you then input allowed move AND PRESS ENTER key to validate. If you select 
+the top right corner. If puzzle level is selected, you then input allowed move AND PRESS ENTER key to validate. If you select 
 Lightning level, similarly input time allowed and Enter. If you select Release level(you have to select square on board first)
-, select color first, then pick the number and place it on the board. For creating the board, press the squares and then 
-click on hint button and click on the board to create hint(hint as to be 6 squares). Then click on the "+" button to create
-the board until it is valid. Then you can test the level by pressing the Test button. After every element is added, click 
-on Create Level button to and then click on Save&Exit to finish creating the level. Undo, redo, restart button can work 
-perfectly. Then, when you open the game, the builded level will appear.   
+, select color first, then pick the number and place it on the board. 
+
+For creating the board, press the squares.
+ 
+For creating the hint, click on hint button to switch to hint mode and click on the squares of the board to create hint. A valid hint 
+contains 6 squares on the board. 
+
+Then click on the "+" button to create the board. To be able to create the board, the board
+has to be connected and have 6n squares, and contains a valid hint. Then you can test the level by pressing the Test button.
+Click on Create Level button to and then click on Save&Exit to finish creating the level. 
+
+A valid Level contains a created board. For a release level, it is also required to put all three stacks of numbers on the board.
+
+If level is not valid, builder will not create level.
+Undo, redo, restart button can work perfectly. Then, when you open the game, the builded level will appear.   
 
 
 Our test case have covered about 40%. 

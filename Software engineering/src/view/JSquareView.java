@@ -1,18 +1,17 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Square;
 
 public class JSquareView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3050748323372552414L;
 	Square square;
 	Color cl;
 	JPanel topJPanel;

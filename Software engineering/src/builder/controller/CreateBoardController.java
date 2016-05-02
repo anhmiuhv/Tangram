@@ -3,6 +3,8 @@ package builder.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import builder.model.LevelEditor;
 import builder.move.CreateBoardMove;
 import builder.move.IMove;
@@ -32,6 +34,11 @@ public class CreateBoardController implements ActionListener {
 		IMove m = new CreateBoardMove(lvle);
 		if (m.doMove(lvle)){
 			lvle.pushUndo(m);
+		} else {
+			JOptionPane.showMessageDialog(view.getParent(),
+					"Invalid Board",
+					"Invalid Board",
+					JOptionPane.WARNING_MESSAGE);
 		}
 		lvle.getRedoStack().removeAllElements();
 		view.update();

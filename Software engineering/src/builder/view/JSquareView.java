@@ -1,9 +1,6 @@
 package builder.view;
 
 import java.awt.Color;
-import java.awt.Point;
-import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;

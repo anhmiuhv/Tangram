@@ -23,10 +23,6 @@ public class testAddPiece {
 		this.app = new BuilderApplication(builder,false);	
 	}
 
-	@After
-	public void dispose(){
-		this.app.getLvlBuilder().getLvle().close();
-	}
 	
 	@Test
 	public void test() {
@@ -34,8 +30,9 @@ public class testAddPiece {
 		try {
 			r = new Robot();
 			r.setAutoDelay(40);
+			
 			r.setAutoWaitForIdle(true);
-			r.mouseMove(900, 175);
+			r.mouseMove(925, 175);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,20 +15,21 @@ import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
-public class testAddBoard {
+public class testSwitchMode {
 
 	BuilderApplication app;
+	//LevelEditorView lvlev;
 	@Before
 	public void setup(){
 		Builder builder = new Builder("linh", new KabasujiBuilder());
-		this.app = new BuilderApplication(builder,false);	
+		this.app = new BuilderApplication(builder, false);	
+		//this.lvlev = this.app.getLvlBuilder().getLvle();
 	}
-
+	
 	@After
-	public void dispose(){
-		this.app.getLvlBuilder().getLvle().close();
+	public  void dispose(){
+		this.app.getLvlBuilder().close();
 	}
-
 	@Test
 	public void test() {
 		Robot r;
@@ -38,38 +40,28 @@ public class testAddBoard {
 			r.mouseMove(900, 175);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-
-			for (int i = 670; i < 670 + 25 * 6; i = i +25){
-				r.mouseMove(i, 370);
-				r.mousePress(InputEvent.BUTTON1_MASK);
-				r.mouseRelease(InputEvent.BUTTON1_MASK);
-			}
-			r.mouseMove(150, 640);
+			r.mouseMove(910, 185);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-
-			for (int i = 670; i < 670 + 25 * 6; i = i +25){
-				r.mouseMove(i, 370);
-				r.mousePress(InputEvent.BUTTON1_MASK);
-				r.mouseRelease(InputEvent.BUTTON1_MASK);
-			}
-
-			r.mouseMove(1000, 450);
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_DOWN);
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_ENTER);
+			r.delay(500);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-			for (int i = 0; i < 17; i++){
-				r.mouseMove(300, 140);
-				r.mousePress(InputEvent.BUTTON1_MASK);
-				r.mouseRelease(InputEvent.BUTTON1_MASK);
-			}
-			
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_DOWN);
+			r.keyPress(KeyEvent.VK_DOWN);
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_ENTER);
+			r.delay(500);
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-
+		
+		
 	}
-
 
 }

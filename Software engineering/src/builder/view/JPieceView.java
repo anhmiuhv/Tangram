@@ -1,10 +1,7 @@
 package builder.view;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 import model.Piece;

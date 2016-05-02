@@ -110,14 +110,6 @@ public class LevelEditorState implements java.io.Serializable{
 	}
 
 	/**
-	 * set the level number
-	 * @param levelNum level number
-	 */
-	public void setLevelNum(int levelNum) {
-		this.levelNum = levelNum;
-	}
-	
-	/**
 	 * get the level type
 	 * @return level type
 	 */
@@ -126,28 +118,11 @@ public class LevelEditorState implements java.io.Serializable{
 	}
 
 	/**
-	 * set the level type
-	 * @param levelType level type
-	 */
-	public void setLevelType(String levelType) {
-		this.levelType = levelType;
-	}
-	
-	/**
 	 * get the allowed time
 	 * @return allowed time
 	 */
 	public int getAllowedTime() {
 		return allowedTime;
-	}
-
-	/**
-	 * set the allowed time
-	 * @param allowedTime allowed time
-	 */
-
-	public void setAllowedTime(int allowedTime) {
-		this.allowedTime = allowedTime;
 	}
 
 	/**
@@ -160,29 +135,11 @@ public class LevelEditorState implements java.io.Serializable{
 	}
 
 	/**
-	 * set the allowed move
-	 * @param allowedMove allowed move
-	 */
-
-	public void setAllowedMove(int allowedMove) {
-		this.allowedMove = allowedMove;
-	}
-	
-	/**
 	 * get the editor hint squares
 	 * @return editor hint squares
 	 */
 	public boolean[] getIsHintSquare() {
 		return isHintSquare;
-	}
-
-	/**
-	 * set the editor hint squares
-	 * @param isHintSquare editor hint squares
-	 */
-
-	public void setIsHintSquare(boolean[] isHintSquare) {
-		this.isHintSquare = isHintSquare;
 	}
 
 	/**
@@ -195,27 +152,11 @@ public class LevelEditorState implements java.io.Serializable{
 	}
 
 	/**
-	 * set the piece container
-	 * @param pc piece container
-	 */
-	public void setPc(PieceContainer pc) {
-		this.pc = pc;
-	}
-
-	/**
 	 * 
 	 * @return return the selectedSquare
 	 */
 	public boolean[] getSelectedSquare() {
 		return selectedSquare;
-	}
-
-	/**
-	 * 
-	 * @param selectedSquare set the selectedSquare same as the input
-	 */
-	public void setSelectedSquare(boolean[] selectedSquare) {
-		this.selectedSquare = selectedSquare;
 	}
 
 	/**
@@ -228,26 +169,10 @@ public class LevelEditorState implements java.io.Serializable{
 
 	/**
 	 * 
-	 * @param board set the board same as the input
-	 */
-	public void setBoard(Board board) {
-		this.board = board;
-	}
-
-	/**
-	 * 
 	 * @return get the current Hint
 	 */
 	public Hint getHint() {
 		return hint;
-	}
-
-	/**
-	 * 
-	 * @param hint set the hint the same to hint
-	 */
-	public void setHint(Hint hint) {
-		this.hint = hint;
 	}
 
 	/**
@@ -258,36 +183,16 @@ public class LevelEditorState implements java.io.Serializable{
 		return squareNum;
 	}
 
-	/**
-	 * 
-	 * @param squareNum set the square number same as the input
-	 */
-	public void setSquareNum(int[] squareNum) {
-		this.squareNum = squareNum;
-	}
-
 	public int[] getActualSquareNum() {
 		return actualSquareNum;
-	}
-
-	public void setActualSquareNum(int[] actualSquareNum) {
-		this.actualSquareNum = actualSquareNum;
 	}
 
 	public Color[] getColor() {
 		return color;
 	}
 
-	public void setColor(Color[] color) {
-		this.color = color;
-	}
-
 	public Color[] getActualColor() {
 		return actualColor;
-	}
-
-	public void setActualColor(Color[] actualColor) {
-		this.actualColor = actualColor;
 	}
 
 	/**

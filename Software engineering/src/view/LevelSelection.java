@@ -32,6 +32,10 @@ import java.awt.Font;
 
 public class LevelSelection extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1672688232916609194L;
 	private JPanel contentPane;
 	public ArrayList<Level> testLevels;
 

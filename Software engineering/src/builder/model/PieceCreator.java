@@ -1,10 +1,6 @@
 package builder.model;
 import java.awt.Color;
-import java.awt.Point;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
-
 import model.Piece;
 import model.Square;
 
@@ -44,7 +40,6 @@ public class PieceCreator {
 	 * @return true if valid
 	 */
 	public boolean validPiece(){
-		Set<Point> s = new HashSet<Point>();
 		return (this.piece.isPiece())&&(dfsSquare(piece.getHead()));
 
 	}
