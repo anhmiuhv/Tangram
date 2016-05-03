@@ -35,7 +35,7 @@ public class SplashS extends JPanel {
 		JLabel lblNewLabel = new JLabel("GROUP:Patroclus");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 50));
 		
-		JLabel lblNewLabel_1 = new JLabel("Jingwei Shen, Xingyuan Wang, Kezheng Dai, Linh Hoang, Junbo Chen");
+		JLabel lblNewLabel_1 = new JLabel("Jingwei Shen, Xinyuan Wang, Kezheng Dai, Linh Hoang, Junbo Chen");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
