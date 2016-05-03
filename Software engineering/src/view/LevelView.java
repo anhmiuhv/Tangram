@@ -281,6 +281,7 @@ public class LevelView extends JFrame {
 		@SuppressWarnings("unused")
 		HintView hv = new HintView(boardView,level.getBoard());
 		boardView.createSquareView();
+
 	}
 	
 	
@@ -492,7 +493,7 @@ public class LevelView extends JFrame {
 		totalMove = ((PuzzleLevel) level).getAllowedMove();
 		moves.setText("Moves: " + moveUsed + "/" + totalMove);
 		if (moveUsed == totalMove){
-			new AchievementController(levelselection,this,this.getLevel().getAchievement()).actionPerformed();;
+			new AchievementController(levelselection,this,this.getLevel().getAchievement()).actionPerformed();
 		}
 	}
 	
@@ -522,7 +523,12 @@ public class LevelView extends JFrame {
 			stayLabel.setBounds(700,35, 60, 20);
 			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
 			bs.add(stayLabel);
+			
 		}
+	}
+	
+	public LevelSelection getLevelSelection(){
+		return levelselection;
 	}
 	
 }
