@@ -122,7 +122,7 @@ public class LevelSelection extends JFrame {
 								.addContainerGap()
 								.addComponent(btnNewButton)
 								.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 488, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
 								.addGap(107))
 				);
 		gl_contentPane.setVerticalGroup(
