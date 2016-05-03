@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
@@ -66,6 +67,7 @@ public class LevelEditorView extends JFrame {
 	JLabel timerLabel;
 	JPanel panel;
 	private JButton btnRedo;
+	private JButton btnUndo;
 
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
@@ -260,7 +262,7 @@ public class LevelEditorView extends JFrame {
 		}
 		panel.add(timerLabel);
 
-		JButton btnUndo = new JButton("Undo");
+		btnUndo = new JButton("Undo");
 		btnUndo.setBounds(120, 4, 89, 29);
 		btnUndo.addActionListener(new UndoController(this, editor));
 		panel.add(btnUndo);
@@ -374,5 +376,17 @@ public class LevelEditorView extends JFrame {
 	 */
 	public LevelEditor getEditor() {
 		return editor;
+	}
+
+	public JButton getUndoButton() {
+		return btnUndo;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public JComboBox<String> getMode() {
+		return mode;
 	}
 }
