@@ -45,14 +45,27 @@ public class JReleaseColoredNum extends JPanel {
 	JButton button_4;
 	int chosenNumber;
 	
+	/**
+	 * set chosen number
+	 * @param chosenNumber the chosen number
+	 */
 	public void setChosenNumber(int chosenNumber) {
 		this.chosenNumber = chosenNumber;
 	}
 
+	/**
+	 * get the chosen number
+	 * @return chosen number
+	 */
 	public int getChosenNumber() {
 		return chosenNumber;
 	}
 
+	/**
+	 * create the release color num config
+	 * @param editor model leveleditor
+	 * @param lev parent view
+	 */
 	public JReleaseColoredNum(LevelEditor editor, LevelEditorView lev) {
 		setLayout(null);
 		this.editor = editor;
@@ -60,7 +73,7 @@ public class JReleaseColoredNum extends JPanel {
 		init();
 	}
 	
-	void init(){
+	private void init(){
 
 		
 		textField = new JTextField();
@@ -168,10 +181,18 @@ public class JReleaseColoredNum extends JPanel {
 
 	}
 	
+	/**
+	 * get the color number
+	 * @return colored number
+	 */
 	public Color getColorNum() {
 		return colorNum;
 	}
 	
+	/**
+	 * get the color string
+	 * @return color string
+	 */
 	public String getColorString(){
 		if (colorNum.equals(Color.YELLOW)){
 			return "Yellow";
@@ -183,10 +204,17 @@ public class JReleaseColoredNum extends JPanel {
 		return "";
 	}
 	
+	/**
+	 * set the color
+	 * @param colorNum color
+	 */
 	public void setColorNum(Color colorNum) {
 		this.colorNum = colorNum;
 	}
 
+	/**
+	 * update the view
+	 */
 	public void update(){
 		if (editor.getLevelEditorType().equals(LevelEditorState.RELEASE)){
 			Release r = (Release) editor;
@@ -202,6 +230,10 @@ public class JReleaseColoredNum extends JPanel {
 
 	}
 
+	/**
+	 * get the chosen text field
+	 * @return text field
+	 */
 	public JTextField getTextField(){
 		switch (this.chosenNumber){
 		case 1:
@@ -219,6 +251,10 @@ public class JReleaseColoredNum extends JPanel {
 		}
 		return null;
 	}
+	
+	/**
+	 * reset all the background of the button
+	 */
 	public void setBackgroundButton() {
 		this.btnNewButton.setBackground(null);
 		this.button.setBackground(null);

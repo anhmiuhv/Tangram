@@ -5,10 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.junit.experimental.theories.Theories;
-
 import builder.model.LevelEditorState;
-import view.Application;
 import view.LevelSelection;
 import view.SplashScreen;
 
@@ -33,6 +30,7 @@ public class Kabasuji {
 		l[0] = p;*/
 		
 		//Application app = new Applicaiton();
+		@SuppressWarnings("unused")
 		LevelSelection levelSec = new LevelSelection(loadAll());//createPhaseTwoLevel());
 		
 		
@@ -42,13 +40,11 @@ public class Kabasuji {
 
 	public Kabasuji(ArrayList<Level> level){
 		this.levels = level;
+		@SuppressWarnings("unused")
 		LevelSelection levelSec = new LevelSelection(level);
 	}
 
 
-	private void initializeControllers() {
-
-	}
 
 	public static Level[] createPhaseTwoLevel(){
 		Level[] testLevels = new Level[1];
@@ -141,8 +137,6 @@ public class Kabasuji {
 	}
 	
 	
-	
-	@SuppressWarnings("null")
 	public static Level[] createTestLevel(){
 		Level[] testLevels = new Level[16];
 		int[] squareNum = new int[144];

@@ -3,6 +3,7 @@ package builder.test;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,14 +14,12 @@ import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
 /**
- * test edit level
+ * test switching mode
  * @author lthoang
  *
  */
-public class testEditLevel {
-	/** (dx,dy) are offsets into the widget space. Feel Free to Use as Is. */
-	
-	
+public class testSwitchMode {
+
 	BuilderApplication app;
 	//LevelEditorView lvlev;
 	@Before
@@ -44,10 +43,22 @@ public class testEditLevel {
 			r.mouseMove(900, 175);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-			r.mouseMove(200, 165);
+			r.mouseMove(910, 185);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_DOWN);
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_ENTER);
+			r.delay(500);
+			r.mousePress(InputEvent.BUTTON1_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_MASK);
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_DOWN);
+			r.keyPress(KeyEvent.VK_DOWN);
+			r.delay(500);
+			r.keyPress(KeyEvent.VK_ENTER);
+			r.delay(500);
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -55,20 +66,5 @@ public class testEditLevel {
 		
 		
 	}
-	
-//	public void lockTest(){
-//		Robot r;
-//		try {
-//			r = new Robot();
-//			r.setAutoDelay(40);
-//			r.setAutoWaitForIdle(true);
-//			
-//		}
-//		catch (AWTException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		
-//	}
 
 }

@@ -7,6 +7,11 @@ import org.junit.Test;
 import builder.model.KabasujiBuilder;
 import builder.model.LevelEditorState;
 
+/**
+ * test kabasuji
+ * @author lthoang
+ *
+ */
 public class testKabasuji {
 
 	@Test

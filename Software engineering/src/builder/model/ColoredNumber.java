@@ -32,12 +32,7 @@ public class ColoredNumber implements java.io.Serializable{
 		this.position = position;
 	}
 
-	public ColoredNumber (int i, Color c, int position){
-		this.i = i;
-		this.c = c;
-		this.position = position;
-	}
-	
+
 	public ColoredNumber (int i, Color c){
 		this.i = i;
 		this.c = c;

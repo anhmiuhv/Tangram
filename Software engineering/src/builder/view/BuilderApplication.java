@@ -12,6 +12,11 @@ public class BuilderApplication {
 	Builder builder;
 	boolean splasher;
 
+	/**
+	 * initiate builder
+	 * @param builder the parent builder model
+	 * @param splasher if using splash screen
+	 */
 	public BuilderApplication(Builder builder, boolean splasher){
 		this.builder = builder;
 		this.lvlBuilder = new levelBuilder(builder.getKBuilder());
@@ -19,6 +24,10 @@ public class BuilderApplication {
 		init();
 	}
 
+	/**
+	 * initiate builder
+	 * @param builder builder model
+	 */
 	public BuilderApplication(Builder builder){
 		this.builder = builder;
 		this.lvlBuilder = new levelBuilder(builder.getKBuilder());
@@ -36,6 +45,10 @@ public class BuilderApplication {
 		lvlBuilder.setVisible(true);
 	}
 
+	/**
+	 * get the level builder view
+	 * @return level builder view
+	 */
 	public levelBuilder getLvlBuilder() {
 		return lvlBuilder;
 	}

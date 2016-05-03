@@ -2,8 +2,10 @@ package builder.view;
 
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
 
 import javax.swing.JLabel;
@@ -15,11 +17,14 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.SwingConstants;
 
+import java.awt.HeadlessException;
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Toolkit;
-
-import javax.swing.ImageIcon;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import builder.model.KabasujiBuilder;
 
@@ -111,13 +116,23 @@ public class levelBuilder extends JFrame {
 		button_9.setBounds(741, 26, 110, 25);
 		panel.add(button_9);
 		
-		button_9.setSelectedIcon(new ImageIcon("C:\\Users\\Bob\\Desktop\\add.png"));
+		
 		
 		JButton button_10 = new JButton("Help");
 		button_10.setBounds(40, 26, 77, 25);
 		panel.add(button_10);
 		button_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					JOptionPane.showMessageDialog(contentPane, 
+								readFile("temp/builderhelp", Charset.defaultCharset()), 
+								"Help", 
+								JOptionPane.INFORMATION_MESSAGE);
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		button_9.addActionListener(new ActionListener() {			
@@ -132,10 +147,26 @@ public class levelBuilder extends JFrame {
 		
 	}
 
+	/**
+	 * get the level editor view of the app
+	 * @return level editor view
+	 */
 	public LevelEditorView getLvle() {
 		return lvle;
 	}
 
-
+	/**
+	 * helper method to read text from file
+	 * @param path path to file
+	 * @param encoding text encoding
+	 * @return string from the file
+	 * @throws IOException
+	 */
+	private static String readFile(String path, Charset encoding) 
+			  throws IOException 
+			{
+			  byte[] encoded = Files.readAllBytes(Paths.get(path));
+			  return new String(encoded, encoding);
+			}
 
 }

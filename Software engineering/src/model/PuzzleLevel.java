@@ -4,15 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
-
-import move.*;
-
 public class PuzzleLevel extends Level {
-	/**
-	 * Generated serialized
-	 */
-	private static final long serialVersionUID = -4071396056939768290L;
 	int allowedMove;
 	int usedMove;
 	public PuzzleLevel(LevelState ls){
@@ -55,7 +47,7 @@ public class PuzzleLevel extends Level {
 		b.sethint(this.getBoard().getHint());
 		Bullpen bp = new Bullpen(bullpenPiece);
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, 
-				this.allowedMove, -1, true, this.star, bp, new int[0], new Color[0]);
+				this.allowedMove, -1, this.isLocked(), this.star, bp, new int[0], new Color[0]);
 		
 	}
 

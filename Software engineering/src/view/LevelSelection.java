@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import builder.model.LevelEditorState;
 import controller.LevelSelectController;
+import model.Kabasuji;
 import model.Level;
 import model.LevelState;
 import model.LightningLevel;
@@ -31,8 +32,12 @@ import java.awt.Font;
 
 public class LevelSelection extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1672688232916609194L;
 	private JPanel contentPane;
-	ArrayList<Level> testLevels;
+	public ArrayList<Level> testLevels;
 
 	JButton[] Levels;
 	JPanel panel;
@@ -133,41 +138,7 @@ public class LevelSelection extends JFrame {
 		setVisible(true);
 	
 	}
-	public static ArrayList<Level> loadAll(){
-		ArrayList<Level> all = new ArrayList<Level>();
-
-		try{
-			File dir = new File("levels/");
-			File[] directoryListing = dir.listFiles();
-			if(directoryListing != null){  // Use default level directory to create buttons
-				for(File child : directoryListing){
-					if (child.getName().equals(".DS_Store")) continue;
-					LevelState tmp = new LevelState();
-					tmp.loadState(child.getName());
-					String levelType = tmp.getLevelType();
-					if(levelType != null){
-						Level newLevel = null;
-						if(levelType.equals(LevelEditorState.PUZZLE)){
-							newLevel = new PuzzleLevel(tmp);
-						} else if(levelType.equals(LevelEditorState.LIGHTNING)) {
-							newLevel = new LightningLevel(tmp);
-						} else if(levelType.equals(LevelEditorState.RELEASE)) {
-							newLevel = new ReleaseLevel(tmp);			
-						}
-						all.add(newLevel);
-					}
-					
-					
-				}
-			}
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return all;
-
-	}
+	
 	
 	public void addlevels(){
 		int levelButtonLenth=60;
@@ -188,10 +159,12 @@ public class LevelSelection extends JFrame {
 			}
 			Levels[i].setBounds(100+(40+levelButtonLenth)*nextColumn,(90+levelButtonWidth)*nextRow-50, levelButtonLenth, levelButtonWidth);	
 			
-			//System.out.println("A:"+testLevels.get(i).getAchievement().getAchievement());
-			//System.out.println("IsL:"+testLevels.get(i).isLocked());
+			if(i>0 && testLevels.get(i-1).getAchievement().getAchievement()>0){
+				testLevels.get(i).setLocked(false);
+			}
+			
 			//testLevels.get(i).isLocked() &&
-			if( i-1>=0 && testLevels.get(i-1).getAchievement().getAchievement()==0){
+			if( i>0 && testLevels.get(i).isLocked()){
 				Levels[i].setIcon(new ImageIcon("images//lockicon.png"));
 				Levels[i].setEnabled(false);
 			}else{
@@ -251,8 +224,7 @@ public class LevelSelection extends JFrame {
 	}
 	
 	public void reloadLevel(){
-		
-		testLevels = loadAll();
+		testLevels = Kabasuji.loadAll();
 		panel.removeAll();
 		
 		addlevels();		

@@ -4,13 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-import move.*;
-
 public class ReleaseLevel extends Level{
-	/**
-	 * Generated serrialized
-	 */
-	private static final long serialVersionUID = 4710492805516683152L;
 	int Sets;
 
 	int redCounter;
@@ -62,7 +56,7 @@ public class ReleaseLevel extends Level{
 		b.sethint(this.getBoard().getHint());
 		Bullpen bp = new Bullpen(bullpenPiece);
 		this.levelState = new LevelState(this.LevelNumber, this.LevelType, b, 
-				-1, -1, true, this.star, bp, this.squareNum, this.cl);
+				-1, -1, this.isLocked(), this.star, bp, this.squareNum, this.cl);
 	}
 
 	@Override

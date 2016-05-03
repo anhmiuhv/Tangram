@@ -352,14 +352,26 @@ public class LevelEditorView extends JFrame {
 
 	}
 
+	/**
+	 * get the release colorednum view
+	 * @return
+	 */
 	public JReleaseColoredNum getReleaseColoredNum() {
 		return releaseColoredNum;
 	}
 
+	/**
+	 * get board creator view
+	 * @return board creator view
+	 */
 	public JBoardCreatorView getJbc() {
 		return jbc;
 	}
 
+	/**
+	 * get the editor model
+	 * @return editor model
+	 */
 	public LevelEditor getEditor() {
 		return editor;
 	}

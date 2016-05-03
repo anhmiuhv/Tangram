@@ -46,7 +46,7 @@ public class PieceContainer implements java.io.Serializable{
 	
 	/**
 	 * set the pieces in the container
-	 * @param pieces
+	 * @param pieces pieces
 	 */
 	public void setPieces(ArrayList<Piece> pieces){
 		this.pieces = pieces;
@@ -62,15 +62,15 @@ public class PieceContainer implements java.io.Serializable{
 	
 	/**
 	 * add the piece to the container
-	 * @param piece
+	 * @param piece piece to add
 	 */
 	public void addPiece(Piece piece){
 		pieces.add(piece);
 	}
 
 	/**
-	 * return the selected Piece
-	 * @return
+	 * return the selected Pieces
+	 * @return selected pieces
 	 */
 	public ArrayList<PlacedPiece> getSelected() {
 		return selected;
@@ -78,7 +78,7 @@ public class PieceContainer implements java.io.Serializable{
 
 	/**
 	 * add the selected piece
-	 * @param order
+	 * @param pp piece to add
 	 */
 	public void addSelected(PlacedPiece pp) {
 		this.selected.add(pp);
@@ -86,7 +86,7 @@ public class PieceContainer implements java.io.Serializable{
 	
 	/**
 	 * remove the selected pieces
-	 * @param order
+	 * @param order order of the piece
 	 */
 	public void removeSelected(int order){
 		this.selected.remove(order);
@@ -102,6 +102,7 @@ public class PieceContainer implements java.io.Serializable{
 
 	/**
 	 * set chosen piece
+	 * @param chosen piece
 	 */
 	public void setChosen(Piece chosen) {
 		this.chosen = chosen;
@@ -109,7 +110,7 @@ public class PieceContainer implements java.io.Serializable{
 
 	/**
 	 * get active piece
-	 * @return
+	 * @return the active piece
 	 */
 	public PlacedPiece getActive() {
 		return active;

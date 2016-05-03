@@ -5,7 +5,6 @@ import java.awt.Robot;
 import java.awt.event.InputEvent;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +12,11 @@ import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
+/**
+ * test edit old level
+ * @author lthoang
+ *
+ */
 public class testEditOldLevel {
 	/** (dx,dy) are offsets into the widget space. Feel Free to Use as Is. */
 	

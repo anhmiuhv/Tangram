@@ -1,6 +1,5 @@
 package controller;
 
-import view.JPieceView;
 import view.LevelView;
 
 public class KabasujiMouseMotionAdapter extends java.awt.event.MouseMotionAdapter {

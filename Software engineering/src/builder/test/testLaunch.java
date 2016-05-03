@@ -1,14 +1,14 @@
 package builder.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import builder.builder.LaunchBuilder;
-import builder.model.Builder;
-import builder.model.KabasujiBuilder;
-import builder.view.BuilderApplication;
 
+/**
+ * test launch
+ * @author lthoang
+ *
+ */
 public class testLaunch {
 
 	@Test

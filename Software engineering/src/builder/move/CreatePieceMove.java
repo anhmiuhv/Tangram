@@ -28,7 +28,9 @@ public class CreatePieceMove implements IMove{
 
 	@Override
 	public boolean doMove(LevelEditor level) {
-		if (!isMoveValid(level)) return false;
+		if (!isMoveValid(level)){		
+			return false;
+		}
 		container.addPiece(pc.getPiece());
 		return true;
 	}

@@ -1,12 +1,9 @@
 package builder.test;
 
-import static org.junit.Assert.*;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +11,11 @@ import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
+/**
+ * test adding piece
+ * @author lthoang
+ *
+ */
 public class testAddPiece {
 
 	BuilderApplication app;
@@ -23,10 +25,6 @@ public class testAddPiece {
 		this.app = new BuilderApplication(builder,false);	
 	}
 
-	@After
-	public void dispose(){
-		this.app.getLvlBuilder().getLvle().close();
-	}
 	
 	@Test
 	public void test() {
@@ -34,8 +32,9 @@ public class testAddPiece {
 		try {
 			r = new Robot();
 			r.setAutoDelay(40);
+			
 			r.setAutoWaitForIdle(true);
-			r.mouseMove(900, 175);
+			r.mouseMove(925, 175);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
 

@@ -20,6 +20,11 @@ public class JTestFrame extends JFrame {
 	JPieceContainerView jpc;
 	LevelEditor editor;
 	JPuzzleView puzzleView;
+	
+	/**
+	 * initiate test frame
+	 * @param editor parent model
+	 */
 	public JTestFrame(LevelEditor editor){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.jpc = new JPieceContainerView(editor);
@@ -52,9 +57,19 @@ public class JTestFrame extends JFrame {
 		
 		
 	}
+	
+	/**
+	 * get puzzle view
+	 * @return puzzle view
+	 */
 	public JPuzzleView getPuzzleView() {
 		return puzzleView;
 	}
+	
+	/**
+	 * get the piece container view
+	 * @return piece container view
+	 */
 	public JPieceContainerView getJpc() {
 		return jpc;
 	}

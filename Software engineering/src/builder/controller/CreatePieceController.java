@@ -3,6 +3,8 @@ package builder.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import builder.model.LevelEditor;
 import builder.move.CreatePieceMove;
 import builder.move.IMove;
@@ -36,6 +38,11 @@ public class CreatePieceController implements ActionListener {
 		IMove m = new CreatePieceMove(lvle.getPieceCreator(), lvle.getPieceContainer());
 		if (m.doMove(lvle)){
 			lvle.pushUndo(m);
+		} else {
+			JOptionPane.showMessageDialog(pcView.getParent(),
+					"Invalid Piece",
+					"Invalid Piece",
+					JOptionPane.WARNING_MESSAGE);
 		}
 		lvle.getRedoStack().removeAllElements();
 		containerView.update();

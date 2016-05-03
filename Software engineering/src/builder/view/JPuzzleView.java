@@ -24,7 +24,11 @@ public class JPuzzleView extends JPanel {
 	Image offScreenImage = null;
 	Graphics offScreenGraphics = null;
 	
-	
+	/**
+	 * create the puzzle view for test frame
+	 * @param pc piece container
+	 * @param app parent view
+	 */
     public JPuzzleView(PieceContainer pc, JTestFrame app) {
     	this.pc = pc;
     	this.app = app;

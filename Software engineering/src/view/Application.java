@@ -1,18 +1,5 @@
 package view;
 
-import java.awt.Color;
-import java.util.Random;
-
-import model.Achievement;
-import model.Board;
-import model.Bullpen;
-import model.Level;
-import model.LightningLevel;
-import model.Piece;
-import model.PuzzleLevel;
-import model.ReleaseLevel;
-import model.Square;
-
 public class Application {
 	
 

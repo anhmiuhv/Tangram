@@ -1,7 +1,5 @@
 package builder.test;
 
-import static org.junit.Assert.*;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -14,6 +12,11 @@ import builder.model.Builder;
 import builder.model.KabasujiBuilder;
 import builder.view.BuilderApplication;
 
+/**
+ * test creating board
+ * @author lthoang
+ *
+ */
 public class testAddBoard {
 
 	BuilderApplication app;
