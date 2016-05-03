@@ -92,7 +92,7 @@ public class LevelSelection extends JFrame {
 		setContentPane(contentPane);
 
 		panel = new JPanel();
-
+		panel.setBounds(0,0,800,800);
 		JLabel lblNewLabel_1 = new JLabel("Kabasuji Level Selection");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 36));
 
@@ -122,7 +122,7 @@ public class LevelSelection extends JFrame {
 								.addContainerGap()
 								.addComponent(btnNewButton)
 								.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 488, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
 								.addGap(107))
 				);
 		gl_contentPane.setVerticalGroup(
@@ -136,7 +136,7 @@ public class LevelSelection extends JFrame {
 										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 												.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 												.addGap(29)))
-												.addComponent(panel, GroupLayout.PREFERRED_SIZE, 688, GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
 												.addGap(52))
 				);
 

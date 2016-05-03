@@ -38,7 +38,7 @@ public class Gametest1 {
 				
 				
 				
-				r.mouseMove(140, 303); //test more than 8 moves
+				r.mouseMove(140, 275); //test more than 8 moves
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
@@ -88,7 +88,7 @@ public class Gametest1 {
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
 				
-				r.mouseMove(140,303);
+				r.mouseMove(140,275);
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
@@ -165,7 +165,7 @@ public class Gametest1 {
 				
 //----lightning level test	
 
-				r.mouseMove(247,299); //start lightning level
+				r.mouseMove(252,253); //start lightning level
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				//r.delay(31000); //wait 31 seconds to invoke failed 
@@ -174,7 +174,7 @@ public class Gametest1 {
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
-				r.mouseMove(247,299);
+				r.mouseMove(252,253);
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
@@ -213,19 +213,17 @@ public class Gametest1 {
 				r.mouseMove(614, 355);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
-				r.mouseMove(58, 121); //quit current level
+				r.mouseMove(555, 508); //quit current level
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
-				r.mouseMove(950, 487);
-				r.mousePress(InputEvent.BUTTON1_MASK);
-				r.mouseRelease(InputEvent.BUTTON1_MASK);
+				
 				
 				
 				
 //------Release Level Test
 				
-				r.mouseMove(358,296); //start lightning level
+				r.mouseMove(358,275); //start lightning level
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
@@ -264,6 +262,10 @@ public class Gametest1 {
 				r.mouseMove(294, 576); //sixth piece
 				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseMove(614, 355);
+				r.mouseRelease(InputEvent.BUTTON1_MASK);
+				
+				r.mouseMove(555, 508); //quit current level
+				r.mousePress(InputEvent.BUTTON1_MASK);
 				r.mouseRelease(InputEvent.BUTTON1_MASK);
 				
 				
