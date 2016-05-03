@@ -9,7 +9,11 @@ import model.LightningLevel;
 import model.Piece;
 import view.JPieceView;
 import view.LevelView;
-
+/**
+ * Representation of the controller of the bullpen
+ * @author jshen3, kdai, xwang11
+ *
+ */
 public class BullpenController extends java.awt.event.MouseAdapter{
 	
 	JPieceView pv;
@@ -23,13 +27,21 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	int pieceN = 0;	
 	
 	boolean fromBullpen = false;
-	
+	/**
+	 * Constructor
+	 * @param levelview
+	 * @param bp
+	 */
 	public BullpenController(LevelView levelview, Bullpen bp){
 		this.levelview = levelview;
 		this.bullpen = bp;
 	}
 	
 	@Override
+	/**
+	 * mousePress capture
+	 * @mouse
+	 */
 	public void mousePressed(MouseEvent me) {
 		JScrollBar jBar = levelview.getScrollPane().getVerticalScrollBar();
 		int sbValue = jBar.getValue();
@@ -71,6 +83,10 @@ public class BullpenController extends java.awt.event.MouseAdapter{
 	
 
 	@Override
+	/**
+	 * mouseRepease capture
+	 * @mouse
+	 */
 	public void mouseReleased(MouseEvent me) {
 		JScrollBar jBar = levelview.getScrollPane().getVerticalScrollBar();
 		int sbValue = jBar.getValue();

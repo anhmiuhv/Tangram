@@ -4,7 +4,11 @@ package controller;
 import model.Level;
 import view.LevelSelection;
 import view.LevelView;
-
+/**
+ * representation of the controller of going to menu
+ * @author jshen3, kdai, xwang11
+ *
+ */
 public class GoMenuController  extends java.awt.event.MouseAdapter{
 	
 	LevelSelection levelselect;
@@ -15,7 +19,9 @@ public class GoMenuController  extends java.awt.event.MouseAdapter{
 		this.levelselect=levelselect;
 		this.level = level;
 	}
-	
+	/**
+	 * make the action(back to menu)
+	 */
 	public void actionPerformed(){
 		
 		level.createLevelState();

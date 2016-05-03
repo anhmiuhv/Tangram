@@ -10,7 +10,10 @@ import model.PuzzleLevel;
 import model.ReleaseLevel;
 import view.JPieceView;
 import view.LevelView;
-
+/**
+ * Representation of the controller of the Board
+ * @author jshen3, kdai, xwang11
+ */
 public class BoardController extends java.awt.event.MouseAdapter{
 	
 	int mouseAndHeadX =0;
@@ -24,17 +27,29 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	int dbouardX =0;
 	int dbouardY =0;
+	/**
+	 * the constructor of BoardController
+	 * @param levelView
+	 * @param board
+	 */
 	
 	public BoardController(LevelView levelView,Board board){
 		this.board = board;
 		this.levelView =levelView;
 
 	}
-	
+	/**
+	 * set the value of x and y
+	 */
 	public void updateDiffxy(){
 	}
 	
+
 	@Override
+	/**
+	 * mousePress event capture
+	 * @mouse
+	 */
 	public void mousePressed(MouseEvent me) {
 		fromBoard = true;
 		double dx= (double)(me.getX())/30 ;
@@ -84,6 +99,10 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	}
 	
 	@Override
+	/**
+	 * mouseRelease event capture
+	 * @mouse
+	 */
 	public void mouseReleased(MouseEvent me) {
 			if (me ==null){
 				markgreen(movingPiece);
@@ -185,7 +204,10 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		//levelView.repaint();
 			}
 	}
-	
+	/**
+	 * get the head square in the Board
+	 * @return returnInt
+	 */
 	public int[] getHeadSquareInBoard(){
 		int closedColumn =mouseAndHeadX+levelView.getDiffx()/30;
 		int closedRow = mouseAndHeadY+levelView.getDiffy()/30;
@@ -199,7 +221,12 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		
 		return returnInt;
 	}
-	
+	/**
+	 * indicates that this piece is not covered
+	 * @param testColumn
+	 * @param testRow
+	 * @param testPiece
+	 */
 	public void removeCoverSquare(int testColumn, int testRow, Piece testPiece){	
 		for (int i =0;i<6;i++){
 			int findx;
@@ -213,7 +240,12 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			}
 		}
 	}
-	
+	/**
+	 * cover the square that need to be covered
+	 * @param testColumn
+	 * @param testRow
+	 * @param testPiece
+	 */
 	public void coverSquare(int testColumn, int testRow, Piece testPiece){
 		for (int i =0;i<6;i++){
 			int findx;
@@ -227,7 +259,12 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			}
 		}
 	}
-	
+	/**
+	 * to find that if the color is coverd or not
+	 * @param testColumn
+	 * @param testRow
+	 * @param testPiece
+	 */
 	public void coverColor(int testColumn, int testRow, Piece testPiece){
 		for (int i =0;i<6;i++){
 			int findx;
@@ -251,7 +288,13 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		}
 	}
 	
-	
+	/**
+	 * make the move
+	 * @param testColumn
+	 * @param testRow
+	 * @param testPiece
+	 * @return boolean
+	 */
 	public boolean doMove(int testColumn, int testRow, Piece testPiece){
 		
 		int findx;
@@ -283,7 +326,11 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		}
 		return true;
 	}
-	
+	/**
+	 * change the square to color green
+	 * @param mp
+	 * @return
+	 */
 	public Piece markgreen(Piece mp){
 		Piece newmp = new Piece(mp.getpRow(),mp.getpColumn(),mp.getSquares(),mp.getHead(),mp.getname());
 		if(levelView.getLevel() instanceof LightningLevel){

@@ -6,14 +6,23 @@ import model.Level;
 import model.LightningLevel;
 import view.LevelSelection;
 import view.LevelView;
-
+/**
+ * controller for counting the time
+ * @author jshen3, kdai, xwang11
+ *
+ */
 public class TimerController extends TimerTask {
 	
 	LevelView levelview;
 	Level level;
 	LevelSelection levelselect;
 	int timeCount ;	
-	
+	/**
+	 * constructor
+	 * @param levelselect
+	 * @param levelview
+	 * @param level
+	 */
 	public TimerController(LevelSelection levelselect,LevelView levelview,Level level){
 		this.levelselect =levelselect;
 		this.levelview =levelview;
@@ -23,6 +32,9 @@ public class TimerController extends TimerTask {
 	}
 	
 	@Override  
+	/**
+	 * counting time
+	 */
 	public void run() {  
 		timeCount = timeCount-1;
 		((LightningLevel) level).setUsedTime(timeCount);
