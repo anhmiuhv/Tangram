@@ -1,1 +1,7 @@
-Help file:
+There are 3 types of levels, puzzle level, lightning level and release level.
+Your goal is basically cover the board with pieces in bulpen.
+1.In puzzle level, you have limited moves.
+2.In lightning level, you have limited time and piece on board can not be moved.
+3.In release level, your pieces may not be enough to cover the whole board, you 
+should try covering all numbers instead.(Pieces on Board can not moved) 
+P.S. You can move piece from board to bullpen but only in puzzle level.
