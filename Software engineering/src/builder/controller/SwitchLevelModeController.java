@@ -36,7 +36,6 @@ public class SwitchLevelModeController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		IMove m = new SwitchModeMove(lv, editor, b);
 		m.doMove(editor);
-		lv.getEditor().pushUndo(m);
 
 		lv.repaint();
 	}

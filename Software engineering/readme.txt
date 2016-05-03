@@ -34,6 +34,16 @@ If level is not valid, builder will not create level.
 Undo, redo, restart button can work perfectly. Then, when you open the game, the builded level will appear.   
 
 
-Our test case have covered about 40%. 
-Part of test case can only run on mac, we will fix it later.
+Player tutorial video:
+		https://youtu.be/sJbSEJ6BJtw
+
+Builder tutorial video:
+		https://youtu.be/PfGEeNio-J8
+
+Our test cases use Robot classes to simulate mouse movements, so its best if you dont touch anything during the test cases.
+The test cases are built to run on MacbookPro 13 inch. Yeah I know it sucks but because of high level designs
+mistakes we dont have time to change it. You can run it on your computer but there is no guarantee it will
+produce the desired results.
+This is the video we running our test cases:
+		https://www.youtube.com/watch?v=fl0mZCiS920
  

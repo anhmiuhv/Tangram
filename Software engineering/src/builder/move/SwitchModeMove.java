@@ -74,6 +74,7 @@ public class SwitchModeMove implements IMove{
 		}
 		lv.removeshit();
 		lv.init();
+		lv.getEditor().pushUndo(this);
 		return true;
 	}
 
