@@ -8,6 +8,13 @@ import javax.swing.JPanel;
 import model.Board;
 import model.Hint;
 
+/**
+ * represent the hint for the board
+ * @author kdai
+ * @author jshen3
+ * @author xwang111 
+ *
+ */
 public class HintView {
 	JBoardView bv;
 	JPanel[] sv ;
@@ -15,6 +22,11 @@ public class HintView {
 	Board b;
 	Hint h;
 	
+	/**
+	 * create the hint view
+	 * @param bv
+	 * @param b
+	 */
 	public HintView (JBoardView bv, Board b){
 		this.bv = bv;
 		this.b = b;
@@ -25,7 +37,7 @@ public class HintView {
 		createHintView();
 	}
 	
-	public void createHintView(){
+	private void createHintView(){
 			sv = new JPanel[numofSquares];
 		for(int i=0;i<numofSquares;i++){
 			sv[i] = new JPanel();

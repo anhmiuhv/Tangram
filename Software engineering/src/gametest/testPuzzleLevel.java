@@ -8,15 +8,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import builder.test.testAddBoard;
-import builder.test.testAddPiece;
-import builder.test.testEditLevel;
-import builder.test.testEditOldLevel;
-import builder.test.testKabasuji;
-import builder.test.testLaunch;
-import builder.test.testRelease;
-import builder.test.testSwitchMode;
-import builder.test.testTestFrame;
 import model.Kabasuji;
 import model.Level;
 import model.Player;
