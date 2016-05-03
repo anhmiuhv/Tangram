@@ -1,12 +1,17 @@
 package model;
 
+/**
+ * Representation of hint on the board in model.
+ * @author jshen3, kdai, xwang11
+ */
 public class Hint implements java.io.Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -1954472508848657347L;
 	Square[] square;
 	
+	/**
+	 * Create a example of hint.
+	 */
 	public Hint(){
 		Square hitSquares[] = new Square[6]; 
 		hitSquares[0] = new Square(6,4);
@@ -19,10 +24,18 @@ public class Hint implements java.io.Serializable{
 		this.square = hitSquares;
 	}
 	
+	/**
+	 * Create hint according the the piece.
+	 * @param square
+	 */
 	public Hint(Square[] square){
 		this.square=square;
 	}
 	
+	/**
+	 * Return the square array of the hint.
+	 * @return Square[]
+	 */
 	public Square[] getHintSquares(){
 		return square;
 	}

@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Representation of a PuzzleLevel in the model.
+ * @author jshen3, kdai, xwang11
+ */
 public class PuzzleLevel extends Level {
 	int allowedMove;
 	int usedMove;
@@ -11,6 +15,14 @@ public class PuzzleLevel extends Level {
 		super(ls);
 	}
 	
+	/**
+	 * Create PuzzleLevel using given data.
+	 * @param LevelNumber
+	 * @param LevelType
+	 * @param b
+	 * @param p
+	 * @param allowedMove
+	 */
 	public PuzzleLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedMove) {
 		super(LevelNumber, LevelType, b, p);
 		this.allowedMove = allowedMove;
@@ -29,14 +41,25 @@ public class PuzzleLevel extends Level {
 		
 	}
 	
+	/**
+	 * Return the maximum move allowed of this level.
+	 * @return int
+	 */
 	public int getAllowedMove(){
 		return allowedMove;
 	}
 	
+	/**
+	 * the move player used of this level.
+	 * @return int
+	 */
 	public int getUsedMove(){
 		return usedMove;
 	}
 	
+	/**
+	 * Increment value of UsedMove.
+	 */
 	public void incrementUsedMove(){
 		usedMove++;
 	}

@@ -4,33 +4,58 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Representation of a LightningLevel in the model.
+ * @author jshen3, kdai, xwang11
+ */
 public class LightningLevel extends Level{
 	int allowedTime;
 	int usedTime;
 	
+	/**
+	 * Create the LightningLevel read from file.
+	 * @param ls
+	 */
 	public LightningLevel(LevelState ls){
 		super(ls);
 	}
 	
+	/**
+	 * Create the LightningLevel using given data.
+	 * @param LevelNumber
+	 * @param LevelType
+	 * @param b
+	 * @param p
+	 * @param allowedTime
+	 */
 	public LightningLevel(int LevelNumber, String LevelType, Board b, Bullpen p, int allowedTime) {
 		super(LevelNumber, LevelType, b, p);
 		this.allowedTime = allowedTime;
 	}
 
-	
+	/**
+	 * Return allowed time limite of this level.
+	 * @return int
+	 */
 	public int getAllowedTime(){
 		return allowedTime;
 	}
 	
+	/**
+	 * Return time used when playing.
+	 * @return int
+	 */
 	public int getUsedTime(){
 		return usedTime;
 	}
 	
-	
+	/**
+	 * Set time used in this level.
+	 * @param num
+	 */
 	public void setUsedTime(int num){
 		this.usedTime = num;
 	}
-	
 	
 	@Override
 	public boolean hasWon() {

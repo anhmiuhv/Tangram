@@ -7,23 +7,13 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Raw data of level loaded from file.
+ * @author lthoang
+ */
 public class LevelState implements java.io.Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 758901305732397174L;
 
-	/**
-	 * 
-	 */
-	
-
-
-	/**
-	 * 
-	 */
-	
+	private static final long serialVersionUID = 758901305732397174L;	
 	
 	//Name of level type
 	public static final String PUZZLE = "puzzle";
@@ -57,7 +47,17 @@ public class LevelState implements java.io.Serializable{
 	}
 	
 	/**
-	 * Create a level state
+	 * Create a level from the given data.
+	 * @param levelNum
+	 * @param levelType
+	 * @param board
+	 * @param allowedMove
+	 * @param allowedTime
+	 * @param locked
+	 * @param achievements
+	 * @param bullpen
+	 * @param squareNum
+	 * @param cl
 	 */
 	public LevelState(int levelNum, String levelType, Board board, int allowedMove, int allowedTime, boolean locked, 
 			Achievement achievements,Bullpen bullpen, int[] squareNum, Color[] cl){
@@ -74,82 +74,162 @@ public class LevelState implements java.io.Serializable{
 		levelName = "level" + levelNum;
 	}
 	
+	/**
+	 * Return the type of level.
+	 * @return int
+	 */
 	public int getLevelNum(){
 		return levelNum;
 	}
 	
+	/**
+	 * Set level number.
+	 * @param levelNum
+	 */
 	public void setLevelNum(int levelNum) {
 		this.levelNum = levelNum;
 	}
 
+	/**
+	 * Return the type of level.
+	 * @return String
+	 */
 	public String getLevelType(){
 		return levelType;
 	}
 	
+	/**
+	 * Set the type of level.
+	 * @param levelType
+	 */
 	public void setLevelType(String levelType) {
 		this.levelType = levelType;
 	}
 
+	/**
+	 * Return the board of the level.
+	 * @return Board
+	 */
 	public Board getBoard(){
 		return board;
 	}
 	
+	/**
+	 * Set the board as given board.
+	 * @param board
+	 */
 	public void setBoard(Board board) {
 		this.board = board;
 	}
 
+	/**
+	 * Return allowed Move of puzzle level.
+	 * @return int
+	 */
 	public int getAllowedMove(){
 		return allowedMove;
 	}
 	
+	/**
+	 * Set all allowed Move of puzzle level.
+	 * @param allowedMove
+	 */
 	public void setAllowedMove(int allowedMove) {
 		this.allowedMove = allowedMove;
 	}
 
+	/**
+	 * Return allowed time limite of lightning level.
+	 * @return int
+	 */
 	public int getAllowedTime(){
 		return allowedTime;
 	}
 	
+	/**
+	 * Set allowed time limite of lightning level.
+	 * @param allowedTime
+	 */
 	public void setAllowedTime(int allowedTime) {
 		this.allowedTime = allowedTime;
 	}
 
+	/**
+	 * Return if the level is locked.
+	 * @return boolean
+	 */
 	public boolean getLocked(){
 		return locked;
 	}
 	
+	/**
+	 * Set if the level is locked.
+	 * @param locked
+	 */
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
 
+	/**
+	 * Return the achievement of the level.
+	 * @return Achievement
+	 */
 	public Achievement getAchievement(){
 		return achievements;
 	}
 
+	/**
+	 * Set the achievement of the level.
+	 * @param achievements
+	 */
 	public void setAchievements(Achievement achievements) {
 		this.achievements = achievements;
 	}
 
+	/**
+	 * Return the bullpen of the level.
+	 * @return Bullpen
+	 */
 	public Bullpen getBullpen(){
 		return bullpen;
 	}
 
+	/**
+	 * Set the bullpen of the level.
+	 * @param bullpen
+	 */
 	public void setBullpen(Bullpen bullpen) {
 		this.bullpen = bullpen;
 	}
 	
+	/**
+	 * Return the number appear on the board in release level.
+	 * @return int[]
+	 */
 	public int[] getSquareNum() {
 		return squareNum;
 	}
 
+	/**
+	 * Set the number appear on the board in release level.
+	 * @param squareNum
+	 */
 	public void setSquareNum(int[] squareNum) {
 		this.squareNum = squareNum;
 	}
 
+	/**
+	 * Return the color of the number appear on the board in release level.
+	 * @return Color[]
+	 */
 	public Color[] getCl() {
 		return cl;
 	}
 
+	/**
+	 * Set the color of the number appear on the board in release level.
+	 * @param cl
+	 */
 	public void setCl(Color[] cl) {
 		this.cl = cl;
 	}

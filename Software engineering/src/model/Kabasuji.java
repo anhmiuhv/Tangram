@@ -9,10 +9,18 @@ import builder.model.LevelEditorState;
 import view.LevelSelection;
 import view.SplashScreen;
 
+/**
+ * The game class, also the main class.
+ * @author jshen3, kdai, xwang11
+ */
 public class Kabasuji {
 	ArrayList<Level> levels;
 
 
+	/**
+	 * Main function that run the game.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// Throw a nice little title page up on the screen first
 
@@ -21,15 +29,6 @@ public class Kabasuji {
 		// But, since this is only a test...
 		splash.showSplashAndExit();
 		
-		
-		/*LevelState createAlevel = new LevelState();
-		createAlevel.loadState("puzzle101.sav");
-		PuzzleLevel p = new PuzzleLevel(0, null, null, null, 0);
-		p.loadLevelState(createAlevel);
-		Level[] l = new Level[1];
-		l[0] = p;*/
-		
-		//Application app = new Applicaiton();
 		@SuppressWarnings("unused")
 		LevelSelection levelSec = new LevelSelection(loadAll());//createPhaseTwoLevel());
 		
@@ -37,7 +36,10 @@ public class Kabasuji {
 	}
 
 
-
+	/**
+	 * Create a Kabasuji game with given levels.
+	 * @param level
+	 */
 	public Kabasuji(ArrayList<Level> level){
 		this.levels = level;
 		@SuppressWarnings("unused")
@@ -45,7 +47,10 @@ public class Kabasuji {
 	}
 
 
-
+	/**
+	 * Return The sample level without loading from file to test the game. 
+	 * @return Level[]
+	 */
 	public static Level[] createPhaseTwoLevel(){
 		Level[] testLevels = new Level[1];
 		
@@ -136,7 +141,10 @@ public class Kabasuji {
 		return testLevels;
 	}
 	
-	
+	/**
+	 * Return the sample level without loading from file to test the game. 
+	 * @return Level[]
+	 */
 	public static Level[] createTestLevel(){
 		Level[] testLevels = new Level[16];
 		int[] squareNum = new int[144];
@@ -346,6 +354,13 @@ public class Kabasuji {
 
 		 */
 	}
+	
+	/**
+	 * Return the type of the level.
+	 * (Either Puzzle level, Lightning level or Release level)
+	 * @param levelNum
+	 * @return String
+	 */
 	public static String GetLevelTpye(int levelNum){
 		if(levelNum==0){
 			return "puzzle";
@@ -359,8 +374,8 @@ public class Kabasuji {
 	}
 	
 	/**
-	 * load the editor from default location
-	 * @return array of editors
+	 * Load the editor from default location.
+	 * @return ArrayList<Level>
 	 */
 	public static ArrayList<Level> loadAll(){
 		ArrayList<Level> all = new ArrayList<Level>();

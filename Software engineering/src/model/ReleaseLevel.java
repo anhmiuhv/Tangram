@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Representation of a ReleaseLevel in the model.
+ * @author jshen3, kdai, xwang11
+ */
 public class ReleaseLevel extends Level{
 	int Sets;
 
@@ -14,10 +18,23 @@ public class ReleaseLevel extends Level{
 	int[] squareNum;
 	Color[] cl;
 	
+	/**
+	 * Create a releaseLevel by reading from file.
+	 * @param ls
+	 */
 	public ReleaseLevel(LevelState ls){
 		super(ls);
 	}
 	
+	/**
+	 * Create a releaseLevel using given data.
+	 * @param LevelNumber
+	 * @param LevelType
+	 * @param b
+	 * @param p
+	 * @param squareNum
+	 * @param cl
+	 */
 	public ReleaseLevel(int LevelNumber, String LevelType, Board b, Bullpen p,int[] squareNum,Color[] cl) {
 		super(LevelNumber, LevelType, b, p);
 		this.squareNum=squareNum;
@@ -42,10 +59,18 @@ public class ReleaseLevel extends Level{
 		
 	}
 	
+	/**
+	 * Return the numbers appar on the board.
+	 * @return int[]
+	 */
 	public int[] getSquareNum(){
 		return squareNum;
 	}
 	
+	/**
+	 * Return the color of the numbers appar on the board.
+	 * @return Color[]
+	 */
 	public Color[] getCl(){
 		return cl;
 	}
@@ -105,38 +130,71 @@ public class ReleaseLevel extends Level{
 		
 	}
 	
+	/**
+	 * Return the number of covered red numbers.
+	 * @return int
+	 */
 	public int getRedCounter() {
 		return redCounter;
 	}
 	
+	/**
+	 * Increment the value of redCounter.
+	 */
 	public void increamentRed(){
 		redCounter++;
 	}
 
+	/**
+	 * Return the number of covered yellow numbers.
+	 * @return int
+	 */
 	public int getYellowCounter() {
 		return yellowCounter;
 	}
 	
+	/**
+	 * Increment the value of yellowCounter.
+	 */
 	public void increamentYellow(){
 		yellowCounter++;
 	}
 
+	/**
+	 * Return the number of covered green numbers.
+	 * @return int
+	 */
 	public int getGreenCounter() {
 		return greenCounter;
 	}
 	
+	/**
+	 * Increment the value of greenCounter.
+	 */
 	public void increamentGreen(){
 		greenCounter++;
 	}
 
+	/**
+	 * Set the value of redCounter to a given number.
+	 * @param redCounter 
+	 */
 	public void setRedCounter(int redCounter) {
 		this.redCounter = redCounter;
 	}
 
+	/**
+	 * Set the value of yellowCounter to a given number.
+	 * @param redCounter 
+	 */
 	public void setYellowCounter(int yellowCounter) {
 		this.yellowCounter = yellowCounter;
 	}
 
+	/**
+	 * Set the value of greenCounter to a given number.
+	 * @param redCounter 
+	 */
 	public void setGreenCounter(int greenCounter) {
 		this.greenCounter = greenCounter;
 	}
