@@ -9,14 +9,23 @@ import model.Square;
 import view.LevelView;
 
 
-
+/**
+ * the controller for rotate piece right
+ * @author jshen3, kdai, xwang11
+ *
+ */
 public class RotateRightController  extends java.awt.event.MouseAdapter{
 	
 	Piece piece;
 	Square[] Squares;
 	Bullpen bullpen;
 	LevelView levelview;
-	
+	/**
+	 * constructor
+	 * @param levelview
+	 * @param bullpen
+	 * @param piece
+	 */
 	public RotateRightController(LevelView levelview , Bullpen bullpen,Piece piece){
 		
 		this.bullpen =bullpen;
@@ -24,7 +33,9 @@ public class RotateRightController  extends java.awt.event.MouseAdapter{
 		this.piece= bullpen.getPieces().get(bullpen.getPieceSelected());
 		
 	}
-	
+	/**
+	 * make the piece rotate right
+	 */
 	public void actionPerformed(){
 		Squares  = piece.getSquares();
 		

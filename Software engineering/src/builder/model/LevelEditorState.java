@@ -33,8 +33,17 @@ public class LevelEditorState implements java.io.Serializable{
 	}
 	
 	//Name of level type
+	/**
+	 * String representing puzzle level
+	 */
 	public static final String PUZZLE = "puzzle";
+	/**
+	 * String representing lightning level
+	 */
 	public static final String LIGHTNING = "lightning";
+	/**
+	 * String representing release level
+	 */
 	public static final String RELEASE = "release";
 	
 	int levelNum;

@@ -508,7 +508,9 @@ public class LevelView extends JFrame {
 			bs.add(stayLabel);
 		}
 		else if (level.getAchievement().getAchievement()==2){
+			if (stayLabel !=null){
 			bs.remove(stayLabel);
+			}
 			stayLabel = new JLabel("star");
 			stayLabel.setBackground(Color.WHITE);
 			stayLabel.setBounds(700,35, 40, 30);
@@ -516,7 +518,9 @@ public class LevelView extends JFrame {
 			bs.add(stayLabel);
 		}
 		else  if (level.getAchievement().getAchievement()==3){
+			if (stayLabel !=null){
 			bs.remove(stayLabel);
+			}
 			stayLabel = new JLabel("star");
 			stayLabel.setBackground(Color.WHITE);
 			stayLabel.setBounds(700,35, 60, 20);

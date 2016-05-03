@@ -12,7 +12,7 @@ import model.Kabasuji;
 import model.Level;
 import model.Player;
 
-public class testPuzzleLevel {
+public class Gametest1 {
 	
 	Kabasuji kabasuji;
 	@Before
@@ -269,34 +269,7 @@ public class testPuzzleLevel {
 				
 				
 //-------Builder Part Tets and Model Test
-				testAddBoard t1 = new testAddBoard();
-				testAddPiece t2 = new testAddPiece();
-				testEditLevel t3 = new testEditLevel();
-				testEditOldLevel t4 = new testEditOldLevel();
-				testKabasuji t5 = new testKabasuji();
-				testLaunch t6 = new testLaunch();
-				testTestFrame t7 = new testTestFrame();
-				testLaunch t8 = new testLaunch();
-				testRelease t9 = new testRelease();
-				testSwitchMode t10 = new testSwitchMode();
-				 t1.setup();
-				 t1.test();
-				 t2.setup();
-				 t2.test();
-				 t3.setup();
-				 t3.test();
-				 t4.setup();
-				 t4.test();
-				 t6.test();
-				 t7.setup();
-				 t7.test();
-				 t8.test();
-				 t9.setup();
-				 t9.test();
-				 t10.test();
-				 Gametest t = new Gametest();
-				 t.Shouldreturnwhatitneeds();
-				 
+				
 			} catch (AWTException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

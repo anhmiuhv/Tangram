@@ -42,8 +42,6 @@ public class testEditOldLevel {
 			r.mouseMove(200, 315);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-		
-			
 			r.mouseMove(910, 150);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);

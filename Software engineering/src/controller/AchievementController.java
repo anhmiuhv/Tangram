@@ -2,6 +2,11 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Representation of a controller of Achievement
+ * @author jshen3, kdai, xwang11
+ */
+
 import model.Achievement;
 import view.LevelSelection;
 import view.LevelView;
@@ -18,7 +23,11 @@ public class AchievementController {
 		this.achievement=achievement;
 		this.levelselect = levelselect;
 	}
-	
+
+	/**
+	 * get the achievement and feedback certain information
+	 * 
+	 */
 	public void actionPerformed(){
 
 		if (achievement.getAchievement()==0){
@@ -44,5 +53,6 @@ public class AchievementController {
 		levelview.closeWindowsFlag = true;
 		new GoMenuController(levelselect,levelview,levelview.getLevel()).actionPerformed();
 		levelview.close();
+		
 	}
 }
