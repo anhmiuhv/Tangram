@@ -65,7 +65,7 @@ public class JPieceView extends JPanel{
 		setLayout(null);		
 
 		for (int i=0; i<6;i++){
-			array[i] = new JSquareView(piece.getSquares()[i],Color.YELLOW);
+			array[i] = new JSquareView(piece.getSquares()[i],this.piece.getColor());
 
 			add(array[i]);
 		}
@@ -84,6 +84,10 @@ public class JPieceView extends JPanel{
 			r[i] = new Rectangle(piece.getSquares()[i].getColumn() * size, piece.getSquares()[i].getRow() * size, size, size);
 		}
 		return r;
+	}
+
+	public Piece getPiece() {
+		return piece;
 	}
 
 

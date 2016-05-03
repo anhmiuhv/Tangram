@@ -5,11 +5,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import model.Piece;
-import view.JPieceView;
 import builder.model.PieceContainer;
 import builder.model.PlacedPiece;
+import builder.view.JPieceView;
 import builder.view.JTestFrame;
 
+/**
+ * This class control the piece view in the test frame
+ * @author lthoang
+ *
+ */
 public class PieceViewController implements MouseListener {
 
 	PieceContainer pc;
@@ -40,9 +45,10 @@ public class PieceViewController implements MouseListener {
 					
 				}
 			}
-			k.setBackground(Color.BLUE);
+			k.setBackground(Color.blue);
 			pc.setChosen(select);
 		}
+		
 
 	}
 
