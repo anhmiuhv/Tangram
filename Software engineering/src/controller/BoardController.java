@@ -36,6 +36,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent me) {
+
 		fromBoard = true;
 		double dx= (double)(me.getX())/30 ;
 		double dy=	(double)(me.getY())/30 ;
@@ -56,7 +57,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 
 		}
 		
-		if(levelView.getLevel() instanceof LightningLevel){
+		if(levelView.getLevel() instanceof LightningLevel || levelView.getLevel() instanceof ReleaseLevel){
 			found = false;
 		}
 		
