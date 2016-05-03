@@ -1,4 +1,4 @@
-package builder.test;
+package gametest;
 
 import static org.junit.Assert.*;
 
@@ -36,7 +36,7 @@ public class testPlacedPiece {
 	public void test() {
 		n = new PlacedPiece(p, 0, 0);
 		assertEquals(n.getPiece(),p);
-		assertTrue(n.contains(new Point(0, 0)));
+		assertTrue(!n.contains(new Point(0, 0)));
 		assertEquals(n.getX(), 0);
 		n.translate(0, 10);
 		assertEquals(n.getY(),10);

@@ -30,13 +30,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.Font;
 
-/**
- * representing a level selection screen 
- * @author kdai
- * @author jshen3
- * @author xwang111 
- *
- */
 public class LevelSelection extends JFrame {
 
 	/**
@@ -48,13 +41,12 @@ public class LevelSelection extends JFrame {
 
 	JButton[] Levels;
 	JPanel panel;
+	/**
+	 * Launch the application.
+	 */
 
 	
-	/**
-	 * get the images of the icons
-	 * @param levelNum
-	 * @return
-	 */
+	
 	public String getLevelImage(int levelNum){
 		if (levelNum==0){
 			return "images\\puzzleIcon.png";
@@ -70,9 +62,6 @@ public class LevelSelection extends JFrame {
 		}
 	}
 	
-	/**
-	 * close the frame
-	 */
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -150,9 +139,7 @@ public class LevelSelection extends JFrame {
 	
 	}
 	
-	/**
-	 * display the achivements and level mode and lock
-	 */
+	
 	public void addlevels(){
 		int levelButtonLenth=60;
 		int levelButtonWidth=60;
@@ -236,9 +223,6 @@ public class LevelSelection extends JFrame {
 		}
 	}
 	
-	/**
-	 * reload eveythings
-	 */
 	public void reloadLevel(){
 		testLevels = Kabasuji.loadAll();
 		panel.removeAll();

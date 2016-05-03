@@ -8,14 +8,6 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-/**
- * content of the splash screen
- * @author lthoang
- * @author kdai
- * @author jshen3
- * @author xwang111 
- *
- */
 public class SplashS extends JPanel {
 
 	/**

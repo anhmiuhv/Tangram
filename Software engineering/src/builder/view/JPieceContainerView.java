@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import model.Piece;
+import view.JPieceView;
 import builder.controller.DeletePieceController;
 import builder.controller.PieceViewController;
 import builder.model.*;

@@ -3,13 +3,7 @@ package view;
 import javax.swing.JPanel;
 import model.Piece;
 
-/**
- * represent a piece
-  * @author kdai
- * @author jshen3
- * @author xwang111 
- *
- */
+
 
 public class JPieceView extends JPanel{
 
@@ -23,12 +17,6 @@ public class JPieceView extends JPanel{
 	int pX;
 	int pY;
 	
-	/**
-	 * create the piece view
-	 * @param piece piece to draw
-	 * @param pX position of the piece
-	 * @param pY position of the piece
-	 */
 	public JPieceView(Piece piece, int pX, int pY){
 
 
@@ -39,7 +27,7 @@ public class JPieceView extends JPanel{
 	}
 	
 	
-	private void createPieceView(){
+	public void createPieceView(){
 
 		setBounds(pX, pY, 180, 180);
 		setOpaque(false);
@@ -53,18 +41,12 @@ public class JPieceView extends JPanel{
 		}
 	}
 
-	/**
-	 * get the piece
-	 * @return the piece
-	 */
+
 	public Piece getPiece() {
 		return piece;
 	}
 
-	/**
-	 * set the piece
-	 * @param piece the piece
-	 */
+
 	public void setPiece(Piece piece) {
 		this.piece = piece;
 	}

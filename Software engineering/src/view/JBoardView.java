@@ -8,13 +8,6 @@ import model.Board;
 import model.Piece;
 import model.Square;
 
-/**
- * represent a board
- * @author kdai
- * @author jshen3
- * @author xwang111 
- *
- */
 public class JBoardView extends JPanel {
 	/**
 	 * 
@@ -32,7 +25,7 @@ public class JBoardView extends JPanel {
 		createBoardView();
 		
 	}
-	private void createBoardView(){
+	public void createBoardView(){
 
 		//setBackground(Transparency.TRANSLUCENT);
 

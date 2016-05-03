@@ -15,7 +15,7 @@ import builder.view.JSquareView;
 
 /**
  * This class handles indidual square of the board creator
- * @author lthoang
+ * @author anhmiuhv
  *
  */
 public class SelectBoardTileController implements MouseListener{
