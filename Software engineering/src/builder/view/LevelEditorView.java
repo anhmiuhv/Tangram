@@ -27,6 +27,8 @@ import builder.controller.SwitchLevelModeController;
 import builder.controller.TimerInfoController;
 import builder.controller.UndoController;
 import builder.model.*;
+import builder.move.IMove;
+import builder.move.SwitchModeMove;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -127,14 +129,6 @@ public class LevelEditorView extends JFrame {
 			}
 		});
 		panel.add(btnSave);
-
-		JButton btnRestart = new JButton("Restart");
-		btnRestart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRestart.setBounds(672, 6, 89, 25);
-		panel.add(btnRestart);
 
 		mode = new JComboBox<String>();
 		mode.setBounds(783, 44, 143, 22);
