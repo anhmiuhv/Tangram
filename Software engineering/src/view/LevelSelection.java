@@ -4,21 +4,14 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import builder.model.LevelEditorState;
 import controller.LevelSelectController;
 import model.Kabasuji;
 import model.Level;
-import model.LevelState;
-import model.LightningLevel;
-import model.PuzzleLevel;
-import model.ReleaseLevel;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
@@ -57,15 +50,15 @@ public class LevelSelection extends JFrame {
 	 */
 	public String getLevelImage(int levelNum){
 		if (levelNum==0){
-			return "images\\puzzleIcon.png";
+			return "images/puzzleIcon.png";
 
 		}
 		else if (levelNum==1){
-			return "images\\lightningIcon.png";
+			return "images/lightningIcon.png";
 
 		}
 		else{
-			return "images\\releaseIcon.png";
+			return "images/releaseIcon.png";
 
 		}
 	}
