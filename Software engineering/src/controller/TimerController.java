@@ -46,7 +46,7 @@ public class TimerController extends TimerTask {
 			//new GoMenuController(levelselect,levelview,level).actionPerformed();
 			//levelview.close();
 	
-			new AchievementController(levelselect,levelview,levelview.getLevel().getAchievement()).actionPerformed();;
+			new AchievementController(levelselect,levelview,levelview.getLevel().getAchievement()).actionPerformed();
 			
 		}
   }  

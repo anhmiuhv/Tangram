@@ -529,4 +529,7 @@ public class LevelView extends JFrame {
 		}
 	}
 	
+	public LevelSelection getLevelSelection(){
+		return levelselection;
+	}
 }

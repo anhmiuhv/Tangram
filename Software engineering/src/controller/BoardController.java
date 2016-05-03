@@ -175,6 +175,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 				coverColor((int)dx,(int)dy,movingPiece);
 			}
 			levelView.getLevel().checkAchievement();
+			
 			levelView.updateAchievement();
 			
 			if (levelView.getDraggingPieceView() != null){
@@ -185,6 +186,9 @@ public class BoardController extends java.awt.event.MouseAdapter{
 			
 			levelView.reDrawBoard();
 			levelView.repaint();
+			if(levelView.getLevel().getAchievement().getAchievement() == 3){
+				new AchievementController(levelView.getLevelSelection(),levelView,levelView.getLevel().getAchievement()).actionPerformed();
+			}
 		}
 		else{
 			if(!fromBoard){
@@ -205,7 +209,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		//levelView.remove(levelView.getDraggingPieceView());
 		fromBoard = false;
 		//levelView.repaint();
-			}
+		}
 	}
 	/**
 	 * get the head square in the Board
