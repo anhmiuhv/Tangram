@@ -53,5 +53,6 @@ public class AchievementController {
 		levelview.closeWindowsFlag = true;
 		new GoMenuController(levelselect,levelview,levelview.getLevel()).actionPerformed();
 		levelview.close();
+		
 	}
 }

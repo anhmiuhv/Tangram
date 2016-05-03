@@ -47,7 +47,6 @@ public class testEditLevel {
 			r.mouseMove(200, 165);
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
-
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

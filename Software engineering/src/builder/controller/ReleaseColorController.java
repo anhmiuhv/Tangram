@@ -10,6 +10,11 @@ import builder.move.IMove;
 import builder.move.ReleaseColorMove;
 import builder.view.JReleaseColoredNum;
 
+/**
+ * This class manages the controlling of the release color
+ * @author lthoang
+ *
+ */
 public class ReleaseColorController implements ActionListener {
 	JReleaseColoredNum lev;
 	JComboBox<String> box;

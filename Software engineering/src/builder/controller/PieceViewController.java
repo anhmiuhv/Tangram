@@ -5,9 +5,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import model.Piece;
-import view.JPieceView;
 import builder.model.PieceContainer;
 import builder.model.PlacedPiece;
+import builder.view.JPieceView;
 import builder.view.JTestFrame;
 
 public class PieceViewController implements MouseListener {
