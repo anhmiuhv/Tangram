@@ -10,7 +10,8 @@ For the Kabasuji game, we have two levels, the first level(puzzle level) is unlo
 is locked until you get at least one star on the first level. To rotate or flip, select the piece by clicking it , then 
 press the button to flip or rotate. All other features are the same except that the piece on board can not move out side 
 the board at this point. When you meet the achievement, there will be stars on top right corner. In Lightning level, when 
-the time is up, the game will end and go back to level selection panel.
+the time is up, the game will end and go back to level selection panel. We had tested that all the level could be passed with three stars.
+Our maxiumn levels is 20.
 
 For the level builder,  Click New Level button to create a new level. For the piece creator on bottom left corner, user can 
 create a piece by pressing 6 square. The piece can be successfully added into the piece container by pressing the "+" 
@@ -34,6 +35,17 @@ If level is not valid, builder will not create level.
 Undo, redo, restart button can work perfectly. Then, when you open the game, the builded level will appear.   
 
 
-Our test case have covered about 40%. 
-Part of test case can only run on mac, we will fix it later.
- 
+Player tutorial video:
+		https://youtu.be/sJbSEJ6BJtw
+
+Builder tutorial video:
+		https://youtu.be/PfGEeNio-J8
+
+Our test cases use Robot classes to simulate mouse movements, so its best if you dont touch anything during the test cases.
+The test cases are built to run on MacbookPro 13 inch. Yeah I know it sucks but because of high level designs
+mistakes we dont have time to change it. You can run it on your computer but there is no guarantee it will
+produce the desired results.
+This is the video we running our test cases:
+		https://www.youtube.com/watch?v=fl0mZCiS920
+
+Our test case corved 84%.
