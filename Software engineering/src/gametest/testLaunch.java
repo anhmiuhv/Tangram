@@ -1,4 +1,4 @@
-package builder.test;
+package gametest;
 
 import org.junit.Test;
 

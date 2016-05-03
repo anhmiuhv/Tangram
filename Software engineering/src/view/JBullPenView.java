@@ -10,6 +10,13 @@ import javax.swing.JPanel;
 import model.Bullpen;
 import model.Piece;
 
+/**
+ * representing the bullpen
+ * @author kdai
+ * @author jshen3
+ * @author xwang111 
+ *
+ */
 public class JBullPenView extends JPanel {
 
 	/**
@@ -29,6 +36,12 @@ public class JBullPenView extends JPanel {
 	
 	//JScrollPane scrollPane = new JScrollPane();
 	
+	/**
+	 * create bullpen view
+	 * @param bp
+	 * @param bpX
+	 * @param bpY
+	 */
 	public JBullPenView(Bullpen bp, int bpX, int bpY) {
 		this.bp = bp;
 		this.bpX = bpX;
@@ -40,7 +53,7 @@ public class JBullPenView extends JPanel {
 		createJBullPenView();
 	}
 	
-	public void createJBullPenView(){
+	private void createJBullPenView(){
 
 		//setBounds(bpX,bpY,180*2+15,180*3+20);
 		setPreferredSize(new Dimension(180*2+15,180*4+20));

@@ -1,4 +1,4 @@
-package builder.test;
+package gametest;
 
 import java.awt.AWTException;
 import java.awt.Robot;

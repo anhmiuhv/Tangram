@@ -39,7 +39,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
-
+/**
+ * representing a level
+ * @author kdai
+ * @author jshen3
+ * @author xwang111 
+ *
+ */
 public class LevelView extends JFrame {
 
 	/**
@@ -79,6 +85,9 @@ public class LevelView extends JFrame {
 	int diffy = 0;
 	public boolean closeWindowsFlag;
 	
+	/**
+	 * clse the level
+	 */
 	public void close(){
 		WindowEvent	winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -229,7 +238,9 @@ public class LevelView extends JFrame {
 		
 	}
 
-
+	/**
+	 * redraw the board
+	 */
 	public void reDrawBoard (){
 
 		//----- manully design board
@@ -270,12 +281,13 @@ public class LevelView extends JFrame {
 		@SuppressWarnings("unused")
 		HintView hv = new HintView(boardView,level.getBoard());
 		boardView.createSquareView();
-
 	}
 	
 	
 	
-	
+	/**
+	 * redraw the bullpen
+	 */
 	public void reDrawBullpan (){
 
 		
@@ -287,7 +299,9 @@ public class LevelView extends JFrame {
 	}
 	
 	
-	
+	/**
+	 * redraw the blue stripe
+	 */
 	public void reDrawBlueStripe (){
 
 		
@@ -336,81 +350,155 @@ public class LevelView extends JFrame {
 
 	}
 	
-
+	/**
+	 * get the scroll pane of the bullpen
+	 * @return thescroll pane
+	 */
 	public JScrollPane getScrollPane(){
 		return scrollPane;
 	}
 	
+	/**
+	 * get the bullpen
+	 * @return the bullpen
+	 */
 	public JBullPenView getJBullPenView(){
 		return jbp;
 	}
+	
+	/**
+	 * get the timer
+	 * @return the timer
+	 */
 	public Timer getTimer(){
 		return timer;
 	}
 	
+	/**
+	 * get the top panel for dragging
+	 * @return the top pane
+	 */
 	public JPanel getTopPanel(){
 		return topPanel;
 	}
 	
+	/**
+	 * get the dragging piece view
+	 * @return the dragging piece view
+	 */
 	public JPieceView getDraggingPieceView(){
 		return draggingPieceView;
 	}
 	
+	/**
+	 * set the dragging piece view
+	 * @param jpv the dragging piece view
+	 */
 	public void setDraggingPieceView(JPieceView jpv){
 		draggingPieceView = jpv;
 	}
 	
+	/**
+	 * get the distance between the mouse and the corner of top pane
+	 * @return
+	 */
 	public int getDiffx(){
 		return diffx;
 	}
 	
+	/**
+	 * set the distance between the mouse and the corner of top pane
+	 * @param x
+	 */
 	public void setDiffx(int x){
 		diffx = x;
 	}
 	
+	/**
+	 * get the distance between the mouse and the corner of top pane
+	 * @return  the distance between the mouse and the corner of top pane
+	 */
 	public int getDiffy(){
 		return diffy;
 	}
 	
+	/**
+	 * set the distance between the mouse and the corner of top pane
+	 * @param y
+	 */
 	public void setDiffy(int y){
 		diffy = y;
 	}
 	
+	/**
+	 * get the dragging piece
+	 * @return the dragging piece
+	 */
 	public Piece getDraggingPiece(){
 		return draggingPiece;
 	}
 	
+	/**
+	 * set the dragging piece
+	 * @param p the dragging piece
+	 */
 	public void setDraggingPiece(Piece p){
 		draggingPiece = p;
 	}
 	
+	/**
+	 * get the board view
+	 * @return the board view
+	 */
 	public JBoardView getBoardView(){
 		return boardView;
 	}
 	
+	/**
+	 * get the board controller
+	 * @return the board controller
+	 */
 	public BoardController getBoardController(){
 		return boardController;
 	}
 	
+	/**
+	 * get the parent level model
+	 * @return level model
+	 */
 	public Level getLevel(){
 		return level;
 	}
+	/**
+	 * get the bullpen controller
+	 * @return the bullpen controller
+	 */
 	public BullpenController getBullpenController(){
 		return bullpenController;
 	}
+	/**
+	 * get the blue stripe
+	 * @return
+	 */
 	public BlueStripe getBlueStripe(){
 		return bs;
 	}
 	
+	/**
+	 * update the blue stripe
+	 */
 	public void updateBS(){
 		moveUsed = ((PuzzleLevel) level).getUsedMove();
 		totalMove = ((PuzzleLevel) level).getAllowedMove();
 		moves.setText("Moves: " + moveUsed + "/" + totalMove);
 		if (moveUsed == totalMove){
-			new AchievementController(levelselection,this,this.getLevel().getAchievement()).actionPerformed();
+			new AchievementController(levelselection,this,this.getLevel().getAchievement()).actionPerformed();;
 		}
 	}
 	
+	/**
+	 * update the achivements
+	 */
 	public void updateAchievement(){
 		if (level.getAchievement().getAchievement()==1){
 			stayLabel = new JLabel("star");
@@ -438,12 +526,7 @@ public class LevelView extends JFrame {
 			stayLabel.setBounds(700,35, 60, 20);
 			stayLabel.setIcon(new ImageIcon("images//threestar.png"));
 			bs.add(stayLabel);
-			
 		}
-	}
-	
-	public LevelSelection getLevelSelection(){
-		return levelselection;
 	}
 	
 }

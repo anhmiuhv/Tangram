@@ -92,7 +92,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 				board.addpiece(movingPiece);
 				coverSquare(movingPiece.getpColumn(),movingPiece.getpRow(),movingPiece);
 				
-				levelView.getLevel().checkAchievement();				
+				levelView.getLevel().checkAchievement();
 				//System.out.println(levelView.getLevel().getS);
 				levelView.updateAchievement();
 				
@@ -185,11 +185,7 @@ public class BoardController extends java.awt.event.MouseAdapter{
 		//levelView.remove(levelView.getDraggingPieceView());
 		fromBoard = false;
 		//levelView.repaint();
-		}
-		if(levelView.getLevel().getAchievement().getAchievement() == 3){
-			new AchievementController(levelView.getLevelSelection(),levelView,
-					levelView.getLevel().getAchievement()).actionPerformed();
-		}
+			}
 	}
 	
 	public int[] getHeadSquareInBoard(){
