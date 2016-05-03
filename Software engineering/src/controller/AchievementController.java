@@ -11,13 +11,22 @@ import model.Achievement;
 import view.LevelSelection;
 import view.LevelView;
 
+/**
+ * Achievement Controller which is called when you get 3 stars .
+ * @author jshen3, kdai, xwang11
+ */
 public class AchievementController {
 	
 	Achievement achievement;
 	LevelView levelview;
 	LevelSelection levelselect;
 	
-	
+	/**
+	 * Constructor of AchievementController.
+	 * @param levelselect
+	 * @param levelview
+	 * @param achievement
+	 */
 	public AchievementController(LevelSelection levelselect,LevelView levelview,Achievement achievement){
 		this.levelview =levelview;
 		this.achievement=achievement;
