@@ -136,9 +136,10 @@ public class LevelSelection extends JFrame {
 										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 												.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 												.addGap(29)))
-												.addComponent(panel, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
+												.addComponent(panel, GroupLayout.PREFERRED_SIZE, 688, GroupLayout.PREFERRED_SIZE)
 												.addGap(52))
 				);
+
 		panel.setLayout(null);
 
 
