@@ -9,6 +9,13 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * 
+ * the splash screen
+ * @author kdai
+ * @author jshen3
+ * @author xwang111 
+ */
 public class SplashScreen extends JWindow {
   /**
 	 * 
