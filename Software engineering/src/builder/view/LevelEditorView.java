@@ -378,14 +378,26 @@ public class LevelEditorView extends JFrame {
 		return editor;
 	}
 
+	/**
+	 * get undo button
+	 * @return undo button
+	 */
 	public JButton getUndoButton() {
 		return btnUndo;
 	}
 
+	/**
+	 * get container jpanel
+	 * @return
+	 */
 	public JPanel getPanel() {
 		return panel;
 	}
 
+	/**
+	 * get mode switching combobox
+	 * @return combobox
+	 */
 	public JComboBox<String> getMode() {
 		return mode;
 	}
